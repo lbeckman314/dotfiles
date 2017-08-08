@@ -1,0 +1,16 @@
+{
+	"bold_folder_labels": true,
+	"caret_style": "solid",
+	"color_scheme": "Packages/User/SublimeLinter/Dracula (SL).tmTheme",
+	"dictionary": "Packages/Language - English/en_US.dic",
+	"font_size": 9,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"tab_completion": false,
+	"tab_size": 4,
+	"theme": "Boxy Tomorrow.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"word_wrap": true
+}
