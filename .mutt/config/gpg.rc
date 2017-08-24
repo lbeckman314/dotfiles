@@ -1,5 +1,5 @@
-# replace 0x7ED573D3 with your gnupg private key ID
-set pgp_sign_as = 0x7ED573D3
+# replace 0xE39CD245 with your gnupg private key ID
+set pgp_sign_as = 0xE39CD245
 
 set pgp_decode_command = "gpg %?p?--passphrase-fd 0? --no-verbose --batch --output - %f"
 set pgp_verify_command = "gpg --no-verbose --batch --output - --verify %s %f"

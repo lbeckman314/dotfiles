@@ -1,4 +1,4 @@
-dotfiles for   
+dotfiles for
 - sublime text
 - vim
 - zsh 

@@ -29,6 +29,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/goyo.vim'
 Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
+Plugin 'edkolev/tmuxline.vim'
 
 call vundle#end()
 
