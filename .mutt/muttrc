@@ -1,0 +1,16 @@
+source $HOME/.mutt/config/colors.rc
+source $HOME/.mutt/config/headers.rc
+source $HOME/.mutt/config/bindings.rc
+source $HOME/.mutt/config/lists.rc
+source $HOME/.mutt/config/gpg.rc
+source $HOME/.mutt/config/pager.rc
+source $HOME/.mutt/config/mailbox.rc
+source $HOME/.mutt/config/misc.rc
+
+
+source ~/.mutt/config/alias.rc
+source ~/.mutt/config/new_alias.rc
+set alias_file=~/.mutt/config/new_alias.rc
+
+# HTML is the last option.
+alternative_order text/enriched text/plain text/html 

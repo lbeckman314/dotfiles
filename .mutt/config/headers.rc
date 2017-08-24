@@ -1,0 +1,14 @@
+ignore *
+
+unignore From:
+unignore To:
+unignore Reply-To:
+unignore Subject:
+unignore Date:
+unignore CC:
+unignore BCC:
+unignore Newsgroups:
+unignore Organization:
+unignore X-Junked-Because:
+
+hdr_order From: Subject: To: Replay-To: Date: Newsgroups: Organization: CC: BCC: X-Junked-Because: 

@@ -1,0 +1,9 @@
+#set pager_index_lines=9
+#set menu_scroll
+#set menu_context=5
+#set pager_context=1
+
+
+set nomarkers
+set pager_stop = yes
+set smart_wrap

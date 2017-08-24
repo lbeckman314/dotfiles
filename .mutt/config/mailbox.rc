@@ -1,0 +1,33 @@
+# edit: YOUR_NAME SURNAME LOGIN, to match your settings
+
+set realname = "liam beckman"
+set from = "lbeckman314@gmail.com"
+
+set signature = ~/.mutt/sign
+
+set imap_user = "lbeckman314"
+set folder = "imaps://imap.gmail.com:993"
+set postponed = "+[Gmail]/Drafts"
+#set spoolfile = "+INBOX"
+set spoolfile = "+[Gmail]/All Mail"
+set record = "+[Gmail]/Sent Mail"
+set imap_check_subscribed = yes
+set copy
+
+set message_cachedir = ~/.mutt/cache/
+set certificate_file = ~/.mutt/certificates
+unset message_cache_clean
+
+set mailcap_path = /usr/local/etc/mime.types
+
+set mail_check = 60
+
+set move = no
+set noconfirmappend
+set delete = ask-yes
+set nomark_old
+
+
+set sort = 'threads'
+set sort_aux = 'last-date-received'
+

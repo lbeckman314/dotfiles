@@ -126,6 +126,12 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
 
 
+"http://vimcasts.org/transcripts/16/en/
+"nmap <leader>w :set wrap!<CR>
+"command! -nargs=* Wrap set wrap linebreak nolist
+set wrap nolist linebreak
+
+
 " Color scheme (terminal)
 set t_Co=256
 set background=dark
