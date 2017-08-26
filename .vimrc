@@ -33,7 +33,7 @@ call vundle#end()
 """MAPPINGS"""
 
 " TODO: Pick a leader key
-let mapleader = ","
+let mapleader = " "
 " Move up/down editor lines
 nnoremap j gj
 nnoremap k gk
@@ -63,7 +63,7 @@ nnoremap <leader>l :ls<CR>:b<space>
 
 "https://www.reddit.com/r/vim/comments/6kfyae/vimfugitive_workflow/
 map <leader>gs :Gstatus<CR>gg<C-n>
-map <leader>gc :Gcommit
+noremap <leader>gc :Gcommit<CR>
 map <leader>gp :Gpush
 """""""
 
@@ -142,7 +142,7 @@ set laststatus=2
 
 " Last line
 "set showmode
-" set showcmd
+"set showcmd
 
 " searching
 set hlsearch
