@@ -14,7 +14,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'tomasr/molokai'
 Plugin 'dracula/vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
@@ -23,7 +22,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/goyo.vim'
 Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
-Plugin 'edkolev/tmuxline.vim'
+Plugin 'mbbill/undotree'
+Plugin 'junegunn/gv.vim'
 
 call vundle#end()
 
@@ -41,6 +41,15 @@ nnoremap k gk
 map <leader><space> :let @/=''<cr> " clear search
 
 map <C-n> :NERDTreeToggle<CR>
+nnoremap <leader><C-u> :UndotreeToggle<CR>
+
+
+ahsh
+
+
+
+
+shjkdjhd
 
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬,trail:•
@@ -165,6 +174,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" and because i'm a heathen...
 set mouse=a
 
 """""""
