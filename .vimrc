@@ -64,7 +64,7 @@ nnoremap <leader>l :ls<CR>:b<space>
 "https://www.reddit.com/r/vim/comments/6kfyae/vimfugitive_workflow/
 map <leader>gs :Gstatus<CR>gg<C-n>
 noremap <leader>gc :Gcommit<CR>
-map <leader>gp :Gpush
+map <leader>gp :Gpush<CR>
 """""""
 
 
