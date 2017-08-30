@@ -34,7 +34,9 @@ Plugin 'kien/ctrlp.vim'         " fuzzy search
 Plugin 'mbbill/undotree'        " go through undos
 Plugin 'junegunn/gv.vim'        " git repo explorer
 " Plugin 'edkolev/tmuxline.vim'   " tmux themer
+Plugin 'tpope/vim-dispatch'
 call vundle#end()
+
 
 """""""
 
