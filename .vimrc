@@ -1,6 +1,6 @@
 "derived from: //gist.github.com/simonista/8703723
 "echo "VIMRC LOADED SUCCESSFULLY"
-this is a test in emacs with magit
+
 """vundle instructions POSIX
 " https://github.com/VundleVim/Vundle.vim
 " $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
