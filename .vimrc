@@ -1,7 +1,6 @@
 "derived from: //gist.github.com/simonista/8703723
 "echo "VIMRC LOADED SUCCESSFULLY"
 
-
 """vundle instructions POSIX
 " https://github.com/VundleVim/Vundle.vim
 " $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -34,9 +33,8 @@ Plugin 'bling/vim-airline'      " status bar
 Plugin 'kien/ctrlp.vim'         " fuzzy search
 Plugin 'mbbill/undotree'        " go through undos
 Plugin 'junegunn/gv.vim'        " git repo explorer
-" Plugin 'edkolev/tmuxline.vim'   " tmux themer
-Plugin 'tpope/vim-dispatch'
-Plugin 'skywind3000/asyncrun.vim'
+" Plugin 'edkolev/tmuxline.vim' " tmux themer
+Plugin 'tpope/vim-dispatch'     " async stuff
 call vundle#end()
 
 
