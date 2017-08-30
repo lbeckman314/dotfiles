@@ -35,6 +35,7 @@ Plugin 'mbbill/undotree'        " go through undos
 Plugin 'junegunn/gv.vim'        " git repo explorer
 " Plugin 'edkolev/tmuxline.vim'   " tmux themer
 Plugin 'tpope/vim-dispatch'
+Plugin 'skywind3000/asyncrun.vim'
 call vundle#end()
 
 
