@@ -1,5 +1,14 @@
-"derived from: //gist.github.com/simonista/8703722
+"derived from: //gist.github.com/simonista/8703723
 "echo "VIMRC LOADED SUCCESSFULLY"
+
+"""vundle instructions POSIX
+" https://github.com/VundleVim/Vundle.vim
+" $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+"""vundle instructions WINDOWS
+" https://github.com/VundleVim/Vundle.vim/wiki/Vundle-for-Windows
+" C:\> choco install -y git
+" C:\> choco install -y curl
 
 """VUNDLE PLUGINS"""
 
@@ -13,18 +22,18 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'dracula/vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdtree'
+Plugin 'VundleVim/Vundle.vim'   " package manager
+Plugin 'dracula/vim'            " color scheme
+Plugin 'scrooloose/syntastic'   " syntax checker
+Plugin 'scrooloose/nerdtree'    " file tree
 "filetype plugin on
-Plugin 'tpope/vim-fugitive'
-Plugin 'junegunn/goyo.vim'
-Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim'
-Plugin 'mbbill/undotree'
-Plugin 'junegunn/gv.vim'
-
+Plugin 'tpope/vim-fugitive'     " git wrapper
+Plugin 'junegunn/goyo.vim'      " zen mode
+Plugin 'bling/vim-airline'      " status bar
+Plugin 'kien/ctrlp.vim'         " fuzzy search
+Plugin 'mbbill/undotree'        " go through undos
+Plugin 'junegunn/gv.vim'        " git repo explorer
+" Plugin 'edkolev/tmuxline.vim'   " tmux themer
 call vundle#end()
 
 """""""
@@ -42,14 +51,6 @@ map <leader><space> :let @/=''<cr> " clear search
 
 map <C-n> :NERDTreeToggle<CR>
 nnoremap <leader><C-u> :UndotreeToggle<CR>
-
-
-ahsh
-
-
-
-
-shjkdjhd
 
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬,trail:•
@@ -74,7 +75,15 @@ nnoremap <leader>l :ls<CR>:b<space>
 map <leader>gs :Gstatus<CR>gg<C-n>
 noremap <leader>gc :Gcommit<CR>
 map <leader>gp :Gpush<CR>
-"""""""
+
+
+" https://stackoverflow.com/questions/23292917/vim-key-mapping-compile-and-run-for-java-and-c-code
+" autocmd FileType python nnoremap <buffer> <F9> :exec '!python' shellescape(%)<cr>
+" autocmd FileType java nnoremap <buffer> <F9> :exec '!javac' shellescape(%) && '!java' shellescape(%:r)<cr>
+" autocmd FileType c,cpp nnoremap <buffer> <F9> :exec '!gcc' shellescape(%) && './a.out'<cr>
+" autocmd FileType c,cpp nnoremap <buffer> <C-b> :exec '!gcc' shellescape(expand('%'), 1) '&& ./a.out' shellescape(expand('%:r'), 1)<cr>
+autocmd filetype cpp nnoremap <F8> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').''<CR><CR>
+autocmd filetype cpp nnoremap <F9> :w <bar> exec '! /usr/bin/x-terminal-emulator -e bash -c "'.shellescape('%:p:r').';echo;echo;echo Press ENTER to continue; read line;exit; exec bash"'<CR><CR>
 
 
 """COLORS"""
@@ -176,6 +185,9 @@ let g:syntastic_check_on_wq = 0
 
 " and because i'm a heathen...
 set mouse=a
+
+" airline takes care of showing the command pretty well
+set noshowcmd
 
 """""""
 
