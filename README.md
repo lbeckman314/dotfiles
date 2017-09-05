@@ -1,4 +1,8 @@
 dotfiles for
+- spacemacs
 - sublime text
 - vim
-- zsh 
+- zsh
+
+this is a test
+for the super commit
