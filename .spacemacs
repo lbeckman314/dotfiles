@@ -254,16 +254,16 @@ values."
    ;; If set to `t' or `relative' line numbers are turned on in all `prog-mode' and
    ;; `text-mode' derivatives. If set to `relative', line numbers are relative.
    ;; This variable can also be set to a property list for finer control:
-   ;; '(:relative nil
-   ;;   :disabled-for-modes dired-mode
-   ;;                       doc-view-mode
-   ;;                       markdown-mode
-   ;;                       org-mode
-   ;;                       pdf-view-mode
-   ;;                       text-mode
-   ;;   :size-limit-kb 1000)
-   ;; (default nil)
-   dotspacemacs-line-numbers nil
+   '(:relative nil
+     :disabled-for-modes dired-mode
+                         doc-view-mode
+                         markdown-mode
+                         org-mode
+                         pdf-view-mode
+                         text-mode
+     :size-limit-kb 1000)
+   ;;(default nil)
+   dotspacemacs-line-numbers 't
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -352,22 +352,12 @@ ou should place your code here."
     (lambda()
       (interactive)
       ;(shell-command (concat "/usr/bin/x-terminal-emulator -e bash -c" (file-name-sans-extension buffer-file-name) ";echo; echo;echo Press ENTER to continue; read line;exit; exec bash"))))
-    (shell-command (format "%s %s %s" "/usr/bin/x-terminal-emulator -e bash -c "
+    (shell-command (format "%s '%s %s'" "/usr/bin/x-terminal-emulator -e bash -c"
                          (file-name-sans-extension buffer-file-name)
-                         " ;echo; echo;echo Press ENTER to continue; read line;exit; exec bash"))))
+                         ";echo; echo;echo Press ENTER to continue; read line;exit; exec bash"))))
 
-  (defun run-gnome-terminal-here ()
-    (shell-command (concat "konsole --workdir"
-                           (file-name-directory (or load-file-name buffer-file-name)) 
-                           " > /dev/null 2>&1 & disown") nil nil))
 
   (define-key python-mode-map (kbd "<f12>") 'python-switch-to-python)
-
-  ;; turn line numbers on
-  (setq linum-mode t)
-
-  ;; this is nonessential
-  (setq paradox-github-token ca63ed58ae7121908e9cbea220144ae808efdac0)
 
   )
 
