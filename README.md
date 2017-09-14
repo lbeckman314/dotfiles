@@ -1,8 +1,8 @@
 dotfiles for
+- .profile
 - spacemacs
 - sublime text
+- tmux
 - vim
+- Xorg
 - zsh
-
-this is a test
-for the super commit
