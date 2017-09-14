@@ -334,7 +334,7 @@ you should place your code here."
    '(markdown-command "/usr/bin/pandoc"))
 
   ;; https://stackoverflow.com/questions/12756531/using-the-current-buffers-file-name-in-m-x-compile
-  (add-hook 'c++-mode-hook
+  (add-hook 'c-mode-hook
             (lambda ()
               (unless (or (file-exists-p "makefile")
                           (file-exists-p "Makefile"))
@@ -346,7 +346,7 @@ you should place your code here."
   ;; https://emacs.stackexchange.com/questions/14167/shell-command-with-bash-script-and-arguements
   ;; https://www.masteringemacs.org/article/mastering-key-bindings-emacs
   ;; https://bbs.archlinux.org/viewtopic.php?id=91222
-  (define-key c++-mode-map (kbd "<f9>")
+  (define-key c-mode-map (kbd "<f9>")
     (lambda()
       (interactive)
       ;(shell-command (concat "/usr/bin/x-terminal-emulator -e bash -c" (file-name-sans-extension buffer-file-name) ";echo; echo;echo Press ENTER to continue; read line;exit; exec bash"))))
