@@ -36,6 +36,9 @@ Plugin 'junegunn/gv.vim'        " git repo explorer
 " Plugin 'edkolev/tmuxline.vim' " tmux themer
 Plugin 'tpope/vim-dispatch'     " async stuff
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-obsession'
+Plugin 'jreybert/vimagit'
+
 call vundle#end()
 
 
