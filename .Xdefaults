@@ -1,0 +1,89 @@
+! xscreensaver ---------------------------------------------------------------
+
+!font settings
+xscreensaver.Dialog.headingFont:        -*-dina-bold-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.bodyFont:           -*-dina-medium-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.labelFont:          -*-dina-medium-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.unameFont:          -*-dina-medium-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.buttonFont:         -*-dina-bold-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.dateFont:           -*-dina-medium-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.passwd.passwdFont:         -*-dina-bold-r-*-*-10-*-*-*-*-*-*-*
+!general dialog box (affects main hostname, username, password text)
+xscreensaver.Dialog.foreground:         #EDEDED
+xscreensaver.Dialog.background:         #202020
+xscreensaver.Dialog.topShadowColor:     #202024
+xscreensaver.Dialog.bottomShadowColor:  #202024
+xscreensaver.Dialog.Button.foreground:  #EDEDFF
+xscreensaver.Dialog.Button.background:  #444
+!username/password input box and date text colour
+xscreensaver.Dialog.text.foreground:    #EDEDFF
+xscreensaver.Dialog.text.background:    #444
+xscreensaver.Dialog.internalBorderWidth:24
+xscreensaver.Dialog.borderWidth:        0
+xscreensaver.Dialog.shadowThickness:    2
+!timeout bar (background is actually determined by Dialog.text.background)
+xscreensaver.passwd.thermometer.foreground:  #A9B7C4
+xscreensaver.passwd.thermometer.background:  #202020
+xscreensaver.passwd.thermometer.width:       8
+!datestamp format--see the strftime(3) manual page for details
+xscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y
+
+
+! derived from 
+! https://github.com/xero/dotfiles/blob/master/urxvt/.Xdefaults#L27-L54
+! author ▓ xero <x@xero.nu>
+! code   ▓ http://code.xero.nu/dotfiles
+! mirror ▓ http://git.io/.files
+
+
+! █▓▒░ color scheme
+#include </home/liam/dracula.Xcolors>
+
+! █▓▒░ fonts
+urxvt*font: xft:roboto:size=12:antialias=true
+!xft:Symbola:pixelsize=14:antialias=true:hinting=slight
+!urxvt*font: xft:gohufont:size=11:antialias=false
+!urxvt*font: -*-creep-regular-*-*--16-*-*-*-*-*-*-1
+!urxvt*font: -*-lime-*-*-*--11-*-*-*-*-*-*-1
+!urxvt*font: xft:creep:size=16:antialias=true
+!urxvt*font: xft:envy code r:size=9:antialias=false
+!urxvt*font: xft:lemon:size=16:antialias=false
+!urxvt*font: xft:lime:size=16:antialias=false
+!urxvt*font: xft:neep:size=11:antialias=false
+!urxvt*font: xft:perfect dos vga 437:size=11:antialias=false
+!urxvt*font: xft:tewi:size=11:antialias=false
+
+urxvt*boldFont: 
+urxvt*italicFont: 
+urxvt*bolditalicFont: 
+
+urxvt*letterSpace: -3
+urxvt*lineSpace: 0
+
+! █▓▒░ interface
+urxvt*scrollBar: false
+urxvt*transparent: false
+! urxvt*internalBorder: 10
+! urxvt*borderColor: #1c1c1c
+! urxvt*borderLess:false
+
+! █▓▒░ extensions
+urxvt.perl-ext-common: default,clipboard,keyboard-select,url-select
+urxvt.keysum.M-u: perl:url-select:select_next
+urxvt.url-select.autocopy: true
+urxvt.url-select.launcher: chromium
+urxvt.keysym.M-Escape: perl:keyboard-select:activate
+urxvt.keysym.M-c:   perl:clipboard:copy
+urxvt.keysym.C-v:   perl:clipboard:paste
+urxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+urxvt.clipboard.copycmd:  xsel -ib
+urxvt.clipboard.pastecmd: xsel -ob
+
+! █▓▒░ misc
+urxvt.saveLines: 9999
+urxvt.iso14755: false
+!URxvt*altSendsEscape: true
+
+! https://ctkarch.org/documentation/tutorials/tuto.php?page=urxvt-transpa.xml
+urxvt*depth: 32
+urxvt*background: rgba:0000/0000/0200/c800
