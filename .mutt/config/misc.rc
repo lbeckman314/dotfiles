@@ -1,0 +1,13 @@
+set attribution = "* %n <%a> [%{%d.%m.%Y. @%H:%M:%S %Z}]:\n"
+
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/.mutt/certificates
+
+set move = no
+
+set editor = vim
+set nobeep
+
+set date_format="* %n <%a> [%{%d.%m.%Y. @%H:%M:%S %Z}]:\n"
+
+set shell="/usr/local/bin/zsh"

@@ -1,0 +1,52 @@
+color attachment	cyan		default
+color bold			brightwhite	default
+color error			brightwhite	red
+color hdrdefault	green		default
+#color index
+#color indecator
+color markers		yellow		default
+color message		white		default
+color normal		white		default
+color quoted		brightblack	default
+#color quoted1
+#color quoted2
+#color quoted3
+color search		white		yellow
+color signature		blue		default
+color status		white		blue
+#color tilde
+color tree			green		default
+color underline 	brightwhite	default
+
+# leter are mostly copied fromi mutt samle rc by Dave:
+# http://www.davep.org/mutt/muttrc/colours.html
+
+# headers
+color header 		brightgreen	default "^(From|Subject):"
+color header 		red			cyan "^X-Junked-Because: "
+color header 		red			cyan "^X-Virus-hagbard: .* FOUND"
+
+# links
+color body			brightblue 	default "(http|https|ftp|ftps|news)://[^ \">\t\r\n]*"
+color body			brightblue 	default "irc:[^ \">\t\r\n]*"
+color body			brightblue 	default "www.[^ \">\t\r\n]*"
+color body			brightblue 	default "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+color body			brightblue 	default "news:[^ \">\t\r\n]*"
+
+# e-mail adresses
+color body			brightblue	default "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+
+# Various smilies and the like
+color body			brightgreen	default "<[Gg]>"                                            # <g>
+color body			brightgreen	default "<[Bb][Gg]>"                                        # <bg>
+color body			brightyellow default " [;:]-*[)>(<|]"                                    # :-) etc...
+color body			brightwhite	default "(^|[[:space:]])\\*[^[:space:]]+\\*([[:space:]]|$)" # *Bold* text.
+color body			brightwhite	default "(^|[[:space:]])_[^[:space:]]+_([[:space:]]|$)"     # _Underlined_ text.
+color body			brightwhite	default "(^|[[:space:]])/[^[:space:]]+/([[:space:]]|$)"     # /Italic/ text.
+
+# Colours for items in the index
+color index brightyellow red ~F
+color index brightblack	default ~D
+color index brightblue	default ~N
+# Mono
+

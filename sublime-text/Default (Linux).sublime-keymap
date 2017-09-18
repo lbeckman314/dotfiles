@@ -1,0 +1,76 @@
+[
+	{ "keys": ["ctrl+`"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
+	//{ "keys": ["ctrl+shift+v"], "command": "show_panel", "args": {"panel": "", "toggle":true} },
+	//{ "keys": ["ctrl+w+q"], "command": "close" },
+	{ "keys": ["ctrl+shift+`"], "command": "toggle_setting", "args": {"setting": "word_wrap"} },
+    {"keys": ["ctrl+super+b"], "command": "insert_snippet", "args": {"contents": "<strong>${0:$SELECTION}</strong>"}},
+    //{"keys": ["ctrl+i"], "command": "insert_snippet", "args": {"contents": "<i>${0:$SELECTION}</i>"}},
+    { "keys": ["ctrl+up"], "command": "scroll_lines", "args": {"amount": 1.0 } },
+    { "keys": ["ctrl+down"], "command": "scroll_lines", "args": {"amount": -1.0 } },
+    { "keys": ["ctrl+shift+t"], "command": "reopen_last_file" },
+    { "keys": ["ctrl+t"], "command": "open_new_tab" },
+    {"keys": ["ctrl+i"], "command": "insert_snippet", "args": {"contents": "&nbsp;&nbsp;&nbsp;&nbsp;"}},
+    { "keys": ["ctrl+shift+alt+m"], "command": "markdown_preview", "args": {"target": "browser", "parser":"markdown"} },
+    
+    //discrete symbols
+
+    { "keys": ["ctrl+shift+a"], "command": "insert_snippet", "args": {"contents": "∧"}},
+    { "keys": ["ctrl+shift+o"], "command": "insert_snippet", "args": {"contents": "∨"} },
+    { "keys": ["ctrl+shift+e"], "command": "insert_snippet", "args": {"contents": "≡"} },
+    { "keys": ["ctrl+shift+alt+n"], "command": "insert_snippet", "args": {"contents": "¬"} },
+    { "keys": ["ctrl+alt+i"], "command": "insert_snippet", "args": {"contents": "⇒"} },
+    { "keys": ["ctrl+alt+e"], "command": "insert_snippet", "args": {"contents": "⇔"} },
+    { "keys": ["ctrl+shift+h"], "command": "insert_snippet", "args": {"contents": "∴"} },
+    { "keys": ["ctrl+shift+l"], "command": "insert_snippet", "args": {"contents": "∈"} },
+
+    { "keys": ["ctrl+shift+f"], "command": "insert_snippet", "args": {"contents": "∀"} },
+    { "keys": ["ctrl+shift+x"], "command": "insert_snippet", "args": {"contents": "∃"} },
+
+    { "keys": ["ctrl+shift+m"], "command": "insert_snippet", "args": {"contents": "—"} },
+   
+    { "keys": ["ctrl+shift+1"], "command": "insert_snippet", "args": {"contents": "⌈"} },
+    { "keys": ["ctrl+shift+2"], "command": "insert_snippet", "args": {"contents": "⌉"} },
+    { "keys": ["ctrl+shift+3"], "command": "insert_snippet", "args": {"contents": "⌊"} },
+    { "keys": ["ctrl+shift+4"], "command": "insert_snippet", "args": {"contents": "⌋"} },
+    
+    { "keys": ["ctrl+4"], "command": "insert_snippet", "args": {"contents": "≥"} },
+    { "keys": ["ctrl+5"], "command": "insert_snippet", "args": {"contents": "≤"} },
+
+
+
+    //{ "keys": ["tab"], "command": "insert", "args": {"characters": "\t"}, "context":
+        //{ "key": "auto_complete_visible" },
+//},
+
+
+
+    { "keys": ["tab"], "command": "reindent", "context":
+        [
+            { "key": "setting.auto_indent", "operator": "equal", "operand": true },
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "preceding_text", "operator": "regex_match", "operand": "^$", "match_all": true },
+            { "key": "following_text", "operator": "regex_match", "operand": "^$", "match_all": true }
+        ]
+    },
+    { "keys": ["tab"], "command": "indent", "context":
+        [
+            { "key": "text", "operator": "regex_contains", "operand": "\n" }
+        ]
+    },
+    { "keys": ["tab"], "command": "next_field", "context":
+        [
+            { "key": "has_next_field", "operator": "equal", "operand": true }
+        ]
+    },
+    { "keys": ["tab"], "command": "commit_completion", "context":
+        [
+            { "key": "auto_complete_visible" },
+            { "key": "setting.auto_complete_commit_on_tab" }
+        ]
+    },
+    { "keys": ["ctrl+alt+o"], "command": "prompt_open_folder" },
+    { "keys": ["ctrl+9"], "command": "save_all" },
+
+]
+
+//{ "keys": ["ctrl+shift+w"], "command": "toggle_setting", "args": {"setting": "word_wrap"} }

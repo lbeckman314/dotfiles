@@ -1,0 +1,4 @@
+# sample
+# alias bug			FreeBSD bug-fallowup <bug-followup@freebsd.org>
+
+# make sure every alias is unique or they will be overwritten

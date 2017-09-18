@@ -260,7 +260,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers 't  
+   dotspacemacs-line-numbers 't
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -312,6 +312,14 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
    ;;https://github.com/magnars/multiple-cursors.el
   (global-set-key (kbd "M-e") 'mc/edit-lines)
+
+  ;;https://github.com/magnars/multiple-cursors.el
+  (global-set-key (kbd "M-e") 'mc/edit-lines)
+
+  ;; https://stackoverflow.com/questions/2985050/is-there-any-way-to-have-emacs-save-your-undo-history-between-sessions
+  (global-undo-tree-mode)
+  (setq undo-tree-auto-save-history t)
+  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
 
   ;; i like square borders in powerline
   (setq powerline-default-separator 'nil)
