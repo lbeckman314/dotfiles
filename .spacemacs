@@ -36,9 +36,9 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     helm
-     auto-completion
-     better-defaults
+     ivy
+     ;; auto-completion
+     ;; better-defaults
      emacs-lisp
      git
      ;; markdown
@@ -46,15 +46,15 @@ values."
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
-     spell-checking
-     syntax-checking
+     ;; spell-checking
+     ;; syntax-checking
      version-control
-     )   
+     )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(rebecca-theme dracula-theme multiple-cursors cc-mode)
+   dotspacemacs-additional-packages '(rebecca-theme dracula-theme multiple-cursors)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -126,7 +126,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(dracula
+   dotspacemacs-themes '(rebecca
                          spacemacs-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -310,13 +310,8 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-
-  ;; https://github.com/milkypostman/powerline
-  ;; (powerline-default-theme)
-  ;; (powerline-center-theme)
-  ;; (powerline-center-evil-theme)
-  ;; (powerline-vim-theme)
-  ;; (powerline-nano-theme)
+   ;;https://github.com/magnars/multiple-cursors.el
+  (global-set-key (kbd "M-e") 'mc/edit-lines)
 
   ;;https://github.com/magnars/multiple-cursors.el
   (global-set-key (kbd "M-e") 'mc/edit-lines)
@@ -334,7 +329,7 @@ you should place your code here."
    '(markdown-command "/usr/bin/pandoc"))
 
   ;; https://stackoverflow.com/questions/12756531/using-the-current-buffers-file-name-in-m-x-compile
-  (add-hook 'c-mode-hook
+  (add-hook 'c++-mode-hook
             (lambda ()
               (unless (or (file-exists-p "makefile")
                           (file-exists-p "Makefile"))
@@ -346,7 +341,7 @@ you should place your code here."
   ;; https://emacs.stackexchange.com/questions/14167/shell-command-with-bash-script-and-arguements
   ;; https://www.masteringemacs.org/article/mastering-key-bindings-emacs
   ;; https://bbs.archlinux.org/viewtopic.php?id=91222
-  (define-key c-mode-map (kbd "<f9>")
+  (define-key c++-mode-map (kbd "<f9>")
     (lambda()
       (interactive)
       ;(shell-command (concat "/usr/bin/x-terminal-emulator -e bash -c" (file-name-sans-extension buffer-file-name) ";echo; echo;echo Press ENTER to continue; read line;exit; exec bash"))))
@@ -361,6 +356,9 @@ you should place your code here."
                        (cons dotspacemacs-active-transparency
                              dotspacemacs-inactive-transparency))
 
+  ;; https://stackoverflow.com/questions/27764059/emacs-terminal-mode-how-to-copy-and-paste-efficiently
+  ;; enable clipboard in emacs
+  (setq x-select-enable-clipboard t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -370,9 +368,10 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
+ '(package-selected-packages
    (quote
-    ("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" default))))
+    (org-plus-contrib xterm-color which-key wgrep use-package smex smeargle shell-pop rebecca-theme pcre2el multiple-cursors multi-term magit-gitflow macrostep ivy-hydra help-fns+ helm-make gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ flx exec-path-from-shell evil-visualstar evil-magit evil-escape eshell-z eshell-prompt-extras esh-help elisp-slime-nav dracula-theme diff-hl counsel-projectile bind-map auto-compile ace-window)))
+ '(tramp-syntax (quote default) nil (tramp)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
