@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/liam/Documents/lbeckman314.github.io'
+let g:netrw_dirhist_2='/home/liam/Documents/lbeckman314.github.io/css'
+let g:netrw_dirhist_3='/home/liam/.thunderbird/jldp5m6l.default/chrome'
+let g:netrw_dirhist_4='/home/liam/Documents/backup_rsync/backup/2017-08-12---20-43-45-PDT'
+let g:netrw_dirhist_5='/home/liam'
+let g:netrw_dirhist_6='/usr/share/vim/vim74/doc'
+let g:netrw_dirhist_7='/home/liam/Documents/code/dotfiles'
+let g:netrw_dirhist_8='/home/liam/Documents/code'
+let g:netrw_dirhist_9='/home/liam/Documents/code/dotfiles'
