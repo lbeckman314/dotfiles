@@ -1,6 +1,0 @@
-pane	emacs	0	:zsh	1	:*	0	:/home/liam	1	zsh	:
-pane	vim	0	:zsh	1	:*	0	:/home/liam	0	vi	:vi .tmux.conf
-pane	vim	0	:zsh	1	:*	1	:/home/liam/.tmux/plugins/tpm	1	zsh	:
-window	emacs	0	1	:*	d03d,136x39,0,0,0
-window	vim	0	1	:*	9998,136x39,0,0{68x39,0,0,1,67x39,69,0,2}
-state	vim	
