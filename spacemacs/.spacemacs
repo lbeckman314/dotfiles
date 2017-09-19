@@ -368,6 +368,8 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(markdown-command "/usr/bin/pandoc")
+ '(org-agenda-files (quote ("~/Documents/code/dotfiles/test.org")))
  '(package-selected-packages
    (quote
     (org-plus-contrib xterm-color which-key wgrep use-package smex smeargle shell-pop rebecca-theme pcre2el multiple-cursors multi-term magit-gitflow macrostep ivy-hydra help-fns+ helm-make gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ flx exec-path-from-shell evil-visualstar evil-magit evil-escape eshell-z eshell-prompt-extras esh-help elisp-slime-nav dracula-theme diff-hl counsel-projectile bind-map auto-compile ace-window)))
