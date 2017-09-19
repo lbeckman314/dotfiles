@@ -25,7 +25,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'   " package manager
 Plugin 'dracula/vim'            " color scheme
 Plugin 'scrooloose/syntastic'   " syntax checker
-Plugin 'scrooloose/nerdtree'    " file tree
+" Plugin 'scrooloose/nerdtree'    " file tree
 "filetype plugin on
 Plugin 'tpope/vim-fugitive'     " git wrapper
 Plugin 'junegunn/goyo.vim'      " zen mode
@@ -38,6 +38,7 @@ Plugin 'tpope/vim-dispatch'     " async stuff
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-obsession'
 Plugin 'jreybert/vimagit'
+Plugin 'tpope/vim-vinegar'
 
 call vundle#end()
 
