@@ -95,10 +95,14 @@ autocmd filetype cpp nnoremap <F9> :w <bar> exec '! /usr/bin/x-terminal-emulator
 " autocmd filetype py nnoremap <F8> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').''<CR><CR>
 autocmd filetype python nnoremap <F7> :w <bar> exec '!/usr/bin/x-terminal-emulator -e bash -c "python3 '.shellescape('%:p').';echo;echo;echo Press ENTER to continue; read line;exit; exec bash"'<CR><CR>
 
+nnoremap <leader>h i/*********************************************************************<CR>** Author:liam beckman<CR>** Date:<CR>** Description:<CR>*********************************************************************/<Esc>
+
+nnoremap <leader>d i/*********************************************************************<CR>** Description:<CR>*********************************************************************/<CR><Esc>
+
+
 """COLORS"""
 
-" Color scheme (terminal)
-set t_Co=256
+" Color scheme (terminal)<CR>set t_Co=256
 set background=dark
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
