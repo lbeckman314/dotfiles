@@ -39,6 +39,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-obsession'
 Plugin 'jreybert/vimagit'
 Plugin 'tpope/vim-vinegar'
+" Plugin 'scrooloose/nerdcommenter'
 
 call vundle#end()
 
@@ -95,9 +96,9 @@ autocmd filetype cpp nnoremap <F9> :w <bar> exec '! /usr/bin/x-terminal-emulator
 " autocmd filetype py nnoremap <F8> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').''<CR><CR>
 autocmd filetype python nnoremap <F7> :w <bar> exec '!/usr/bin/x-terminal-emulator -e bash -c "python3 '.shellescape('%:p').';echo;echo;echo Press ENTER to continue; read line;exit; exec bash"'<CR><CR>
 
-nnoremap <leader>h i/*********************************************************************<CR>** Author:liam beckman<CR>** Date:<CR>** Description:<CR>*********************************************************************/<Esc>
+nnoremap <leader>h :set paste<CR>i/*********************************************************************<CR>** Author:liam beckman<CR>** Date:<CR>** Description:<CR>*********************************************************************/<Esc>:set nopaste<CR>
 
-nnoremap <leader>d i/*********************************************************************<CR>** Description:<CR>*********************************************************************/<CR><Esc>
+nnoremap <leader>d :set paste<CR>i/*********************************************************************<CR>** Description:<CR>*********************************************************************/<Esc>:set nopaste<CR>
 
 
 """COLORS"""
@@ -129,6 +130,7 @@ filetype off
 syntax on
 
 " For plugins to load correctly
+" https://vi.stackexchange.com/questions/10124/what-is-the-difference-between-filetype-plugin-indent-on-and-filetype-indent
 filetype plugin indent on
 
 " Security
@@ -149,7 +151,7 @@ set encoding=utf-8
 " Whitespace
 "set wrap
 "set textwidth=79
-set formatoptions=tcqrn1
+set formatoptions="" "this is the old value -> tcqrn1
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -184,7 +186,7 @@ set showmatch
 set noshowmatch " Halts annoying parentheses jumping highlighting!
 
 " https://stackoverflow.com/questions/923737/detect-file-change-offer-to-reload-file
-:au FileChangedShell * echo "Warning: File changed on disk"
+au FileChangedShell * echo "Warning: File changed on disk"
 
 " syntastic syntax checker https://vimawesome.com/plugin/syntastic
 set statusline+=%#warningmsg#
@@ -201,6 +203,14 @@ set mouse=a
 
 " airline takes care of showing the command pretty well
 set noshowcmd
+
+" http://vim.wikia.com/wiki/Disable_automatic_comment_insertion
+" au FileType c,cpp setlocal comments-=:// comments+=f://
+
+" https://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
+" autocmd BufNewFile,BufRead * setlocal formatoptions+=cqn
+
+set autoindent
 
 """""""
 
