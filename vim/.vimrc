@@ -40,6 +40,7 @@ Plugin 'tpope/vim-obsession'
 Plugin 'jreybert/vimagit'
 Plugin 'tpope/vim-vinegar'
 " Plugin 'scrooloose/nerdcommenter'
+Plugin 'valloric/youcompleteme'
 
 call vundle#end()
 
@@ -90,9 +91,10 @@ map <leader>gp :Gpush<CR>
 " autocmd FileType java nnoremap <buffer> <F9> :exec '!javac' shellescape(%) && '!java' shellescape(%:r)<cr>
 " autocmd FileType c,cpp nnoremap <buffer> <F9> :exec '!gcc' shellescape(%) && './a.out'<cr>
 " autocmd FileType c,cpp nnoremap <buffer> <C-b> :exec '!gcc' shellescape(expand('%'), 1) '&& ./a.out' shellescape(expand('%:r'), 1)<cr>
-nnoremap <leader>cc :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').''<CR><CR>
+nnoremap <leader>cc :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').';echo;echo;echo Press ENTER to continue; read line;exit'<CR><CR>
+nnoremap <leader>bb :w <bar> exec '!'.shellescape('%:p:r').';echo;echo;echo Press ENTER to continue; read line;exit'<CR><CR>
+
 nnoremap <F7> :w <bar> exec '! /usr/bin/x-terminal-emulator -e bash -c "'.shellescape('%:p:r').';echo;echo;echo Press ENTER to continue; read line;exit; exec bash"'<CR><CR>
-nnoremap <leader><b> :'!./'.shellescape('%:r').';echo;echo;echo Press ENTER to continue; read line;exit;'
 
 " autocmd filetype py nnoremap <F8> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').''<CR><CR>
 nnoremap <F8> :w <bar> exec '!/usr/bin/x-terminal-emulator -e bash -c "python3 '.shellescape('%:p').';echo;echo;echo Press ENTER to continue; read line;exit; exec bash"'<CR><CR>
