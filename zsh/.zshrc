@@ -93,7 +93,7 @@ export TERM="xterm-256color"
 # https://wiki.archlinux.org/index.php/Zsh#Colors
 local user="%{$fg_bold[magenta]%}%n::%{$fg_bold[magenta]%}%m%{$reset_color%}"
 
-local ret_status="%(?:%{$fg_bold[green]%}λ:%{$fg_bold[red]%}➜ )"
+local ret_status="%(?:%{$fg_bold[green]%}➜:%{$fg_bold[red]%}➜ )"
 PROMPT='${user} ${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
