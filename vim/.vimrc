@@ -99,10 +99,9 @@ nnoremap <F7> :w <bar> exec '! /usr/bin/x-terminal-emulator -e bash -c "'.shelle
 " autocmd filetype py nnoremap <F8> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').''<CR><CR>
 nnoremap <F8> :w <bar> exec '!/usr/bin/x-terminal-emulator -e bash -c "python3 '.shellescape('%:p').';echo;echo;echo Press ENTER to continue; read line;exit; exec bash"'<CR><CR>
 
-nnoremap <leader>h :set paste<CR>i/*********************************************************************<CR>** Author:liam beckman<CR>** Date:<CR>** Description:<CR>*********************************************************************/<Esc>:set nopaste<CR>
+nnoremap <leader>h :set paste<CR>i/*********************************************************************<CR>** Author: liam beckman<CR>** Date: <Esc>:put =strftime('%d %B %Y')<CR>I<bs><Esc>A<CR>** Description:<CR>*********************************************************************/<Esc>:set nopaste<CR>kA<Space>
 
-nnoremap <leader>d :set paste<CR>i/*********************************************************************<CR>** Description:<CR>*********************************************************************/<Esc>:set nopaste<CR>
-
+nnoremap <leader>d :set paste<CR>i/*********************************************************************<CR>** Description:<CR>*********************************************************************/<Esc>:set nopaste<CR>kA<Space>
 
 """COLORS"""
 
