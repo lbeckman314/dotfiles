@@ -40,7 +40,6 @@ Plugin 'tpope/vim-obsession'
 Plugin 'jreybert/vimagit'
 Plugin 'tpope/vim-vinegar'
 " Plugin 'scrooloose/nerdcommenter'
-Plugin 'valloric/youcompleteme'
 
 call vundle#end()
 
