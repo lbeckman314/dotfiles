@@ -103,3 +103,10 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
 alias rmt='gvfs-trash'
 alias acp='git add --all; git commit; git push origin master'
+
+# https://stackoverflow.com/questions/7522712/how-to-check-if-command-exists-in-a-shell-script
+if ! type "$vim.gtk" > /dev/null; then
+  # install foobar here
+  alias vim='vim.gtk'
+fi
+
