@@ -102,6 +102,9 @@ nnoremap <leader>h :set paste<CR>i/*********************************************
 
 nnoremap <leader>d :set paste<CR>i/*********************************************************************<CR>** Description:<CR>*********************************************************************/<Esc>:set nopaste<CR>kA<Space>
 
+" http://vim.wikia.com/wiki/Insert_newline_without_entering_insert_mode
+nmap <leader><CR> O<Esc>j
+
 """COLORS"""
 
 " Color scheme (terminal)<CR>set t_Co=256
