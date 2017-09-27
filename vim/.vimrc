@@ -57,9 +57,6 @@ nnoremap k gk
 
 map <leader><space> :let @/=''<cr> " clear search
 
-map <C-n> :NERDTreeToggle<CR>
-nnoremap <leader><C-u> :UndotreeToggle<CR>
-
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬,trail:•
 "set listchars=tab:▸\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
