@@ -40,6 +40,8 @@ Plugin 'tpope/vim-obsession'
 Plugin 'jreybert/vimagit'
 Plugin 'tpope/vim-vinegar'
 " Plugin 'scrooloose/nerdcommenter'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'shougo/neocomplete.vim'
 
 call vundle#end()
 
