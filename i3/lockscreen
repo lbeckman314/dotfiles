@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# determine screen res
+RES=`xdpyinfo | grep dimensions`
+
+# 1440?
+if [[ $RES =~ 1440 ]]; then
+	RES=1440
+else
+	RES=1080
+fi
+
+# i3lock not already running?
+if [ ! $(ps -ef | grep -E "(i3|sway)lock" | grep -v lock) ]; then
+	if [[ ! $(pidof sway) ]]; then
+		/home/raidzero/Downloads/i3lock-lixxia/i3lock -c '#000000' -l '#ffffff' -i /home/raidzero/wallpapers/trust_the_computer-$RES.png -e
+	else
+		swaylock -i /home/raidzero/wallpapers/trust_the_computer-$RES.png
+	fi
+fi
