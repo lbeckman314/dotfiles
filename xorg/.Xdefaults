@@ -37,7 +37,7 @@ xscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y
 
 
 ! █▓▒░ color scheme
-#include </home/liam/dracula.Xcolors>
+#include </home/liam/dracula_xresources/dracula.Xcolors>
 
 ! █▓▒░ fonts
 urxvt*font: xft:roboto:size=12:antialias=true

@@ -1,3 +1,4 @@
 # vim
 *.sw*
 undodir/
+/vim/.vim/after/ftplugin/c.vim
