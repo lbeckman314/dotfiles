@@ -57,7 +57,7 @@ urxvt*boldFont:
 urxvt*italicFont: 
 urxvt*bolditalicFont: 
 
-urxvt*letterSpace: -3
+urxvt*letterSpace: -5
 urxvt*lineSpace: 0
 
 ! █▓▒░ interface

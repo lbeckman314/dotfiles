@@ -20,8 +20,8 @@ fi
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # https://wiki.lineageos.org/adb_fastboot_guide.html#setting-up-adb
-if [ -d "$HOME/adb-fastboot/platform-tools" ] ; then
-    export PATH="$HOME/adb-fastboot/platform-tools:$PATH"
+if [ -d "$HOME/Documents/code/mobile/adb-fastboot/platform-tools" ] ; then
+    export PATH="$HOME/Documents/code/mobile/adb-fastboot/platform-tools:$PATH"
 fi
 
 # helps display themes and colors correctly
