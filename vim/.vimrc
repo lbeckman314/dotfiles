@@ -30,15 +30,15 @@ Plugin 'scrooloose/syntastic'   " syntax checker
 Plugin 'tpope/vim-fugitive'     " git wrapper
 Plugin 'junegunn/goyo.vim'      " zen mode
 Plugin 'bling/vim-airline'      " status bar
-Plugin 'kien/ctrlp.vim'         " fuzzy search
+"Plugin 'kien/ctrlp.vim'         " fuzzy search
 Plugin 'mbbill/undotree'        " go through undos
-Plugin 'junegunn/gv.vim'        " git repo explorer
+"Plugin 'junegunn/gv.vim'        " git repo explorer
 " Plugin 'edkolev/tmuxline.vim' " tmux themer
 Plugin 'tpope/vim-dispatch'     " async stuff
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-obsession'
+" Plugin 'tpope/vim-obsession'
 Plugin 'jreybert/vimagit'
-Plugin 'tpope/vim-vinegar'
+" Plugin 'tpope/vim-vinegar'
 " Plugin 'scrooloose/nerdcommenter'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'shougo/neocomplete.vim'
@@ -57,14 +57,14 @@ let mapleader = " "
 nnoremap j gj
 nnoremap k gk
 
-map <leader><space> :let @/=''<cr> " clear search
+nmap <leader><space> :let @/=''<cr> " clear search
 
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬,trail:•
 "set listchars=tab:▸\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
 " set list " To enable by default
 " Or use your leader key + l to toggle on/off
-map <leader>l :set list!<CR> " Toggle tabs and EOL
+nmap <leader>l :set list!<CR> " Toggle tabs and EOL
 
 "http://vimcasts.org/transcripts/16/en/
 "nmap <leader>w :set wrap!<CR>
@@ -72,16 +72,16 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 set wrap nolist linebreak
 
 "https://stackoverflow.com/questions/6832364/gvim-switching-tabs-with-keyboard
-map <A-Left> <Esc>:tabprev<CR>
-map <A-Right> <Esc>:tabnext<CR>
+nmap <A-Left> <Esc>:tabprev<CR>
+nmap <A-Right> <Esc>:tabnext<CR>
 
 " https://stackoverflow.com/questions/16082991/vim-switching-between-files-rapidly-using-vanilla-vim-no-plugins
 nnoremap <leader>l :ls<CR>:b<space>
 
 "https://www.reddit.com/r/vim/comments/6kfyae/vimfugitive_workflow/
-map <leader>gs :Gstatus<CR>gg<C-n>
+nmap <leader>gs :Gstatus<CR>gg<C-n>
 noremap <leader>gc :Gcommit<CR>
-map <leader>gp :Gpush<CR>
+nmap <leader>gp :Gpush<CR>
 
 
 " https://stackoverflow.com/questions/23292917/vim-key-mapping-compile-and-run-for-java-and-c-code
@@ -284,15 +284,6 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -304,10 +295,3 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
