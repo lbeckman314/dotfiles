@@ -66,6 +66,14 @@
 
 (global-linum-mode 1)
 
+;; https://github.com/emacs-evil/evil-magit
+;; optional: this is the evil state that evil-magit will use
+;; (setq evil-magit-state 'normal)
+;; optional: disable additional bindings for yanking text
+;; (setq evil-magit-use-y-for-yank nil)
+(require 'evil-magit)
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -74,7 +82,9 @@
  '(custom-safe-themes
    (quote
     ("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "4e4d9f6e1f5b50805478c5630be80cce40bee4e640077e1a6a7c78490765b03f" default)))
- '(package-selected-packages (quote (helm ivy magit dracula-theme rebecca-theme evil))))
+ '(package-selected-packages
+   (quote
+    (evil-magit helm ivy magit dracula-theme rebecca-theme evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
