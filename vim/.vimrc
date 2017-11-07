@@ -35,12 +35,12 @@ Plugin 'mbbill/undotree'        " go through undos
 "Plugin 'junegunn/gv.vim'        " git repo explorer
 " Plugin 'edkolev/tmuxline.vim' " tmux themer
 Plugin 'tpope/vim-dispatch'     " async stuff
-Plugin 'terryma/vim-multiple-cursors'
+" Plugin 'terryma/vim-multiple-cursors'
 " Plugin 'tpope/vim-obsession'
-Plugin 'jreybert/vimagit'
+" Plugin 'jreybert/vimagit'
 " Plugin 'tpope/vim-vinegar'
 " Plugin 'scrooloose/nerdcommenter'
-Plugin 'jiangmiao/auto-pairs'
+" Plugin 'jiangmiao/auto-pairs'
 Plugin 'shougo/neocomplete.vim'
 
 call vundle#end()

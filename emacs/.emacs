@@ -64,7 +64,7 @@
 ;; (helm-mode 1)
 
 
-
+(global-linum-mode 1)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
