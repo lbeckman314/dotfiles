@@ -60,7 +60,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -101,7 +101,12 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
-alias rmt='gvfs-trash'
+if type gio &> /dev/null; then
+    alias rmt='gio trash'
+else
+    alias rmt='gvfs-trash'
+fi
+
 alias acp='git add --all; git commit; git push origin master'
 
 # https://stackoverflow.com/questions/7522712/how-to-check-if-command-exists-in-a-shell-script
@@ -109,4 +114,7 @@ if type vim.gtk &> /dev/null; then
   # install foobar here
   alias vim='vim.gtk'
 fi
+alias vi='vim'
 
+# https://wiki.archlinux.org/index.php/Ruby
+PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
