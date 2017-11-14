@@ -10,40 +10,36 @@
 " C:\> choco install -y git
 " C:\> choco install -y curl
 
-"""VUNDLE PLUGINS"""
+"""VIM-PLUG PLUGINS"""
 
 set nocompatible              " be iMproved, required
-filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" initialize vim-plug
+call plug#begin('~/.vim/plugged')
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'   " package manager
-Plugin 'dracula/vim'            " color scheme
-Plugin 'scrooloose/syntastic'   " syntax checker
-" Plugin 'scrooloose/nerdtree'    " file tree
+Plug 'VundleVim/Vundle.vim'   " package manager
+Plug 'dracula/vim'            " color scheme
+Plug 'scrooloose/syntastic'   " syntax checker
+" Plug 'scrooloose/nerdtree'    " file tree
 "filetype plugin on
-Plugin 'tpope/vim-fugitive'     " git wrapper
-Plugin 'junegunn/goyo.vim'      " zen mode
-Plugin 'bling/vim-airline'      " status bar
-"Plugin 'kien/ctrlp.vim'         " fuzzy search
-Plugin 'mbbill/undotree'        " go through undos
-"Plugin 'junegunn/gv.vim'        " git repo explorer
-" Plugin 'edkolev/tmuxline.vim' " tmux themer
-" Plugin 'tpope/vim-dispatch'     " async stuff
-" Plugin 'terryma/vim-multiple-cursors'
-" Plugin 'tpope/vim-obsession'
-" Plugin 'jreybert/vimagit'
-" Plugin 'tpope/vim-vinegar'
-" Plugin 'scrooloose/nerdcommenter'
-Plugin 'jiangmiao/auto-pairs'
-" Plugin 'shougo/neocomplete.vim'
-" Plugin 'junegunn/fzf.vim'
-call vundle#end()
+Plug 'tpope/vim-fugitive'     " git wrapper
+Plug 'junegunn/goyo.vim'      " zen mode
+Plug 'bling/vim-airline'      " status bar
+"Plug 'kien/ctrlp.vim'         " fuzzy search
+Plug 'mbbill/undotree'        " go through undos
+"Plug 'junegunn/gv.vim'        " git repo explorer
+" Plug 'edkolev/tmuxline.vim' " tmux themer
+" Plug 'tpope/vim-dispatch'     " async stuff
+" Plug 'terryma/vim-multiple-cursors'
+" Plug 'tpope/vim-obsession'
+" Plug 'jreybert/vimagit'
+" Plug 'tpope/vim-vinegar'
+" Plug 'scrooloose/nerdcommenter'
+Plug 'jiangmiao/auto-pairs'
+" Plug 'shougo/neocomplete.vim'
+" Plug 'junegunn/fzf.vim'
+call plug#end()
 
 
 """""""
