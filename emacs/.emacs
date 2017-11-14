@@ -1,7 +1,10 @@
+;; ivy magit evil-magit rebecca slime rotate
+
+
 ;; https://blog.aaronbieber.com/2015/05/24/from-vim-to-emacs-in-fourteen-days.html
 ;; https://www.emacswiki.org/emacs/Evil#toc1
 ;;(require 'package)
-  
+
 ;;(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 ;;(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 ;;(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
@@ -87,6 +90,11 @@
 
 (show-paren-mode 1)
 
+(scroll-bar-mode -1)
+
+;; https://stackoverflow.com/questions/15928566/m-x-slime-no-match-in-emacs-under-mac-osx
+(setq inferior-lisp-program (executable-find "sbcl"))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -97,7 +105,7 @@
     ("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "4e4d9f6e1f5b50805478c5630be80cce40bee4e640077e1a6a7c78490765b03f" default)))
  '(package-selected-packages
    (quote
-    (rainbow-delimiters slime evil-magit helm ivy magit dracula-theme rebecca-theme evil))))
+    (rotate rainbow-delimiters slime evil-magit helm ivy magit dracula-theme rebecca-theme evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
