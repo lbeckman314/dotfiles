@@ -1,44 +1,17 @@
 "derived from: //gist.github.com/simonista/8703723
-"echo "VIMRC LOADED SUCCESSFULLY"
-
-"""vundle instructions POSIX
-" https://github.com/VundleVim/Vundle.vim
-" $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-"""vundle instructions WINDOWS
-" https://github.com/VundleVim/Vundle.vim/wiki/Vundle-for-Windows
-" C:\> choco install -y git
-" C:\> choco install -y curl
 
 """VIM-PLUG PLUGINS"""
 
-set nocompatible              " be iMproved, required
+" set nocompatible              " be iMproved, required
 
 " initialize vim-plug
 call plug#begin('~/.vim/plugged')
-
-" let Vundle manage Vundle, required
-Plug 'VundleVim/Vundle.vim'   " package manager
 Plug 'dracula/vim'            " color scheme
-Plug 'scrooloose/syntastic'   " syntax checker
-" Plug 'scrooloose/nerdtree'    " file tree
-"filetype plugin on
+Plug 'w0rp/ale'               " asynchronous syntax checker
 Plug 'tpope/vim-fugitive'     " git wrapper
 Plug 'junegunn/goyo.vim'      " zen mode
 Plug 'bling/vim-airline'      " status bar
-"Plug 'kien/ctrlp.vim'         " fuzzy search
 Plug 'mbbill/undotree'        " go through undos
-"Plug 'junegunn/gv.vim'        " git repo explorer
-" Plug 'edkolev/tmuxline.vim' " tmux themer
-" Plug 'tpope/vim-dispatch'     " async stuff
-" Plug 'terryma/vim-multiple-cursors'
-" Plug 'tpope/vim-obsession'
-" Plug 'jreybert/vimagit'
-" Plug 'tpope/vim-vinegar'
-" Plug 'scrooloose/nerdcommenter'
-Plug 'jiangmiao/auto-pairs'
-" Plug 'shougo/neocomplete.vim'
-" Plug 'junegunn/fzf.vim'
 call plug#end()
 
 
@@ -189,16 +162,6 @@ set noshowmatch " Halts annoying parentheses jumping highlighting!
 
 " https://stackoverflow.com/questions/923737/detect-file-change-offer-to-reload-file
 au FileChangedShell * echo "Warning: File changed on disk"
-
-" syntastic syntax checker https://vimawesome.com/plugin/syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 " and because i'm a heathen...
 set mouse=a
