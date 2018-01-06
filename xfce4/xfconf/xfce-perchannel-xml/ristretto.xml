@@ -5,6 +5,8 @@
     <property name="navigationbar" type="empty">
       <property name="position" type="string" value="left"/>
     </property>
+    <property name="height" type="uint" value="706"/>
+    <property name="width" type="uint" value="681"/>
   </property>
   <property name="file" type="empty">
     <property name="current-uri" type="string" value=""/>
