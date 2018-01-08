@@ -1,4 +1,4 @@
-;; ivy magit evil-magit rebecca slime rotate
+;; ivy magit evil-magit rebecca rotate general
 
 
 ;; https://blog.aaronbieber.com/2015/05/24/from-vim-to-emacs-in-fourteen-days.html
@@ -92,8 +92,21 @@
 
 (scroll-bar-mode -1)
 
-;; https://stackoverflow.com/questions/15928566/m-x-slime-no-match-in-emacs-under-mac-osx
-(setq inferior-lisp-program (executable-find "sbcl"))
+
+;; https://github.com/noctuid/general.el
+(require 'general)
+;; bind a key globally in normal state; keymaps must be quoted
+;; (setq general-default-keymaps 'evil-normal-state-map)
+
+;; named prefix key
+;; (setq my-leader1 "SPC")
+;; (general-define-key :prefix my-leader1
+;;                    "f" 'find-file)
+
+;; a default prefix sequence
+;; (setq general-default-prefix "SPC")
+;;    (general-define-key "f" 'find-file)
+;;    (general-define-key "gs" 'magit-status)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
