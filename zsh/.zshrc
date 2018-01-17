@@ -118,3 +118,51 @@ alias vi='vim'
 
 # https://wiki.archlinux.org/index.php/Ruby
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+
+# https://www.reddit.com/r/archlinux/comments/7oa1h7/pacman_is_great_but_should_we_really_handle_aur/ds8dakw/
+#installs single package (i.e. aur-in spotify)
+ain() {
+   cd ~/Downloads/pkgs
+   git clone https://aur.archlinux.org/${1}.git
+   cd ${1}
+   less PKGBUILD
+   echo "Install package? [y / n]"
+   read response
+   case "$response" in
+       [yY])
+           makepkg -si
+           ;;
+       *)
+           echo "not installing package."
+           ;;
+   esac
+   cd ..
+}
+
+
+#updates packages
+aup() {
+   cd ~/Downloads/pkgs
+   cower -vduf
+   for pkg in *
+   do
+       cd $pkg
+       # aurbuild -d custom
+       # repo-add /var/cache/pacman/custom/custom.db.tar *.pkg.tar.xz
+       makepkg -si
+       cd ..
+   done
+
+   echo "remove aur downloads? [y / n]"
+   read response
+   case "$response" in
+       [yY])
+           for pkg in ~/Downloads/pkgs
+               rmt $pkg
+               ;;
+        *)
+            echo "ok. not removing."
+            ;;
+    esac
+
+}
