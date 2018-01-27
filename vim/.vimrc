@@ -101,7 +101,11 @@ set encoding=utf-8
 " Whitespace
 "set wrap
 "set textwidth=79
-set formatoptions="" "this is the old value -> tcqrn1
+
+"set formatoptions="cql" "this is the old value -> tcqrn1
+" https://vi.stackexchange.com/questions/1983/how-can-i-get-vim-to-stop-putting-comments-in-front-of-new-lines
+au FileType cpp setlocal fo-=c fo-=r fo-=o
+
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
