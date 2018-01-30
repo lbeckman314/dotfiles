@@ -153,16 +153,16 @@ aup() {
        cd ..
    done
 
-   echo "remove aur downloads? [y / n]"
-   read response
-   case "$response" in
-       [yY])
-           for pkg in ~/Downloads/pkgs
-               rmt $pkg
-               ;;
-        *)
-            echo "ok. not removing."
-            ;;
-    esac
+#   echo "remove aur downloads? [y / n]"
+#   read response
+#   case "$response" in
+#       [yY])
+#           for pkg in ~/Downloads/pkgs
+#               rmt $pkg
+#               ;;
+#        *)
+#            echo "ok. not removing."
+#            ;;
+#    esac
 
 }

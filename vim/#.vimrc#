@@ -1,45 +1,22 @@
 "derived from: //gist.github.com/simonista/8703723
-
+ 
 """VIM-PLUG PLUGINS"""
 
 " set nocompatible              " be iMproved, required
 
-" https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 " initialize vim-plug
 call plug#begin('~/.vim/plugged')
-"Plug 'dracula/vim'            " color scheme
-Plug 'lbeckman314/vim'
-Plug 'junegunn/seoul256.vim'
+Plug 'dracula/vim'            " color scheme
 Plug 'w0rp/ale'               " asynchronous syntax checker
 Plug 'tpope/vim-fugitive'     " git wrapper
 Plug 'junegunn/goyo.vim'      " zen mode
 Plug 'bling/vim-airline'      " status bar
 Plug 'mbbill/undotree'        " go through undos
-if has('nvim')                " autocomplete
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
 call plug#end()
 
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
 
 """""""
 
-" seoul256 (light):
-"   Range:   252 (darkest) ~ 256 (lightest)
-"   Default: 253
-let g:seoul256_background = 256
-colo seoul256
 
 """MAPPINGS"""
 
@@ -57,13 +34,15 @@ nnoremap <leader>l :ls<CR>:b<space>
 
 
 " https://stackoverflow.com/questions/23292917/vim-key-mapping-compile-and-run-for-java-and-c-code
-nnoremap <leader>cc :w <bar> exec '!gcc --std=c99 '.shellescape('%').' -o '.shellescape('%:r').'.out;echo;echo;echo Press ENTER to continue; read line;exit'<CR><CR>
+nnoremap <leader>cc :w <bar> exec '!g++ -std=c++0x '.shellescape('%').' -o '.shellescape('%:r').'.out;echo;echo;echo Press ENTER to continue; read line;exit'<CR><CR>
 
-nnoremap <leader>C :w <bar> exec '!gcc --std=c99 '.shellescape('%:p:r').'Main.cpp '.shellescape('%').' -o '.shellescape('%:r').'.out;echo;echo;echo Press ENTER to continue; read line;exit'<CR><CR>
-
-nnoremap <leader>bb :w <bar> exec '!gcc --std=c99 '.shellescape('%').' -o '.shellescape('%:r').'.out && '.shellescape('%:p:r').'.out;echo;echo;echo Press ENTER to continue; read line;exit'<CR><CR>
+nnoremap <leader>C :w <bar> exec '!g++ -std=c++0x '.shellescape('%:p:r').'Main.cpp '.shellescape('%').' -o '.shellescape('%:r').'.out;echo;echo;echo Press ENTER to continue; read line;exit'<CR><CR>
 
 nnoremap <leader>B :w <bar> exec '!'.shellescape('%:p:r').'.out;echo;echo;echo Press ENTER to continue; read line;exit'<CR><CR>
+
+nnoremap <leader>h :set paste<CR>i/*********************************************************************<CR>** Author: liam beckman<CR>** Date: <Esc>:put =strftime('%d %B %Y')<CR>I<bs><Esc>A<CR>** Description:<CR>*********************************************************************/<Esc>:set nopaste<CR>kA<Space>
+
+nnoremap <leader>d :set paste<CR>i/*********************************************************************<CR>** Description:<CR>*********************************************************************/<Esc>:set nopaste<CR>kA<Space>
 
 
 """COLORS"""
@@ -108,11 +87,7 @@ set encoding=utf-8
 " Whitespace
 "set wrap
 "set textwidth=79
-
-"set formatoptions="cql" "this is the old value -> tcqrn1
-" https://vi.stackexchange.com/questions/1983/how-can-i-get-vim-to-stop-putting-comments-in-front-of-new-lines
-au FileType cpp setlocal fo-=c fo-=r fo-=o
-
+set formatoptions="" "this is the old value -> tcqrn1
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -162,11 +137,6 @@ set noshowcmd
 " autocmd BufNewFile,BufRead * setlocal formatoptions+=cqn
 
 set autoindent
-
-autocmd FileType markdown set nonumber
-
-" https://github.com/vim-airline/vim-airline/issues/124
-set ttimeoutlen=50
 
 """""""
 
