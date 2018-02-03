@@ -8,12 +8,13 @@
 call plug#begin('~/.vim/plugged')
 "Plug 'dracula/vim'            " color scheme
 Plug 'lbeckman314/vim'
-Plug 'junegunn/seoul256.vim'
 Plug 'w0rp/ale'               " asynchronous syntax checker
 Plug 'tpope/vim-fugitive'     " git wrapper
 Plug 'junegunn/goyo.vim'      " zen mode
 Plug 'bling/vim-airline'      " status bar
 Plug 'mbbill/undotree'        " go through undos
+" Plug 'airblade/vim-gitgutter' " git gutter
+
 if has('nvim')                " autocomplete
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -21,18 +22,13 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
 call plug#end()
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 
 """""""
-
-" seoul256 (light):
-"   Range:   252 (darkest) ~ 256 (lightest)
-"   Default: 253
-let g:seoul256_background = 256
-colo seoul256
 
 """MAPPINGS"""
 
