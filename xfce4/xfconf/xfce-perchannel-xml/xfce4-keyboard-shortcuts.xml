@@ -34,7 +34,6 @@
       <property name="&lt;Primary&gt;Escape" type="string" value="xfdesktop --menu"/>
       <property name="override" type="bool" value="true"/>
       <property name="&lt;Alt&gt;m" type="string" value="xfce4-popup-whiskermenu"/>
-      <property name="&lt;Alt&gt;r" type="string" value="rofi -show run -yoffset -150"/>
       <property name="XF86AudioRaiseVolume" type="string" value="sh -c &quot;pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%&quot;">
         <property name="startup-notify" type="bool" value="true"/>
       </property>
@@ -46,6 +45,9 @@
       <property name="Print" type="string" value="xfce4-screenshooter"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="xfce4-terminal"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Delete" type="string" value="xfce4-session-logout"/>
+      <property name="&lt;Alt&gt;p" type="string" value="rofi -show ssh -yoffset -150"/>
+      <property name="&lt;Alt&gt;r" type="string" value="rofi -show run -yoffset -150"/>
+      <property name="&lt;Alt&gt;backslash" type="string" value="rofi -show window -yoffset -150"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
@@ -109,8 +111,6 @@
       <property name="&lt;Primary&gt;&lt;Alt&gt;KP_8" type="string" value="move_window_workspace_8_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;KP_6" type="string" value="move_window_workspace_6_key"/>
       <property name="&lt;Alt&gt;Insert" type="string" value="add_workspace_key"/>
-      <property name="&lt;Alt&gt;Tab" type="string" value="cycle_windows_key"/>
-      <property name="&lt;Alt&gt;&lt;Shift&gt;Tab" type="string" value="cycle_reverse_windows_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;KP_7" type="string" value="move_window_workspace_7_key"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Right" type="string" value="move_window_right_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;d" type="string" value="show_desktop_key"/>
@@ -130,15 +130,10 @@
       <property name="&lt;Shift&gt;&lt;Alt&gt;Page_Down" type="string" value="lower_window_key"/>
       <property name="&lt;Primary&gt;F12" type="string" value="workspace_12_key"/>
       <property name="&lt;Primary&gt;F6" type="string" value="workspace_6_key"/>
-      <property name="&lt;Alt&gt;space" type="string" value="popup_menu_key"/>
       <property name="&lt;Primary&gt;F8" type="string" value="workspace_8_key"/>
       <property name="&lt;Primary&gt;F9" type="string" value="workspace_9_key"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;KP_1" type="string" value="move_window_workspace_1_key"/>
       <property name="&lt;Alt&gt;Delete" type="string" value="del_workspace_key"/>
       <property name="&lt;Shift&gt;&lt;Alt&gt;Page_Up" type="string" value="raise_window_key"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;KP_2" type="string" value="move_window_workspace_2_key"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;KP_3" type="string" value="move_window_workspace_3_key"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;KP_4" type="string" value="move_window_workspace_4_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;KP_5" type="string" value="move_window_workspace_5_key"/>
       <property name="override" type="bool" value="true"/>
       <property name="&lt;Alt&gt;1" type="string" value="workspace_1_key"/>
@@ -152,10 +147,16 @@
       <property name="&lt;Primary&gt;&lt;Alt&gt;Right" type="string" value="tile_right_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Up" type="string" value="maximize_window_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Down" type="string" value="hide_window_key"/>
-      <property name="&lt;Super&gt;Left" type="string" value="prev_workspace_key"/>
-      <property name="&lt;Super&gt;Right" type="string" value="next_workspace_key"/>
       <property name="Right" type="string" value="right_key"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;q" type="string" value="close_window_key"/>
+      <property name="&lt;Shift&gt;&lt;Alt&gt;ISO_Left_Tab" type="string" value="cycle_reverse_windows_key"/>
+      <property name="&lt;Super&gt;Left" type="string" value="prev_workspace_key"/>
+      <property name="&lt;Super&gt;Right" type="string" value="next_workspace_key"/>
+      <property name="&lt;Shift&gt;&lt;Alt&gt;exclam" type="string" value="move_window_workspace_1_key"/>
+      <property name="&lt;Shift&gt;&lt;Alt&gt;at" type="string" value="move_window_workspace_2_key"/>
+      <property name="&lt;Shift&gt;&lt;Alt&gt;numbersign" type="string" value="move_window_workspace_3_key"/>
+      <property name="&lt;Shift&gt;&lt;Alt&gt;dollar" type="string" value="move_window_workspace_4_key"/>
+      <property name="&lt;Alt&gt;Tab" type="string" value="cycle_windows_key"/>
     </property>
   </property>
   <property name="providers" type="array">
