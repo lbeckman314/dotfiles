@@ -119,9 +119,16 @@ alias vi='vim'
 # https://wiki.archlinux.org/index.php/Ruby
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
+# https://github.com/Intoli/exodus#installation
+export PATH="~/.local/bin/:${PATH}"
+
 # https://www.reddit.com/r/archlinux/comments/7oa1h7/pacman_is_great_but_should_we_really_handle_aur/ds8dakw/
 #installs single package (i.e. aur-in spotify)
 ain() {
+
+    # https://stackoverflow.com/questions/4651437/how-to-set-a-variable-to-the-output-from-a-command-in-bash#4651495
+   CURRENT_DIR="$(pwd)"
+
    cd ~/Downloads/pkgs
    git clone https://aur.archlinux.org/${1}.git
    cd ${1}
@@ -137,32 +144,62 @@ ain() {
            ;;
    esac
    cd ..
+
+   echo "remove aur downloads? [y / n]"
+   read response
+   case "$response" in
+       [yY])
+           for pkg in ~/Downloads/pkgs/
+               rmt "$pkg"
+               ;;
+        *)
+            echo "ok. not removing."
+            ;;
+    esac
+
+    cd "$CURRENT_DIR"
 }
 
 
 #updates packages
 aup() {
-   cd ~/Downloads/pkgs
-   cower -vduf
-   for pkg in *
-   do
-       cd $pkg
-       # aurbuild -d custom
-       # repo-add /var/cache/pacman/custom/custom.db.tar *.pkg.tar.xz
-       makepkg -si
-       cd ..
-   done
+   aursync -u
+    # https://stackoverflow.com/questions/4651437/how-to-set-a-variable-to-the-output-from-a-command-in-bash#4651495
+#   CURRENT_DIR="$(pwd)"
 
+#   cd ~/Downloads/pkgs
+#   cower -vduf
+#   for pkg in ~/Downloads/pkgs
+#   do
+#       echo "Update package(s)? [y / n]"
+#       read response
+#       case "$response" in
+#       [yY])
+#           cd $pkg
+#           makepkg -si
+#           cd ..
+#           ;;
+#       *)
+#           echo "not updating package(s)."
+#           ;;
+#       esac
+#       # aurbuild -d custom
+#       # repo-add /var/cache/pacman/custom/custom.db.tar *.pkg.tar.xz
+#       # makepkg -si
+#   done
+#
 #   echo "remove aur downloads? [y / n]"
 #   read response
 #   case "$response" in
 #       [yY])
 #           for pkg in ~/Downloads/pkgs
-#               rmt $pkg
+#               rmt "$pkg"
 #               ;;
 #        *)
 #            echo "ok. not removing."
 #            ;;
 #    esac
+#
+#    cd "$CURRENT_DIR"
 
 }
