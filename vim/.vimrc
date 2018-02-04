@@ -145,7 +145,7 @@ set mouse=a
 set noshowcmd
 
 " http://vim.wikia.com/wiki/Disable_automatic_comment_insertion
-" au FileType c,cpp setlocal comments-=:// comments+=f://
+au FileType c,cpp setlocal comments-=:// comments+=f://
 
 " https://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
 " autocmd BufNewFile,BufRead * setlocal formatoptions+=cqn
