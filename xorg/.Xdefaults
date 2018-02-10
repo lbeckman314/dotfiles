@@ -37,10 +37,11 @@ xscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y
 
 
 ! █▓▒░ color scheme
-#include </home/liam/dracula_xresources/dracula.Xcolors>
+ #include </home/liam/.config/myxthemes/dracula_xresources/dracula.Xcolors>
+!#include </home/liam/.config/myxthemes/nord-xresources/src/nord>
 
 ! █▓▒░ fonts
-urxvt*font: xft:roboto:size=12:antialias=true
+urxvt*font: xft:roboto:size=12:antialias=true:hinting=slight
 !xft:Symbola:pixelsize=14:antialias=true:hinting=slight
 !urxvt*font: xft:gohufont:size=11:antialias=false
 !urxvt*font: -*-creep-regular-*-*--16-*-*-*-*-*-*-1
@@ -62,22 +63,29 @@ urxvt*lineSpace: 0
 
 ! █▓▒░ interface
 urxvt*scrollBar: false
-urxvt*transparent: false
+!urxvt*transparent: true
+
+! https://wiki.archlinux.org/index.php/Rxvt-unicode/Tips_and_tricks#True_transparency
+! URxvt*shading: 0 to 99 darkens, 101 to 200 lightens
+URxvt.shading: 110
+URxvt.depth: 32
+URxvt.background: rgba:1111/1111/1111/dddd
+
 ! urxvt*internalBorder: 10
 ! urxvt*borderColor: #1c1c1c
 ! urxvt*borderLess:false
 
 ! █▓▒░ extensions
-urxvt.perl-ext-common: default,clipboard,keyboard-select,url-select
-urxvt.keysum.M-u: perl:url-select:select_next
-urxvt.url-select.autocopy: true
-urxvt.url-select.launcher: chromium
-urxvt.keysym.M-Escape: perl:keyboard-select:activate
-urxvt.keysym.M-c:   perl:clipboard:copy
-urxvt.keysym.C-v:   perl:clipboard:paste
-urxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-urxvt.clipboard.copycmd:  xsel -ib
-urxvt.clipboard.pastecmd: xsel -ob
+! urxvt.perl-ext-common: default,clipboard,keyboard-select,url-select
+! urxvt.keysum.M-u: perl:url-select:select_next
+! urxvt.url-select.autocopy: true
+! urxvt.url-select.launcher: chromium
+! urxvt.keysym.M-Escape: perl:keyboard-select:activate
+! urxvt.keysym.M-c:   perl:clipboard:copy
+! urxvt.keysym.C-v:   perl:clipboard:paste
+! urxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+! urxvt.clipboard.copycmd:  xsel -ib
+! urxvt.clipboard.pastecmd: xsel -ob
 
 ! █▓▒░ misc
 urxvt.saveLines: 9999
@@ -85,5 +93,5 @@ urxvt.iso14755: false
 !URxvt*altSendsEscape: true
 
 ! https://ctkarch.org/documentation/tutorials/tuto.php?page=urxvt-transpa.xml
-urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0200/c800
+! urxvt*depth: 32
+! urxvt*background: rgba:0000/0000/0200/c800

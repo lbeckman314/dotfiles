@@ -65,7 +65,7 @@ rofi.xoffset:                        0
 ! Always show number of lines
 rofi.fixed-num-lines:                false
 ! Terminal to use
-rofi.terminal:                       rofi-sensible-terminal
+rofi.terminal:                       xfce4-terminal
 ! Ssh client to use
 rofi.ssh-client:                     ssh
 ! Ssh command to execute
@@ -73,7 +73,7 @@ rofi.ssh-command:                    {terminal} -e {ssh-client} {host}
 ! Run command to execute
 rofi.run-command:                    {cmd}
 ! Command to get extra run targets
-rofi.run-list-command:               
+rofi.run-list-command:
 ! Run command to execute that runs in shell
 rofi.run-shell-command:              {terminal} -e {cmd}
 ! Disable history in run/ssh
@@ -107,7 +107,7 @@ rofi.m:                              -1
 ! Margin between rows
 rofi.line-margin:                    2
 ! Pre-set filter
-rofi.filter:                         
+rofi.filter:
 ! Separator style (none, dash, solid)
 rofi.separator-style:                dash
 ! Hide scroll-bar
@@ -167,9 +167,9 @@ rofi.kb-row-left:                    Control+Page_Up
 ! Keybinding
 rofi.kb-row-right:                   Control+Page_Down
 ! Keybinding
-rofi.kb-row-up:                      Up,Control+p,Shift+Tab
+rofi.kb-row-up:                      Up,Control+p,Shift+Tab,Control+k
 ! Keybinding
-rofi.kb-row-down:                    Down,Control+n
+rofi.kb-row-down:                    Down,Control+n,Control+j
 ! Keybinding
 rofi.kb-row-tab:                     Tab
 ! Keybinding
@@ -223,11 +223,11 @@ rofi.kb-custom-17:                   Alt+Shift+7
 ! Keybinding
 rofi.kb-custom-19:                   Alt+Shift+9
 ! Keybinding
-rofi.key-window:		     		         	                  
+rofi.key-window:		     		 Alt+i,Alt+Tab
 ! Keybinding
-rofi.key-run:                        Alt+r                        
+rofi.key-run:                        Alt+o
 ! Keybinding
-rofi.key-ssh:                       
+rofi.key-ssh:                        Alt+p
 
 ! Dracula Xresources palette
 *.foreground: #F8F8F2
@@ -249,3 +249,51 @@ rofi.key-ssh:
 *.color7:     #BFBFBF
 *.color15:    #E6E6E6
 
+
+! Copyright (c) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+! Copyright (c) 2016-present Sven Greb <code@svengreb.de>
+
+! Project:    Nord XResources
+! Version:    0.1.0
+! Repository: https://github.com/arcticicestudio/nord-xresources
+! License:    MIT
+
+! #define nord0 #2E3440
+! #define nord1 #3B4252
+! #define nord2 #434C5E
+! #define nord3 #4C566A
+! #define nord4 #D8DEE9
+! #define nord5 #E5E9F0
+! #define nord6 #ECEFF4
+! #define nord7 #8FBCBB
+! #define nord8 #88C0D0
+! #define nord9 #81A1C1
+! #define nord10 #5E81AC
+! #define nord11 #BF616A
+! #define nord12 #D08770
+! #define nord13 #EBCB8B
+! #define nord14 #A3BE8C
+! #define nord15 #B48EAD
+
+! *.foreground:   nord4
+! *.background:   nord0
+! *.cursorColor:  nord4
+! *fading: 35
+! *fadeColor: nord3
+! 
+! *.color0: nord1
+! *.color1: nord11
+! *.color2: nord14
+! *.color3: nord13
+! *.color4: nord9
+! *.color5: nord15
+! *.color6: nord8
+! *.color7: nord5
+! *.color8: nord3
+! *.color9: nord11
+! *.color10: nord14
+! *.color11: nord13
+! *.color12: nord9
+! *.color13: nord15
+! *.color14: nord7
+! *.color15: nord6

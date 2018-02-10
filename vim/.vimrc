@@ -4,42 +4,40 @@
 
 " set nocompatible              " be iMproved, required
 
+" automatically install vim plug
 " https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
 if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " initialize vim-plug
 call plug#begin('~/.vim/plugged')
 "Plug 'dracula/vim'            " color scheme
-Plug 'lbeckman314/vim'
-Plug 'junegunn/seoul256.vim'
+Plug 'lbeckman314/vim'        " forked color scheme
 Plug 'w0rp/ale'               " asynchronous syntax checker
 Plug 'tpope/vim-fugitive'     " git wrapper
 Plug 'junegunn/goyo.vim'      " zen mode
 Plug 'bling/vim-airline'      " status bar
 Plug 'mbbill/undotree'        " go through undos
+" Plug 'airblade/vim-gitgutter' " git gutter
+Plug 'nvie/vim-flake8'        " python linter
+
 if has('nvim')                " autocomplete
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+"else
+"  Plug 'Shougo/deoplete.nvim'
+"  Plug 'roxma/nvim-yarp'
+"  Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
 call plug#end()
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 
 """""""
-
-" seoul256 (light):
-"   Range:   252 (darkest) ~ 256 (lightest)
-"   Default: 253
-let g:seoul256_background = 256
-colo seoul256
 
 """MAPPINGS"""
 
@@ -156,7 +154,7 @@ set mouse=a
 set noshowcmd
 
 " http://vim.wikia.com/wiki/Disable_automatic_comment_insertion
-" au FileType c,cpp setlocal comments-=:// comments+=f://
+au FileType c,cpp setlocal comments-=:// comments+=f://
 
 " https://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
 " autocmd BufNewFile,BufRead * setlocal formatoptions+=cqn
