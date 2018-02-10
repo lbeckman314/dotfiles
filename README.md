@@ -26,9 +26,6 @@ stow -t $HOME vim
 
 ```
 
-<br />
-<br />
-
 # to remove dotfiles:
 
 ```shell
@@ -45,10 +42,14 @@ rm -rI dotfiles
 
 wallpaper: [Mountainous View](https://unsplash.com/photos/VNseEaTt9w4) by [Sven Scheuermeier](https://unsplash.com/@sveninho)
 
+neovim + tmux
 ![neovim + tmux](screenshots/neovim.png)
 
+emacs
 ![emacs](screenshots/emacs.png)
 
+rofi
 ![rofi](screenshots/rofi.png)
 
+blank
 ![blank](screenshots/blank.png)
