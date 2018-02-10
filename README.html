@@ -1,0 +1,43 @@
+<p>Dotfiles for vim, emacs, and others. Hack away like it’s 1998!</p>
+<p>Feel free to copy and paste, fork, clone, or anything you like.</p>
+<h1 id="to-add-dotfiles-get-started-with-vim-for-example">to add dotfiles (get started with vim for example):</h1>
+<pre class="shell"><code>
+# make a backup of your original config(s) just in case
+mv ~/.vimrc ~/.vimrc.back
+mv ~/.vim ~/.vim.back
+
+# clone the repo
+git clone https://www.github.com/lbeckman314/dotfiles.git
+
+cd dotfiles
+
+# gnu stow method (use if you have stow installed)
+stow -t $HOME vim
+
+# traditional method
+# ln -s `pwd`/vim/.vimrc ~/.vimrc
+# ln -s `pwd`/vim/.vim ~/.vim
+</code></pre>
+<p><br /> <br /></p>
+<h1 id="to-remove-dotfiles">to remove dotfiles:</h1>
+<pre class="shell"><code>
+# restore backups
+mv ~/.vimrc.back ~/.vimrc
+mv ~/.vim.back ~/.vim
+
+rm -rI dotfiles
+</code></pre>
+<h1 id="screenshots-in-xfce">screenshots (in xfce)</h1>
+<p>wallpaper: <a href="https://unsplash.com/photos/VNseEaTt9w4">Mountainous View</a> by <a href="https://unsplash.com/@sveninho">Sven Scheuermeier</a></p>
+<figure>
+<img src="screenshots/neovim.png" alt="neovim + tmux" /><figcaption>neovim + tmux</figcaption>
+</figure>
+<figure>
+<img src="screenshots/emacs.png" alt="emacs" /><figcaption>emacs</figcaption>
+</figure>
+<figure>
+<img src="screenshots/rofi.png" alt="rofi" /><figcaption>rofi</figcaption>
+</figure>
+<figure>
+<img src="screenshots/blank.png" alt="blank" /><figcaption>blank</figcaption>
+</figure>
