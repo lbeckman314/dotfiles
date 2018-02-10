@@ -7,13 +7,14 @@
 " initialize vim-plug
 call plug#begin('~/.vim/plugged')
 "Plug 'dracula/vim'            " color scheme
-Plug 'lbeckman314/vim'
+Plug 'lbeckman314/vim'        " forked color scheme
 Plug 'w0rp/ale'               " asynchronous syntax checker
 Plug 'tpope/vim-fugitive'     " git wrapper
 Plug 'junegunn/goyo.vim'      " zen mode
 Plug 'bling/vim-airline'      " status bar
 Plug 'mbbill/undotree'        " go through undos
 " Plug 'airblade/vim-gitgutter' " git gutter
+Plug 'nvie/vim-flake8'        " python linter
 
 if has('nvim')                " autocomplete
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }

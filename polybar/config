@@ -55,11 +55,11 @@ label-mode-foreground = #000
 
 format-label-padding=10
 
-ws-icon-1 = I;
-ws-icon-2 = II;
-ws-icon-3 = III;
-ws-icon-4 = IV;
-ws-icon-5 = V;
+ws-icon-1 = 1;
+ws-icon-2 = 2;
+ws-icon-3 = 3;
+ws-icon-4 = 4;
+ws-icon-5 = 5;
 ws-icon-default = 
 
 ;; https://github.com/galczo5/dotfiles/blob/master/POLYBAR/.polybar
@@ -124,7 +124,8 @@ interval = 1.0
 ; See "man date" for details on how to format the date string
 ; NOTE: if you want to use syntax tags here you need to use %%{...}
 ;date = %a %b %d,
-date = %c
+;date = %c
+date = %A %I:%M:%S %d %B %Y
 
 ; Optional time format
 ; time = %H:%M
@@ -157,8 +158,12 @@ adapter = AC0
 
 poll-interval = 5
 
-format-charging = <animation-charging>  <label-charging>
-format-discharging = <ramp-capacity>  <label-discharging>
+format-charging = <animation-charging> <label-charging>
+;format-charging-alt = <animation-charging>  <label-charging>
+
+format-discharging = <ramp-capacity> <label-discharging>
+;format-discharging-alt = <ramp-capacity>  <label-discharging>
+
 format-full = <ramp-capacity>  <label-full>
 label-charging = %percentage%
 label-discharging = %percentage%
@@ -199,6 +204,8 @@ ramp-4 = 🌑
 type = internal/volume
 
 format-volume = <ramp-volume>  <label-volume>
+;format-volume-alt = <ramp-volume>
+
 format-muted = <label-muted>
 label-volume = %percentage%
 label-muted =   muted

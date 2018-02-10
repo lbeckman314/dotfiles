@@ -1,5 +1,5 @@
 favorites=exo-terminal-emulator.desktop,exo-file-manager.desktop,exo-mail-reader.desktop,exo-web-browser.desktop
-recent=org.gnome.Calculator.desktop,xfce-keyboard-settings.desktop,org.gnome.Boxes.desktop,urxvt.desktop,uxterm.desktop,spotify.desktop,xscreensaver-properties.desktop,Thunar.desktop,xterm.desktop,plank.desktop
+recent=xfce4-taskmanager.desktop,Thunar.desktop,xscreensaver-properties.desktop,org.gnome.Calculator.desktop,org.gnome.Cheese.desktop,nm-connection-editor.desktop,xfce-ui-settings.desktop,dwarffortress.desktop,xfburn.desktop,xfce-mouse-settings.desktop
 button-title=Applications
 button-icon=xfce4-whiskermenu
 button-single-row=false
