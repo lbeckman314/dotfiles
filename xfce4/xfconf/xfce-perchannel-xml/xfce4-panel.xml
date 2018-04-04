@@ -19,6 +19,7 @@
       </property>
       <property name="background-alpha" type="uint" value="27"/>
       <property name="mode" type="uint" value="0"/>
+      <property name="autohide-behavior" type="uint" value="0"/>
     </property>
   </property>
   <property name="plugins" type="empty">
@@ -36,12 +37,14 @@
         <value type="string" value="thunar"/>
         <value type="string" value="vlc"/>
         <value type="string" value="redshift-gtk"/>
+        <value type="string" value="vpnui"/>
         <value type="string" value="networkmanager applet"/>
         <value type="string" value="task manager"/>
         <value type="string" value="simplescreenrecorder"/>
         <value type="string" value="orage"/>
         <value type="string" value="pasystray"/>
         <value type="string" value="kde connect indicator"/>
+        <value type="string" value="déjà dup backup tool"/>
         <value type="string" value="xfce4-power-manager"/>
         <value type="string" value="nextcloud"/>
         <value type="string" value="notes"/>

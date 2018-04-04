@@ -26,4 +26,6 @@ MiscUseShiftArrowsToScroll=FALSE
 MiscSlimTabs=FALSE
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
 BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
+FontUseSystem=TRUE
+MiscNewTabAdjacent=FALSE
 

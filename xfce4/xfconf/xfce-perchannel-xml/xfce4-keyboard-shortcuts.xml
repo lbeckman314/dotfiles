@@ -48,6 +48,7 @@
       <property name="&lt;Alt&gt;p" type="string" value="rofi -show ssh -yoffset -150"/>
       <property name="&lt;Alt&gt;r" type="string" value="rofi -show run -yoffset -150"/>
       <property name="&lt;Alt&gt;backslash" type="string" value="rofi -show window -yoffset -150"/>
+      <property name="&lt;Alt&gt;Return" type="string" value="xfce4-terminal"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
