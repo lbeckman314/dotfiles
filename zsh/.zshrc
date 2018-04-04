@@ -203,3 +203,11 @@ aup() {
 #    cd "$CURRENT_DIR"
 
 }
+
+# http://exercism.io/clients/cli/linux
+export PATH=$HOME/.local/bin:$PATH
+
+if [ -f ~/.config/exercism/exercism_completion.zsh ]; then
+  . ~/.config/exercism/exercism_completion.zsh
+fi
+
