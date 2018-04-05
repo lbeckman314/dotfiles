@@ -4,7 +4,8 @@ compton -b --config /home/liam/.config/compton.conf
 sxhkd &
 
 #bspc monitor -d I II III IV V VI VII VIII IX X
-bspc monitor LVDS-1 -d 1 2 3 4 5
+#bspc monitor LVDS-1 -d shell firefox emacs evince etc
+bspc monitor -d shell firefox emacs evince etc
 
 bspc config border_width          0
 bspc config window_gap            12
@@ -17,10 +18,10 @@ bspc config click-to-focus        true
 
 
 #bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a xfce4-terminal desktop='^1'
-bspc rule -a firefox desktop='^2'
-bspc rule -a emacs desktop='^3'
-bspc rule -a evince desktop='^4'
+#bspc rule -a xfce4-terminal desktop=shell
+#bspc rule -a firefox desktop=firefox
+#bspc rule -a emacs desktop=emacs
+#bspc rule -a evince desktop=evince
 #bspc rule -a mplayer2 state=floating
 #bspc rule -a Kupfer.py focus=on
 #bspc rule -a Screenkey manage=off
@@ -29,8 +30,13 @@ feh --bg-fill /usr/share/xfce4/backdrops/Mountainous_View_by_Sven_Scheuermeier.j
 polybar top
 
 # https://wiki.archlinux.org/index.php/Cursor_themes#Change_X_shaped_default_cursor
-xsetroot -cursor_name left_ptr
+#xsetroot -cursor_name left_ptr
+
+# launch stuff
 
 # https://www.reddit.com/r/bspwm/comments/2mpui3/attempting_to_autostart_a_few_programs/
 # launch programs
-/home/liam/.config/bspwm/launch.sh
+
+sh -c 'echo "launicng from bspwmrc"; sleep 3; $HOME/.config/bspwm/launch.sh'
+
+

@@ -137,3 +137,6 @@ alt + {Left,Down,Up,Right}
 alt + {_,shift + }{1-9,0}
     bspc {desktop -f,window -d} {1-9,10}
 
+
+alt + l
+    i3lock -u -i /home/liam/Pictures/sven-scheuermeier-73262.png
