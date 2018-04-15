@@ -200,4 +200,27 @@ if has('persistent_undo')
     set undofile
 endif
 
+
+" have swap and backup files be in ~/.vim, not in workign directory
+" http://vim.wikia.com/wiki/Remove_swap_and_backup_files_from_your_working_directory
+" https://news.ycombinator.com/item?id=1688068
+let myBackupDir = expand(vimDir . '/backupdir//')
+" Create dirs
+call system('mkdir ' . vimDir)
+call system('mkdir ' . myBackupDir)
+let &backupdir = myBackupDir
+set backupdir
+
+
+let mySwapDir = expand(vimDir . '/swapdir//')
+" Create dirs
+call system('mkdir ' . vimDir)
+call system('mkdir ' . mySwapDir)
+let &directory = mySwapDir
+set directory
+
+"set backupdir=./.backup,.,/tmp
+"set directory=.,./.backup,/tmp
+
+
 """""""
