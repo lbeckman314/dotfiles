@@ -1,42 +1,39 @@
-"derived from: //gist.github.com/simonista/8703723
+" A vim/neovim config cobbled together from the far corners of the world.
+" Feel free to copy and paste, fork, clone, or anything you like.
 
-"""VIM-PLUG PLUGINS"""
+" adapted from: //gist.github.com/simonista/8703723
 
-" set nocompatible              " be iMproved, required
+
+" ---------------------------- "
+" INITIALIZE VIM-PLUG
+" ---------------------------- "
 
 " automatically install vim plug
 " https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
-" if empty(glob('~/.vim/autoload/plug.vim'))
-"  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-"    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-" endif
-
-" https://github.com/junegunn/vim-plug
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+ if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+ endif
 
 " initialize vim-plug
 call plug#begin('~/.vim/plugged')
-"Plug 'dracula/vim'            " color scheme
-Plug 'lbeckman314/vim'        " forked color scheme
+
+
+" ---------------------------- "
+" PLUGINS
+" ---------------------------- "
+
+Plug 'lbeckman314/vim'        " forked color scheme (dracula)
 Plug 'w0rp/ale'               " asynchronous syntax checker
 Plug 'tpope/vim-fugitive'     " git wrapper
 Plug 'junegunn/goyo.vim'      " zen mode
 Plug 'bling/vim-airline'      " status bar
 Plug 'mbbill/undotree'        " go through undos
-" Plug 'airblade/vim-gitgutter' " git gutter
 Plug 'nvie/vim-flake8'        " python linter
-
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'majutsushi/tagbar'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Yggdroot/indentLine'    " python indent visualizer
-
-
-
+Plug 'majutsushi/tagbar'      " Tag bar
+Plug 'ludovicchabant/vim-gutentags' " Tag generator
 
 if has('nvim')                " autocomplete
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -44,6 +41,7 @@ else
   Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
+  pythonx import neovim
 endif
 
 call plug#end()
@@ -51,13 +49,13 @@ call plug#end()
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 
-"""""""
 
-"""MAPPINGS"""
+" ---------------------------- "
+" MAPPINGS
+" ---------------------------- "
 
-" TODO: Pick a leader key
+" Pick a leader key
 let mapleader = " "
-
 
 "http://vimcasts.org/transcripts/16/en/
 "nmap <leader>w :set wrap!<CR>
@@ -67,40 +65,32 @@ set wrap nolist linebreak
 " https://stackoverflow.com/questions/16082991/vim-switching-between-files-rapidly-using-vanilla-vim-no-plugins
 nnoremap <leader>l :ls<CR>:b<space>
 
-
 " https://stackoverflow.com/questions/23292917/vim-key-mapping-compile-and-run-for-java-and-c-code
+" compile
 nnoremap <leader>cc :w <bar> exec '!gcc --std=c99 '.shellescape('%').' -o '.shellescape('%:r').'.out;echo;echo;echo Press ENTER to continue; read line;exit'<CR><CR>
 
-nnoremap <leader>C :w <bar> exec '!gcc --std=c99 '.shellescape('%:p:r').'Main.cpp '.shellescape('%').' -o '.shellescape('%:r').'.out;echo;echo;echo Press ENTER to continue; read line;exit'<CR><CR>
-
+" compile and run
 nnoremap <leader>bb :w <bar> exec '!gcc --std=c99 '.shellescape('%').' -o '.shellescape('%:r').'.out && '.shellescape('%:p:r').'.out;echo;echo;echo Press ENTER to continue; read line;exit'<CR><CR>
 
+" run
 nnoremap <leader>B :w <bar> exec '!'.shellescape('%:p:r').'.out;echo;echo;echo Press ENTER to continue; read line;exit'<CR><CR>
 
 
-"""COLORS"""
+" ---------------------------- "
+" COLORS
+" ---------------------------- "
 
 " Color scheme (dracula)
-syntax on
-color dracula
-
-"""""""
+" https://stackoverflow.com/questions/5698284/in-my-vimrc-how-can-i-check-for-the-existence-of-a-color-scheme
+silent! colorscheme dracula
 
 
-"""SETTINGS"""
+" ---------------------------- "
+" SETTINGS
+" ---------------------------- "
 
 " Don't try to be vi compatible
 set nocompatible
-
-" Helps force plugins to load correctly when it is turned back on below
-filetype off
-
-" Turn on syntax highlighting
-syntax on
-
-" For plugins to load correctly
-" https://vi.stackexchange.com/questions/10124/what-is-the-difference-between-filetype-plugin-indent-on-and-filetype-indent
-filetype plugin indent on
 
 " Security
 set modelines=0
@@ -180,10 +170,10 @@ autocmd FileType markdown set nonumber
 " https://github.com/vim-airline/vim-airline/issues/124
 set ttimeoutlen=50
 
-"""""""
 
-
-"""FUNCTIONS"""
+" ---------------------------- "
+" FUNCTIONS
+" ---------------------------- "
 
 " https://stackoverflow.com/questions/5700389/using-vims-persistent-undo
 " Put plugins and dictionaries in this dir (also on Windows)
@@ -199,28 +189,3 @@ if has('persistent_undo')
     let &undodir = myUndoDir
     set undofile
 endif
-
-
-" have swap and backup files be in ~/.vim, not in workign directory
-" http://vim.wikia.com/wiki/Remove_swap_and_backup_files_from_your_working_directory
-" https://news.ycombinator.com/item?id=1688068
-let myBackupDir = expand(vimDir . '/backupdir//')
-" Create dirs
-call system('mkdir ' . vimDir)
-call system('mkdir ' . myBackupDir)
-let &backupdir = myBackupDir
-set backupdir
-
-
-let mySwapDir = expand(vimDir . '/swapdir//')
-" Create dirs
-call system('mkdir ' . vimDir)
-call system('mkdir ' . mySwapDir)
-let &directory = mySwapDir
-set directory
-
-"set backupdir=./.backup,.,/tmp
-"set directory=.,./.backup,/tmp
-
-
-"""""""
