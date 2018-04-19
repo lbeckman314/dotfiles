@@ -1,4 +1,11 @@
 # vim
+# swap files
 *.sw*
-vim/.vim
+# tags
 tags
+# backup files
+*~
+
+# emacs
+# backup files
+\#*\#
