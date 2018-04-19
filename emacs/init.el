@@ -37,12 +37,6 @@
   :config
     (setq global-rainbow-delimiters-mode t))
 
-;; https://www.emacswiki.org/emacs/UndoTree
-(use-package undo-tree
-  :ensure t
-  :config
-    (global-undo-tree-mode))
-
 (use-package which-key
   :ensure t
   :config
