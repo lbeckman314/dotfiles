@@ -89,6 +89,12 @@ silent! colorscheme dracula
 " SETTINGS
 " ---------------------------- "
 
+" don't hide characters
+set conceallevel=0
+
+" don't add additional comments
+set formatoptions-=ro
+
 " Don't try to be vi compatible
 set nocompatible
 
