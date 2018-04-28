@@ -194,6 +194,9 @@
 ;; SETTINGS
 ;; ---------------------------------- ;;
 
+;; https://www.emacswiki.org/emacs/HorizontalSplitting
+(setq split-width-threshold 0)
+
 ;; https://www.reddit.com/r/emacs/comments/7v6fll/whats_in_your_initialscratchmessage/
 (setq initial-scratch-message
     ";; - 'Tis but a scratch!\n;; - A scratch? Your arm's off!\n;; - No, it isn't!\n\n")
@@ -320,27 +323,27 @@ directory to make multiple eshell windows easier."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
-   [("#383a62" "#383a62")
-	("#7aa5ff" "#383a62")
-	("#ae81ff" "#383a62")
-	("#a0a0c5" "#a0a0c5")
-	("#2de0a7" "#2de0a7")
-	("#8eaee0" "#8eaee0")
-	("#6dfedf" "#6dfedf")
-	("#ccccff" "#ccccff")])
+		[("#383a62" "#383a62")
+		 ("#7aa5ff" "#383a62")
+		 ("#ae81ff" "#383a62")
+		 ("#a0a0c5" "#a0a0c5")
+		 ("#2de0a7" "#2de0a7")
+		 ("#8eaee0" "#8eaee0")
+		 ("#6dfedf" "#6dfedf")
+		 ("#ccccff" "#ccccff")])
  '(custom-safe-themes
-   (quote
-	("3b5ce826b9c9f455b7c4c8bff22c020779383a12f2f57bf2eb25139244bb7290" "3cb2d5a795e1c93d1fbc8360d6ea41f0173aa1366d334b16e1b83b996b8d9ce6" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "4e4d9f6e1f5b50805478c5630be80cce40bee4e640077e1a6a7c78490765b03f" default)))
+		(quote
+		 ("3b5ce826b9c9f455b7c4c8bff22c020779383a12f2f57bf2eb25139244bb7290" "3cb2d5a795e1c93d1fbc8360d6ea41f0173aa1366d334b16e1b83b996b8d9ce6" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "4e4d9f6e1f5b50805478c5630be80cce40bee4e640077e1a6a7c78490765b03f" default)))
  '(evil-want-C-i-jump t)
  '(indent-tabs-mode t)
  '(org-cycle-emulate-tab t)
  '(org-export-backends (quote (ascii html icalendar latex md odt org)))
  '(org-modules
-   (quote
-	(org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-rmail org-w3m org-drill)))
+		(quote
+		 (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-rmail org-w3m org-drill)))
  '(package-selected-packages
-   (quote
-	(github-theme htmlize which-key use-package smex slime shell-pop rotate rebecca-theme rainbow-delimiters powerline-evil paredit multiple-cursors ivy general flycheck evil-magit evil-leader dracula-theme dashboard)))
+		(quote
+		 (github-theme htmlize which-key use-package smex slime shell-pop rotate rebecca-theme rainbow-delimiters powerline-evil paredit multiple-cursors ivy general flycheck evil-magit evil-leader dracula-theme dashboard)))
  '(tab-width 4)
  '(tls-checktrust (quote ask)))
 
