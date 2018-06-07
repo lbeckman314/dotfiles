@@ -34,6 +34,9 @@ Plug 'nvie/vim-flake8'        " python linter
 Plug 'Yggdroot/indentLine'    " python indent visualizer
 Plug 'majutsushi/tagbar'      " Tag bar
 Plug 'ludovicchabant/vim-gutentags' " Tag generator
+Plug 'luochen1990/rainbow'    " rainbow parens
+Plug 'mattn/emmet-vim'        " web-development toolkit
+
 
 if has('nvim')                " autocomplete
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -195,3 +198,5 @@ if has('persistent_undo')
     let &undodir = myUndoDir
     set undofile
 endif
+
+

@@ -95,6 +95,7 @@
     (sh . t)
     (js . t)
     (python . t)
+    (sql . t)
     (ruby . t)))
 
     (setq org-confirm-babel-evaluate nil)
@@ -194,8 +195,13 @@
 ;; SETTINGS
 ;; ---------------------------------- ;;
 
+;; Tramp
+;; https://www.emacswiki.org/emacs/TrampMode
+(setq tramp-default-method "ssh")
+(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+
 ;; https://www.emacswiki.org/emacs/HorizontalSplitting
-(setq split-width-threshold 0)
+;; (setq split-width-threshold 0)
 
 ;; https://www.reddit.com/r/emacs/comments/7v6fll/whats_in_your_initialscratchmessage/
 (setq initial-scratch-message
