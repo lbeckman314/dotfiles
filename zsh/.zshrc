@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# https://www.emacswiki.org/emacs/TrampMode
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+
 # Path to your oh-my-zsh installation.
   export ZSH=$HOME/.oh-my-zsh
 
@@ -117,7 +120,7 @@ fi
 alias vi='vim'
 
 # https://wiki.archlinux.org/index.php/Ruby
-PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+#PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 # https://github.com/Intoli/exodus#installation
 export PATH="~/.local/bin/:${PATH}"
