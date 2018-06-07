@@ -98,7 +98,7 @@ rofi.ssh-command:                    {terminal} -e {ssh-client} {host}
 ! Run command to execute
 rofi.run-command:                    {cmd}
 ! Command to get extra run targets
-rofi.run-list-command:               
+rofi.run-list-command:
 ! Run command to execute that runs in shell
 rofi.run-shell-command:              {terminal} -e {cmd}
 ! Disable history in run/ssh
@@ -132,7 +132,7 @@ rofi.m:                              -1
 ! Margin between rows
 rofi.line-margin:                    2
 ! Pre-set filter
-rofi.filter:                         
+rofi.filter:
 ! Separator style (none, dash, solid)
 rofi.separator-style:                none
 ! Hide scroll-bar
@@ -248,11 +248,11 @@ rofi.kb-custom-17:                   Alt+Shift+7
 ! Keybinding
 rofi.kb-custom-19:                   Alt+Shift+9
 ! Keybinding
-rofi.key-window:		     		         	                  
+rofi.key-window:
 ! Keybinding
-rofi.key-run:                        Alt+r                        
+rofi.key-run:                        Alt+r
 ! Keybinding
-rofi.key-ssh:                       
+rofi.key-ssh:
 
 ! Dracula Xresources palette
 *.foreground: #F8F8F2
