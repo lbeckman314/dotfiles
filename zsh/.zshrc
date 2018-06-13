@@ -120,7 +120,7 @@ fi
 alias vi='vim'
 
 # https://wiki.archlinux.org/index.php/Ruby
-#PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 # https://github.com/Intoli/exodus#installation
 export PATH="~/.local/bin/:${PATH}"
