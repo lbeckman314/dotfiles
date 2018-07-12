@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>init</title>
+<!-- 2018-07-01 Sun 14:45 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">init</h1>
+<p>
+;; An (evil) emacs init  cobbled together from the far corners of the world.
+;; Feel free to copy and paste, fork, clone, or anything you like. 
+</p>
+
+
+<p>
+;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; PACKAGES :: INITIALIZATION
+;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+</p>
+
+<p>
+;; initialize melpa and gnu package repos
+;; <a href="https://melpa.org/#/getting-started">https://melpa.org/#/getting-started</a>
+(require 'package) ;; You might already have this line
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
+  (add-to-list 'package-archives (cons "melpa" url) t))
+(when (&lt; emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "<a href="https://elpa.gnu.org/packages/">https://elpa.gnu.org/packages/</a>")))
+(package-initialize) ;; You might already have this line
+</p>
+
+<p>
+;; automagically install/bootstrap packages
+;; <a href="https://blog.aaronbieber.com/2015/05/24/from-vim-to-emacs-in-fourteen-days.html">https://blog.aaronbieber.com/2015/05/24/from-vim-to-emacs-in-fourteen-days.html</a>
+;; (unless (package-installed-p 'use-package)
+;;   (package-refresh-contents)
+;;   (package-install 'use-package))
+;; (eval-when-compile
+;;   (require 'use-package))
+</p>
+
+
+<p>
+;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; PACKAGES :: MISC
+;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+</p>
+
+<p>
+(use-package chicken-scheme
+</p>
+<p>
+:ensure t
+</p>
+<p>
+:config
+  (setq inferior-lisp-program "/usr/bin/sbcl"))
+</p>
+
+<p>
+(use-package dracula-theme
+</p>
+<p>
+:ensure t
+</p>
+<p>
+:config
+  (load-theme 'dracula t))
+</p>
+
+<p>
+(use-package geiser
+</p>
+<p>
+:ensure t
+</p>
+<p>
+:config
+  (setq geiser-default-implementation 'guile)
+  (setq geiser-repl-use-other-window nil))
+</p>
+
+<p>
+(use-package haskell-mode
+</p>
+<p>
+:ensure t)
+</p>
+
+<p>
+;; <a href="https://github.com/abo-abo/swiper">https://github.com/abo-abo/swiper</a>
+(use-package ivy
+</p>
+<p>
+:ensure t
+</p>
+<p>
+:config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq enable-recursive-minibuffers t))
+</p>
+
+<p>
+;; <a href="https://www.emacswiki.org/emacs/RainbowDelimiters">https://www.emacswiki.org/emacs/RainbowDelimiters</a>
+(use-package rainbow-delimiters
+</p>
+<p>
+:ensure t
+</p>
+<p>
+:config
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+</p>
+
+<p>
+(use-package rotate
+</p>
+<p>
+:ensure t)
+</p>
+
+<p>
+;; <a href="http://pragmaticemacs.com/emacs/pop-up-a-quick-shell-with-shell-pop/">http://pragmaticemacs.com/emacs/pop-up-a-quick-shell-with-shell-pop/</a>
+(use-package shell-pop
+</p>
+<p>
+:bind (("C-t" . shell-pop))
+</p>
+<p>
+:config
+(setq shell-pop-shell-type (quote ("ansi-term" "<b>ansi-term</b>" (lambda nil (ansi-term shell-pop-term-shell)))))
+(setq shell-pop-term-shell "/bin/zsh")
+;; need to do this manually or not picked up by `shell-pop'
+(shell-pop&#x2013;set-shell-type 'shell-pop-shell-type shell-pop-shell-type))
+</p>
+
+<p>
+(use-package slime
+</p>
+<p>
+:ensure t
+</p>
+<p>
+:config
+  (setq inferior-lisp-program "/usr/bin/sbcl")
+  (require 'slime-autoloads)
+  (slime-setup '(slime-fancy)))
+</p>
+
+<p>
+;; <a href="https://github.com/nonsequitur/smex/">https://github.com/nonsequitur/smex/</a>
+(use-package smex
+</p>
+<p>
+:ensure t
+</p>
+<p>
+:config
+  (smex-initialize)
+  (global-set-key (kbd "M-x") 'smex)
+  (global-set-key (kbd "M-X") 'smex-major-mode-commands))
+</p>
+
+<p>
+(use-package which-key
+</p>
+<p>
+:ensure t
+</p>
+<p>
+:config
+  (which-key-mode))
+</p>
+
+
+<p>
+;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; PACKAGES :: ORG MODE
+;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+</p>
+
+<p>
+;; <a href="http://ergoemacs.org/emacs/emacs_org_babel_literate_programing.html">http://ergoemacs.org/emacs/emacs_org_babel_literate_programing.html</a>
+(use-package org
+</p>
+<p>
+:ensure t
+</p>
+<p>
+:config
+  (setq org-agenda-files '("~/Documents/personal/org-mode/"))
+  ;; make org mode allow eval of some langs
+  (org-babel-do-load-languages
+  'org-babel-load-languages
+  '((emacs-lisp . t)
+  (C . t)
+  (haskell . t)
+  (js . t)
+  (python . t)
+  (scheme . t)
+  (sh . t)
+  (sql . t)
+  (ruby . t)))
+</p>
+
+<p>
+(setq org-confirm-babel-evaluate nil)
+(setq org-src-fontify-natively t)
+</p>
+
+<p>
+(setq htmlize-output-type 'css)
+(setq org-html-htmlize-output-type 'css)
+(setq org-html-validation-link 'nil)
+</p>
+
+<p>
+(add-to-list 'org-latex-packages-alist
+             '("" "amsmath" t)
+             '("" "mathtools" t))
+</p>
+
+<p>
+;; Add minted to the defaults packages to include when exporting.
+(add-to-list 'org-latex-packages-alist '("" "minted"))
+;; Tell the latex export to use the minted package for source
+;; code coloration.
+(setq org-latex-listings 'minted)
+</p>
+
+<p>
+(setq org-src-preserve-indentation 't)
+</p>
+
+<p>
+(setq org-latex-minted-options '(("breaklines" "true")
+                                 ("breakanywhere" "true")))
+    ;; Let the exporter use the -shell-escape option to let latex
+    ;; execute external programs.
+    ;; This obviously and can be dangerous to activate!
+    (setq org-latex-pdf-process
+        '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f")))
+</p>
+
+
+<p>
+;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; PACKAGES :: MAGIT
+;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+</p>
+
+<p>
+(use-package magit
+</p>
+<p>
+:ensure t)
+</p>
+
+<p>
+;; <a href="https://github.com/emacs-evil/evil-magit">https://github.com/emacs-evil/evil-magit</a>
+;; optional: this is the evil state that evil-magit will use
+;; (setq evil-magit-state 'normal)
+;; optional: disable additional bindings for yanking text
+;; (setq evil-magit-use-y-for-yank nil)
+(use-package evil-magit
+</p>
+<p>
+:ensure t)
+</p>
+
+
+<p>
+;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; PACKAGES :: EVIL
+;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+</p>
+
+<p>
+(use-package evil
+</p>
+<p>
+:ensure t
+</p>
+<p>
+:config
+  (evil-mode 1)
+</p>
+
+<p>
+;; <a href="https://emacs.stackexchange.com/questions/17673/no-org-babel-execute-function-for-c-and-no-org-babel-execute-function-for-c">https://emacs.stackexchange.com/questions/17673/no-org-babel-execute-function-for-c-and-no-org-babel-execute-function-for-c</a>
+(global-set-key (kbd "C-S-c") #'evil-copy)
+(global-set-key (kbd "C-S-v") #'evil-paste-before))
+(setq evil-want-C-i-jump nil)
+</p>
+
+<p>
+;; <a href="https://github.com/milkypostman/powerline">https://github.com/milkypostman/powerline</a>
+(use-package powerline-evil
+</p>
+<p>
+:ensure t
+</p>
+<p>
+:config 
+(powerline-evil-vim-color-theme))
+;; i like square borders in powerline
+;(setq powerline-evil-default-separator 'nil))
+</p>
+
+<p>
+;; evil keybindings
+(use-package general
+</p>
+<p>
+:ensure t
+</p>
+<p>
+:config (general-define-key
+</p>
+<p>
+:states '(normal visual insert emacs)
+</p>
+<p>
+:prefix "SPC"
+</p>
+<p>
+    :non-normal-prefix "M-SPC"
+    "f"  'find-file
+    "gs" 'magit-status
+    "w+" 'rotate-layout
+    "l"  'ivy-switch-buffer
+    "'"  'shell-pop
+    "bd" 'evil-delete-buffer
+))
+</p>
+
+
+<p>
+;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; KEYBINDINGS
+;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+</p>
+
+<p>
+;; emacs keybindings
+;; <a href="http://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/">http://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/</a>
+(global-set-key (kbd "C-c o")
+                (lambda () (interactive) (find-file "~/Documents/personal.org")))
+</p>
+
+
+<p>
+;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; SETTINGS
+;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+</p>
+
+<p>
+;; flycheck
+(set-face-attribute 'flyspell-incorrect nil :underline '(:color "deep pink" :style line))
+</p>
+
+<p>
+;; Tramp
+;; <a href="https://www.emacswiki.org/emacs/TrampMode">https://www.emacswiki.org/emacs/TrampMode</a>
+(setq tramp-default-method "ssh")
+(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+</p>
+
+<p>
+;;  <a href="https://www.reddit.com/r/emacs/comments/7v6fll/whats_in_your_initialscratchmessage/">https://www.reddit.com/r/emacs/comments/7v6fll/whats_in_your_initialscratchmessage/</a>
+(setq initial-scratch-message
+    ";; - 'Tis but a scratch!\n;; - A scratch? Your arm's off!\n;; - No, it isn't!\n\n")
+(setq inhibit-startup-screen t)
+(setq inhibit-splash-screen t)
+</p>
+
+<p>
+;; <a href="https://stackoverflow.com/questions/10545437/how-to-disable-the-beep-in-emacs-on-windows">https://stackoverflow.com/questions/10545437/how-to-disable-the-beep-in-emacs-on-windows</a>
+(setq visible-bell 1)
+(global-linum-mode 1)
+(global-visual-line-mode t)
+</p>
+
+<p>
+;; <a href="https://www.emacswiki.org/emacs/ToolBar">https://www.emacswiki.org/emacs/ToolBar</a>
+;; <a href="https://www.emacswiki.org/emacs/MenuBar#toc7">https://www.emacswiki.org/emacs/MenuBar#toc7</a>
+(tool-bar-mode   -1)
+(menu-bar-mode   -1)
+(show-paren-mode  1)
+(scroll-bar-mode -1)
+(tooltip-mode    -1)
+</p>
+
+<p>
+;; <a href="https://stackoverflow.com/questions/1229142/how-can-i-save-my-mini-buffer-history-in-emacs">https://stackoverflow.com/questions/1229142/how-can-i-save-my-mini-buffer-history-in-emacs</a>
+(savehist-mode 1)
+</p>
+
+<p>
+;; spell checker
+(setq ispell-program-name "hunspell")
+(setq ispell-dictionary "en<sub>US</sub>")
+</p>
+
+<p>
+;; change all prompts to y or n
+;; <a href="http://pragmaticemacs.com/emacs/make-all-prompts-y-or-n/">http://pragmaticemacs.com/emacs/make-all-prompts-y-or-n/</a>
+(fset 'yes-or-no-p 'y-or-n-p)
+</p>
+
+<p>
+;; <a href="https://www.emacswiki.org/emacs/BackupDirectory#toc2">https://www.emacswiki.org/emacs/BackupDirectory#toc2</a>
+(setq
+   backup-by-copying t      ; don't clobber symlinks
+   backup-directory-alist
+    '(("." . "$HOME/.emacs.d/backupdir/"))    ; don't litter my fs tree
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)       ; use versioned backups
+</p>
+
+<p>
+;; <a href="https://www.emacswiki.org/emacs/TransparentEmacs">https://www.emacswiki.org/emacs/TransparentEmacs</a>
+ (set-frame-parameter (selected-frame) 'alpha '(85 . 50))
+ (add-to-list 'default-frame-alist '(alpha . (85 . 50)))
+ (defun toggle-transparency ()
+   (interactive)
+   (let ((alpha (frame-parameter nil 'alpha)))
+     (set-frame-parameter
+      nil 'alpha
+      (if (eql (cond ((numberp alpha) alpha)
+                     ((numberp (cdr alpha)) (cdr alpha))
+                     ;; Also handle undocumented (&lt;active&gt; &lt;inactive&gt;) form.
+                     ((numberp (cadr alpha)) (cadr alpha)))
+</p>
+<ol class="org-ol">
+<li></li>
+</ol>
+<p>
+         '(85 . 75) '(100 . 100)))))
+(global-set-key (kbd "C-c t") 'toggle-transparency)
+</p>
+
+<p>
+;; <a href="https://stackoverflow.com/questions/19054228/emacs-disable-theme-background-color-in-terminal">https://stackoverflow.com/questions/19054228/emacs-disable-theme-background-color-in-terminal</a>
+;; has to be client (emacsclient -c -a "" -nw), not (emacs -nw)
+(defun on-frame-open (&amp;optional frame)
+  "If the FRAME created in terminal don't load background color."
+  (unless (display-graphic-p frame)
+    (set-face-background 'default "unspecified-bg" frame)))
+</p>
+
+<p>
+(add-hook 'after-make-frame-functions 'on-frame-open)
+</p>
+
+
+<p>
+;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; CUSTOM-SET VARIABLES
+;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+</p>
+
+<p>
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   [("#383a62" "#383a62")
+    ("#7aa5ff" "#383a62")
+    ("#ae81ff" "#383a62")
+    ("#a0a0c5" "#a0a0c5")
+    ("#2de0a7" "#2de0a7")
+    ("#8eaee0" "#8eaee0")
+    ("#6dfedf" "#6dfedf")
+    ("#ccccff" "#ccccff")])
+ '(custom-safe-themes
+   (quote
+    ("3b5ce826b9c9f455b7c4c8bff22c020779383a12f2f57bf2eb25139244bb7290" "3cb2d5a795e1c93d1fbc8360d6ea41f0173aa1366d334b16e1b83b996b8d9ce6" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "4e4d9f6e1f5b50805478c5630be80cce40bee4e640077e1a6a7c78490765b03f" default)))
+ '(evil-want-C-i-jump t)
+ '(indent-tabs-mode t)
+ '(org-cycle-emulate-tab t)
+ '(org-export-backends (quote (ascii html icalendar latex md odt org)))
+ '(org-modules
+   (quote
+    (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-rmail org-w3m org-drill)))
+ '(package-selected-packages
+   (quote
+    (smart-tabs-mode haskell-mode geiser chicken-scheme chess github-theme htmlize which-key use-package smex slime shell-pop rotate rebecca-theme rainbow-delimiters powerline-evil paredit multiple-cursors ivy general flycheck evil-magit evil-leader dracula-theme dashboard)))
+ '(tab-width 4)
+ '(tls-checktrust (quote ask)))
+</p>
+
+
+<p>
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2018-07-01 Sun 14:45</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"></p>
+</div>
+</body>
+</html>

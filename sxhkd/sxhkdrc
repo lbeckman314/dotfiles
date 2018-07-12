@@ -15,8 +15,8 @@ alt + r
     rofi -show run -yoffset -150
 
 # program switcher
-alt + {grave,Tab}
-    rofi -show window -yoffset -150
+#alt + {grave,Tab}
+#    rofi -show window -yoffset -150
 
 # make sxhkd reload its configuration files:
 alt + Escape

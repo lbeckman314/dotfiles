@@ -132,7 +132,8 @@ ain() {
     # https://stackoverflow.com/questions/4651437/how-to-set-a-variable-to-the-output-from-a-command-in-bash#4651495
    CURRENT_DIR="$(pwd)"
 
-   cd ~/Downloads/pkgs
+   mkdir -p $HOME/Downloads/pkgs
+   cd $HOME/Downloads/pkgs
    git clone https://aur.archlinux.org/${1}.git
    cd ${1}
    less PKGBUILD
@@ -152,7 +153,7 @@ ain() {
    read response
    case "$response" in
        [yY])
-           for pkg in ~/Downloads/pkgs/
+           for pkg in $HOME/Downloads/pkgs/
                rmt "$pkg"
                ;;
         *)
@@ -215,5 +216,4 @@ if [ -f ~/.config/exercism/exercism_completion.zsh ]; then
 fi
 
 # https://askubuntu.com/questions/758496/how-to-make-a-permanent-alias-in-oh-my-zsh
-hash -d w=~/Documents/code/osu/2018winter/
-hash -d s=~/Documents/code/osu/2018spring/
+hash -d s=~/Documents/code/osu/2018summer/

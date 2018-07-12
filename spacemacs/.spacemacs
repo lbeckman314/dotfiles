@@ -337,6 +337,20 @@ you should place your code here."
                 (set (make-local-variable 'compile-command)
                      (concat "make -k "
                              (file-name-sans-extension buffer-file-name))))))
+  ;; make org mode allow eval of some langs
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (C . t)
+     (haskell . t)
+     (js . t)
+     (python . t)
+     (scheme . t)
+     (shell . t)
+     (sql . t)
+     (ruby . t)))
+
+  (setq org-confirm-babel-evaluate nil)
 
 
   ;; https://emacs.stackexchange.com/questions/14167/shell-command-with-bash-script-and-arguements
@@ -376,8 +390,8 @@ you should place your code here."
  '(org-agenda-files nil)
  '(package-selected-packages
    (quote
-    (org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot slime-company company slime ws-butler winum volatile-highlights vi-tilde-fringe uuidgen toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode paradox spinner orgit org-bullets open-junk-file neotree move-text lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-ediff evil-args evil-anzu anzu eval-sexp-fu highlight dumb-jump f s define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol aggressive-indent adaptive-wrap ace-link hydra helm helm-core popup fringe-helper git-gutter+ git-gutter magit magit-popup git-commit with-editor evil goto-chg undo-tree dash diminish projectile pkg-info epl counsel swiper ivy bind-key packed async avy org-plus-contrib xterm-color which-key wgrep use-package smex smeargle shell-pop rebecca-theme pcre2el multiple-cursors multi-term magit-gitflow macrostep ivy-hydra help-fns+ helm-make gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ flx exec-path-from-shell evil-visualstar evil-magit evil-escape eshell-z eshell-prompt-extras esh-help elisp-slime-nav dracula-theme diff-hl counsel-projectile bind-map auto-compile ace-window)))
- '(tramp-syntax (quote default)))
+    (org-mime ghub org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot slime-company company slime ws-butler winum volatile-highlights vi-tilde-fringe uuidgen toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode paradox spinner orgit org-bullets open-junk-file neotree move-text lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-ediff evil-args evil-anzu anzu eval-sexp-fu highlight dumb-jump f s define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol aggressive-indent adaptive-wrap ace-link hydra helm helm-core popup fringe-helper git-gutter+ git-gutter magit magit-popup git-commit with-editor evil goto-chg undo-tree dash diminish projectile pkg-info epl counsel swiper ivy bind-key packed async avy org-plus-contrib xterm-color which-key wgrep use-package smex smeargle shell-pop rebecca-theme pcre2el multiple-cursors multi-term magit-gitflow macrostep ivy-hydra help-fns+ helm-make gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ flx exec-path-from-shell evil-visualstar evil-magit evil-escape eshell-z eshell-prompt-extras esh-help elisp-slime-nav dracula-theme diff-hl counsel-projectile bind-map auto-compile ace-window)))
+ '(tramp-syntax (quote default) nil (tramp)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -24,18 +24,21 @@ call plug#begin('~/.vim/plugged')
 " PLUGINS
 " ---------------------------- "
 
-Plug 'lbeckman314/vim'        " forked color scheme (dracula)
-Plug 'w0rp/ale'               " asynchronous syntax checker
-Plug 'tpope/vim-fugitive'     " git wrapper
-Plug 'junegunn/goyo.vim'      " zen mode
-Plug 'bling/vim-airline'      " status bar
-Plug 'mbbill/undotree'        " go through undos
-Plug 'nvie/vim-flake8'        " python linter
-Plug 'Yggdroot/indentLine'    " python indent visualizer
-Plug 'majutsushi/tagbar'      " Tag bar
-Plug 'ludovicchabant/vim-gutentags' " Tag generator
-Plug 'luochen1990/rainbow'    " rainbow parens
-Plug 'mattn/emmet-vim'        " web-development toolkit
+Plug 'https://github.com/w0rp/ale'               " asynchronous syntax checker
+Plug 'https://github.com/mattn/emmet-vim'        " web-development toolkit
+Plug 'https://github.com/junegunn/goyo.vim'      " zen mode
+Plug 'https://github.com/Yggdroot/indentLine'    " python indent visualizer
+Plug 'https://github.com/luochen1990/rainbow'    " rainbow parens
+Plug 'https://github.com/majutsushi/tagbar'      " Tag bar
+Plug 'https://github.com/mbbill/undotree'        " go through undos
+Plug 'https://github.com/osyo-manga/vim-over'
+Plug 'https://github.com/lbeckman314/vim'        " forked color scheme (dracula)
+Plug 'https://github.com/bling/vim-airline'      " status bar
+Plug 'https://github.com/nvie/vim-flake8'        " python linter
+Plug 'https://github.com/tpope/vim-fugitive'     " git wrapper
+Plug 'https://github.com/ludovicchabant/vim-gutentags' " Tag generator
+Plug 'https://github.com/lervag/vimtex'
+
 
 
 if has('nvim')                " autocomplete
