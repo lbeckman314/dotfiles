@@ -235,12 +235,17 @@ rofi.key-ssh:                        Alt+p
 
 URxvt.internalBorder:	10
 URxvt.scrollBar:	false
-URxvt.letterSpace:	-1
 URxvt.cursorColor:	#d8fbff
-urxvt.font: xft:Monospace Regular:pixelsize=14,style=regular
+urxvt.font: xft:Monospace Regular:size=12,style=regular
 !xft:Inconsolata:size=16, xft:Font Awesome 5 Free Solid:size=16
 ;URxvt.depth:		32
 ;URxvt.background:	[80]#010010
+
+
+urxvt*letterSpace: 0
+urxvt*lineSpace: 0
+
+
 
 
 

@@ -55,11 +55,11 @@ label-mode-foreground = #000
 
 format-label-padding=10
 
-ws-icon-0 = shell;
-ws-icon-1 = firefox;
-ws-icon-2 = emacs;
-ws-icon-3 = evince;
-ws-icon-4 = etc;
+ws-icon-0 = I;
+ws-icon-1 = II;
+ws-icon-2 = III;
+ws-icon-3 = IV;
+ws-icon-4 = V;
 ws-icon-default = 
 
 ;; https://github.com/galczo5/dotfiles/blob/master/POLYBAR/.polybar
