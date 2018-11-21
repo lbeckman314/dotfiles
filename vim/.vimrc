@@ -25,8 +25,8 @@ call plug#begin('~/.vim/plugged')
 " ---------------------------- "
 
 Plug 'https://github.com/w0rp/ale'               " asynchronous syntax checker
-Plug 'https://github.com/mattn/emmet-vim'        " web-development toolkit
-Plug 'https://github.com/junegunn/goyo.vim'      " zen mode
+"Plug 'https://github.com/mattn/emmet-vim'        " web-development toolkit
+"Plug 'https://github.com/junegunn/goyo.vim'      " zen mode
 Plug 'https://github.com/Yggdroot/indentLine'    " python indent visualizer
 Plug 'https://github.com/luochen1990/rainbow'    " rainbow parens
 Plug 'https://github.com/majutsushi/tagbar'      " Tag bar
@@ -37,9 +37,13 @@ Plug 'https://github.com/bling/vim-airline'      " status bar
 Plug 'https://github.com/nvie/vim-flake8'        " python linter
 Plug 'https://github.com/tpope/vim-fugitive'     " git wrapper
 Plug 'https://github.com/ludovicchabant/vim-gutentags' " Tag generator
+Plug 'https://github.com/liuchengxu/vim-which-key'
+"Plug 'https://github.com/lervag/vimtex'
+"Plug 'https://github.com/vim-scripts/Smart-Tabs'
 Plug 'https://github.com/lervag/vimtex'
-
-
+let g:vimtex_view_method = 'zathura'
+Plug 'https://github.com/mhinz/neovim-remote'
+Plug 'https://github.com/justinmk/vim-sneak'
 
 if has('nvim')                " autocomplete
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -67,6 +71,21 @@ let mapleader = " "
 "nmap <leader>w :set wrap!<CR>
 "command! -nargs=* Wrap set wrap linebreak nolist
 set wrap nolist linebreak
+
+" https://kevinjalbert.com/vim-substitution-feedback-using-vim-over/
+nnoremap <leader>s :OverCommandLine<CR> %s/<C-r><C-w>/
+
+function! VisualFindAndReplace()
+        :OverCommandLine %s/
+        :noh
+endfunction
+nnoremap <Leader>v :call VisualFindAndReplace()<CR>
+
+function! VisualFindAndReplaceWithSelection() range
+        :'<,'>OverCommandLine s/
+        :noh
+        endfunction
+        xnoremap <Leader>v :call VisualFindAndReplaceWithSelection()<CR>
 
 " https://stackoverflow.com/questions/16082991/vim-switching-between-files-rapidly-using-vanilla-vim-no-plugins
 nnoremap <leader>l :ls<CR>:b<space>
