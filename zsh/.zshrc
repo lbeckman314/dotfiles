@@ -132,11 +132,15 @@ ain() {
     # https://stackoverflow.com/questions/4651437/how-to-set-a-variable-to-the-output-from-a-command-in-bash#4651495
    CURRENT_DIR="$(pwd)"
 
+   # control-c will terminate script execution and remove temporary files
+   trap "echo; echo 'SIGINT received: Deleting temp files then exiting!'; cd $CURRENT_DIR; return 1" INT
+
+
    mkdir -p $HOME/Downloads/pkgs
    cd $HOME/Downloads/pkgs
    git clone https://aur.archlinux.org/${1}.git
    cd ${1}
-   less PKGBUILD
+   vim PKGBUILD
    echo "Install package? [y / n]"
    read response
    case "$response" in
@@ -154,7 +158,7 @@ ain() {
    case "$response" in
        [yY])
            for pkg in $HOME/Downloads/pkgs/
-               rmt "$pkg"
+               rm -rfI "$pkg"
                ;;
         *)
             echo "ok. not removing."
@@ -217,3 +221,10 @@ fi
 
 # https://askubuntu.com/questions/758496/how-to-make-a-permanent-alias-in-oh-my-zsh
 hash -d s=~/Documents/code/osu/2018summer/
+hash -d f=~/Documents/code/osu/2018fall/
+
+# https://old.reddit.com/r/emacs/comments/9b1bhs/emacsshell_protip_alias_magit/
+alias magit='emacsclient -c -n -a "" -e "(progn (magit-status) (delete-other-windows))"'
+
+alias em='(emacsclient -c -a "" &)'
+
