@@ -2,6 +2,7 @@
     email = lbeckman314@gmail.com
     name = lbeckman314
     editor = nvim
+	signingkey = 144F39B7AC1CC079
 [push]
     default = simple
 
@@ -17,3 +18,10 @@
     lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
 [core]
 	editor = nvim
+	autocrlf = input
+
+# https://whatworks4me.wordpress.com/2011/04/13/view-git-diffs-in-emacs-using-ediff/
+[mergetool "ediff"]
+    cmd = emacs --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
+[mergetool "ediffclient"]
+    cmd = emacsclient --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
