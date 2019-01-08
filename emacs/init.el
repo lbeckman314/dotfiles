@@ -120,6 +120,15 @@
         ivy-rich-switch-buffer-align-virtual-buffer t)
   (setq ivy-rich-path-style 'abbrev))
 
+;; https://old.reddit.com/r/emacs/comments/8x4xtt/tip_how_i_use_ledger_to_track_my_money/
+(use-package ledger-mode
+  :ensure t
+  :mode ("\\.dat\\'"
+         "\\.ledger\\'")
+  :custom (ledger-clear-whole-transactions t)
+  :config
+  (use-package flycheck-ledger :ensure t :after ledger-mode))
+
 (use-package pdf-tools
   :ensure t)
 
@@ -263,6 +272,7 @@
 (setq org-latex-minted-options '(("breaklines" "true")
                                  ("breakanywhere" "true")))
 
+
 ;; Let the exporter use the -shell-escape option to let latex
 ;; execute external programs.
 ;; This obviously and can be dangerous to activate!
@@ -285,7 +295,7 @@
       '(("j" "Journal" entry (file+olp+datetree "~/Documents/code/osu/2018fall/cs361-software/journal.org") "\n* %?\n")))
 
 ;; ---------------------------------- ;;
-;; PACKAGES :: MAGIT
+;; PACKAGESu :: MAGIT
 ;; ---------------------------------- ;;
 
 (use-package magit
@@ -377,12 +387,31 @@
 ;; use mu4e for e-mail in emacs
 (setq mail-user-agent 'mu4e-user-agent)
 
-;; default
-(setq mu4e-maildir "~/Maildir")
+;;location of my maildir
+(setq mu4e-maildir (expand-file-name "~/Maildir"))
 
-(setq mu4e-drafts-folder "/[Gmail].Drafts")
-(setq mu4e-sent-folder   "/[Gmail].Sent Mail")
-(setq mu4e-trash-folder  "/[Gmail].Trash")
+;;command used to get mail
+;; use this for testing
+;;(setq mu4e-get-mail-command "true")
+;; use this to sync with mbsync
+(setq mu4e-get-mail-command "mbsync gmail")
+(setq mu4e-update-interval 300)             ;; update every 5 minutes
+
+
+
+;;rename files when moving
+;;NEEDED FOR MBSYNC
+(setq mu4e-change-filenames-when-moving t)
+
+;;set up queue for offline email
+;;use mu mkdir  ~/Maildir/queue to set up first
+(setq smtpmail-queue-mail nil  ;; start in normal mode
+      smtpmail-queue-dir   "~/Maildir/queue/cur")
+
+
+(setq mu4e-drafts-folder "/[Gmail]/Drafts")
+(setq mu4e-sent-folder   "/[Gmail]/Sent Mail")
+(setq mu4e-trash-folder  "/[Gmail]/Trash")
 
 ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
 (setq mu4e-sent-messages-behavior 'delete)
@@ -398,12 +427,12 @@
 
 (setq mu4e-maildir-shortcuts
       '( ("/INBOX"               . ?i)
-         ("/[Gmail].Sent Mail"   . ?s)
-         ("/[Gmail].Trash"       . ?t)
-         ("/[Gmail].All Mail"    . ?a)))
+         ("/[Gmail]/Sent Mail"   . ?s)
+         ("/[Gmail]/Trash"       . ?t)
+         ("/[Gmail]/All Mail"    . ?a)))
 
 ;; allow for updating mail using 'U' in the main view:
-(setq mu4e-get-mail-command "offlineimap")
+;;(setq mu4e-get-mail-command "offlineimap")
 
 ;; something about ourselves
 (setq
@@ -443,13 +472,13 @@
  mu4e-index-cleanup nil      ;; don't do a full cleanup check
  mu4e-index-lazy-check t)    ;; don't consider up-to-date dirs
 
-(setq
- mu4e-get-mail-command "offlineimap"   ;; or fetchmail, or ...
- mu4e-update-interval 300)             ;; update every 5 minutes
-                                        ; ;(run-at-time nil 300 'mu4e-update-index)	 
+;;(setq
+;; mu4e-get-mail-command "offlineimap"   ;; or fetchmail, or ...
+;; mu4e-update-interval 300)             ;; update every 5 minutes
+;;                                        ; ;(run-at-time nil 300 'mu4e-update-index)	 
 
 ;; https://groups.google.com/forum/#!msg/mu-discuss/4WyTcvKzkAY/bUC5w_941esJ
-(add-hook 'mu4e-index-updated-hook 'mu4e~headers-do-auto-update)
+;; (add-hook 'mu4e-index-updated-hook 'mu4e-headers-do-auto-update)
 
 
 ;; https://www.djcbsoftware.nl/code/mu/mu4e/Displaying-rich_002dtext-messages.html
@@ -481,7 +510,6 @@
 
 (add-hook 'org-ctrl-c-ctrl-c-hook 'htmlize-and-send t)
 
-
 (setq global-mu4e-conversation-mode t)
 
 
@@ -494,16 +522,57 @@
 (global-set-key (kbd "C-c o")
                 (lambda () (interactive) (find-file "~/Documents/personal.org")))
 
+(global-set-key (kbd "C-c l")
+                (lambda () (interactive) (find-file "~/Documents/personal/finances/ledger/personal.dat")))
+
 
 ;; ---------------------------------- ;;
 ;; SETTINGS AND FUNCTIONS
 ;; ---------------------------------- ;;
 
 (defun startup ()
-
-  (window-configuration-to-register 1)
-  (jump-to-register 1)
+  (osu)
+  (mail)
+  (init)
+  (vcs)
+  ;;(ledger)
+  (scratch)
   )
+
+(defun scratch()
+  (eyebrowse-switch-to-window-config-1)
+  (eyebrowse-rename-window-config 1 "scratch"))
+
+(defun osu()
+  (eyebrowse-switch-to-window-config-2)
+  (eyebrowse-rename-window-config 2 "osu")
+  (dired "/home/liam/Documents/code/osu/2019winter/"))
+
+(defun mail ()
+  (eyebrowse-switch-to-window-config-3)
+  (eyebrowse-rename-window-config 3 "mail")
+  (mu4e))
+
+(defun init ()
+  (eyebrowse-switch-to-window-config-4)
+  (eyebrowse-rename-window-config 4 "init")
+  (find-file "/home/liam/Documents/code/dotfiles/emacs/init.el"))
+
+(defun vcs ()
+  (eyebrowse-switch-to-window-config-5)
+  (eyebrowse-rename-window-config 5 "magit")
+  (magit "/home/liam/Documents/code/osu/")
+  (delete-other-windows))
+
+(defun ledger ()
+  (eyebrowse-switch-to-window-config-6)
+  (eyebrowse-rename-window-config 6 "ledger")
+  (find-file "/home/liam/Documents/personal/finances/ledger/personal.dat"))
+  
+
+;;(startup)
+(add-hook 'after-init-hook #'startup)
+
 
 ;; https://www.emacswiki.org/emacs/ZoneMode
 (defun zone-pgm-md5 ()
@@ -705,7 +774,24 @@
  '(doc-view-continuous t)
  '(evil-want-C-i-jump nil)
  '(fci-rule-color "#969896")
+ '(global-linum-mode t)
  '(indent-tabs-mode nil)
+ '(ledger-clear-whole-transactions t)
+ '(ledger-reports
+   (quote
+    (("/home/liam/Documents/personal/finances/ledger/personal.dat" "ledger ")
+     (#("bal" 0 1
+        (idx 1))
+      "%(binary) -f %(ledger-file) bal")
+     (#("reg" 0 1
+        (idx 3))
+      "%(binary) -f %(ledger-file) reg")
+     (#("payee" 0 1
+        (idx 2))
+      "%(binary) -f %(ledger-file) reg @%(payee)")
+     (#("account" 0 1
+        (idx 0))
+      "%(binary) -f %(ledger-file) reg %(account)"))))
  '(nrepl-message-colors
    (quote
     ("#183691" "#969896" "#a71d5d" "#969896" "#0086b3" "#795da3" "#a71d5d" "#969896")))
@@ -716,9 +802,10 @@
     (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (doom-modeline mu4e-conversation telephone-line session ob-tmux eyebrowse format-all rainbow-mode zone-sl zone-rainbow zone-nyan perspective golden-ratio android-mode elmacro rmsbolt swiper ace-jump-mode powerline-evil powerline esup auctex org-ref-pubmed org-ref-scopus org-ref-wos org-id org-ref org-mime pdf-tools weechat aggressive-indent smart-tabs-mode smart-tabs smooth-scrolling evil-mu4e mu4e highlight-indentation company-mode company ws-butler 0blayout anki-editor auto-complete hydra-ivy ivy-hydra smart-parens hydra projectile smartparens ob-sql-mode org-babel-eval-in-repl ivy-rich gnuplot-mode gnuplot sicp haskell-mode geiser chicken-scheme chess github-theme htmlize which-key use-package smex slime shell-pop rotate rebecca-theme rainbow-delimiters paredit multiple-cursors ivy general flycheck evil-magit evil-leader dracula-theme dashboard)))
+    (sane-term flycheck-ledger ledger-mode doom-modeline mu4e-conversation telephone-line session ob-tmux eyebrowse format-all rainbow-mode zone-sl zone-rainbow zone-nyan perspective golden-ratio android-mode elmacro rmsbolt swiper ace-jump-mode powerline-evil powerline esup auctex org-ref-pubmed org-ref-scopus org-ref-wos org-id org-ref org-mime pdf-tools weechat aggressive-indent smart-tabs-mode smart-tabs smooth-scrolling evil-mu4e mu4e highlight-indentation company-mode company ws-butler 0blayout anki-editor auto-complete hydra-ivy ivy-hydra smart-parens hydra projectile smartparens ob-sql-mode org-babel-eval-in-repl ivy-rich gnuplot-mode gnuplot sicp haskell-mode geiser chicken-scheme chess github-theme htmlize which-key use-package smex slime shell-pop rotate rebecca-theme rainbow-delimiters paredit multiple-cursors ivy general flycheck evil-magit evil-leader dracula-theme dashboard)))
  '(pdf-view-midnight-colors (quote ("#969896" . "#f8eec7")))
- '(projectile-mode t nil (projectile))
+ '(projectile-mode nil nil (projectile))
+ '(send-mail-function (quote mailclient-send-it))
  '(tab-width 4)
  '(tls-checktrust (quote ask))
  '(vc-annotate-background "#b0cde7")

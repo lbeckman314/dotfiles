@@ -222,6 +222,9 @@ fi
 # https://askubuntu.com/questions/758496/how-to-make-a-permanent-alias-in-oh-my-zsh
 hash -d s=~/Documents/code/osu/2018summer/
 hash -d f=~/Documents/code/osu/2018fall/
+hash -d i=~/Documents/code/osu/2019winter/
+hash -d fin=~/Documents/personal/finances/ledger/
+hash -d w=~/Documents/writings/
 
 # https://old.reddit.com/r/emacs/comments/9b1bhs/emacsshell_protip_alias_magit/
 alias magit='emacsclient -c -n -a "" -e "(progn (magit-status) (delete-other-windows))"'

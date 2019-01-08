@@ -33,7 +33,7 @@ bspc rule -a xfce4-terminal desktop=^1
 feh --bg-fill /usr/share/xfce4/backdrops/Mountainous_View_by_Sven_Scheuermeier.jpg &
 #polybar top &
 xfce4-panel &
-emacs &
+#emacs &
 xfce4-terminal &
 alttab &
 plank &

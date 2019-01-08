@@ -3,22 +3,30 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>init</title>
-<!-- 2018-07-01 Sun 14:45 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
+<!-- 2018-11-27 Tue 14:35 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="liam beckman" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -45,27 +53,111 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -85,6 +177,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <script type="text/javascript">
@@ -92,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -133,62 +226,40 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
+<script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-        // Only one of the two following lines, depending on user settings
-        // First allows browser-native MathML display, second forces HTML/CSS
-        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
-            jax: ["input/TeX", "output/HTML-CSS"],
-        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
-                     "TeX/noUndefined.js"],
-        tex2jax: {
-            inlineMath: [ ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
-            skipTags: ["script","noscript","style","textarea","pre","code"],
-            ignoreClass: "tex2jax_ignore",
-            processEscapes: false,
-            processEnvironments: true,
-            preview: "TeX"
-        },
-        showProcessingMessages: true,
         displayAlign: "center",
-        displayIndent: "2em",
+        displayIndent: "0em",
 
-        "HTML-CSS": {
-             scale: 100,
-             availableFonts: ["STIX","TeX"],
-             preferredFont: "TeX",
-             webFont: "TeX",
-             imageFont: "TeX",
-             showMathMenu: true,
-        },
-        MMLorHTML: {
-             prefer: {
-                 MSIE:    "MML",
-                 Firefox: "MML",
-                 Opera:   "HTML",
-                 other:   "HTML"
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
              }
-        }
-    });
-/*]]>*///-->
+});
 </script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
-<h1 class="title">init</h1>
 <p>
-;; An (evil) emacs init  cobbled together from the far corners of the world.
+;; An (evil) emacs init cobbled together from the far corners of the world.
 ;; Feel free to copy and paste, fork, clone, or anything you like. 
 </p>
 
-
 <p>
-;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; -----------------------------&#x2013;&#x2014; ;;
 ;; PACKAGES :: INITIALIZATION
-;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; -----------------------------&#x2013;&#x2014; ;;
 </p>
 
 <p>
@@ -208,131 +279,250 @@ for the JavaScript code in this tag.
 <p>
 ;; automagically install/bootstrap packages
 ;; <a href="https://blog.aaronbieber.com/2015/05/24/from-vim-to-emacs-in-fourteen-days.html">https://blog.aaronbieber.com/2015/05/24/from-vim-to-emacs-in-fourteen-days.html</a>
-;; (unless (package-installed-p 'use-package)
-;;   (package-refresh-contents)
-;;   (package-install 'use-package))
-;; (eval-when-compile
-;;   (require 'use-package))
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(eval-when-compile
+  (require 'use-package))
 </p>
 
 
 <p>
-;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; -----------------------------&#x2013;&#x2014; ;;
 ;; PACKAGES :: MISC
-;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; -----------------------------&#x2013;&#x2014; ;;
+</p>
+
+<p>
+;; <a href="https://github.com/jwiegley/emacs-async">https://github.com/jwiegley/emacs-async</a>
+(use-package async
+  :ensure t
+  :config
+  (async-bytecomp-package-mode 1))
+</p>
+
+<p>
+;; <a href="http://pragmaticemacs.com/emacs/super-efficient-movement-using-avy/">http://pragmaticemacs.com/emacs/super-efficient-movement-using-avy/</a>
+(use-package avy
+  :ensure t
+  :config
+  (avy-setup-default)
+  :bind ("M-s" . avy-goto-char))
+</p>
+
+<p>
+(use-package company
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'global-company-mode))
 </p>
 
 <p>
 (use-package chicken-scheme
-</p>
-<p>
-:ensure t
-</p>
-<p>
-:config
+  :ensure t
+  :config
   (setq inferior-lisp-program "/usr/bin/sbcl"))
 </p>
 
 <p>
+(use-package desktop
+  :ensure t
+  :config 
+  ;; save sessions
+  ;; <a href="https://www.emacswiki.org/emacs?action=browse;oldid=DeskTop;id=Desktop">https://www.emacswiki.org/emacs?action=browse;oldid=DeskTop;id=Desktop</a>
+  (setq desktop-path '("~/.emacs.d/"))
+  (setq desktop-dirname "~/.emacs.d/")
+  (desktop-save-mode 1)
+  (defun my-desktop-save ()
+    (interactive)
+    ;; Don't call desktop-save-in-desktop-dir, as it prints a message.
+    (if (eq (desktop-owner) (emacs-pid))
+        (desktop-save desktop-dirname)))
+  (add-hook 'auto-save-hook 'my-desktop-save))
+</p>
+
+
+<p>
 (use-package dracula-theme
-</p>
-<p>
-:ensure t
-</p>
-<p>
-:config
+  :ensure t
+  :config
   (load-theme 'dracula t))
+;; <a href="https://draculatheme.com/emacs/">https://draculatheme.com/emacs/</a>
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+                                        ;(load-theme 'blacula t)
+</p>
+
+<p>
+(use-package elmacro
+  :ensure t)
+</p>
+
+<p>
+(use-package eyebrowse
+  :ensure t
+  :config
+  (eyebrowse-mode t))
+</p>
+
+<p>
+(use-package flycheck
+  :ensure t)
 </p>
 
 <p>
 (use-package geiser
-</p>
-<p>
-:ensure t
-</p>
-<p>
-:config
+  :ensure t
+  :config
   (setq geiser-default-implementation 'guile)
   (setq geiser-repl-use-other-window nil))
 </p>
 
 <p>
 (use-package haskell-mode
+  :ensure t)
 </p>
+
 <p>
-:ensure t)
+(use-package htmlize
+  :ensure t)
 </p>
 
 <p>
 ;; <a href="https://github.com/abo-abo/swiper">https://github.com/abo-abo/swiper</a>
 (use-package ivy
-</p>
-<p>
-:ensure t
-</p>
-<p>
-:config
+  :ensure t
+  :config
   (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t)
-  (setq enable-recursive-minibuffers t))
+</p>
+
+<p>
+;; recent buffers
+(setq ivy-use-virtual-buffers t)
+</p>
+
+<p>
+(setq enable-recursive-minibuffers t))
+</p>
+
+<p>
+;; <a href="https://github.com/Yevgnen/ivy-rich">https://github.com/Yevgnen/ivy-rich</a>
+(use-package ivy-rich
+  :ensure t
+  :config
+  (ivy-rich-mode 1)
+  (setq ivy-virtual-abbreviate 'full
+        ivy-rich-switch-buffer-align-virtual-buffer t)
+  (setq ivy-rich-path-style 'abbrev))
+</p>
+
+<p>
+;; <a href="https://old.reddit.com/r/emacs/comments/8x4xtt/tip_how_i_use_ledger_to_track_my_money/">https://old.reddit.com/r/emacs/comments/8x4xtt/tip_how_i_use_ledger_to_track_my_money/</a>
+(use-package ledger-mode
+  :ensure t
+  :mode ("\\.dat\\'"
+         "\\.ledger\\'")
+  :custom (ledger-clear-whole-transactions t)
+  :config
+  (use-package flycheck-ledger :ensure t :after ledger-mode))
+</p>
+
+<p>
+(use-package pdf-tools
+  :ensure t)
+</p>
+
+<p>
+(use-package projectile
+  :ensure t)
+</p>
+
+<p>
+;; <a href="http://cachestocaches.com/2015/8/getting-started-use-package/">http://cachestocaches.com/2015/8/getting-started-use-package/</a>
+(use-package tex
+  :ensure auctex
+  :config
+  ;; <a href="https://tex.stackexchange.com/questions/207889/how-to-set-up-forward-inverse-searches-with-auctex-and-zathura">https://tex.stackexchange.com/questions/207889/how-to-set-up-forward-inverse-searches-with-auctex-and-zathura</a>
+  ;;(add-to-list 'TeX-view-program-selection
+  ;;             '(output-pdf "Zathura"))
+</p>
+
+<p>
+;; <a href="https://www.emacswiki.org/emacs/AUCTeX#toc5">https://www.emacswiki.org/emacs/AUCTeX#toc5</a>
+(setq TeX-PDF-mode t)
+</p>
+
+<p>
+;; to use pdfview with auctex
+(setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+      TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view)))
+</p>
+
+<p>
+;; <a href="https://emacs.stackexchange.com/questions/19472/how-to-let-auctex-open-pdf-with-pdf-tools">https://emacs.stackexchange.com/questions/19472/how-to-let-auctex-open-pdf-with-pdf-tools</a>
+;; Update PDF buffers after successful LaTeX runs
+(add-hook 'TeX-after-compilation-finished-functions
+          #'TeX-revert-document-buffer)
+</p>
+
+<p>
+(setq TeX-source-correlate-method (quote synctex))
+(setq TeX-source-correlate-start-server t)
+(setq TeX-source-correlate-mode t))
 </p>
 
 <p>
 ;; <a href="https://www.emacswiki.org/emacs/RainbowDelimiters">https://www.emacswiki.org/emacs/RainbowDelimiters</a>
 (use-package rainbow-delimiters
-</p>
-<p>
-:ensure t
-</p>
-<p>
-:config
+  :ensure t
+  :config
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 </p>
 
 <p>
 (use-package rotate
-</p>
-<p>
-:ensure t)
+  :ensure t)
 </p>
 
 <p>
 ;; <a href="http://pragmaticemacs.com/emacs/pop-up-a-quick-shell-with-shell-pop/">http://pragmaticemacs.com/emacs/pop-up-a-quick-shell-with-shell-pop/</a>
 (use-package shell-pop
-</p>
-<p>
-:bind (("C-t" . shell-pop))
-</p>
-<p>
-:config
-(setq shell-pop-shell-type (quote ("ansi-term" "<b>ansi-term</b>" (lambda nil (ansi-term shell-pop-term-shell)))))
-(setq shell-pop-term-shell "/bin/zsh")
-;; need to do this manually or not picked up by `shell-pop'
-(shell-pop&#x2013;set-shell-type 'shell-pop-shell-type shell-pop-shell-type))
+  :bind (("C-t" . shell-pop))
+  :config
+  (setq shell-pop-shell-type (quote ("ansi-term" "<b>ansi-term</b>" (lambda nil (ansi-term shell-pop-term-shell)))))
+  (setq shell-pop-term-shell "/bin/zsh")
+  (setq shell-pop-window-position "right")
+  (setq shell-pop-window-size 50)
+  ;; need to do this manually or not picked up by `shell-pop'
+  (shell-pop&#x2013;set-shell-type 'shell-pop-shell-type shell-pop-shell-type))
 </p>
 
 <p>
 (use-package slime
-</p>
-<p>
-:ensure t
-</p>
-<p>
-:config
+  :ensure t
+  :config
   (setq inferior-lisp-program "/usr/bin/sbcl")
   (require 'slime-autoloads)
   (slime-setup '(slime-fancy)))
 </p>
 
 <p>
+(use-package smartparens
+  :ensure t)
+</p>
+
+<p>
+;; <a href="https://www.emacswiki.org/emacs/SmartTabs">https://www.emacswiki.org/emacs/SmartTabs</a>
+(use-package smart-tabs-mode
+  :ensure t
+  :config
+  (smart-tabs-insinuate 'c 'javascript))
+</p>
+
+<p>
 ;; <a href="https://github.com/nonsequitur/smex/">https://github.com/nonsequitur/smex/</a>
 (use-package smex
-</p>
-<p>
-:ensure t
-</p>
-<p>
-:config
+  :ensure t
+  :config
   (smex-initialize)
   (global-set-key (kbd "M-x") 'smex)
   (global-set-key (kbd "M-X") 'smex-major-mode-commands))
@@ -340,48 +530,69 @@ for the JavaScript code in this tag.
 
 <p>
 (use-package which-key
-</p>
-<p>
-:ensure t
-</p>
-<p>
-:config
+  :ensure t
+  :config
   (which-key-mode))
 </p>
 
+<p>
+(use-package ws-butler
+  :ensure t)
+</p>
+
 
 <p>
-;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; -----------------------------&#x2013;&#x2014; ;;
 ;; PACKAGES :: ORG MODE
-;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; -----------------------------&#x2013;&#x2014; ;;
 </p>
 
 <p>
 ;; <a href="http://ergoemacs.org/emacs/emacs_org_babel_literate_programing.html">http://ergoemacs.org/emacs/emacs_org_babel_literate_programing.html</a>
 (use-package org
-</p>
-<p>
-:ensure t
-</p>
-<p>
-:config
+  :ensure t
+  :config
   (setq org-agenda-files '("~/Documents/personal/org-mode/"))
-  ;; make org mode allow eval of some langs
-  (org-babel-do-load-languages
-  'org-babel-load-languages
-  '((emacs-lisp . t)
-  (C . t)
-  (haskell . t)
-  (js . t)
-  (python . t)
-  (scheme . t)
-  (sh . t)
-  (sql . t)
-  (ruby . t)))
+  (add-hook 'org-src-mode-hook 'display-line-numbers-mode)
+</p>
+
+<p>
+;; <a href="https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html">https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html</a>
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+</p>
+
+<p>
+;; Tell the latex export to use the minted package for source
+;; code coloration.
+(setq org-latex-listings 'minted)
+;; Let the exporter use the -shell-escape option to let latex
+;; execute external programs.
+;; This obviously and can be dangerous to activate!
+(setq org-latex-pdf-process
+      '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f")))
+</p>
+
+<p>
+;; make org mode allow eval of some langs
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (C . t)
+   (haskell . t)
+   (js . t)
+   (latex . t)
+   (python . t)
+   (scheme . t)
+   (shell . t)
+   (sql . t)
+   (ruby . t)))
 </p>
 
 <p>
 (setq org-confirm-babel-evaluate nil)
+(setq org-export-babel-evaluate t)
 (setq org-src-fontify-natively t)
 </p>
 
@@ -392,18 +603,14 @@ for the JavaScript code in this tag.
 </p>
 
 <p>
-(add-to-list 'org-latex-packages-alist
-             '("" "amsmath" t)
-             '("" "mathtools" t))
+(eval-after-load 'autoinsert
+  '(define-auto-insert
+     '("\.org\'" . "org skeleton")
+     '("#+TITLE:" \n
+       "#+SETUPFILE: ~/main.org" \n\n)))
 </p>
 
-<p>
-;; Add minted to the defaults packages to include when exporting.
-(add-to-list 'org-latex-packages-alist '("" "minted"))
-;; Tell the latex export to use the minted package for source
-;; code coloration.
-(setq org-latex-listings 'minted)
-</p>
+
 
 <p>
 (setq org-src-preserve-indentation 't)
@@ -412,25 +619,54 @@ for the JavaScript code in this tag.
 <p>
 (setq org-latex-minted-options '(("breaklines" "true")
                                  ("breakanywhere" "true")))
-    ;; Let the exporter use the -shell-escape option to let latex
-    ;; execute external programs.
-    ;; This obviously and can be dangerous to activate!
-    (setq org-latex-pdf-process
-        '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f")))
+</p>
+
+<p>
+;; Let the exporter use the -shell-escape option to let latex
+;; execute external programs.
+;; This obviously and can be dangerous to activate!
+(setq org-latex-pdf-process
+      '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+</p>
+
+<p>
+;; <a href="https://www.emacswiki.org/emacs/AutoInsertMode">https://www.emacswiki.org/emacs/AutoInsertMode</a>
+(eval-after-load 'autoinsert
+  '(define-auto-insert '("\\.org\\'" . "org skeleton")
+     '(
+       (file-name-sans-extension (file-name-nondirectory (buffer-file-name)))
+       "#+TITLE: " str \n
+       "#+AUTHOR: liam beckman" \n
+       "#+SETUPFILE: ~/main.org" &gt; \n \n
+       )))
 </p>
 
 
 <p>
-;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; <a href="https://old.reddit.com/r/orgmode/comments/8kzbii/tip_how_i_use_orgjournal_to_improve_my/">https://old.reddit.com/r/orgmode/comments/8kzbii/tip_how_i_use_orgjournal_to_improve_my/</a>
+(setq org-capture-templates
+      '(("j" "Journal" entry (file+olp+datetree "~/Documents/code/osu/2018fall/cs361-software/journal.org") "\n* %?\n")
+</p>
+
+<p>
+("l" "Ledger")
+  ("lb" "Bank" plain (file ,(format "~/Documents/personal/finances/ledger/personal.dat" (format-time-string "%Y"))),
+   :empty-lines 1
+   :immediate-finish t)
+  ("lc" "Cash" plain (file ,(format "~/Documents/personal/finances/ledger/personal.dat" (format-time-string "%Y"))),
+   :empty-lines 1
+   :immediate-finish t)))
+</p>
+
+<p>
+;; -----------------------------&#x2013;&#x2014; ;;
 ;; PACKAGES :: MAGIT
-;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; -----------------------------&#x2013;&#x2014; ;;
 </p>
 
 <p>
 (use-package magit
-</p>
-<p>
-:ensure t)
+  :ensure t)
 </p>
 
 <p>
@@ -440,82 +676,269 @@ for the JavaScript code in this tag.
 ;; optional: disable additional bindings for yanking text
 ;; (setq evil-magit-use-y-for-yank nil)
 (use-package evil-magit
-</p>
-<p>
-:ensure t)
+  :ensure t)
 </p>
 
 
 <p>
-;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; -----------------------------&#x2013;&#x2014; ;;
 ;; PACKAGES :: EVIL
-;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; -----------------------------&#x2013;&#x2014; ;;
 </p>
 
 <p>
 (use-package evil
-</p>
-<p>
-:ensure t
-</p>
-<p>
-:config
+  :ensure t
+  :config
   (evil-mode 1)
+</p>
+
+<p>
+(setq evil-want-C-i-jump nil)
+</p>
+
+<p>
+;; <a href="https://old.reddit.com/r/emacs/comments/50j2po/has_anyone_gotten_evil_and_smarttabsmode_playing/">https://old.reddit.com/r/emacs/comments/50j2po/has_anyone_gotten_evil_and_smarttabsmode_playing/</a>
+(setq evil-indent-convert-tabs nil)
 </p>
 
 <p>
 ;; <a href="https://emacs.stackexchange.com/questions/17673/no-org-babel-execute-function-for-c-and-no-org-babel-execute-function-for-c">https://emacs.stackexchange.com/questions/17673/no-org-babel-execute-function-for-c-and-no-org-babel-execute-function-for-c</a>
 (global-set-key (kbd "C-S-c") #'evil-copy)
 (global-set-key (kbd "C-S-v") #'evil-paste-before))
-(setq evil-want-C-i-jump nil)
 </p>
 
 <p>
-;; <a href="https://github.com/milkypostman/powerline">https://github.com/milkypostman/powerline</a>
-(use-package powerline-evil
+;; (use-package powerline
+;;     :ensure t)
 </p>
+
 <p>
-:ensure t
+;; ;; <a href="https://github.com/milkypostman/powerline">https://github.com/milkypostman/powerline</a>
+;; (use-package powerline-evil
+;;     :ensure t
+;;     :config 
+;;     (powerline-evil-vim-color-theme))
 </p>
+
 <p>
-:config 
-(powerline-evil-vim-color-theme))
-;; i like square borders in powerline
-;(setq powerline-evil-default-separator 'nil))
+(use-package telephone-line
+  :ensure t
+  :config
+  (setq telephone-line-primary-left-separator 'telephone-line-flat
+        telephone-line-secondary-left-separator 'telephone-line-flat
+        telephone-line-primary-right-separator 'telephone-line-flat
+        telephone-line-secondary-right-separator 'telephone-line-flat)
 </p>
+
+<p>
+;; <a href="https://old.reddit.com/r/emacs/comments/7e7xzg/telephoneline_theming_question/">https://old.reddit.com/r/emacs/comments/7e7xzg/telephoneline_theming_question/</a>
+(set-face-attribute 'telephone-line-evil-normal
+                    nil
+                    :background
+                    "#BD93F9")
+(set-face-attribute 'telephone-line-evil-insert
+                    nil
+                    :background
+                    "#50FA7B")
+(set-face-attribute 'telephone-line-evil-visual
+                    nil
+                    :background
+                    "#F1FA8C")
+(telephone-line-mode 1))
+</p>
+
 
 <p>
 ;; evil keybindings
 (use-package general
-</p>
-<p>
-:ensure t
-</p>
-<p>
-:config (general-define-key
-</p>
-<p>
-:states '(normal visual insert emacs)
-</p>
-<p>
-:prefix "SPC"
-</p>
-<p>
-    :non-normal-prefix "M-SPC"
-    "f"  'find-file
-    "gs" 'magit-status
-    "w+" 'rotate-layout
-    "l"  'ivy-switch-buffer
-    "'"  'shell-pop
-    "bd" 'evil-delete-buffer
-))
+  :ensure t
+  :config (general-define-key
+           :states '(normal visual insert emacs)
+           :prefix "SPC"
+           :non-normal-prefix "M-SPC"
+           "f"  'find-file
+           "gs" 'magit-status
+           "w+" 'rotate-layout
+           "l"  'ivy-switch-buffer
+           "'"  'shell-pop
+           "bd" 'evil-delete-buffer
+           ))
 </p>
 
 
 <p>
-;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; -----------------------------&#x2013;&#x2014; ;;
+;; PACKAGES :: MU4E
+;; -----------------------------&#x2013;&#x2014; ;;
+</p>
+
+<p>
+;; <a href="http://www.djcbsoftware.nl/code/mu/mu4e/Gmail-configuration.html#Gmail-configuration">http://www.djcbsoftware.nl/code/mu/mu4e/Gmail-configuration.html#Gmail-configuration</a>
+(require 'mu4e)
+</p>
+
+<p>
+;; use mu4e for e-mail in emacs
+(setq mail-user-agent 'mu4e-user-agent)
+</p>
+
+<p>
+;; default
+(setq mu4e-maildir "~/Maildir")
+</p>
+
+<p>
+(setq mu4e-drafts-folder "<i>[Gmail].Drafts")
+(setq mu4e-sent-folder   "</i>[Gmail].Sent Mail")
+(setq mu4e-trash-folder  "/[Gmail].Trash")
+</p>
+
+<p>
+;; don't save message to Sent Messages, Gmail/IMAP takes care of this
+(setq mu4e-sent-messages-behavior 'delete)
+</p>
+
+<p>
+;; (See the documentation for `mu4e-sent-messages-behavior' if you have
+;; additional non-Gmail addresses and want assign them different
+;; behavior.)
+</p>
+
+<p>
+;; setup some handy shortcuts
+;; you can quickly switch to your Inbox &#x2013; press ``ji''
+;; then, when you want archive some messages, move them to
+;; the 'All Mail' folder by pressing ``ma''.
+</p>
+
+<p>
+(setq mu4e-maildir-shortcuts
+      '( ("<i>INBOX"               . ?i)
+         ("</i>[Gmail].Sent Mail"   . ?s)
+         ("<i>[Gmail].Trash"       . ?t)
+         ("</i>[Gmail].All Mail"    . ?a)))
+</p>
+
+<p>
+;; allow for updating mail using 'U' in the main view:
+(setq mu4e-get-mail-command "offlineimap")
+</p>
+
+<p>
+;; something about ourselves
+(setq
+ user-mail-address "lbeckman314@gmail.com"
+ user-full-name  "liam beckman")
+                                        ;mu4e-compose-signature
+                                        ; (concat
+                                        ;   "liam  beckman\n"
+                                        ;   "<a href="http://www.liambeckman.com\n">http://www.liambeckman.com\n</a>"))
+</p>
+
+<p>
+;; sending mail &#x2013; replace USERNAME with your gmail username
+;; also, make sure the gnutls command line utils are installed
+;; package 'gnutls-bin' in Debian/Ubuntu
+</p>
+
+<p>
+(require 'smtpmail)
+(setq message-send-mail-function 'smtpmail-send-it
+      starttls-use-gnutls t
+      smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
+      smtpmail-auth-credentials
+      '(("smtp.gmail.com" 587 "lbeckman314@gmail.com" nil))
+      smtpmail-default-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-service 587)
+</p>
+
+<p>
+;; alternatively, for emacs-24 you can use:
+;;(setq message-send-mail-function 'smtpmail-send-it
+;;     smtpmail-stream-type 'starttls
+;;     smtpmail-default-smtp-server "smtp.gmail.com"
+;;     smtpmail-smtp-server "smtp.gmail.com"
+;;     smtpmail-smtp-service 587)
+</p>
+
+<p>
+;; don't keep message buffers around
+(setq message-kill-buffer-on-exit t)
+</p>
+
+<p>
+;; <a href="https://www.djcbsoftware.nl/code/mu/mu4e/Retrieval-and-indexing.html">https://www.djcbsoftware.nl/code/mu/mu4e/Retrieval-and-indexing.html</a>
+(setq
+ mu4e-index-cleanup nil      ;; don't do a full cleanup check
+ mu4e-index-lazy-check t)    ;; don't consider up-to-date dirs
+</p>
+
+<p>
+(setq
+ mu4e-get-mail-command "offlineimap"   ;; or fetchmail, or &#x2026;
+ mu4e-update-interval 300)             ;; update every 5 minutes
+                                        ; ;(run-at-time nil 300 'mu4e-update-index)	 
+</p>
+
+<p>
+;; <a href="https://groups.google.com/forum/#!msg/mu-discuss/4WyTcvKzkAY/bUC5w_941esJ">https://groups.google.com/forum/#!msg/mu-discuss/4WyTcvKzkAY/bUC5w_941esJ</a>
+(add-hook 'mu4e-index-updated-hook 'mu4e~headers-do-auto-update)
+</p>
+
+
+<p>
+;; <a href="https://www.djcbsoftware.nl/code/mu/mu4e/Displaying-rich_002dtext-messages.html">https://www.djcbsoftware.nl/code/mu/mu4e/Displaying-rich_002dtext-messages.html</a>
+(add-hook 'mu4e-view-mode-hook
+          (lambda()
+            ;; try to emulate some of the eww key-bindings
+            (local-set-key (kbd "&lt;tab&gt;") 'shr-next-link)
+            (local-set-key (kbd "&lt;backtab&gt;") 'shr-previous-link)))
+</p>
+
+<p>
+(setq shr-color-visible-luminance-min 80)
+</p>
+
+<p>
+;; <a href="https://www.djcbsoftware.nl/code/mu/mu4e/Org_002dmode-links.html">https://www.djcbsoftware.nl/code/mu/mu4e/Org_002dmode-links.html</a>
+(require 'org-mu4e)
+</p>
+
+<p>
+;; <a href="https://kitchingroup.cheme.cmu.edu/blog/2016/10/29/Sending-html-emails-from-org-mode-with-org-mime/#orgheadline2">https://kitchingroup.cheme.cmu.edu/blog/2016/10/29/Sending-html-emails-from-org-mode-with-org-mime/#orgheadline2</a>
+(defun mu4e-compose-org-mail ()
+  (interactive)
+  (mu4e-compose-new)
+  (org-mu4e-compose-org-mode))
+</p>
+
+<p>
+(defun htmlize-and-send ()
+  "When in an org-mu4e-compose-org-mode message, htmlize and send it."
+  (interactive)
+  (when (member 'org~mu4e-mime-switch-headers-or-body post-command-hook)
+    (load-theme 'github t)
+    (org-mime-htmlize) 
+    (disable-theme 'github)
+    (message-send-and-exit)))
+</p>
+
+<p>
+(add-hook 'org-ctrl-c-ctrl-c-hook 'htmlize-and-send t)
+</p>
+
+
+<p>
+(setq global-mu4e-conversation-mode t)
+</p>
+
+
+<p>
+;; -----------------------------&#x2013;&#x2014; ;;
 ;; KEYBINDINGS
-;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; -----------------------------&#x2013;&#x2014; ;;
 </p>
 
 <p>
@@ -527,9 +950,168 @@ for the JavaScript code in this tag.
 
 
 <p>
-;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
-;; SETTINGS
-;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; -----------------------------&#x2013;&#x2014; ;;
+;; SETTINGS AND FUNCTIONS
+;; -----------------------------&#x2013;&#x2014; ;;
+</p>
+
+<p>
+(defun startup ()
+  (osu)
+  (mail)
+  (init)
+  (vcs)
+  (scratch)
+  )
+</p>
+
+<p>
+(defun scratch()
+  (eyebrowse-switch-to-window-config-1))
+</p>
+
+<p>
+(defun osu()
+  (eyebrowse-switch-to-window-config-2)
+  (dired "/home/liam/Documents/code/osu")
+  )
+</p>
+
+<p>
+(defun mail ()
+  (eyebrowse-switch-to-window-config-3)
+  (mu4e))
+</p>
+
+<p>
+(defun init ()
+  (eyebrowse-switch-to-window-config-4)
+  (find-file "/home/liam/Documents/code/dotfiles/emacs/init.el"))
+</p>
+
+<p>
+(defun vcs ()
+  (eyebrowse-switch-to-window-config-5)
+  (magit "<i>home/liam/Documents/code/osu</i>")
+  (delete-other-windows)
+  )
+</p>
+
+<p>
+;;(startup)
+(add-hook 'after-init-hook #'startup)
+</p>
+
+
+<p>
+;; <a href="https://www.emacswiki.org/emacs/ZoneMode">https://www.emacswiki.org/emacs/ZoneMode</a>
+(defun zone-pgm-md5 ()
+  "MD5 the buffer, then recursively checksum each hash."
+  (let ((prev-md5 (buffer-substring-no-properties ;; Initialize.
+                   (point-min) (point-max))))
+    ;; Whitespace-fill the window.
+    (zone-fill-out-screen (window-width) (window-height))
+    (random t)
+    (goto-char (point-min))
+    (while (not (input-pending-p))
+      (when (eobp)
+        (goto-char (point-min)))
+      (while (not (eobp))
+        (delete-region (point) (line-end-position))
+        (let ((next-md5 (md5 prev-md5)))
+          (insert next-md5)
+          (setq prev-md5 next-md5))
+        (forward-line 1)
+        (zone-park/sit-for (point-min) 0.1)))))
+(eval-after-load "zone"
+  '(unless (memq 'zone-pgm-md5 (append zone-programs nil))
+     (setq zone-programs
+           (vconcat zone-programs [zone-pgm-md5]))))
+</p>
+
+<p>
+(defun zone-choose (pgm)
+  "Choose a PGM to run for `zone'."
+  (interactive
+   (list
+    (completing-read
+     "Program: "
+     (mapcar 'symbol-name zone-programs))))
+  (let ((zone-programs (list (intern pgm))))
+    (zone)))
+(toggle-truncate-lines 't)
+</p>
+
+<p>
+(defun remove-prelude ()
+  (interactive)
+  (goto-char 1)
+  (while (search-forward-regexp "Prelude&gt; " nil t) 
+    (replace-match "" t nil)))
+</p>
+
+<p>
+;; line number height
+;; <a href="https://unix.stackexchange.com/questions/29786/font-size-issues-with-emacs-in-linum-mode/30087#30087">https://unix.stackexchange.com/questions/29786/font-size-issues-with-emacs-in-linum-mode/30087#30087</a>
+(eval-after-load "linum"
+  '(set-face-attribute 'linum nil :height 110))
+</p>
+
+
+<p>
+;; <a href="https://www.emacswiki.org/emacs/RecentFiles">https://www.emacswiki.org/emacs/RecentFiles</a>
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
+</p>
+
+<p>
+;; xdg-open (e.g. org export to html and open
+;; <a href="https://emacs.stackexchange.com/questions/19344/why-does-xdg-open-not-work-in-eshell">https://emacs.stackexchange.com/questions/19344/why-does-xdg-open-not-work-in-eshell</a>
+(setq process-connection-type nil)
+</p>
+
+<p>
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+</p>
+
+<p>
+(require 'em-glob)
+(defun directory-files-glob (path)
+  (directory-files (file-name-directory path) 
+                   nil 
+                   (eshell-glob-regexp (file-name-nondirectory path))))
+</p>
+
+<p>
+;; scrolling
+;; <a href="https://www.emacswiki.org/emacs/SmoothScrolling">https://www.emacswiki.org/emacs/SmoothScrolling</a>
+(setq mouse-wheel-scroll-amount '(4 ((shift) . 4)))
+</p>
+
+<p>
+;; tabs
+(setq c-default-style "linux")
+(setq c-basic-offset 4)
+</p>
+
+<p>
+(setq indent-tabs-mode nil)
+(global-set-key (kbd "TAB") 'self-insert-command);
+;;(setq indent-line-function 'insert-tab)
+(setq-default tab-width 4)
+(setq tab-width 4)
+(setq org-src-tab-acts-natively t)
+</p>
+
+<p>
+;; if indent-tabs-mode is off, untabify before saving
+;; (add-hook 'write-file-hooks 
+;;           (lambda () (if (not indent-tabs-mode)
+;;                          (untabify (point-min) (point-max)))
+;;             nil ))
 </p>
 
 <p>
@@ -547,7 +1129,7 @@ for the JavaScript code in this tag.
 <p>
 ;;  <a href="https://www.reddit.com/r/emacs/comments/7v6fll/whats_in_your_initialscratchmessage/">https://www.reddit.com/r/emacs/comments/7v6fll/whats_in_your_initialscratchmessage/</a>
 (setq initial-scratch-message
-    ";; - 'Tis but a scratch!\n;; - A scratch? Your arm's off!\n;; - No, it isn't!\n\n")
+      ";; - 'Tis but a scratch!\n;; - A scratch? Your arm's off!\n;; - No, it isn't!\n\n")
 (setq inhibit-startup-screen t)
 (setq inhibit-splash-screen t)
 </p>
@@ -555,8 +1137,10 @@ for the JavaScript code in this tag.
 <p>
 ;; <a href="https://stackoverflow.com/questions/10545437/how-to-disable-the-beep-in-emacs-on-windows">https://stackoverflow.com/questions/10545437/how-to-disable-the-beep-in-emacs-on-windows</a>
 (setq visible-bell 1)
-(global-linum-mode 1)
-(global-visual-line-mode t)
+(setq visual-linum-mode t)
+(setq global-visual-line-mode t)
+(setq global-linum-mode t)
+(setq linum-mode t)
 </p>
 
 <p>
@@ -576,8 +1160,8 @@ for the JavaScript code in this tag.
 
 <p>
 ;; spell checker
-(setq ispell-program-name "hunspell")
-(setq ispell-dictionary "en<sub>US</sub>")
+(setq ispell-program-name "aspell")
+(setq ispell-dictionary "en")
 </p>
 
 <p>
@@ -589,28 +1173,36 @@ for the JavaScript code in this tag.
 <p>
 ;; <a href="https://www.emacswiki.org/emacs/BackupDirectory#toc2">https://www.emacswiki.org/emacs/BackupDirectory#toc2</a>
 (setq
-   backup-by-copying t      ; don't clobber symlinks
-   backup-directory-alist
-    '(("." . "$HOME/.emacs.d/backupdir/"))    ; don't litter my fs tree
-   delete-old-versions t
-   kept-new-versions 6
-   kept-old-versions 2
-   version-control t)       ; use versioned backups
+ backup-by-copying t      ; don't clobber symlinks
+ backup-directory-alist
+ '(("." . "~/.emacs.d/backups/"))    ; don't litter my fs tree
+ delete-old-versions t
+ kept-new-versions 6
+ kept-old-versions 2
+ version-control t)       ; use versioned backups
+</p>
+
+<p>
+;; <a href="https://stackoverflow.com/questions/2985050/is-there-any-way-to-have-emacs-save-your-undo-history-between-sessions">https://stackoverflow.com/questions/2985050/is-there-any-way-to-have-emacs-save-your-undo-history-between-sessions</a>
+(global-undo-tree-mode)
+(setq undo-tree-enable-undo-in-region nil)
+(setq undo-tree-auto-save-history t)
+(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
 </p>
 
 <p>
 ;; <a href="https://www.emacswiki.org/emacs/TransparentEmacs">https://www.emacswiki.org/emacs/TransparentEmacs</a>
- (set-frame-parameter (selected-frame) 'alpha '(85 . 50))
- (add-to-list 'default-frame-alist '(alpha . (85 . 50)))
- (defun toggle-transparency ()
-   (interactive)
-   (let ((alpha (frame-parameter nil 'alpha)))
-     (set-frame-parameter
-      nil 'alpha
-      (if (eql (cond ((numberp alpha) alpha)
-                     ((numberp (cdr alpha)) (cdr alpha))
-                     ;; Also handle undocumented (&lt;active&gt; &lt;inactive&gt;) form.
-                     ((numberp (cadr alpha)) (cadr alpha)))
+(set-frame-parameter (selected-frame) 'alpha '(85 . 50))
+(add-to-list 'default-frame-alist '(alpha . (85 . 50)))
+(defun toggle-transparency ()
+  (interactive)
+  (let ((alpha (frame-parameter nil 'alpha)))
+    (set-frame-parameter
+     nil 'alpha
+     (if (eql (cond ((numberp alpha) alpha)
+                    ((numberp (cdr alpha)) (cdr alpha))
+                    ;; Also handle undocumented (&lt;active&gt; &lt;inactive&gt;) form.
+                    ((numberp (cadr alpha)) (cadr alpha)))
 </p>
 <ol class="org-ol">
 <li></li>
@@ -635,9 +1227,18 @@ for the JavaScript code in this tag.
 
 
 <p>
-;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; <a href="https://www.emacswiki.org/emacs/KillingBuffers">https://www.emacswiki.org/emacs/KillingBuffers</a>
+(defun kill-other-buffers ()
+  "Kill all other buffers."
+  (interactive)
+  (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
+</p>
+
+
+<p>
+;; -----------------------------&#x2013;&#x2014; ;;
 ;; CUSTOM-SET VARIABLES
-;; -&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014; ;;
+;; -----------------------------&#x2013;&#x2014; ;;
 </p>
 
 <p>
@@ -657,19 +1258,49 @@ for the JavaScript code in this tag.
     ("#ccccff" "#ccccff")])
  '(custom-safe-themes
    (quote
-    ("3b5ce826b9c9f455b7c4c8bff22c020779383a12f2f57bf2eb25139244bb7290" "3cb2d5a795e1c93d1fbc8360d6ea41f0173aa1366d334b16e1b83b996b8d9ce6" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "4e4d9f6e1f5b50805478c5630be80cce40bee4e640077e1a6a7c78490765b03f" default)))
- '(evil-want-C-i-jump t)
- '(indent-tabs-mode t)
+    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "5eda93d7e92808a69e771b02bf65b21ea6f2e94309bdc5135495e195bd7913e1" "f20795b6b18a6487168643337dbd3aa6b930b86b9d16c2407e2bd6d0d91d4ca4" "0556e4e9b305bc00f1a6e2c7a395ff981798d6ca6f22aa59062117a69ee642e2" "f0dc4ddca147f3c7b1c7397141b888562a48d9888f1595d69572db73be99a024" "5057614f7e14de98bbc02200e2fe827ad897696bfd222d1bcab42ad8ff313e20" "233bb646e100bda00c0af26afe7ab563ef118b9d685f1ac3ca5387856674285d" "72a097f48e588eaa08b17027ac20304dd3b3ea8ceaca4ca553fb2577b64f4d09" "3b5ce826b9c9f455b7c4c8bff22c020779383a12f2f57bf2eb25139244bb7290" "3cb2d5a795e1c93d1fbc8360d6ea41f0173aa1366d334b16e1b83b996b8d9ce6" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "4e4d9f6e1f5b50805478c5630be80cce40bee4e640077e1a6a7c78490765b03f" default)))
+ '(doc-view-continuous t)
+ '(evil-want-C-i-jump nil)
+ '(fci-rule-color "#969896")
+ '(indent-tabs-mode nil)
+ '(ledger-clear-whole-transactions t)
+ '(nrepl-message-colors
+   (quote
+    ("#183691" "#969896" "#a71d5d" "#969896" "#0086b3" "#795da3" "#a71d5d" "#969896")))
  '(org-cycle-emulate-tab t)
  '(org-export-backends (quote (ascii html icalendar latex md odt org)))
  '(org-modules
    (quote
-    (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-rmail org-w3m org-drill)))
+    (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (smart-tabs-mode haskell-mode geiser chicken-scheme chess github-theme htmlize which-key use-package smex slime shell-pop rotate rebecca-theme rainbow-delimiters powerline-evil paredit multiple-cursors ivy general flycheck evil-magit evil-leader dracula-theme dashboard)))
+    (flycheck-ledger ledger-mode doom-modeline mu4e-conversation telephone-line session ob-tmux eyebrowse format-all rainbow-mode zone-sl zone-rainbow zone-nyan perspective golden-ratio android-mode elmacro rmsbolt swiper ace-jump-mode powerline-evil powerline esup auctex org-ref-pubmed org-ref-scopus org-ref-wos org-id org-ref org-mime pdf-tools weechat aggressive-indent smart-tabs-mode smart-tabs smooth-scrolling evil-mu4e mu4e highlight-indentation company-mode company ws-butler 0blayout anki-editor auto-complete hydra-ivy ivy-hydra smart-parens hydra projectile smartparens ob-sql-mode org-babel-eval-in-repl ivy-rich gnuplot-mode gnuplot sicp haskell-mode geiser chicken-scheme chess github-theme htmlize which-key use-package smex slime shell-pop rotate rebecca-theme rainbow-delimiters paredit multiple-cursors ivy general flycheck evil-magit evil-leader dracula-theme dashboard)))
+ '(pdf-view-midnight-colors (quote ("#969896" . "#f8eec7")))
+ '(projectile-mode nil nil (projectile))
  '(tab-width 4)
- '(tls-checktrust (quote ask)))
+ '(tls-checktrust (quote ask))
+ '(vc-annotate-background "#b0cde7")
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#969896")
+     (40 . "#183691")
+     (60 . "#969896")
+     (80 . "#969896")
+     (100 . "#969896")
+     (120 . "#a71d5d")
+     (140 . "#969896")
+     (160 . "#969896")
+     (180 . "#969896")
+     (200 . "#969896")
+     (220 . "#63a35c")
+     (240 . "#0086b3")
+     (260 . "#795da3")
+     (280 . "#969896")
+     (300 . "#0086b3")
+     (320 . "#969896")
+     (340 . "#a71d5d")
+     (360 . "#969896"))))
+ '(vc-annotate-very-old-color "#969896"))
 </p>
 
 
@@ -683,8 +1314,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2018-07-01 Sun 14:45</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="author">Author: liam beckman</p>
+<p class="date">Created: 2018-11-27 Tue 14:35</p>
 <p class="validation"></p>
 </div>
 </body>

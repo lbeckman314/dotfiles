@@ -37,16 +37,19 @@ xscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y
 
 
 ! █▓▒░ color scheme
- #include </home/liam/.config/myxthemes/dracula_xresources/dracula.Xcolors>
+!#include </home/liam/.config/myxthemes/dracula_xresources/dracula.Xcolors>
+#include </home/liam/Downloads/xresources/Xresources>
 !#include </home/liam/.config/myxthemes/nord-xresources/src/nord>
 
 ! █▓▒░ fonts
-urxvt*font: xft:roboto:size=12:antialias=true:hinting=slight
 !xft:Symbola:pixelsize=14:antialias=true:hinting=slight
 !urxvt*font: xft:gohufont:size=11:antialias=false
-!urxvt*font: -*-creep-regular-*-*--16-*-*-*-*-*-*-1
-!urxvt*font: -*-lime-*-*-*--11-*-*-*-*-*-*-1
-!urxvt*font: xft:creep:size=16:antialias=true
+urxvt*font: -*-creep-regular-*-*--16-*-*-*-*-*-*-1
+urxvt*font: -*-lime-*-*-*--11-*-*-*-*-*-*-1
+urxvt*font: xft:creep:size=12:antialias=true
+urxvt.font:     xft:bitstream vera sans mono:size=11:antialias=true
+urxvt.boldFont: xft:bitstream vera sans mono:bold:size=11:antialias=true
+!urxvt*font: xft:roboto:size=12:antialias=true:hinting=slight
 !urxvt*font: xft:envy code r:size=9:antialias=false
 !urxvt*font: xft:lemon:size=16:antialias=false
 !urxvt*font: xft:lime:size=16:antialias=false
@@ -54,11 +57,11 @@ urxvt*font: xft:roboto:size=12:antialias=true:hinting=slight
 !urxvt*font: xft:perfect dos vga 437:size=11:antialias=false
 !urxvt*font: xft:tewi:size=11:antialias=false
 
-urxvt*boldFont: 
-urxvt*italicFont: 
-urxvt*bolditalicFont: 
+urxvt*boldFont: xft:creep:size=12:antialias=true
+urxvt*italicFont: xft:creep:size=12:antialias=true
+urxvt*bolditalicFont: xft:creep:size=12:antialias=true
 
-urxvt*letterSpace: -5
+urxvt*letterSpace: 0
 urxvt*lineSpace: 0
 
 ! █▓▒░ interface
@@ -76,10 +79,16 @@ URxvt.background: rgba:1111/1111/1111/dddd
 ! urxvt*borderLess:false
 
 ! █▓▒░ extensions
+URxvt*perl-lib: /home/liam/.urxvt
+URxvt*perl-ext: unichr,matcher,-selection
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+
 ! urxvt.perl-ext-common: default,clipboard,keyboard-select,url-select
 ! urxvt.keysum.M-u: perl:url-select:select_next
 ! urxvt.url-select.autocopy: true
-! urxvt.url-select.launcher: chromium
+! urxvt.url-select.launcher: firefox
 ! urxvt.keysym.M-Escape: perl:keyboard-select:activate
 ! urxvt.keysym.M-c:   perl:clipboard:copy
 ! urxvt.keysym.C-v:   perl:clipboard:paste

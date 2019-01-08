@@ -25,7 +25,7 @@ call plug#begin('~/.vim/plugged')
 " ---------------------------- "
 
 Plug 'https://github.com/w0rp/ale'               " asynchronous syntax checker
-"Plug 'https://github.com/mattn/emmet-vim'        " web-development toolkit
+Plug 'https://github.com/mattn/emmet-vim'        " web-development toolkit
 "Plug 'https://github.com/junegunn/goyo.vim'      " zen mode
 Plug 'https://github.com/Yggdroot/indentLine'    " python indent visualizer
 Plug 'https://github.com/luochen1990/rainbow'    " rainbow parens
