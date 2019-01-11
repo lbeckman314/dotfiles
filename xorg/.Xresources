@@ -233,6 +233,8 @@ rofi.key-ssh:                        Alt+p
 !          urxvt          !
 !-------------------------!
 
+URxvt*iconFile: /usr/share/icons/Numix-Circle/48/apps/terminal.svg
+
 ! URxvt.internalBorder: 10
 ! URxvt.scrollBar:  false
 ! URxvt.cursorColor:    #d8fbff
