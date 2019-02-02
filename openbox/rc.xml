@@ -386,6 +386,12 @@ Copy the file to $HOME/.config/openbox/ instead. -->
                     <command>urxvt</command>
                 </action>
             </keybind>
+
+            <keybind key="A-m">
+                <action name="Execute">
+                    <command>jgmenu_run</command>
+                </action>
+            </keybind>
     </keyboard>
     <mouse>
         <dragThreshold>1</dragThreshold>

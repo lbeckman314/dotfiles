@@ -53,22 +53,6 @@
   :config
   (setq inferior-lisp-program "/usr/bin/sbcl"))
 
-(use-package desktop
-  :ensure t
-  :config 
-  ;; save sessions
-  ;; https://www.emacswiki.org/emacs?action=browse;oldid=DeskTop;id=Desktop
-  (setq desktop-path '("~/.emacs.d/"))
-  (setq desktop-dirname "~/.emacs.d/")
-  (desktop-save-mode 1)
-  (defun my-desktop-save ()
-    (interactive)
-    ;; Don't call desktop-save-in-desktop-dir, as it prints a message.
-    (if (eq (desktop-owner) (emacs-pid))
-        (desktop-save desktop-dirname)))
-  (add-hook 'auto-save-hook 'my-desktop-save))
-
-
 (use-package dracula-theme
   :ensure t
   :config
@@ -172,12 +156,18 @@
 (use-package shell-pop
   :bind (("C-t" . shell-pop))
   :config
-  (setq shell-pop-shell-type (quote ("ansi-term" "*ansi-term*" (lambda nil (ansi-term shell-pop-term-shell)))))
+  (setq shell-pop-shell-type (quote ("eshell" "*eshell*" (lambda nil (eshell shell-pop-term-shell)))))
   (setq shell-pop-term-shell "/bin/zsh")
   (setq shell-pop-window-position "right")
   (setq shell-pop-window-size 50)
   ;; need to do this manually or not picked up by `shell-pop'
   (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type))
+
+;; (defun myshell ()
+;;   (interactive)
+;;   (split-window-horizontally)
+;;   (rotate-window)
+;;   (eshell))
 
 (use-package slime
   :ensure t
@@ -235,7 +225,7 @@
   ;; execute external programs.
   ;; This obviously and can be dangerous to activate!
   (setq org-latex-pdf-process
-        '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f")))
+        '("xelatex -8bit -shell-escape -interaction nonstopmode -output-directory %o %f")))
 
 ;; make org mode allow eval of some langs
 (org-babel-do-load-languages
@@ -293,6 +283,8 @@
 ;; https://old.reddit.com/r/orgmode/comments/8kzbii/tip_how_i_use_orgjournal_to_improve_my/
 (setq org-capture-templates
       '(("j" "Journal" entry (file+olp+datetree "~/Documents/code/osu/2018fall/cs361-software/journal.org") "\n* %?\n")))
+
+;;(setq org-html-mathjax-options '(""))
 
 ;; ---------------------------------- ;;
 ;; PACKAGESu :: MAGIT
@@ -388,7 +380,7 @@
 (setq mail-user-agent 'mu4e-user-agent)
 
 ;;location of my maildir
-(setq mu4e-maildir (expand-file-name "~/Maildir"))
+(setq mu4e-maildir (expand-file-name "~/.mail"))
 
 ;;command used to get mail
 ;; use this for testing
@@ -406,12 +398,12 @@
 ;;set up queue for offline email
 ;;use mu mkdir  ~/Maildir/queue to set up first
 (setq smtpmail-queue-mail nil  ;; start in normal mode
-      smtpmail-queue-dir   "~/Maildir/queue/cur")
+      smtpmail-queue-dir   "~/.mail/queue/cur")
 
 
-(setq mu4e-drafts-folder "/[Gmail]/Drafts")
-(setq mu4e-sent-folder   "/[Gmail]/Sent Mail")
-(setq mu4e-trash-folder  "/[Gmail]/Trash")
+(setq mu4e-drafts-folder "/gmail/[Gmail]/Drafts")
+(setq mu4e-sent-folder   "/gmail/[Gmail]/Sent Mail")
+(setq mu4e-trash-folder  "/gmail/[Gmail]/Trash")
 
 ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
 (setq mu4e-sent-messages-behavior 'delete)
@@ -426,10 +418,10 @@
 ;; the 'All Mail' folder by pressing ``ma''.
 
 (setq mu4e-maildir-shortcuts
-      '( ("/INBOX"               . ?i)
-         ("/[Gmail]/Sent Mail"   . ?s)
-         ("/[Gmail]/Trash"       . ?t)
-         ("/[Gmail]/All Mail"    . ?a)))
+      '( ("/gmail/INBOX"               . ?i)
+         ("/gmail/[Gmail]/Sent Mail"   . ?s)
+         ("/gmail/[Gmail]/Trash"       . ?t)
+         ("/gmail/[Gmail]/All Mail"    . ?a)))
 
 ;; allow for updating mail using 'U' in the main view:
 ;;(setq mu4e-get-mail-command "offlineimap")
@@ -512,6 +504,46 @@
 
 (setq global-mu4e-conversation-mode t)
 
+(setq mu4e-contexts
+      `( ,(make-mu4e-context
+           :name "personal"
+           :enter-func (lambda () (mu4e-message "Entering personal context"))
+           :leave-func (lambda () (mu4e-message "Leaving personal context"))
+           ;; we match based on the contact-fields of the message
+           :match-func (lambda (msg)
+                         (when msg 
+                           (mu4e-message-contact-field-matches msg 
+                                                               :to "lbeckman314@gmail.com")))
+           :vars '( ( user-mail-address      . "lbeckman314@gmail.com"  )
+                    ( user-full-name         . "liam beckman" )
+                    ( mu4e-compose-signature . "liam beckman")))
+         ,(make-mu4e-context
+           :name "osu"
+           :enter-func (lambda () (mu4e-message "Switch to osu context"))
+           ;; no leave-func
+           ;; we match based on the maildir of the message
+           ;; this matches maildir /Arkham and its sub-directories
+           :match-func (lambda (msg)
+                         (when msg
+                           (string-match-p "^/osu" (mu4e-message-field msg :maildir))))
+           :vars '( ( user-mail-address       . "beckmanl@oregonstate.edu" )
+                    ( user-full-name          . "liam beckman" )
+                    ( mu4e-compose-signature  .
+                                              (concat
+                                               "Prof. Alice Derleth\n"
+                                               "Miskatonic University, Dept. of Occult Sciences\n"))))))
+
+
+;; set `mu4e-context-policy` and `mu4e-compose-policy` to tweak when mu4e should
+;; guess or ask the correct context, e.g.
+
+;; start with the first (default) context; 
+;; default is to ask-if-none (ask when there's no context yet, and none match)
+(setq mu4e-context-policy 'pick-first)
+
+;; compose with the current context is no context matches;
+;; default is to ask 
+;; (setq mu4e-compose-context-policy nil)
 
 ;; ---------------------------------- ;;
 ;; KEYBINDINGS
@@ -520,7 +552,7 @@
 ;; emacs keybindings
 ;; http://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/
 (global-set-key (kbd "C-c o")
-                (lambda () (interactive) (find-file "~/Documents/personal.org")))
+                (lambda () (interactive) (find-file "~/Documents/personal/personal.org")))
 
 (global-set-key (kbd "C-c l")
                 (lambda () (interactive) (find-file "~/Documents/personal/finances/ledger/personal.dat")))
@@ -529,6 +561,80 @@
 ;; ---------------------------------- ;;
 ;; SETTINGS AND FUNCTIONS
 ;; ---------------------------------- ;;
+(defun imalison:org-get-raw-value (item)
+  (when (listp item)
+    (let* ((property-list (cadr item)))
+      (when property-list (plist-get property-list :raw-value)))))
+
+(defun imalison:sanitize-name (name)
+  (replace-regexp-in-string "[^[:alpha:]]" "" (s-downcase name)))
+
+(defun imalison:generate-name (datum cache)
+  (let ((raw-value (imalison:org-get-raw-value datum)))
+    (if raw-value
+        (imalison:sanitize-name raw-value)
+      ;; This is the default implementation from org
+      (let ((type (org-element-type datum)))
+        (format "org%s%d"
+                (if type
+                    (replace-regexp-in-string "-" "" (symbol-name type))
+                    "secondarystring")
+                (incf (gethash type cache 0)))))))
+(use-package ox
+  :defer t
+  :config
+  (defun org-export-get-reference (datum info)
+    "Return a unique reference for DATUM, as a string.
+DATUM is either an element or an object.  INFO is the current
+export state, as a plist.  Returned reference consists of
+alphanumeric characters only."
+    (let ((type (org-element-type datum))
+          (cache (or (plist-get info :internal-references)
+                     (let ((h (make-hash-table :test #'eq)))
+                       (plist-put info :internal-references h)
+                       h)))
+          (reverse-cache (or (plist-get info :taken-internal-references)
+                             (let ((h (make-hash-table :test 'equal)))
+                               (plist-put info :taken-internal-references h)
+                               h))))
+      (or (gethash datum cache)
+          (let* ((name (imalison:generate-name datum cache))
+                 (number (+ 1 (gethash name reverse-cache -1)))
+                 (new-name (format "%s%s" name (if (< 0 number) number ""))))
+            (puthash name number reverse-cache)
+            (puthash datum new-name cache)
+            new-name)))))
+
+(use-package ox-html
+  :commands (org-html-export-as-html org-html-export-as-html)
+  :preface
+  (progn
+    (defvar imalison:link-svg-html
+      "<svg aria-hidden=\"true\" class=\"octicon octicon-link\" height=\"16\" version=\"1.1\" viewBox=\"0 0 16 16\" width=\"16\"><path fill-rule=\"evenodd\" d=\"M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z\"></path></svg>")
+    (defvar imalison:current-html-headline)
+    (defun imalison:set-current-html-headline (headline &rest args)
+      (setq imalison:current-html-headline headline))
+    (defun imalison:clear-current-html-headline (&rest args)
+      (setq imalison:current-html-headline nil))
+    (defun imalison:org-html-format-heading-function (todo todo-type priority text tags info)
+      (let* ((reference (when imalison:current-html-headline
+                          (org-export-get-reference imalison:current-html-headline info)))
+             ;; Don't do anything special if the current headline is not set
+             (new-text (if reference
+                           (format "%s <a href=\"#%s\">%s</a>" text reference imalison:link-svg-html)
+                         text)))
+        (org-html-format-headline-default-function
+         todo todo-type priority new-text tags info))))
+  :config
+  (progn
+    ;; This is set before and cleared afterwards, so that we know when we are
+    ;; generating the text for the headline itself and when we are not.
+    (advice-add 'org-html-headline :before 'imalison:set-current-html-headline)
+    (advice-add 'org-html-headline :after 'imalison:clear-current-html-headline)
+    (setq org-html-format-headline-function
+          'imalison:org-html-format-heading-function)))
+
+(setq highlight-indent-guides-method 'character)
 
 (defun startup ()
   (osu)
@@ -553,6 +659,7 @@
   (eyebrowse-rename-window-config 3 "mail")
   (mu4e))
 
+
 (defun init ()
   (eyebrowse-switch-to-window-config-4)
   (eyebrowse-rename-window-config 4 "init")
@@ -573,6 +680,15 @@
 ;;(startup)
 (add-hook 'after-init-hook #'startup)
 
+(defun create-scratch-buffer nil
+  "create a scratch buffer"
+  (interactive)
+  (switch-to-buffer (get-buffer-create "*scratch*"))
+  (insert initial-scratch-message)
+  (lisp-interaction-mode))             
+
+;; https://stackoverflow.com/questions/2284703/emacs-how-to-disable-file-changed-on-disk-checking
+(setq revert-without-query '(".*"))
 
 ;; https://www.emacswiki.org/emacs/ZoneMode
 (defun zone-pgm-md5 ()
@@ -671,7 +787,7 @@
 
 ;;  https://www.reddit.com/r/emacs/comments/7v6fll/whats_in_your_initialscratchmessage/
 (setq initial-scratch-message
-      ";; - 'Tis but a scratch!\n;; - A scratch? Your arm's off!\n;; - No, it isn't!\n\n")
+      ";; - 'Tis but a scratch!\n;; - A scratch? Your arm's off!\n;; - No, it isn't!\n\n") 
 (setq inhibit-startup-screen t)
 (setq inhibit-splash-screen t)
 
@@ -712,10 +828,19 @@
  version-control t)       ; use versioned backups
 
 ;; https://stackoverflow.com/questions/2985050/is-there-any-way-to-have-emacs-save-your-undo-history-between-sessions
-(global-undo-tree-mode)
+;;(global-undo-tree-mode)
 (setq undo-tree-enable-undo-in-region nil)
-(setq undo-tree-auto-save-history t)
-(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+;;(setq undo-tree-auto-save-history t)
+;;(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+
+;; https://emacs.stackexchange.com/questions/47341/fine-grained-undo/47349#47349
+(when (timerp undo-auto-current-boundary-timer)
+  (cancel-timer undo-auto-current-boundary-timer))
+
+(fset 'undo-auto--undoable-change
+      (lambda () (add-to-list 'undo-auto--undoably-changed-buffers (current-buffer))))
+
+(fset 'undo-auto-amalgamate 'ignore)
 
 ;; https://www.emacswiki.org/emacs/TransparentEmacs
 (set-frame-parameter (selected-frame) 'alpha '(85 . 50))
@@ -771,12 +896,14 @@
  '(custom-safe-themes
    (quote
     ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "5eda93d7e92808a69e771b02bf65b21ea6f2e94309bdc5135495e195bd7913e1" "f20795b6b18a6487168643337dbd3aa6b930b86b9d16c2407e2bd6d0d91d4ca4" "0556e4e9b305bc00f1a6e2c7a395ff981798d6ca6f22aa59062117a69ee642e2" "f0dc4ddca147f3c7b1c7397141b888562a48d9888f1595d69572db73be99a024" "5057614f7e14de98bbc02200e2fe827ad897696bfd222d1bcab42ad8ff313e20" "233bb646e100bda00c0af26afe7ab563ef118b9d685f1ac3ca5387856674285d" "72a097f48e588eaa08b17027ac20304dd3b3ea8ceaca4ca553fb2577b64f4d09" "3b5ce826b9c9f455b7c4c8bff22c020779383a12f2f57bf2eb25139244bb7290" "3cb2d5a795e1c93d1fbc8360d6ea41f0173aa1366d334b16e1b83b996b8d9ce6" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "4e4d9f6e1f5b50805478c5630be80cce40bee4e640077e1a6a7c78490765b03f" default)))
+ '(debug-on-error t)
  '(doc-view-continuous t)
  '(evil-want-C-i-jump nil)
  '(fci-rule-color "#969896")
  '(global-linum-mode t)
+ '(global-visual-line-mode t)
  '(indent-tabs-mode nil)
- '(ledger-clear-whole-transactions t)
+ '(ledger-clear-whole-transactions t t)
  '(ledger-reports
    (quote
     (("/home/liam/Documents/personal/finances/ledger/personal.dat" "ledger ")
@@ -802,7 +929,7 @@
     (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (sane-term flycheck-ledger ledger-mode doom-modeline mu4e-conversation telephone-line session ob-tmux eyebrowse format-all rainbow-mode zone-sl zone-rainbow zone-nyan perspective golden-ratio android-mode elmacro rmsbolt swiper ace-jump-mode powerline-evil powerline esup auctex org-ref-pubmed org-ref-scopus org-ref-wos org-id org-ref org-mime pdf-tools weechat aggressive-indent smart-tabs-mode smart-tabs smooth-scrolling evil-mu4e mu4e highlight-indentation company-mode company ws-butler 0blayout anki-editor auto-complete hydra-ivy ivy-hydra smart-parens hydra projectile smartparens ob-sql-mode org-babel-eval-in-repl ivy-rich gnuplot-mode gnuplot sicp haskell-mode geiser chicken-scheme chess github-theme htmlize which-key use-package smex slime shell-pop rotate rebecca-theme rainbow-delimiters paredit multiple-cursors ivy general flycheck evil-magit evil-leader dracula-theme dashboard)))
+    (toc-org highlight-indent-guides git-gutter diff-hl prettier-js reformatter s "s" abyss-theme sane-term flycheck-ledger ledger-mode doom-modeline mu4e-conversation telephone-line session ob-tmux eyebrowse format-all rainbow-mode zone-sl zone-rainbow zone-nyan perspective golden-ratio android-mode elmacro rmsbolt swiper ace-jump-mode powerline-evil powerline esup auctex org-ref-pubmed org-ref-scopus org-ref-wos org-id org-ref org-mime pdf-tools weechat aggressive-indent smart-tabs-mode smart-tabs smooth-scrolling evil-mu4e mu4e highlight-indentation company-mode company ws-butler 0blayout anki-editor auto-complete hydra-ivy ivy-hydra smart-parens hydra projectile smartparens ob-sql-mode org-babel-eval-in-repl ivy-rich gnuplot-mode gnuplot sicp haskell-mode geiser chicken-scheme chess github-theme htmlize which-key use-package smex slime shell-pop rotate rebecca-theme rainbow-delimiters paredit multiple-cursors ivy general flycheck evil-magit evil-leader dracula-theme dashboard)))
  '(pdf-view-midnight-colors (quote ("#969896" . "#f8eec7")))
  '(projectile-mode nil nil (projectile))
  '(send-mail-function (quote mailclient-send-it))

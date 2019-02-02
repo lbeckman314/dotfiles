@@ -22,3 +22,4 @@ plank &
 urxvt &
 ristretto &
 evince &
+(sleep 2s; jgmenu --hide-on-startup) &

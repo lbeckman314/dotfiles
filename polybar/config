@@ -22,7 +22,7 @@ font-0 = Noto Sans:pixelsize=10;0
 font-1 = FontAwesome:size=10;-2
 font-2 = siji:pixelsize=10;0
 
-modules-left = workspaces
+modules-left = jgmenu workspaces
 modules-center =
 modules-right = wireless-network battery volume spotify date powermenu
 
@@ -40,6 +40,11 @@ tray-padding = 0
 
 ; MODULES
 
+[module/jgmenu]
+type = custom/text
+content-padding = 2
+content = ※
+click-left = "jgmenu_run >/dev/null 2>&1 &"
 
 ; https://github.com/jaagr/polybar/issues/317
 [module/workspaces]

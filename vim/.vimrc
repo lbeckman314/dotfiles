@@ -38,7 +38,6 @@ Plug 'https://github.com/nvie/vim-flake8'        " python linter
 Plug 'https://github.com/tpope/vim-fugitive'     " git wrapper
 Plug 'https://github.com/ludovicchabant/vim-gutentags' " Tag generator
 Plug 'https://github.com/liuchengxu/vim-which-key'
-"Plug 'https://github.com/lervag/vimtex'
 "Plug 'https://github.com/vim-scripts/Smart-Tabs'
 Plug 'https://github.com/lervag/vimtex'
 let g:vimtex_view_method = 'zathura'
@@ -73,7 +72,7 @@ let mapleader = " "
 set wrap nolist linebreak
 
 " https://kevinjalbert.com/vim-substitution-feedback-using-vim-over/
-nnoremap <leader>s :OverCommandLine<CR> %s/<C-r><C-w>/
+nnoremap <leader>s :OverCommandLine<CR> %s/
 
 function! VisualFindAndReplace()
         :OverCommandLine %s/
