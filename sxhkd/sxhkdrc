@@ -14,6 +14,9 @@ alt + @space
 alt + r
     rofi -show run -yoffset -150
 
+alt + l
+    i3lock -u -i /home/liam/Pictures/sven-scheuermeier-mountains.png
+
 # program switcher
 #alt + {grave,Tab}
 #    rofi -show window -yoffset -150
@@ -21,6 +24,9 @@ alt + r
 # make sxhkd reload its configuration files:
 alt + Escape
     pkill -USR1 -x sxhkd
+
+alt + shift + Escape
+    /home/liam/.config/bspwm/bspwmrc
 
 #
 # bspwm hotkeys
@@ -138,5 +144,5 @@ alt + {_,shift + }{1-9,0}
     bspc {desktop -f,window -d} {1-9,10}
 
 
-alt + l
-    i3lock -u -i /home/liam/Pictures/sven-scheuermeier-73262.png
+super + F1
+    urxvt -e ~/.config/sxhkd/show_help.sh

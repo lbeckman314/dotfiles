@@ -22,29 +22,35 @@ font-0 = Noto Sans:pixelsize=10;0
 font-1 = FontAwesome:size=10;-2
 font-2 = siji:pixelsize=10;0
 
-modules-left = jgmenu workspaces
+modules-left = jgmenu bspwm
 modules-center =
-modules-right = wireless-network battery volume spotify date powermenu
+modules-right = kdeconnect wireless-network battery volume date powermenu
 
-tray-transparent = true
-;tray-position = right
-;tray-padding = 2
+;tray-transparent = true
+tray-position = right
+tray-padding = 2
 ;tray-background = #66333333
 
-wm-restack = bspwm
+; wm-restack = openbox
 
 ;scroll-up = bspwm-wsnext
 ;scroll-down = bspwm-wsprev
 
-tray-padding = 0
-
 ; MODULES
+
+
+[module/kdeconnect]
+type = custom/script
+exec = ". /home/liam/.config/polybar/polybar-kdeconnect/polybar-kdeconnect.sh; show_devices"  
+tail = true
+format-padding = 4
 
 [module/jgmenu]
 type = custom/text
-content-padding = 2
+content-padding = 4
 content = ※
 click-left = "jgmenu_run >/dev/null 2>&1 &"
+
 
 ; https://github.com/jaagr/polybar/issues/317
 [module/workspaces]
@@ -76,6 +82,158 @@ label-focused-underline= #ddd
 
 label-empty-foreground = #ccc
 
+[module/i3]
+type = internal/i3
+
+; Only show workspaces defined on the same output as the bar
+;
+; Useful if you want to show monitor specific workspaces
+; on different bars
+;
+; Default: false
+pin-workspaces = true
+
+; This will split the workspace name on ':'
+; Default: false
+strip-wsnumbers = true
+
+; Sort the workspaces by index instead of the default
+; sorting that groups the workspaces by output
+; Default: false
+; index-sort = true
+
+; Create click handler used to focus workspace
+; Default: true
+; enable-click = false
+
+; Create scroll handlers used to cycle workspaces
+; Default: true
+; enable-scroll = false
+
+; Wrap around when reaching the first/last workspace
+; Default: true
+; wrapping-scroll = false
+
+; Set the scroll cycle direction 
+; Default: true
+; reverse-scroll = false
+
+; Use fuzzy (partial) matching on labels when assigning 
+; icons to workspaces
+; Example: code;♚ will apply the icon to all workspaces 
+; containing 'code' in the label
+; Default: false
+; fuzzy-match = true
+
+; ws-icon-[0-9]+ = label;icon
+; NOTE: The label needs to match the name of the i3 workspace
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-default = 
+; NOTE: You cannot skip icons, e.g. to get a ws-icon-6
+; you must also define a ws-icon-5.
+
+; Available tags:
+;   <label-state> (default) - gets replaced with <label-(focused|unfocused|visible|urgent)>
+;   <label-mode> (default)
+format = <label-state> <label-mode>
+
+; Available tokens:
+;   %mode%
+; Default: %mode%
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = #e60053
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-focused = %name%
+label-focused-foreground = #ffffff
+label-focused-background = #3f3f3f
+label-focused-underline = #fba922
+label-focused-padding = 4
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-unfocused = %name%
+label-unfocused-padding = 4
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-visible = %name%
+label-visible-underline = #555555
+label-visible-padding = 4
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-urgent = %name%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-padding = 4
+
+; Separator in between workspaces
+label-separator = |
+label-separator-padding = 2
+label-separator-foreground = #ffb52a
+
+; https://github.com/jaagr/polybar/issues/317
+[module/bspwm]
+type = internal/bspwm
+; format = <label-state> <label-mode>
+; index-sort = true
+; wrapping-scroll = false
+; strip-wsnumbers = true
+; pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+
+format-label-padding=10
+
+ws-icon-0 = I;
+ws-icon-1 = II;
+ws-icon-2 = III;
+ws-icon-3 = IV;
+ws-icon-4 = V;
+ws-icon-default = 
+
+;; https://github.com/galczo5/dotfiles/blob/master/POLYBAR/.polybar
+
+
+label-focused = %icon%
+label-focused-background = #88000000
+label-focused-underline= #ddd
+label-focused-padding = 4
+
+label-occupied = %icon%
+label-occupied-padding = 4
+
+label-urgent = %icon%
+label-urgent-padding = 4
+
+label-empty = %icon%
+label-empty-foreground = #44ffffff
+label-empty-padding = 4
+
 ;; https://github.com/galczo5/dotfiles/blob/master/POLYBAR/.polybar
 [module/xwindow]
 type = internal/xwindow
@@ -96,6 +254,8 @@ format-disconnected-padding = 0
 
 label-connected =  %essid%
 label-disconnected =   None
+
+click-left = nm-connection-editor
 
 [module/eth]
 type = internal/network
@@ -142,11 +302,6 @@ format =    <label>
 ;format-foreground = #333
 format-padding = 3
 
-[module/padding]
-type = custom/text
-content =
-content-foreground = #00000000
-content-background = #55000000
 
 [module/battery]
 type = internal/battery
@@ -218,18 +373,6 @@ ramp-volume-1 = 
 ramp-volume-2 = 
 ramp-headphones-0 = 
 
-[module/spotify]
-type = custom/script
-
-;exec = /home/gamehelp16/Documents/np
-interval = 1
-
-format = <label>
-;format-background = #dd00c6e0
-;format-foreground = #fff
-;format-padding = 4
-
-label = %output%
 
 [module/powermenu]
 type = custom/menu
@@ -257,15 +400,4 @@ menu-1-0-padding = 3
 menu-2-0 = power off?
 menu-2-0-exec = sudo poweroff
 menu-2-0-padding = 3
-
-[module/mpd]
-type = internal/mpd
-
-host = 127.0.0.1
-port = 6600
-password =
-
-; Seconds to sleep between progressbar/song timer sync
-; Default: 1
-interval = 2
 

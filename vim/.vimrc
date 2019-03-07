@@ -43,6 +43,8 @@ Plug 'https://github.com/lervag/vimtex'
 let g:vimtex_view_method = 'zathura'
 Plug 'https://github.com/mhinz/neovim-remote'
 Plug 'https://github.com/justinmk/vim-sneak'
+Plug 'https://github.com/chrisbra/Colorizer'
+Plug 'https://github.com/tpope/vim-endwise'
 
 if has('nvim')                " autocomplete
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -112,6 +114,9 @@ silent! colorscheme dracula
 " ---------------------------- "
 " SETTINGS
 " ---------------------------- "
+
+" https://github.com/gopasspw/gopass/blob/master/docs/setup.md
+au BufNewFile,BufRead /dev/shm/gopass.* setlocal noswapfile nobackup noundofile
 
 " don't hide characters
 set conceallevel=0

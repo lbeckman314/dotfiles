@@ -381,12 +381,6 @@ Copy the file to $HOME/.config/openbox/ instead. -->
                 </action>
             </keybind>
 
-            <keybind key="A-Return">
-                <action name="Execute">
-                    <command>urxvt</command>
-                </action>
-            </keybind>
-
             <keybind key="A-m">
                 <action name="Execute">
                     <command>jgmenu_run</command>
@@ -755,15 +749,12 @@ Copy the file to $HOME/.config/openbox/ instead. -->
     <applications>
         <application name="urxvt"> 
             <maximized>yes</maximized>
-            <desktop>1</desktop>
         </application>
         <application name="ristretto"> 
             <maximized>yes</maximized>
-            <desktop>2</desktop>
         </application>
         <application name="evince"> 
             <maximized>yes</maximized>
-            <desktop>3</desktop>
         </application>
         <!--
         # this is an example with comments through out. use these to make your

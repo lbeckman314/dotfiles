@@ -19,6 +19,7 @@
 [core]
 	editor = nvim
 	autocrlf = input
+	excludesfile = ~/.gitignore
 
 # https://whatworks4me.wordpress.com/2011/04/13/view-git-diffs-in-emacs-using-ediff/
 [mergetool "ediff"]
