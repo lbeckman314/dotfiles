@@ -5,7 +5,7 @@
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
 # Path to your oh-my-zsh installation.
-  export ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -231,3 +231,5 @@ alias magit='emacsclient -c -n -a "" -e "(progn (magit-status) (delete-other-win
 
 alias em='(emacsclient -c -a "" &)'
 
+# https://github.com/rust-lang/rustup.rs#toolchain-specification
+fpath+=~/.zfunc

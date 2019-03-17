@@ -5,6 +5,7 @@ offset-x = 0
 offset-y = 0
 ;bottom = true
 
+
 background = #2a000000
 foreground = #fff
 
@@ -19,19 +20,21 @@ module-margin-left = 0
 module-margin-right = 0
 
 font-0 = Noto Sans:pixelsize=10;0
-font-1 = FontAwesome:size=10;-2
+font-1 = FontAwesome:size=10;0
 font-2 = siji:pixelsize=10;0
 
 modules-left = jgmenu bspwm
 modules-center =
-modules-right = kdeconnect wireless-network battery volume date powermenu
+modules-right = wireless-network battery volume backlight date powermenu
 
-;tray-transparent = true
-tray-position = right
+;;tray-transparent = true
+tray-background = #2a000000
+tray-position = center
 tray-padding = 2
-;tray-background = #66333333
+tray-detached = false
+tray-offset-x = 13%
 
-; wm-restack = openbox
+wm-restack = bspwm
 
 ;scroll-up = bspwm-wsnext
 ;scroll-down = bspwm-wsprev
@@ -41,7 +44,7 @@ tray-padding = 2
 
 [module/kdeconnect]
 type = custom/script
-exec = ". /home/liam/.config/polybar/polybar-kdeconnect/polybar-kdeconnect.sh; show_devices"  
+exec = ". /home/liam/.config/polybar/polybar-kdeconnect/polybar-kdeconnect.sh; show_devices"
 tail = true
 format-padding = 4
 
@@ -49,6 +52,8 @@ format-padding = 4
 type = custom/text
 content-padding = 4
 content = ※
+content-background = #00aade
+content-underline= #ddd
 click-left = "jgmenu_run >/dev/null 2>&1 &"
 
 
@@ -114,13 +119,13 @@ strip-wsnumbers = true
 ; Default: true
 ; wrapping-scroll = false
 
-; Set the scroll cycle direction 
+; Set the scroll cycle direction
 ; Default: true
 ; reverse-scroll = false
 
-; Use fuzzy (partial) matching on labels when assigning 
+; Use fuzzy (partial) matching on labels when assigning
 ; icons to workspaces
-; Example: code;♚ will apply the icon to all workspaces 
+; Example: code;♚ will apply the icon to all workspaces
 ; containing 'code' in the label
 ; Default: false
 ; fuzzy-match = true
@@ -214,7 +219,7 @@ ws-icon-1 = II;
 ws-icon-2 = III;
 ws-icon-3 = IV;
 ws-icon-4 = V;
-ws-icon-default = 
+ws-icon-default = 
 
 ;; https://github.com/galczo5/dotfiles/blob/master/POLYBAR/.polybar
 
@@ -252,8 +257,16 @@ format-connected-padding = 0
 format-disconnected = <label-disconnected>
 format-disconnected-padding = 0
 
-label-connected =  %essid%
-label-disconnected =   None
+label-connected =  %ifname%
+label-disconnected =  None
+
+; Only applies if <ramp-signal> is used
+ramp-signal-0 = 😱
+ramp-signal-1 = 😠
+ramp-signal-2 = 😒
+ramp-signal-3 = 😊
+ramp-signal-4 = 😃
+ramp-signal-5 = 😈
 
 click-left = nm-connection-editor
 
@@ -297,7 +310,7 @@ time-alt = %H:%M:%S
 
 label = %date% %time%
 format =    <label>
-;format-background = #ddffffff
+;format-ackground = #ddffffff
 ;format-background = #88000000
 ;format-foreground = #333
 format-padding = 3
@@ -377,13 +390,15 @@ ramp-headphones-0 = 
 [module/powermenu]
 type = custom/menu
 
-label-open = 
+;;label-open = 
+label-open = ${env:USER:}
+
 ;label-open-background = #dd0000
 ;label-open-foreground = #fff
 label-close = cancel
 ;label-close-background = #dd0000
 ;label-close-foreground = #fff
-label-open-padding = 4
+label-open-padding = 3
 label-close-padding = 3
 
 menu-0-0 = reboot
