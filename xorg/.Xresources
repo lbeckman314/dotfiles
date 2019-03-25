@@ -254,17 +254,17 @@ URxvt*iconFile: /usr/share/icons/Numix-Circle/48/apps/terminal.svg
 
 ! █▓▒░ color scheme
 !#include </home/liam/.config/myxthemes/dracula_xresources/dracula.Xcolors>
-#include </home/liam/Downloads/xresources/Xresources>
+!#include </home/liam/Downloads/xresources/Xresources>
 !#include </home/liam/.config/myxthemes/nord-xresources/src/nord>
 
 ! █▓▒░ fonts
 !xft:Symbola:pixelsize=14:antialias=true:hinting=slight
 !urxvt*font: xft:gohufont:size=11:antialias=false
 urxvt*font: -*-creep-regular-*-*--16-*-*-*-*-*-*-1
-urxvt*font: -*-lime-*-*-*--11-*-*-*-*-*-*-1
-urxvt*font: xft:creep:size=12:antialias=true
-urxvt.font:     xft:bitstream vera sans mono:size=11:antialias=true
-urxvt.boldFont: xft:bitstream vera sans mono:bold:size=11:antialias=true
+!urxvt*font: -*-lime-*-*-*--11-*-*-*-*-*-*-1
+!urxvt*font: xft:creep:size=12:antialias=true
+!urxvt.font:     xft:bitstream vera sans mono:size=11:antialias=true
+!urxvt.boldFont: xft:bitstream vera sans mono:bold:size=11:antialias=true
 !urxvt*font: xft:roboto:size=12:antialias=true:hinting=slight
 !urxvt*font: xft:envy code r:size=9:antialias=false
 !urxvt*font: xft:lemon:size=16:antialias=false
@@ -329,8 +329,9 @@ urxvt.iso14755: false
 !---------------------------!
 
 ! special
-*.foreground:   #d8fbff
+!*.foreground:   #d8fbff
 *.background:   #010010
+*.foreground:       #ffffff#
 
 ! black
 *.color8:       #555555

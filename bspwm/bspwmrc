@@ -34,7 +34,7 @@ bspc rule -r *:*
 #bspc rule -a Screenkey manage=off
 
 
-feh --bg-fill /usr/share/xfce4/backdrops/Mountainous_View_by_Sven_Scheuermeier.jpg &
+feh --bg-fill $HOME/Documents/code/dotfiles/wallpapers/sven-scheuermeier-matterhorn.png
 polybar top &
 # xfce4-panel --disable-wm-check &
 #alttab -d 1 &

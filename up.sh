@@ -1,3 +1,4 @@
+#!/bin/bash
 declare -A args=(
 [dotfiles]=0
 [programs]=0
