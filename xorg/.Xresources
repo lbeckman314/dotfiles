@@ -254,15 +254,14 @@ URxvt*iconFile: /usr/share/icons/Numix-Circle/48/apps/terminal.svg
 
 ! █▓▒░ color scheme
 !#include </home/liam/.config/myxthemes/dracula_xresources/dracula.Xcolors>
-#include </home/liam/Downloads/xresources/Xresources>
 !#include </home/liam/.config/myxthemes/nord-xresources/src/nord>
 
 ! █▓▒░ fonts
 !xft:Symbola:pixelsize=14:antialias=true:hinting=slight
 !urxvt*font: xft:gohufont:size=11:antialias=false
 urxvt*font: -*-creep-regular-*-*--16-*-*-*-*-*-*-1
-urxvt*font: -*-lime-*-*-*--11-*-*-*-*-*-*-1
-urxvt*font: xft:creep:size=12:antialias=true
+!urxvt*font: -*-lime-*-*-*--11-*-*-*-*-*-*-1
+!urxvt*font: xft:creep:size=12:antialias=true
 urxvt.font:     xft:bitstream vera sans mono:size=11:antialias=true
 urxvt.boldFont: xft:bitstream vera sans mono:bold:size=11:antialias=true
 !urxvt*font: xft:roboto:size=12:antialias=true:hinting=slight
@@ -285,10 +284,10 @@ urxvt*scrollBar: false
 !urxvt*transparent: true
 
 ! https://wiki.archlinux.org/index.php/Rxvt-unicode/Tips_and_tricks#True_transparency
-! URxvt*shading: 0 to 99 darkens, 101 to 200 lightens
+! where '80' is the opacity level in percentage and '#000000' is the background color. !
 URxvt.shading: 110
-URxvt.depth: 32
-URxvt.background: rgba:1111/1111/1111/dddd
+URxvt.*depth: 32
+URxvt.background: [80]#000000
 
 ! urxvt*internalBorder: 10
 ! urxvt*borderColor: #1c1c1c

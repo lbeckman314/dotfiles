@@ -257,7 +257,7 @@ format-connected-padding = 0
 format-disconnected = <label-disconnected>
 format-disconnected-padding = 0
 
-label-connected =  %ifname%
+label-connected =  %essid%
 label-disconnected =  None
 
 ; Only applies if <ramp-signal> is used
@@ -351,7 +351,7 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-framerate = 750
+animation-charging-framerate = 1000
 
 [module/backlight]
 type = internal/backlight

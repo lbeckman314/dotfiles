@@ -37,7 +37,7 @@ bspc rule -r *:*
 feh --bg-fill /usr/share/xfce4/backdrops/Mountainous_View_by_Sven_Scheuermeier.jpg &
 polybar top &
 # xfce4-panel --disable-wm-check &
-#alttab -d 1 &
+XGD_SESSION_TYPE=X11
 plank &
 
 bspc rule -a URxvt -o desktop=^1 focus=on follow=on
@@ -46,8 +46,11 @@ bspc rule -a Emacs -o desktop=^3 focus=on state=tiled
 bspc rule -a Evince -o desktop=^4 focus=off follow=off
 #evince &
 firefox &
-emacs &
-urxvt &
+#emacs &
+emacsclient -c -a "" &
+urxvt -e zsh -c "source ~/.zshrc; zsh -i" &
+jgmenu &
+xbanish &
 
 bspc desktop -f ^1
 
@@ -65,3 +68,4 @@ bspc desktop -f ^1
 #sh -c 'echo "launching from bspwmrc"; $HOME/.config/bspwm/launch.sh'
 
 compton -b --config /home/liam/.config/compton.conf
+alttab -d 1 &

@@ -26,8 +26,8 @@ alt + n
     jgmenu_run
 
 # program switcher
-alt + {grave,Tab}
-    rofi -show window -yoffset -150
+#alt + {grave,Tab}
+#    rofi -show window -yoffset -150
 
 # make sxhkd reload its configuration files:
 alt + Escape
@@ -107,7 +107,7 @@ alt + {o,i}
     bspc wm -h on
 
 # focus or send to the given desktop
-alt + {_,shift + }{1-9,0}
+alt + {_,ctrl + }{1-9,0}
     bspc {desktop -f,node -d} '^{1-9,10}'
 
 #
@@ -149,7 +149,7 @@ super + alt + shift + {h,j,k,l}
 # https://www.reddit.com/r/bspwm/comments/2xngik/moving_consoles_to_different_workspaces/
 
 # move window to another desktop/workspace
-alt + {_,shift + }{1-9,0}
+alt + {_,super + }{1-9,0}
     bspc {desktop -f,window -d} {1-9,10}
 
 # Raises volume
