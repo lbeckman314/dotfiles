@@ -68,4 +68,4 @@ bspc desktop -f ^1
 #sh -c 'echo "launching from bspwmrc"; $HOME/.config/bspwm/launch.sh'
 
 compton -b --config /home/liam/.config/compton.conf
-alttab -d 1 &
+#alttab -d 1 &
