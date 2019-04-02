@@ -40,26 +40,27 @@ Plug 'https://github.com/ludovicchabant/vim-gutentags' " Tag generator
 Plug 'https://github.com/liuchengxu/vim-which-key'
 "Plug 'https://github.com/vim-scripts/Smart-Tabs'
 Plug 'https://github.com/lervag/vimtex'
+let g:vimtex_quickfix_mode = 0
 let g:vimtex_view_method = 'zathura'
 Plug 'https://github.com/mhinz/neovim-remote'
 Plug 'https://github.com/justinmk/vim-sneak'
 Plug 'https://github.com/chrisbra/Colorizer'
 Plug 'https://github.com/tpope/vim-endwise'
+Plug 'https://github.com/jiangmiao/auto-pairs'
+let g:AutoPairsMultilineClose = 0
+let g:AutoPairs = {'(':')', '[':']', '{':'}'}
 
 if has('nvim')                " autocomplete
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    " Use deoplete.
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    let g:deoplete#enable_at_startup = 1
 else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-  pythonx import neovim
+    " Use neoplete.
+    Plug 'https://github.com/shougo/neocomplete.vim'
+    let g:neocomplete#enable_at_startup = 1
 endif
 
 call plug#end()
-
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-
 
 " ---------------------------- "
 " MAPPINGS
@@ -122,7 +123,7 @@ au BufNewFile,BufRead /dev/shm/gopass.* setlocal noswapfile nobackup noundofile
 set conceallevel=0
 
 " don't add additional comments
-set formatoptions-=ro
+autocmd FileType * set formatoptions-=ro
 
 " Don't try to be vi compatible
 set nocompatible

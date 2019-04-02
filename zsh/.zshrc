@@ -220,7 +220,7 @@ if [ -f ~/.config/exercism/exercism_completion.zsh ]; then
 fi
 
 # https://askubuntu.com/questions/758496/how-to-make-a-permanent-alias-in-oh-my-zsh
-hash -d s=~/Documents/code/osu/2018summer/
+hash -d s=~/Documents/code/osu/2019spring/
 hash -d f=~/Documents/code/osu/2018fall/
 hash -d i=~/Documents/code/osu/2019winter/
 hash -d fin=~/Documents/personal/finances/ledger/

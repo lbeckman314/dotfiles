@@ -1,0 +1,34 @@
+\usepackage{minted}
+\usepackage{xcolor}
+\usepackage{titletoc}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{eso-pic}
+\usepackage[english]{babel}
+
+\definecolor{my-grey}{HTML}{696969}
+\definecolor{my-blue}{HTML}{4635f7}
+\definecolor{my-grey}{RGB}{128,128,128}
+\definecolor{my-red}{HTML}{AA0000}
+
+\setlength{\parskip}{1em}
+\setlength{\jot}{2em}
+\raggedright
+
+\usepackage{tikz}
+\usepackage{tikzpagenodes}
+\usetikzlibrary{calc}
+
+\AddToShipoutPictureBG{%
+\begin{tikzpicture}[overlay,remember picture]
+\draw[line width=1pt][color=gray] ($ (current page.north west) + (0.5cm,-0.5cm) $) rectangle ($ (current page.south east) + (-0.5cm,0.5cm) $); \end{tikzpicture}}
+
+% https://tex.stackexchange.com/questions/300367/change-the-color-of-title
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@maketitle}% <cmd>
+  {\@title}% <search>
+  {\color{\@titlecolor}\@title}% <replace>
+  {}{}% <success><failure>
+\newcommand{\@titlecolor}{my-red}
+\newcommand{\titlecolor}[1]{\renewcommand{\@titlecolor}{#1}}
+\makeatother

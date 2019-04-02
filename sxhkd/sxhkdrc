@@ -14,11 +14,11 @@ alt + @space
 alt + r
     rofi -show run -yoffset -150
 
-alt + l
+alt + q
     i3lock -u -i /home/liam/Pictures/sven-scheuermeier-mountains.png
 
 # show help
-alt + shift + h
+alt + super + h
     urxvt -e ~/.config/sxhkd/show_help.sh
 
 # run jgmenu
@@ -179,6 +179,7 @@ alt + super + e
 ctrl + space
     bspc config -d focused window_gap {0,15,60}
 
+# https://wiki.gentoo.org/wiki/Bspwm#Hide.2FShow_windows
 # hide window
 alt + ctrl + Down
   bspc node -g hidden
