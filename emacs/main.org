@@ -1,0 +1,14 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="assets/css/code.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="assets/css/dark.css">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="assets/css/dracula.css">
+
+;; https://emacs.stackexchange.com/questions/30229/long-org-export-latex-header
+#+LATEX_HEADER: \input{/home/liam/main.tex}
+ 
+;;#+OPTIONS: num:nil
+#+OPTIONS: toc:nil
+#+OPTIONS: ^:{}
+
+#+AUTHOR: liam beckman
