@@ -28,11 +28,11 @@ modules-center =
 modules-right = wireless-network battery volume backlight date powermenu
 
 ;;tray-transparent = true
-tray-background = #2a000000
-tray-position = center
-tray-padding = 2
-tray-detached = false
-tray-offset-x = 13%
+;;tray-background = #2a000000
+;;tray-position = center
+;;tray-padding = 2
+;;tray-detached = false
+;;tray-offset-x = 13%
 
 wm-restack = bspwm
 

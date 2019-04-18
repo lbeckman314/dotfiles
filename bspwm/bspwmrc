@@ -51,6 +51,7 @@ emacsclient -c -a "" &
 urxvt -e zsh -c "source ~/.zshrc; zsh -i" &
 jgmenu &
 xbanish &
+XDG_SESSION_TYPE=X11; plank &
 
 bspc desktop -f ^1
 
@@ -68,4 +69,4 @@ bspc desktop -f ^1
 #sh -c 'echo "launching from bspwmrc"; $HOME/.config/bspwm/launch.sh'
 
 compton -b --config /home/liam/.config/compton.conf
-#alttab -d 1 &
+sleep 5; alttab -d 1 &

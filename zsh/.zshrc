@@ -233,3 +233,9 @@ alias em='(emacsclient -c -a "" &)'
 
 # https://github.com/rust-lang/rustup.rs#toolchain-specification
 fpath+=~/.zfunc
+
+export APP="cs467-map-server"
+export DATABASE_FILE=database.sql
+export DATABASE_LOCAL=map
+export DATABASE_URL=postgres://$(whoami)@localhost/$DATABASE_LOCAL
+
