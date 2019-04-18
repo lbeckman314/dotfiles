@@ -94,9 +94,8 @@ urxvt.iso14755: false
 !---------------------------!
 
 ! special
-!*.foreground:   #d8fbff
+*.foreground:   #d8fbff
 *.background:   #010010
-*.foreground:       #ffffff#
 
 ! black
 *.color8:       #555555

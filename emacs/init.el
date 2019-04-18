@@ -99,7 +99,7 @@
 (use-package ivy-rich
   :ensure t
   :config
-  (ivy-rich-mode 1)
+  ;;(ivy-rich-mode 1)
   (setq ivy-virtual-abbreviate 'full
         ivy-rich-switch-buffer-align-virtual-buffer t)
   (setq ivy-rich-path-style 'abbrev))
@@ -668,12 +668,12 @@ alphanumeric characters only."
 (setq highlight-indent-guides-method 'character)
 
 (defun startup ()
-  (osu)
-  (init)
-  (vcs)
+  ;;(osu)
+  ;;(init)
+  ;;(vcs)
   ;;(ledger)
   (scratch)
-  (mail)
+  ;;(mail)
   )
 
 (defun scratch()
@@ -778,7 +778,7 @@ alphanumeric characters only."
 (setq process-connection-type nil)
 
 (setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
+;;(setq ido-everywhere t)
 (ido-mode 1)
 
 (use-package em-glob)
