@@ -49,6 +49,7 @@ Plug 'https://github.com/tpope/vim-endwise'
 Plug 'https://github.com/jiangmiao/auto-pairs'
 let g:AutoPairsMultilineClose = 0
 let g:AutoPairs = {'(':')', '[':']', '{':'}'}
+Plug 'vim-scripts/dbext.vim'
 
 if has('nvim')                " autocomplete
     " Use deoplete.
