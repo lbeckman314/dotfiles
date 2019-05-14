@@ -2,15 +2,15 @@
 
 # CONFIGURATION
 LOCATION=0
-YOFFSET=0
+YOFFSET=-350
 XOFFSET=0
 WIDTH=12
 WIDTH_WIDE=24
-THEME=solarized
+THEME=Arc-Dark
 
 # Color Settings of Icon shown in Polybar
 COLOR_DISCONNECTED='#000'       # Device Disconnected
-COLOR_NEWDEVICE='#ff0'          # New Device
+COLOR_NEWDEVICE='#ccc'          # New Device
 COLOR_BATTERY_90='#fff'         # Battery >= 90
 COLOR_BATTERY_80='#ccc'         # Battery >= 80
 COLOR_BATTERY_70='#aaa'         # Battery >= 70
