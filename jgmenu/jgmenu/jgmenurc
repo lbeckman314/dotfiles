@@ -1,0 +1,6 @@
+menu_padding_top    = 63
+sub_padding_top    = 5
+menu_width          = 400
+menu_height_min     = 500
+menu_height_max     = 500
+menu_margin_y = 235
