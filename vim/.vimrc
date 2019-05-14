@@ -24,10 +24,14 @@ call plug#begin('~/.vim/plugged')
 " PLUGINS
 " ---------------------------- "
 
+"Plug 'https://github.com/edkolev/tmuxline.vim'
+Plug 'https://github.com/scrooloose/nerdcommenter'
 Plug 'https://github.com/w0rp/ale'               " asynchronous syntax checker
 Plug 'https://github.com/mattn/emmet-vim'        " web-development toolkit
 "Plug 'https://github.com/junegunn/goyo.vim'      " zen mode
 Plug 'https://github.com/Yggdroot/indentLine'    " python indent visualizer
+" https://vi.stackexchange.com/questions/7258/how-do-i-prevent-vim-from-hiding-symbols-in-markdown-and-json
+let g:indentLine_setConceal = 0
 Plug 'https://github.com/luochen1990/rainbow'    " rainbow parens
 Plug 'https://github.com/majutsushi/tagbar'      " Tag bar
 Plug 'https://github.com/mbbill/undotree'        " go through undos
@@ -46,10 +50,13 @@ Plug 'https://github.com/mhinz/neovim-remote'
 Plug 'https://github.com/justinmk/vim-sneak'
 Plug 'https://github.com/chrisbra/Colorizer'
 Plug 'https://github.com/tpope/vim-endwise'
+Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/jiangmiao/auto-pairs'
 let g:AutoPairsMultilineClose = 0
 let g:AutoPairs = {'(':')', '[':']', '{':'}'}
 Plug 'vim-scripts/dbext.vim'
+"Plug 'https://github.com/iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+Plug 'https://github.com/iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 if has('nvim')                " autocomplete
     " Use deoplete.
@@ -116,6 +123,9 @@ silent! colorscheme dracula
 " ---------------------------- "
 " SETTINGS
 " ---------------------------- "
+
+" https://old.reddit.com/r/vim/comments/bgumn8/til_about_diffoptiwhite/
+set diffopt+=hiddenoff
 
 " https://github.com/gopasspw/gopass/blob/master/docs/setup.md
 au BufNewFile,BufRead /dev/shm/gopass.* setlocal noswapfile nobackup noundofile
@@ -207,6 +217,7 @@ autocmd FileType markdown set nonumber
 " https://github.com/vim-airline/vim-airline/issues/124
 set ttimeoutlen=50
 
+set shell=zsh
 
 " ---------------------------- "
 " FUNCTIONS

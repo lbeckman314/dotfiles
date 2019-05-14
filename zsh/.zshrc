@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# ~/.zshenv
+setopt NO_GLOBAL_RCS
+
 # https://www.emacswiki.org/emacs/TrampMode
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
@@ -105,9 +108,9 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
 if type gio &> /dev/null; then
-    alias rmt='gio trash'
+    alias rmt='gio trash; mv -t $HOME/trash'
 else
-    alias rmt='gvfs-trash'
+    alias rmt='gvfs-trash; mv -t $HOME/trash'
 fi
 
 alias acp='git add --all; git commit; git push origin master'
@@ -239,3 +242,11 @@ export DATABASE_FILE=database.sql
 export DATABASE_LOCAL=map
 export DATABASE_URL=postgres://$(whoami)@localhost/$DATABASE_LOCAL
 
+#alias gpom="git add --all; git commit; git push origin master"
+gpom() {
+    gaa;
+    gc;
+    gp origin $(git branch | grep \* | cut -d ' ' -f2)
+}
+
+alias gg="git branch -a | tr -d \* | sed '/->/d' | xargs git grep"
