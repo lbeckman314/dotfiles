@@ -1,0 +1,9 @@
+@icon,,5,10,48,48,0,left,top,,,/home/liam/.config/jgmenu/x.png
+@rect,,58,14,130,40,3,left,top,#aaaaaa 15,#000000 0,content
+@search,,58,14,130,40,3,left,top,#aaaaaa 90,#222222 3,Type to search...
+
+Browser,firefox,firefox
+File manager,thunar,system-file-manager
+Terminal,urxvt,utilities-terminal
+^sep()
+
