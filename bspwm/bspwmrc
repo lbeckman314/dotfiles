@@ -6,9 +6,7 @@ xsetroot -cursor_name left_ptr
 
 export PATH=/usr/bin:$PATH
 
-
 bspc monitor -d I II III IV V VI VII VIII IX X
-#bspc monitor LVDS-1 -d shell firefox emacs evince etc
 
 bspc config border_width          0
 bspc config window_gap            0
@@ -18,7 +16,6 @@ bspc config borderless_monocle    true
 bspc config gapless_monocle       true
 bspc config focus_follows_pointer true
 bspc config click-to-focus        true
-
 
 #bspc rule -a Gimp desktop='^8' state=floating follow=on
 #bspc rule -a xfce4-terminal desktop=^2
@@ -33,10 +30,13 @@ bspc rule -r *:*
 #bspc rule -a Kupfer.py focus=on
 #bspc rule -a Screenkey manage=off
 
+<<<<<<< HEAD
 
 feh --bg-fill $HOME/Documents/code/dotfiles/wallpapers/sven-scheuermeier-matterhorn.png
+=======
+feh --bg-fill /usr/share/xfce4/backdrops/Mountainous_View_by_Sven_Scheuermeier.jpg &
+>>>>>>> 1f5c634ddd2dc4640f8bf9085d37ce9985f7d8c8
 polybar top &
-# xfce4-panel --disable-wm-check &
 XGD_SESSION_TYPE=X11
 plank &
 
@@ -44,29 +44,16 @@ bspc rule -a URxvt -o desktop=^1 focus=on follow=on
 bspc rule -a Firefox -o desktop=^2 focus=on
 bspc rule -a Emacs -o desktop=^3 focus=on state=tiled
 bspc rule -a Evince -o desktop=^4 focus=off follow=off
-#evince &
 firefox &
-#emacs &
-emacsclient -c -a "" &
-urxvt -e zsh -c "source ~/.zshrc; zsh -i" &
+emacsclient -c -a "" & -e '(startup)'
+redshift -c ~/redshift.conf &
+urxvt -e zsh -c "source ~/.zshrc; tmux new -s dev" &
 jgmenu &
 xbanish &
 XDG_SESSION_TYPE=X11; plank &
 
 bspc desktop -f ^1
 
-#$HOME/.config/bspwm/autostart
-
-
-# https://wiki.archlinux.org/index.php/Cursor_themes#Change_X_shaped_default_cursor
-#xsetroot -cursor_name left_ptr
-
-# launch stuff
-
-# https://www.reddit.com/r/bspwm/comments/2mpui3/attempting_to_autostart_a_few_programs/
-# launch programs
-
-#sh -c 'echo "launching from bspwmrc"; $HOME/.config/bspwm/launch.sh'
-
 compton -b --config /home/liam/.config/compton.conf
+
 sleep 5; alttab -d 1 &

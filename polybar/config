@@ -25,7 +25,7 @@ font-2 = siji:pixelsize=10;0
 
 modules-left = jgmenu bspwm
 modules-center =
-modules-right = wireless-network battery volume backlight date powermenu
+modules-right = kdeconnect wireless-network battery volume backlight date powermenu
 
 ;;tray-transparent = true
 ;;tray-background = #2a000000
@@ -257,7 +257,8 @@ format-connected-padding = 0
 format-disconnected = <label-disconnected>
 format-disconnected-padding = 0
 
-label-connected =  %essid%
+;;label-connected =  %signal% ⇢ %essid%
+label-connected = %{A1:nm-connection-editor:} %essid% (%signal%)%{A}
 label-disconnected =  None
 
 ; Only applies if <ramp-signal> is used
@@ -291,6 +292,8 @@ label-connected = %{A1:nm-connection-editor:}%essid%%{A}
 [module/date]
 type = internal/date
 
+click-left = "jgmenu_run >/dev/null 2>&1 &"
+
 ; Seconds to sleep between updates
 interval = 1.0
 
@@ -305,8 +308,8 @@ date = %A %I:%M:%S %d %B %Y
 
 ; if `date-alt` or `time-alt` is defined, clicking
 ; the module will toggle between formats
-date-alt = %A, %d %B %Y
-time-alt = %H:%M:%S
+;date-alt = %A, %d %B %Y
+;time-alt = %H:%M:%S
 
 label = %date% %time%
 format =    <label>
@@ -345,6 +348,8 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
+
+ramp-capacity-0-foreground = #de0037
 
 animation-charging-0 = 
 animation-charging-1 = 

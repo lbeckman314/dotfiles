@@ -2,6 +2,7 @@
 
 !rofi -show run -lines 3 -eh 2 -width 1000 -padding 10 -opacity "90" -bw 0 -bc "#2f343f" -bg "#2f343f" -fg "#b0b9c6" -hlbg "#2f343f" -hlfg "#ffffff" -font "System San Francisco Display 12"
 
+rofi.theme: Arc-Dark
 ! Enabled modi
 rofi.modi:                           window,run,ssh
 ! Window opacity

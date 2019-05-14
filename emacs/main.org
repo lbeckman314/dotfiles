@@ -6,6 +6,7 @@
 
 ;; https://emacs.stackexchange.com/questions/30229/long-org-export-latex-header
 #+LATEX_HEADER: \input{/home/liam/main.tex}
+#+LATEX_HEADER: \usepackage{placeins}
  
 ;;#+OPTIONS: num:nil
 #+OPTIONS: toc:nil

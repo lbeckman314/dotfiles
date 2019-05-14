@@ -48,10 +48,10 @@
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
-(use-package chicken-scheme
-  :ensure t
-  :config
-  (setq inferior-lisp-program "/usr/bin/sbcl"))
+;; (use-package chicken-scheme
+;;   :ensure t
+;;   :config
+;;   (setq inferior-lisp-program "/usr/bin/sbcl"))
 
 (use-package dracula-theme
   :ensure t
@@ -709,7 +709,7 @@ alphanumeric characters only."
 
 
 ;;(startup)
-(add-hook 'after-init-hook #'startup)
+(add-hook 'after-init-hook 'startup)
 
 (defun create-scratch-buffer nil
   "create a scratch buffer"
@@ -808,8 +808,11 @@ alphanumeric characters only."
 ;;                          (untabify (point-min) (point-max)))
 ;;             nil ))
 
-;; flycheck
+;; flyspell/flycheck
 (set-face-attribute 'flyspell-incorrect nil :underline '(:color "deep pink" :style line))
+(set-face-attribute 'flycheck-error nil :underline '(:color "deep pink" :style line))
+(set-face-attribute 'flycheck-warning nil :underline '(:color "purple" :style line))
+(set-face-attribute 'flycheck-info nil :underline '(:color "green" :style line))
 
 ;; Tramp
 ;; https://www.emacswiki.org/emacs/TrampMode
@@ -994,7 +997,7 @@ Emacs session."
     (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (nimbus-theme yasnippet undo-propose evil-magit magit dumb-jump thread-dump counsel chip8 quelpa-use-package quelpa sr-speedbar rtags toc-org highlight-indent-guides git-gutter diff-hl prettier-js reformatter s "s" abyss-theme sane-term flycheck-ledger ledger-mode doom-modeline mu4e-conversation telephone-line session ob-tmux eyebrowse format-all rainbow-mode zone-sl zone-rainbow zone-nyan perspective golden-ratio android-mode elmacro rmsbolt swiper ace-jump-mode powerline-evil powerline esup auctex org-ref-pubmed org-ref-scopus org-ref-wos org-id org-ref org-mime pdf-tools weechat aggressive-indent smart-tabs-mode smart-tabs smooth-scrolling evil-mu4e mu4e highlight-indentation company-mode company ws-butler 0blayout anki-editor auto-complete hydra-ivy ivy-hydra smart-parens hydra projectile smartparens ob-sql-mode org-babel-eval-in-repl ivy-rich gnuplot-mode gnuplot sicp haskell-mode geiser chicken-scheme chess github-theme htmlize which-key use-package smex slime shell-pop rotate rebecca-theme rainbow-delimiters paredit multiple-cursors ivy general flycheck evil-leader dracula-theme dashboard)))
+    (image+ multi-term treemacs nimbus-theme yasnippet undo-propose evil-magit magit dumb-jump thread-dump counsel chip8 quelpa-use-package quelpa sr-speedbar rtags toc-org highlight-indent-guides git-gutter diff-hl prettier-js reformatter s "s" abyss-theme sane-term flycheck-ledger ledger-mode doom-modeline mu4e-conversation telephone-line session ob-tmux eyebrowse format-all rainbow-mode zone-sl zone-rainbow zone-nyan perspective golden-ratio android-mode elmacro rmsbolt swiper ace-jump-mode powerline-evil powerline esup auctex org-ref-pubmed org-ref-scopus org-ref-wos org-id org-ref org-mime pdf-tools weechat aggressive-indent smart-tabs-mode smart-tabs smooth-scrolling evil-mu4e mu4e highlight-indentation company-mode company ws-butler 0blayout anki-editor auto-complete hydra-ivy ivy-hydra smart-parens hydra projectile smartparens ob-sql-mode org-babel-eval-in-repl ivy-rich gnuplot-mode gnuplot sicp haskell-mode geiser chess github-theme htmlize which-key use-package smex slime shell-pop rotate rebecca-theme rainbow-delimiters paredit multiple-cursors ivy general flycheck evil-leader dracula-theme dashboard)))
  '(pdf-view-midnight-colors (quote ("#969896" . "#f8eec7")))
  '(projectile-mode nil nil (projectile))
  '(send-mail-function (quote mailclient-send-it))

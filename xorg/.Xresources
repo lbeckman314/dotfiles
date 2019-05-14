@@ -22,7 +22,7 @@ URxvt*iconFile: /usr/share/icons/Numix-Circle/48/apps/terminal.svg
 ! mirror ▓ http://git.io/.files
 
 ! █▓▒░ color scheme
-!#include </home/liam/.config/myxthemes/dracula_xresources/dracula.Xcolors>
+!#include </home/liam/.config/myxthemes/dracula/dracula.xcolors>
 !#include </home/liam/.config/myxthemes/nord-xresources/src/nord>
 
 ! █▓▒░ fonts
@@ -61,15 +61,13 @@ URxvt.background: [80]#000000
 
 ! █▓▒░ extensions
 URxvt*perl-lib: /home/liam/.urxvt
-URxvt*perl-ext: unichr,matcher,-selection
-URxvt.perl-ext-common: default,matcher
+URxvt*perl-ext: default,unichr,matcher,-selection
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 
 ! urxvt.perl-ext-common: default,clipboard,keyboard-select,url-select
 ! urxvt.keysum.M-u: perl:url-select:select_next
 ! urxvt.url-select.autocopy: true
-! urxvt.url-select.launcher: firefox
 ! urxvt.keysym.M-Escape: perl:keyboard-select:activate
 ! urxvt.keysym.M-c:   perl:clipboard:copy
 ! urxvt.keysym.C-v:   perl:clipboard:paste
@@ -125,3 +123,6 @@ urxvt.iso14755: false
 *.color14:       #55FFFF
 *.color6:      #00AAAA
 
+
+URxvt.keysym.C-Down:  resize-font:smaller
+URxvt.keysym.C-Up:    resize-font:bigger
