@@ -35,7 +35,6 @@ show_devices (){
         devicetype=$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.type)
         isreach="$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.isReachable)"
         istrust="$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.isTrusted)"
-        echo "$deviceid"
         if [ "$isreach" = "true" ] && [ "$istrust" = "true" ]
         then
             battery=$(get_battery "$deviceid")
@@ -44,7 +43,7 @@ show_devices (){
         elif [ "$isreach" = "false" ] && [ "$istrust" = "true" ]
         then
             devices+="$(get_icon -1 "$devicetype")$SEPERATOR"
-        else 
+        else
             haspairing="$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.hasPairingRequests)"
             if [ "$haspairing" = "true" ]
             then
@@ -52,7 +51,6 @@ show_devices (){
             fi
             icon=$(get_icon -2 "$devicetype")
             #devices+="%{A1:$DIR/polybar-kdeconnect.sh -n $devicename -i $deviceid -p:}$icon%{A}$SEPERATOR"
-
         fi
     done
     echo "${devices::-1}"
@@ -71,7 +69,7 @@ get_battery() {
 show_menu () {
     menu="$(rofi -sep "|" -dmenu -i -p "$DEV_NAME" -location $LOCATION -yoffset $YOFFSET -xoffset $XOFFSET -theme $THEME -width $WIDTH -hide-scrollbar -line-padding 4 -padding 20 -lines 5 <<< "Battery: $DEV_BATTERY%|Ping|Find Device|Send File|Unpair")"
                 case "$menu" in
-                    *Ping) qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID/ping" org.kde.kdeconnect.device.ping.sendPing ;; 
+                    *Ping) qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID/ping" org.kde.kdeconnect.device.ping.sendPing ;;
                     *'Find Device') qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID/findmyphone" org.kde.kdeconnect.device.findmyphone.ring ;;
                     *'Send File') qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID/share" org.kde.kdeconnect.device.share.shareUrl "file://$(zenity --file-selection)" ;;
                     *'Unpair' ) qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID" org.kde.kdeconnect.device.unpair
@@ -100,16 +98,16 @@ get_icon () {
     else
         icon=$ICON_SMARTPHONE
     fi
-    case $1 in 
-    "-1")     ICON="%{F$COLOR_DISCONNECTED}$icon%{F-} $1" ;;   
-    "-2")     ICON="%{F$COLOR_NEWDEVICE}$icon%{F-} $1" ;;   
-    "-3")     ICON="%{F$COLOR_BATTERY_90}$ICON_LAPTOP%{F-}" ;;   
+    case $1 in
+    "-1")     ICON="%{F$COLOR_DISCONNECTED}$icon%{F-} $1" ;;
+    "-2")     ICON="%{F$COLOR_NEWDEVICE}$icon%{F-} $1" ;;
+    "-3")     ICON="%{F$COLOR_BATTERY_90}$ICON_LAPTOP%{F-}" ;;
     5*)     ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
     6*)     ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
     7*)     ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
     8*)     ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
     9*|100) ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
-    *)      ICON="%{F$COLOR_BATTERY_LOW}$icon%{F-} $1" ;; 
+    *)      ICON="%{F$COLOR_BATTERY_LOW}$icon%{F-} $1" ;;
     esac
     echo $ICON
 }
