@@ -9,7 +9,7 @@ WIDTH_WIDE=24
 THEME=Arc-Dark
 
 # Color Settings of Icon shown in Polybar
-COLOR_DISCONNECTED='#000'       # Device Disconnected
+COLOR_DISCONNECTED='#ccc'       # Device Disconnected
 COLOR_NEWDEVICE='#ccc'          # New Device
 COLOR_BATTERY_90='#fff'         # Battery >= 90
 COLOR_BATTERY_80='#ccc'         # Battery >= 80
