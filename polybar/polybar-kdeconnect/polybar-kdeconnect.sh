@@ -1,12 +1,12 @@
-#!/bin/bas
+#!/bin/bash
 
 # CONFIGURATION
 LOCATION=0
-YOFFSET=0
+YOFFSET=-350
 XOFFSET=0
 WIDTH=12
 WIDTH_WIDE=24
-THEME=solarized
+THEME=Arc-Dark
 
 # Color Settings of Icon shown in Polybar
 COLOR_DISCONNECTED='#ccc'       # Device Disconnected
