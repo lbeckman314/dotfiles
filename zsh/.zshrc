@@ -57,7 +57,9 @@ ZSH_THEME=robbyrussell
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+    git
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -232,7 +234,7 @@ hash -d w=~/Documents/writings/
 # https://old.reddit.com/r/emacs/comments/9b1bhs/emacsshell_protip_alias_magit/
 alias magit='emacsclient -c -n -a "" -e "(progn (magit-status) (delete-other-windows))"'
 
-alias em='(emacsclient -c -a "" &)'
+alias em='emacsclient -c -n -a "" -e "(startup)"'
 
 # https://github.com/rust-lang/rustup.rs#toolchain-specification
 fpath+=~/.zfunc
@@ -242,9 +244,8 @@ export DATABASE_FILE=database.sql
 export DATABASE_LOCAL=map
 export DATABASE_URL=postgres://$(whoami)@localhost/$DATABASE_LOCAL
 
-<<<<<<< HEAD
 alias startx='startx -- vt$(tty | sed -e "s:/dev/tty::")'
-=======
+
 #alias gpom="git add --all; git commit; git push origin master"
 gpom() {
     gaa;
@@ -253,4 +254,3 @@ gpom() {
 }
 
 alias gg="git branch -a | tr -d \* | sed '/->/d' | xargs git grep"
->>>>>>> 1f5c634ddd2dc4640f8bf9085d37ce9985f7d8c8

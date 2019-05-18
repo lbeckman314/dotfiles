@@ -575,6 +575,8 @@
 ;; KEYBINDINGS
 ;; ---------------------------------- ;;
 
+(local-set-key "\M-\C-g" 'org-plot/gnuplot)
+
 ;; emacs keybindings
 ;; http://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/
 (global-set-key (kbd "C-c o")
@@ -668,12 +670,12 @@ alphanumeric characters only."
 (setq highlight-indent-guides-method 'character)
 
 (defun startup ()
-  ;;(osu)
-  ;;(init)
-  ;;(vcs)
+  (osu)
+  (init)
+  (vcs)
   ;;(ledger)
   (scratch)
-  ;;(mail)
+  (mail)
   )
 
 (defun scratch()

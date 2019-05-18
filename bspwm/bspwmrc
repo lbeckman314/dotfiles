@@ -30,12 +30,7 @@ bspc rule -r *:*
 #bspc rule -a Kupfer.py focus=on
 #bspc rule -a Screenkey manage=off
 
-<<<<<<< HEAD
-
 feh --bg-fill $HOME/Documents/code/dotfiles/wallpapers/sven-scheuermeier-matterhorn.png
-=======
-feh --bg-fill /usr/share/xfce4/backdrops/Mountainous_View_by_Sven_Scheuermeier.jpg &
->>>>>>> 1f5c634ddd2dc4640f8bf9085d37ce9985f7d8c8
 polybar top &
 XGD_SESSION_TYPE=X11
 plank &
