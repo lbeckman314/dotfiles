@@ -575,6 +575,8 @@
 ;; KEYBINDINGS
 ;; ---------------------------------- ;;
 
+(local-set-key "\M-\C-g" 'org-plot/gnuplot)
+
 ;; emacs keybindings
 ;; http://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/
 (global-set-key (kbd "C-c o")

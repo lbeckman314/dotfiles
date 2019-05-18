@@ -99,8 +99,8 @@ get_icon () {
         icon=$ICON_SMARTPHONE
     fi
     case $1 in
-    "-1")     ICON="%{F$COLOR_DISCONNECTED}$icon%{F-} $1" ;;
-    "-2")     ICON="%{F$COLOR_NEWDEVICE}$icon%{F-} $1" ;;
+    "-1")     ICON="%{F$COLOR_DISCONNECTED}$icon%{F-}" ;;
+    "-2")     ICON="%{F$COLOR_NEWDEVICE}$icon%{F-}" ;;
     "-3")     ICON="%{F$COLOR_BATTERY_90}$ICON_LAPTOP%{F-}" ;;
     2*)     ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
     3*)     ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
@@ -110,7 +110,7 @@ get_icon () {
     7*)     ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
     8*)     ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
     9*|100) ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
-    *)      ICON="%{F$COLOR_BATTERY_LOW}$icon%{F-} $1" ;;
+    *)      ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
     esac
     echo $ICON
 }
