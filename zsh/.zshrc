@@ -242,9 +242,8 @@ export DATABASE_FILE=database.sql
 export DATABASE_LOCAL=map
 export DATABASE_URL=postgres://$(whoami)@localhost/$DATABASE_LOCAL
 
-<<<<<<< HEAD
 alias startx='startx -- vt$(tty | sed -e "s:/dev/tty::")'
-=======
+
 #alias gpom="git add --all; git commit; git push origin master"
 gpom() {
     gaa;
@@ -253,4 +252,3 @@ gpom() {
 }
 
 alias gg="git branch -a | tr -d \* | sed '/->/d' | xargs git grep"
->>>>>>> 1f5c634ddd2dc4640f8bf9085d37ce9985f7d8c8

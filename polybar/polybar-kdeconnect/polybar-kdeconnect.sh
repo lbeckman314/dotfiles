@@ -102,6 +102,9 @@ get_icon () {
     "-1")     ICON="%{F$COLOR_DISCONNECTED}$icon%{F-} $1" ;;
     "-2")     ICON="%{F$COLOR_NEWDEVICE}$icon%{F-} $1" ;;
     "-3")     ICON="%{F$COLOR_BATTERY_90}$ICON_LAPTOP%{F-}" ;;
+    2*)     ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
+    3*)     ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
+    4*)     ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
     5*)     ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
     6*)     ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
     7*)     ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;

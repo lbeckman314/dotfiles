@@ -668,12 +668,12 @@ alphanumeric characters only."
 (setq highlight-indent-guides-method 'character)
 
 (defun startup ()
-  ;;(osu)
-  ;;(init)
-  ;;(vcs)
+  (osu)
+  (init)
+  (vcs)
   ;;(ledger)
   (scratch)
-  ;;(mail)
+  (mail)
   )
 
 (defun scratch()
