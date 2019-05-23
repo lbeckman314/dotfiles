@@ -109,13 +109,7 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
-if type gio &> /dev/null; then
-    alias rmt='gio trash; mv -t $HOME/trash'
-else
-    alias rmt='gvfs-trash; mv -t $HOME/trash'
-fi
-
-alias acp='git add --all; git commit; git push origin master'
+alias rmt='mkdir -p $HOME/trash; mv --backup=t -t $HOME/trash'
 
 # https://stackoverflow.com/questions/7522712/how-to-check-if-command-exists-in-a-shell-script
 if type vim.gtk &> /dev/null; then
@@ -254,3 +248,10 @@ gpom() {
 }
 
 alias gg="git branch -a | tr -d \* | sed '/->/d' | xargs git grep"
+
+if lsb_release -a | grep -q "void"
+then
+    alias vim=vim-huge-python3
+fi
+
+alias kdeconnect="kcmshell5 kcm_kdeconnect"

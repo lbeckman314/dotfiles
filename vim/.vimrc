@@ -24,51 +24,42 @@ call plug#begin('~/.vim/plugged')
 " PLUGINS
 " ---------------------------- "
 
-"Plug 'https://github.com/edkolev/tmuxline.vim'
-Plug 'https://github.com/scrooloose/nerdcommenter'
 Plug 'https://github.com/w0rp/ale'               " asynchronous syntax checker
 Plug 'https://github.com/mattn/emmet-vim'        " web-development toolkit
-"Plug 'https://github.com/junegunn/goyo.vim'      " zen mode
+Plug 'https://github.com/junegunn/goyo.vim'      " zen mode
 Plug 'https://github.com/Yggdroot/indentLine'    " python indent visualizer
-" https://vi.stackexchange.com/questions/7258/how-do-i-prevent-vim-from-hiding-symbols-in-markdown-and-json
-let g:indentLine_setConceal = 0
 Plug 'https://github.com/luochen1990/rainbow'    " rainbow parens
 Plug 'https://github.com/majutsushi/tagbar'      " Tag bar
 Plug 'https://github.com/mbbill/undotree'        " go through undos
 Plug 'https://github.com/osyo-manga/vim-over'
 Plug 'https://github.com/lbeckman314/vim'        " forked color scheme (dracula)
 Plug 'https://github.com/bling/vim-airline'      " status bar
-Plug 'https://github.com/nvie/vim-flake8'        " python linter
-Plug 'https://github.com/tpope/vim-fugitive'     " git wrapper
-Plug 'https://github.com/ludovicchabant/vim-gutentags' " Tag generator
-Plug 'https://github.com/liuchengxu/vim-which-key'
-"Plug 'https://github.com/vim-scripts/Smart-Tabs'
+"Plug 'https://github.com/ludovicchabant/vim-gutentags' " Tag generator
 Plug 'https://github.com/lervag/vimtex'
-let g:vimtex_quickfix_mode = 0
-let g:vimtex_view_method = 'zathura'
-Plug 'https://github.com/mhinz/neovim-remote'
 Plug 'https://github.com/justinmk/vim-sneak'
 Plug 'https://github.com/chrisbra/Colorizer'
-Plug 'https://github.com/tpope/vim-endwise'
-Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/jiangmiao/auto-pairs'
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+call plug#end()
+
+let g:vimtex_quickfix_mode = 0
+let g:vimtex_view_method = 'zathura'
+
+" https://vi.stackexchange.com/questions/7258/how-do-i-prevent-vim-from-hiding-symbols-in-markdown-and-json
+let g:indentLine_setConceal = 0
+
 let g:AutoPairsMultilineClose = 0
 let g:AutoPairs = {'(':')', '[':']', '{':'}'}
-Plug 'vim-scripts/dbext.vim'
-"Plug 'https://github.com/iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-Plug 'https://github.com/iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+"Plug 'https://github.com/edkolev/tmuxline.vim'
 
-if has('nvim')                " autocomplete
-    " Use deoplete.
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    let g:deoplete#enable_at_startup = 1
-else
-    " Use neoplete.
-    Plug 'https://github.com/shougo/neocomplete.vim'
-    let g:neocomplete#enable_at_startup = 1
-endif
-
-call plug#end()
 
 " ---------------------------- "
 " MAPPINGS
@@ -76,6 +67,10 @@ call plug#end()
 
 " Pick a leader key
 let mapleader = " "
+
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+" By default timeoutlen is 1000 ms
+set timeoutlen=500
 
 "http://vimcasts.org/transcripts/16/en/
 "nmap <leader>w :set wrap!<CR>
@@ -247,4 +242,9 @@ function! UnMinify()
     %s/;\ze[^\r\n]/;\r/g
     %s/[^\s]\zs[=&|]\+\ze[^\s]/ \0 /g
     normal ggVG=
+endfunction
+
+command! MyFormat call MyFormat()
+function! MyFormat()
+    let currBuff=bufnr("%") | let save_pos = getpos(".") | silent bufdo %s/\s\+$//e | silent retab | update | execute 'buffer ' . currBuff | call setpos('.', save_pos) | noh
 endfunction

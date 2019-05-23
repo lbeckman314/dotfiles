@@ -349,7 +349,7 @@ ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
 
-ramp-capacity-0-foreground = #de0037
+;ramp-capacity-0-foreground = #de0037
 
 animation-charging-0 = 
 animation-charging-1 = 
