@@ -255,3 +255,17 @@ then
 fi
 
 alias kdeconnect="kcmshell5 kcm_kdeconnect"
+
+
+alias glom="git pull origin master"
+
+# Wasmer
+export WASMER_DIR="/home/liam/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"  # This loads wasmer
+
+#source "$HOME/.guix-profile/etc/profile"
+export JAVA_HOME=/usr/lib/jvm/openjdk
+export XBPS_DISTDIR=/home/liam/dev/void-packages
+export PATH=$PATH:$HOME/bin
+export PATH=/home/liam/.wasmer/bin:/home/liam/.wasmer/globals/wapm_packages/.bin:/home/liam/.local/bin:~/.local/bin/:/home/liam/.gem/ruby/2.6.0/bin:/home/liam/.cargo/bin:/home/liam/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/home/liam/.wasmer/bin:/home/liam/.wasmer/globals/wapm_packages/.bin:/home/liam/.local/bin:~/.local/bin/:/home/liam/.gem/ruby/2.6.0/bin:/home/liam/.wasmer/bin:/home/liam/.wasmer/globals/wapm_packages/.bin:/home/liam/.local/bin:~/.local/bin/:/home/liam/.gem/ruby/2.6.0/bin:/home/liam/.wasmer/bin:/home/liam/.wasmer/globals/wapm_packages/.bin:/home/liam/.local/bin:~/.local/bin/:/home/liam/.gem/ruby/2.6.0/bin:/home/liam/.cargo/bin:/home/liam/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/share/apache-ant/bin:/usr/share/apache-maven/bin:/opt/texlive/2019/bin/x86_64-linux:/home/liam/bin:/home/liam/bin:/home/liam/bin:/usr/share/apache-ant/bin:/usr/share/apache-maven/bin:/opt/texlive/2019/bin/x86_64-linux:/home/liam/bin:/home/liam/go/bin
+export PATH="$PATH:/home/liam/.cask/bin"

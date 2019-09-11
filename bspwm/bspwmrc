@@ -1,54 +1,71 @@
 #! /bin/sh
 
-sxhkd &
-
-xsetroot -cursor_name left_ptr
-
 export PATH=/usr/bin:$PATH
 
+# configs
 bspc monitor -d I II III IV V VI VII VIII IX X
-
 bspc config border_width          0
 bspc config window_gap            0
-
 bspc config split_ratio           0.5
 bspc config borderless_monocle    true
 bspc config gapless_monocle       true
 bspc config focus_follows_pointer true
 bspc config click-to-focus        true
 
-#bspc rule -a Gimp desktop='^8' state=floating follow=on
-#bspc rule -a xfce4-terminal desktop=^2
-#bspc rule -a firefox desktop='^3'
 # remove all rules first
 bspc rule -r *:*
-#bspc rule -a Emacs desktop=^3 focus=on follow=on
-#bspc rule -a URxvt desktop=^1 focus=off follow=off
-#bspc rule -a Evince desktop=^2 focus=on follow=on
-#bspc rule -a evince desktop=evince
-#bspc rule -a mplayer2 state=floating
-#bspc rule -a Kupfer.py focus=on
-#bspc rule -a Screenkey manage=off
 
-feh --bg-fill $HOME/Documents/code/dotfiles/wallpapers/sven-scheuermeier-matterhorn.png
-polybar top &
-XGD_SESSION_TYPE=X11
-plank &
-
+# add new rules
 bspc rule -a URxvt -o desktop=^1 focus=on follow=on
 bspc rule -a Firefox -o desktop=^2 focus=on
 bspc rule -a Emacs -o desktop=^3 focus=on state=tiled
 bspc rule -a Evince -o desktop=^4 focus=off follow=off
-firefox &
-emacsclient -c -a "" & -e '(startup)'
-redshift -c ~/redshift.conf &
-urxvt -e zsh -c "source ~/.zshrc; tmux new -s dev" &
-jgmenu &
-xbanish &
-XDG_SESSION_TYPE=X11; plank &
+bspc rule -a Plank layer=below manage=on border=off
 
+# cursor style
+xsetroot -cursor_name left_ptr
+
+# start programs
+
+# wallpaper
+feh --bg-fill $HOME/Documents/code/dotfiles/wallpapers/sven-scheuermeier-matterhorn.png
+
+# polybar
+polybar top &
+
+# plank
+XDG_SESSION_TYPE=X11
+plank &
+
+#firefox
+firefox &
+
+# https://old.reddit.com/r/archlinux/comments/6f3rxy/problem_with_dbus/
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+
+# emacs
+emacsclient -c -a "" -e "(startup)" &
+
+# redshift
+redshift -c ~/redshift.conf &
+
+# terminal, shell, tmux
+urxvt -e zsh -c "source ~/.zshrc; tmux new -s dev" &
+
+#jgmenu
+jgmenu --hide-on-startup &
+
+# hides mouse when typing
+xbanish &
+
+# switch to desktop 1
 bspc desktop -f ^1
 
+# compton
 compton -b --config /home/liam/.config/compton.conf
 
+# nextcloud
+nextcloud &
+
+# alttab
 sleep 5; alttab -d 1 &

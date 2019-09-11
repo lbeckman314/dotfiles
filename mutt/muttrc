@@ -6,7 +6,7 @@ source $HOME/.mutt/config/gpg.rc
 source $HOME/.mutt/config/pager.rc
 source $HOME/.mutt/config/mailbox.rc
 source $HOME/.mutt/config/misc.rc
-
+source ~/.mutt/dracula.muttrc
 
 source ~/.mutt/config/alias.rc
 source ~/.mutt/config/new_alias.rc
@@ -14,3 +14,13 @@ set alias_file=~/.mutt/config/new_alias.rc
 
 # HTML is the last option.
 alternative_order text/enriched text/plain text/html 
+
+set my_user='lbeckman314'
+set realname = 'liam beckman'
+set from = 'lbeckman314@gmail'
+set use_from = yes
+set ssl_force_tls = yes
+set smtp_url="smtp://lbeckman314@smtp.gmail.com:587/"
+source "gpg -dq $HOME/.mutt/.pass-mutt.gpg |"
+
+set smtp_authenticators = 'gssapi:login'

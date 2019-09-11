@@ -27,12 +27,11 @@ modules-left = jgmenu bspwm
 modules-center =
 modules-right = kdeconnect wireless-network battery volume backlight date powermenu
 
-;;tray-transparent = true
-;;tray-background = #2a000000
-;;tray-position = center
-;;tray-padding = 2
-;;tray-detached = false
-;;tray-offset-x = 13%
+tray-background = #2a000000
+tray-position = center
+tray-padding = 2
+tray-detached = false
+tray-offset-x = 0%
 
 wm-restack = bspwm
 
@@ -52,7 +51,7 @@ format-padding = 4
 type = custom/text
 content-padding = 4
 content = ※
-content-background = #00aade
+content-background = #8a8aff
 content-underline= #ddd
 click-left = "jgmenu_run >/dev/null 2>&1 &"
 
@@ -258,7 +257,7 @@ format-disconnected = <label-disconnected>
 format-disconnected-padding = 0
 
 ;;label-connected =  %signal% ⇢ %essid%
-label-connected = %{A1:nm-connection-editor:} %essid% (%signal%)%{A}
+label-connected = %{A1:rofi-wifi-menu:} %essid% (%signal%)%{A}
 label-disconnected =  None
 
 ; Only applies if <ramp-signal> is used
@@ -269,7 +268,9 @@ ramp-signal-3 = 😊
 ramp-signal-4 = 😃
 ramp-signal-5 = 😈
 
-click-left = nm-connection-editor
+[module/wired-network]
+type = internal/network
+interface = enp0s25
 
 [module/eth]
 type = internal/network
@@ -291,8 +292,6 @@ label-connected = %{A1:nm-connection-editor:}%essid%%{A}
 
 [module/date]
 type = internal/date
-
-click-left = "jgmenu_run >/dev/null 2>&1 &"
 
 ; Seconds to sleep between updates
 interval = 1.0
@@ -374,7 +373,7 @@ ramp-3 = 🌒
 ramp-4 = 🌑
 
 [module/volume]
-type = internal/volume
+type = internal/alsa
 
 format-volume = <ramp-volume>  <label-volume>
 ;format-volume-alt = <ramp-volume>

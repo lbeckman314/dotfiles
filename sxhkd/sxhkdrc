@@ -15,11 +15,11 @@ alt + r
     rofi -show run -yoffset -150
 
 alt + q
-    i3lock -u -i /home/liam/Pictures/sven-scheuermeier-mountains.png
+    i3lock -u -i /home/liam/Pictures/sven-scheuermeier-mountain-inverted.png
 
 # show help
-alt + super + h
-    urxvt -e ~/.config/sxhkd/show_help.sh
+super + h
+    $HOME/.config/sxhkd/show_help.sh
 
 # run jgmenu
 alt + n
@@ -30,7 +30,7 @@ alt + n
 #    rofi -show window -yoffset -150
 
 # make sxhkd reload its configuration files:
-alt + Escape
+super + Escape
     pkill -USR1 -x sxhkd
 
 alt + shift + Escape
@@ -65,7 +65,7 @@ alt + g
 #
 
 # set the window state
-alt + {t,shift + t,s,f}
+alt + {t,shift + t,s,u}
     bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags

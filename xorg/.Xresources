@@ -69,8 +69,8 @@ URxvt.matcher.button: 1
 ! urxvt.keysum.M-u: perl:url-select:select_next
 ! urxvt.url-select.autocopy: true
 ! urxvt.keysym.M-Escape: perl:keyboard-select:activate
-! urxvt.keysym.M-c:   perl:clipboard:copy
-! urxvt.keysym.C-v:   perl:clipboard:paste
+! urxvt.keysym.M-C-c:   perl:clipboard:copy
+! urxvt.keysym.M-C-v:   perl:clipboard:paste
 ! urxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 ! urxvt.clipboard.copycmd:  xsel -ib
 ! urxvt.clipboard.pastecmd: xsel -ob
@@ -91,38 +91,61 @@ urxvt.iso14755: false
 !          general          !
 !---------------------------!
 
-! special
-*.foreground:   #d8fbff
-*.background:   #010010
+!! special
+!*.foreground:   #d8fbff
+!*.background:   #010010
+!
+!! black
+!*.color8:       #555555
+!*.color0:       #000000
+!
+!! red
+!*.color9:       #FF5555
+!*.color1:       #AA0000
+!
+!! green
+!*.color10:       #55FF55
+!*.color2:      #00AA00
+!
+!! yellow
+!*.color11:       #FFFF55
+!*.color3:      #AA5500
+!
+!! blue
+!*.color12:       #5555FF
+!*.color4:      #0000AA
+!
+!! magenta
+!*.color13:       #FF55FF
+!*.color5:      #AA00AA
+!
+!! cyan
+!*.color14:       #55FFFF
+!*.color6:      #00AAAA
 
-! black
-*.color8:       #555555
-*.color0:       #000000
-
-! red
-*.color9:       #FF5555
-*.color1:       #AA0000
-
-! green
-*.color10:       #55FF55
-*.color2:      #00AA00
-
-! yellow
-*.color11:       #FFFF55
-*.color3:      #AA5500
-
-! blue
-*.color12:       #5555FF
-*.color4:      #0000AA
-
-! magenta
-*.color13:       #FF55FF
-*.color5:      #AA00AA
-
-! cyan
-*.color14:       #55FFFF
-*.color6:      #00AAAA
+! Dracula Xresources palette
+*.foreground: #F8F8F2
+*.background: #282A36
+*.color0:     #000000
+*.color8:     #4D4D4D
+*.color9:     #DC143C
+*.color1:     #DC143C
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+!*.color4:     #BD93F9
+*.color4:     #5F5FAF
+*.color12:    #CAA9FA
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+*.color7:     #BFBFBF
+*.color15:    #E6E6E6
 
 
-URxvt.keysym.C-Down:  resize-font:smaller
-URxvt.keysym.C-Up:    resize-font:bigger
+
+
+!URxvt.keysym.C-Down:  resize-font:smaller
+!URxvt.keysym.C-Up:    resize-font:bigger

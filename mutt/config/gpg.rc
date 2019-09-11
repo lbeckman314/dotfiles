@@ -1,10 +1,10 @@
-# replace 0xE39CD245 with your gnupg private key ID
-set pgp_sign_as = 0xE39CD245
+# replace 0xAC1CC079  with your gnupg private key ID
+set pgp_sign_as = 0xAC1CC079 
 
 set pgp_decode_command = "gpg %?p?--passphrase-fd 0? --no-verbose --batch --output - %f"
 set pgp_verify_command = "gpg --no-verbose --batch --output - --verify %s %f"
 set pgp_decrypt_command = "gpg --passphrase-fd 0 --no-verbose --batch --output - %f"
-set pgp_sign_command = "gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --detach-sign --textmode %?a?-u %a? %f"
+set pgp_sign_command = "gpg --no-verbose --output - --armor --detach-sign --textmode %?a?-u %a? %f"
 set pgp_clearsign_command = "gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --textmode --clearsign %?a?-u %a? %f"
 set pgp_encrypt_only_command = "/usr/local/bin/pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to %a -- -r %r -- %f"
 set pgp_encrypt_sign_command = "/usr/local/bin/pgpewrap gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to %a -- -r %r -- %f"

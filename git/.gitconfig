@@ -1,8 +1,8 @@
 [user]
     email = lbeckman314@gmail.com
     name = lbeckman314
-    editor = nvim
-	signingkey = 144F39B7AC1CC079
+    editor = vim
+	signingkey = AC1CC079
 [push]
     default = simple
 
@@ -26,3 +26,5 @@
     cmd = emacs --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
 [mergetool "ediffclient"]
     cmd = emacsclient --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
+[github]
+	user = lbeckman314
