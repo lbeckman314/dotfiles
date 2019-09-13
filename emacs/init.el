@@ -1,6 +1,8 @@
 ;; An (evil) emacs init cobbled together from the far corners of the world.
 ;; Feel free to copy and paste, fork, clone, or anything you like.
 
+
+(require 'org-tempo) 
 ;; ---------------------------------- ;;
 ;; PACKAGES :: INITIALIZATION
 ;; ---------------------------------- ;;
@@ -688,7 +690,7 @@
                                            :vars '( ( user-mail-address      .
                                                                              "lbeckman314@gmail.com") 
                                                     ( user-full-name         . "liam beckman" ) 
-                                                    ( mu4e-compose-signature . "liam beckman"))) 
+                                                    )) 
                        ,(make-mu4e-context :name "osu" 
                                            :enter-func (lambda () 
                                                          (mu4e-message "Switch to osu context"))

@@ -69,3 +69,6 @@ nextcloud &
 
 # alttab
 sleep 5; alttab -d 1 &
+
+# window manager hack for java programs to run in bspwm.
+wmname LG3D
