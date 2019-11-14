@@ -72,7 +72,7 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-let g:deoplete#enable_at_startup = 0
+let g:deoplete#enable_at_startup = 1
 call plug#end()
 
 let g:vimtex_quickfix_mode = 0
@@ -166,7 +166,7 @@ silent! colorscheme dracula
 let g:omni_sql_no_default_maps = 1
 
 " https://old.reddit.com/r/vim/comments/bgumn8/til_about_diffoptiwhite/
-set diffopt+=hiddenoff
+" set diffopt+=hiddenoff
 
 " https://github.com/gopasspw/gopass/blob/master/docs/setup.md
 au BufNewFile,BufRead /dev/shm/gopass.* setlocal noswapfile nobackup noundofile

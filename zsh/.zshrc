@@ -63,25 +63,8 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -111,134 +94,12 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
 alias rmt='mkdir -p $HOME/trash; mv --backup=t -t $HOME/trash'
 
-# https://stackoverflow.com/questions/7522712/how-to-check-if-command-exists-in-a-shell-script
-if type vim.gtk &> /dev/null; then
-  # install foobar here
-  alias vim='vim.gtk'
-fi
-alias vi='vim'
-
-# https://wiki.archlinux.org/index.php/Ruby
-PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
-
-# https://github.com/Intoli/exodus#installation
-export PATH="~/.local/bin/:${PATH}"
-
-# https://www.reddit.com/r/archlinux/comments/7oa1h7/pacman_is_great_but_should_we_really_handle_aur/ds8dakw/
-#installs single package (i.e. aur-in spotify)
-ain() {
-
-    # https://stackoverflow.com/questions/4651437/how-to-set-a-variable-to-the-output-from-a-command-in-bash#4651495
-   CURRENT_DIR="$(pwd)"
-
-   # control-c will terminate script execution and remove temporary files
-   trap "echo; echo 'SIGINT received: Deleting temp files then exiting!'; cd $CURRENT_DIR; return 1" INT
-
-
-   mkdir -p $HOME/Downloads/pkgs
-   cd $HOME/Downloads/pkgs
-   git clone https://aur.archlinux.org/${1}.git
-   cd ${1}
-   vim PKGBUILD
-   echo "Install package? [y / n]"
-   read response
-   case "$response" in
-       [yY])
-           makepkg -si
-           ;;
-       *)
-           echo "not installing package."
-           ;;
-   esac
-   cd ..
-
-   echo "remove aur downloads? [y / n]"
-   read response
-   case "$response" in
-       [yY])
-           for pkg in $HOME/Downloads/pkgs/
-               rm -rfI "$pkg"
-               ;;
-        *)
-            echo "ok. not removing."
-            ;;
-    esac
-
-    cd "$CURRENT_DIR"
-}
-
-
-#updates packages
-aup() {
-   aursync -u
-    # https://stackoverflow.com/questions/4651437/how-to-set-a-variable-to-the-output-from-a-command-in-bash#4651495
-#   CURRENT_DIR="$(pwd)"
-
-#   cd ~/Downloads/pkgs
-#   cower -vduf
-#   for pkg in ~/Downloads/pkgs
-#   do
-#       echo "Update package(s)? [y / n]"
-#       read response
-#       case "$response" in
-#       [yY])
-#           cd $pkg
-#           makepkg -si
-#           cd ..
-#           ;;
-#       *)
-#           echo "not updating package(s)."
-#           ;;
-#       esac
-#       # aurbuild -d custom
-#       # repo-add /var/cache/pacman/custom/custom.db.tar *.pkg.tar.xz
-#       # makepkg -si
-#   done
-#
-#   echo "remove aur downloads? [y / n]"
-#   read response
-#   case "$response" in
-#       [yY])
-#           for pkg in ~/Downloads/pkgs
-#               rmt "$pkg"
-#               ;;
-#        *)
-#            echo "ok. not removing."
-#            ;;
-#    esac
-#
-#    cd "$CURRENT_DIR"
-
-}
-
-# http://exercism.io/clients/cli/linux
-export PATH=$HOME/.local/bin:$PATH
-
-if [ -f ~/.config/exercism/exercism_completion.zsh ]; then
-  . ~/.config/exercism/exercism_completion.zsh
-fi
-
-# https://askubuntu.com/questions/758496/how-to-make-a-permanent-alias-in-oh-my-zsh
-hash -d s=~/Documents/code/osu/2019spring/
-hash -d f=~/Documents/code/osu/2018fall/
-hash -d i=~/Documents/code/osu/2019winter/
-hash -d fin=~/Documents/personal/finances/ledger/
-hash -d w=~/Documents/writings/
-
 # https://old.reddit.com/r/emacs/comments/9b1bhs/emacsshell_protip_alias_magit/
 alias magit='emacsclient -c -n -a "" -e "(progn (magit-status) (delete-other-windows))"'
-
 alias em='emacsclient -c -n -a "" -e "(startup)"'
 
 # https://github.com/rust-lang/rustup.rs#toolchain-specification
 fpath+=~/.zfunc
-
-export APP="cs467-map-server"
-export DATABASE_FILE=database.sql
-export DATABASE_LOCAL=map
-export DATABASE_URL=postgres://$(whoami)@localhost/$DATABASE_LOCAL
-
-alias startx='startx -- vt$(tty | sed -e "s:/dev/tty::")'
 
 #alias gpom="git add --all; git commit; git push origin master"
 gpom() {
@@ -246,26 +107,9 @@ gpom() {
     gc;
     gp origin $(git branch | grep \* | cut -d ' ' -f2)
 }
-
 alias gg="git branch -a | tr -d \* | sed '/->/d' | xargs git grep"
-
-if lsb_release -a | grep -q "void"
-then
-    alias vim=vim-huge-python3
-fi
-
-alias kdeconnect="kcmshell5 kcm_kdeconnect"
-
-
 alias glom="git pull origin master"
 
-# Wasmer
-export WASMER_DIR="/home/liam/.wasmer"
-[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"  # This loads wasmer
-
-#source "$HOME/.guix-profile/etc/profile"
-export JAVA_HOME=/usr/lib/jvm/openjdk
-export XBPS_DISTDIR=/home/liam/dev/void-packages
-export PATH=$PATH:$HOME/bin
-export PATH=/home/liam/.wasmer/bin:/home/liam/.wasmer/globals/wapm_packages/.bin:/home/liam/.local/bin:~/.local/bin/:/home/liam/.gem/ruby/2.6.0/bin:/home/liam/.cargo/bin:/home/liam/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/home/liam/.wasmer/bin:/home/liam/.wasmer/globals/wapm_packages/.bin:/home/liam/.local/bin:~/.local/bin/:/home/liam/.gem/ruby/2.6.0/bin:/home/liam/.wasmer/bin:/home/liam/.wasmer/globals/wapm_packages/.bin:/home/liam/.local/bin:~/.local/bin/:/home/liam/.gem/ruby/2.6.0/bin:/home/liam/.wasmer/bin:/home/liam/.wasmer/globals/wapm_packages/.bin:/home/liam/.local/bin:~/.local/bin/:/home/liam/.gem/ruby/2.6.0/bin:/home/liam/.cargo/bin:/home/liam/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/share/apache-ant/bin:/usr/share/apache-maven/bin:/opt/texlive/2019/bin/x86_64-linux:/home/liam/bin:/home/liam/bin:/home/liam/bin:/usr/share/apache-ant/bin:/usr/share/apache-maven/bin:/opt/texlive/2019/bin/x86_64-linux:/home/liam/bin:/home/liam/go/bin
-export PATH="$PATH:/home/liam/.cask/bin"
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0_221)
+export PATH=/usr/local/opt/gambit-scheme/current/bin:/usr/local/opt/gerbil-scheme/libexec/bin:/Users/beckmanl/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/beckmanl/.cargo/bin:/usr/local/opt/fzf/bin
+export GERBIL_HOME=/usr/local/opt/gerbil-scheme/libexec
