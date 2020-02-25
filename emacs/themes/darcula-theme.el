@@ -21,7 +21,7 @@
                 (fg2          "#e2e2dc")
                 (fg3          "#ccccc7")
                 (fg4          "#b6b6b2")
-                (bg1          "#131516" "#282a36" "#000000")
+                (bg1          "#131516")
                 (bg2          "#373844")
                 (bg3          "#464752")
                 (bg4          "#565761")
@@ -210,6 +210,9 @@
                (js3-instance-member-face :foreground ,const)
                (js3-jsdoc-tag-face :foreground ,keyword)
                (js3-warning-face :underline ,keyword)
+               ;; display-line-numbers-mode
+               (line-number (:foreground bg1))
+               (line-number-current-line (:foreground bg1))
                ;; magit
                (magit-branch :foreground ,const :weight bold)
                (magit-diff-context-highlight :background ,bg3 :foreground ,fg3)

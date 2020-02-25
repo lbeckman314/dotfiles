@@ -56,7 +56,10 @@ Plug 'https://github.com/iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#i
 Plug 'https://github.com/rhysd/vim-clang-format'
 Plug 'https://github.com/kana/vim-operator-user'
 Plug 'https://github.com/alvan/vim-closetag'
-Plug 'https://github.com/dhruvasagar/vim-table-mode'
+Plug 'https://github.com/kovisoft/slimv'
+"Plug 'https://github.com/vim-scripts/paredit.vim'
+Plug 'luochen1990/rainbow'
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
 let g:org_heading_shade_leading_stars = 0
 

@@ -1,90 +1,22 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# ~/.zshenv
 setopt NO_GLOBAL_RCS
+autoload colors
+colors
 
 # https://www.emacswiki.org/emacs/TrampMode
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME=robbyrussell
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-    git
-)
-
-source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
 export LANG=en_US.UTF-8
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+export TERM="xterm-256color"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export TERM="xterm-256color"
 
 # adapted from robbyrussell and alanpeadbody themes
 # https://zshthem.es/all/
 # https://wiki.archlinux.org/index.php/Zsh#Colors
-local user="%{$fg_bold[magenta]%}%n::%{$fg_bold[magenta]%}%m%{$reset_color%}"
-
+local user="%F{magenta}%n::%{$fg_bold[magenta]%}%m%{$reset_color%}"
 local ret_status="%(?:%{$fg_bold[green]%}➜:%{$fg_bold[red]%}➜)"
+local date=$(date +"(%F %R:%S)")
+
 PROMPT='${user} ${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
@@ -111,5 +43,42 @@ alias gg="git branch -a | tr -d \* | sed '/->/d' | xargs git grep"
 alias glom="git pull origin master"
 
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0_221)
-export PATH=/usr/local/opt/gambit-scheme/current/bin:/usr/local/opt/gerbil-scheme/libexec/bin:/Users/beckmanl/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/beckmanl/.cargo/bin:/usr/local/opt/fzf/bin
-export GERBIL_HOME=/usr/local/opt/gerbil-scheme/libexec
+export PATH=/Users/beckmanl/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/beckmanl/.cargo/bin
+export QT_PLUGIN_PATH=/usr/local/Cellar/qt/5.14.1/plugins:/usr/local/lib/qt5/plugins
+export PATH="$PATH:/usr/local/Cellar/mysql@5.7/5.7.27_1/bin/"
+
+
+# https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/git.zsh
+git_prompt_info () {
+    local ref
+    ref=$(command git symbolic-ref HEAD 2> /dev/null)  || ref=$(command git rev-parse --short HEAD 2> /dev/null)  || return 0
+    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+}
+
+
+# Checks if working tree is dirty
+function parse_git_dirty() {
+    local STATUS
+    local -a FLAGS
+    FLAGS=('--porcelain')
+    if [[ "$DISABLE_UNTRACKED_FILES_DIRTY" == "true" ]]; then
+        FLAGS+='--untracked-files=no'
+    fi
+    case "$GIT_STATUS_IGNORE_SUBMODULES" in
+        git)
+            # let git decide (this respects per-repo config in .gitmodules)
+            ;;
+        *)
+            # if unset: ignore dirty submodules
+            # other values are passed to --ignore-submodules
+            FLAGS+="--ignore-submodules=${GIT_STATUS_IGNORE_SUBMODULES:-dirty}"
+            ;;
+    esac
+    STATUS=$(command git status ${FLAGS} 2> /dev/null | tail -n1)
+    if [[ -n $STATUS ]]; then
+        echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
+    else
+        echo "$ZSH_THEME_GIT_PROMPT_CLEAN"
+    fi
+}
+
