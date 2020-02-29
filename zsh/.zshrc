@@ -39,8 +39,8 @@ export PATH="$PATH:/usr/local/Cellar/mysql@5.7/5.7.27_1/bin/"
 # Fuzzy finder
 # - - - - - - - - - - - #
 
-fuzzy_bindings="/usr/local/share/examples/fzf/shell/key-bindings.zsh"
-fuzzy_completions="/usr/local/share/examples/fzf/shell/completion.zsh"
+fuzzy_bindings="/usr/local/opt/fzf/shell/key-bindings.zsh"
+fuzzy_completions="/usr/local/opt/fzf/shell/completion.zsh"
 source $fuzzy_bindings
 source $fuzzy_completions
 
@@ -48,6 +48,7 @@ source $fuzzy_completions
 # Aliases
 # - - - - - - - - - - - #
 
+alias "..."="../../"
 alias em='emacsclient -c -n -a "" -e "(startup)"'
 alias gc="git commit"
 alias gg="git branch -a | tr -d \* | sed '/->/d' | xargs git grep"
@@ -111,12 +112,12 @@ parse_git_dirty() {
 # https://wiki.archlinux.org/index.php/Zsh#Colors
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}x"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
 # USER::HOST → DIRECTORY [GIT STATUS]
-USER="%{$fg[magenta]%}%n::%m%{$reset_color%}"
-RET_STATUS="%(?:%{$fg_bold[green]%}➜:%{$fg_bold[red]%}➜)"
+USER="%{$fg_bold[magenta]%}%n%{$fg_bold[blue]%}::%{$fg_bold[magenta]%}%m%{$reset_color%}"
+RET_STATUS="%(?:%{$fg_bold[green]%}>:%{$fg_bold[red]%}>)"
 DIR="%{$fg[cyan]%}%c%{$reset_color%}"
 DATE=$(date +"(%F %R:%S)")
 PROMPT='${USER} ${RET_STATUS} ${DIR} $(git_prompt_info)'
