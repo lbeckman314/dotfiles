@@ -48,13 +48,11 @@ source $fuzzy_completions
 # Aliases
 # - - - - - - - - - - - #
 
-alias "..."="../../"
+alias -g ...='../..'
 alias em='emacsclient -c -n -a "" -e "(startup)"'
 alias gc="git commit"
+alias gco="git checkout"
 alias gg="git branch -a | tr -d \* | sed '/->/d' | xargs git grep"
-alias gg="git branch -a | tr -d \* | sed '/->/d' | xargs git grep"
-alias glom="git pull origin master"
-alias glom="git pull origin master"
 alias gst="git status"
 alias kdeconnect="kcmshell5 kcm_kdeconnect"
 alias magit='emacsclient -c -n -a "" -e "(progn (magit-status) (delete-other-windows))"'
@@ -68,6 +66,10 @@ gpom() {
     git add --all;
     git commit;
     git push origin $(git branch | grep \* | cut -d ' ' -f2)
+}
+
+glom() {
+    git pull origin $(git branch | grep \* | cut -d ' ' -f2)
 }
 
 # https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/git.zsh
