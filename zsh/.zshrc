@@ -123,6 +123,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 USER="%{$fg_bold[magenta]%}%n%{$fg_bold[blue]%}::%{$fg_bold[magenta]%}%m%{$reset_color%}"
 RET_STATUS="%(?:%{$fg_bold[green]%}>:%{$fg_bold[red]%}>)"
 DIR="%{$fg[cyan]%}%c%{$reset_color%}"
-DATE=$(date +"(%F %R:%S)")
+DATE="%{$fg_bold[blue]%}%D{%F %R:%S}%{$reset_color%}"
 PROMPT='${USER} ${RET_STATUS} ${DIR} $(git_prompt_info)'
+RPROMPT='${DATE}'
 

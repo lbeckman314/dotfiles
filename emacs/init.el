@@ -1,4 +1,4 @@
-;; An (evil) emacs init cobbled together from the far corners of the world.
+;echnology Department; An (evil) emacs init cobbled together from the far corners of the world.
 ;; Feel free to copy and paste, fork, clone, or anything you like.
 
 
