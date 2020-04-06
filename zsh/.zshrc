@@ -1,52 +1,82 @@
+# ! -> machine dependent
+
+# - - - - - - - - - - - #
+# Settings
+# - - - - - - - - - - - #
+
 setopt NO_GLOBAL_RCS
+setopt prompt_subst
 autoload colors
 colors
 
+# Support for Emacs Tramp.
 # https://www.emacswiki.org/emacs/TrampMode
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
+autoload -Uz compinit && compinit
+# partial completion suggestions
+zstyle ':completion:*' list-suffixes
+zstyle ':completion:*' expand prefix suffix
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
+
 export LANG=en_US.UTF-8
 export TERM="xterm-256color"
+export PATH=/Users/beckmanl/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/beckmanl/.cargo/bin # !
+export QT_PLUGIN_PATH=/usr/local/Cellar/qt/5.14.1/plugins:/usr/local/lib/qt5/plugins # !
+export PATH="$PATH:/usr/local/Cellar/mysql@5.7/5.7.27_1/bin/" # !
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# - - - - - - - - - - - #
+# Fuzzy finder
+# - - - - - - - - - - - #
 
-# adapted from robbyrussell and alanpeadbody themes
-# https://zshthem.es/all/
-# https://wiki.archlinux.org/index.php/Zsh#Colors
-local user="%F{magenta}%n::%{$fg_bold[magenta]%}%m%{$reset_color%}"
-local ret_status="%(?:%{$fg_bold[green]%}➜:%{$fg_bold[red]%}➜)"
-local date=$(date +"(%F %R:%S)")
+fuzzy_bindings="/usr/local/opt/fzf/shell/key-bindings.zsh" # !
+fuzzy_completions="/usr/local/opt/fzf/shell/completion.zsh" # !
+source $fuzzy_bindings
+source $fuzzy_completions
 
-PROMPT='${user} ${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+# - - - - - - - - - - - #
+# Aliases
+# - - - - - - - - - - - #
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
-
+alias -g ...='../..'
+alias em='emacsclient -c -n -a "" -e "(startup)"'
+alias gaa="git add --all"
+alias gc="git commit"
+alias gco="git checkout"
+alias gg="git branch -a | tr -d \* | sed '/->/d' | xargs git grep"
+alias gst="git status"
+alias kdeconnect="kcmshell5 kcm_kdeconnect"
+alias l="ls -ahlt -G" # !
+alias magit='emacsclient -c -n -a "" -e "(progn (magit-status) (delete-other-windows))"'
 alias rmt='mkdir -p $HOME/trash; mv --backup=t -t $HOME/trash'
 
-# https://old.reddit.com/r/emacs/comments/9b1bhs/emacsshell_protip_alias_magit/
-alias magit='emacsclient -c -n -a "" -e "(progn (magit-status) (delete-other-windows))"'
-alias em='emacsclient -c -n -a "" -e "(startup)"'
+# - - - - - - - - - - - #
+# Functions
+# - - - - - - - - - - - #
 
-# https://github.com/rust-lang/rustup.rs#toolchain-specification
-fpath+=~/.zfunc
-
-#alias gpom="git add --all; git commit; git push origin master"
 gpom() {
-    gaa;
-    gc;
-    gp origin $(git branch | grep \* | cut -d ' ' -f2)
+    git add --all;
+    git commit;
+    git push origin $(git branch | grep \* | cut -d ' ' -f2)
 }
-alias gg="git branch -a | tr -d \* | sed '/->/d' | xargs git grep"
-alias glom="git pull origin master"
 
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0_221)
-export PATH=/Users/beckmanl/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/beckmanl/.cargo/bin
-export QT_PLUGIN_PATH=/usr/local/Cellar/qt/5.14.1/plugins:/usr/local/lib/qt5/plugins
-export PATH="$PATH:/usr/local/Cellar/mysql@5.7/5.7.27_1/bin/"
-
+glom() {
+    git pull origin $(git branch | grep \* | cut -d ' ' -f2)
+}
 
 # https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/git.zsh
 git_prompt_info () {
@@ -55,9 +85,8 @@ git_prompt_info () {
     echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
-
 # Checks if working tree is dirty
-function parse_git_dirty() {
+parse_git_dirty() {
     local STATUS
     local -a FLAGS
     FLAGS=('--porcelain')
@@ -81,4 +110,24 @@ function parse_git_dirty() {
         echo "$ZSH_THEME_GIT_PROMPT_CLEAN"
     fi
 }
+
+# - - - - - - - - - - - #
+# Prompt 
+# - - - - - - - - - - - #
+
+# Adapted from robbyrussell and alanpeadbody themes.
+# https://zshthem.es/all/
+# https://wiki.archlinux.org/index.php/Zsh#Colors
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}x"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+
+# USER::HOST → DIRECTORY [GIT STATUS]
+USER="%{$fg_bold[magenta]%}%n%{$fg_bold[blue]%}::%{$fg_bold[magenta]%}%m%{$reset_color%}"
+RET_STATUS="%(?:%{$fg_bold[green]%}>:%{$fg_bold[red]%}>)"
+DIR="%{$fg[cyan]%}%c%{$reset_color%}"
+DATE="%{$fg_bold[blue]%}%D{%F %R:%S}%{$reset_color%}"
+PROMPT='${USER} ${RET_STATUS} ${DIR} $(git_prompt_info)'
+RPROMPT='${DATE}'
 
