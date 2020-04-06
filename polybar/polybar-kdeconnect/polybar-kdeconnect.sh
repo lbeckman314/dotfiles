@@ -53,7 +53,9 @@ show_devices (){
             #devices+="%{A1:$DIR/polybar-kdeconnect.sh -n $devicename -i $deviceid -p:}$icon%{A}$SEPERATOR"
         fi
     done
-    echo "${devices::-1}"
+    if [ -n "$devices" ]; then
+        echo "${devices::-1}"
+    fi
 }
 
 get_battery() {

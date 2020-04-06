@@ -3,7 +3,6 @@
 
 " adapted from: //gist.github.com/simonista/8703723
 
-
 " ---------------------------- "
 " INITIALIZE VIM-PLUG
 " ---------------------------- "
@@ -19,51 +18,85 @@
 " initialize vim-plug
 call plug#begin('~/.vim/plugged')
 
-
 " ---------------------------- "
 " PLUGINS
 " ---------------------------- "
 
-Plug 'https://github.com/w0rp/ale'               " asynchronous syntax checker
-let g:ale_linters = {'rust': ['rls']}
-let g:ale_rust_rls_toolchain = 'stable' " this is needed, otherwise rls uses nightly toolchain
-
-Plug 'https://github.com/mattn/emmet-vim'        " web-development toolkit
-Plug 'https://github.com/junegunn/goyo.vim'      " zen mode
-Plug 'https://github.com/Yggdroot/indentLine'    " python indent visualizer
-"Plug 'https://github.com/nathanaelkane/vim-indent-guides'
-Plug 'https://github.com/luochen1990/rainbow'    " rainbow parens
-Plug 'https://github.com/majutsushi/tagbar'      " Tag bar
-Plug 'https://github.com/mbbill/undotree'        " go through undos
+" ---------- "
+" Emacs-like search/replace preview
+" ---------- "
 Plug 'https://github.com/osyo-manga/vim-over'
-Plug 'https://github.com/lbeckman314/vim'        " forked color scheme (dracula)
+
+" ---------- "
+" Undo tree
+" ---------- "
+Plug 'https://github.com/mbbill/undotree'        " go through undos
+
+" ---------- "
+" Status bar
+" ---------- "
 Plug 'https://github.com/bling/vim-airline'      " status bar
-"Plug 'https://github.com/ludovicchabant/vim-gutentags' " Tag generator
-Plug 'https://github.com/lervag/vimtex'
+
+" ---------- "
+" Navigation
+" ---------- "
 Plug 'https://github.com/justinmk/vim-sneak'
+
+" ---------- "
+" Colors/visualizers
+" ---------- "
+Plug 'https://github.com/lbeckman314/vim'        " forked color scheme (dracula)
 Plug 'https://github.com/chrisbra/Colorizer'
-Plug 'https://github.com/jiangmiao/auto-pairs'
+Plug 'https://github.com/luochen1990/rainbow'    " rainbow parens
+Plug 'https://github.com/Yggdroot/indentLine'    " python indent visualizer
+" https://vi.stackexchange.com/questions/7258/how-do-i-prevent-vim-from-hiding-symbols-in-markdown-and-json
+let g:indentLine_setConceal = 0
+let g:indentLine_color_term = 239
+
+" ---------- "
+" Latex
+" ---------- "
+Plug 'https://github.com/lervag/vimtex'
+let g:vimtex_quickfix_mode = 0
+let g:vimtex_view_method = 'zathura'
+
+" ---------- "
+" Comments
+" ---------- "
 Plug 'https://github.com/scrooloose/nerdcommenter'
+
+" ---------- "
+" Sessions
+" ---------- "
 Plug 'https://github.com/tpope/vim-obsession'
 Plug 'https://github.com/dhruvasagar/vim-prosession'
-Plug 'https://github.com/prabirshrestha/async.vim'
+
+" ---------- "
+" Language Server Protocol
+" ---------- "
 Plug 'https://github.com/prabirshrestha/vim-lsp'
-Plug 'https://github.com/prabirshrestha/asyncomplete.vim'
-Plug 'https://github.com/vim-scripts/dbext.vim'
-Plug 'https://github.com/rust-lang/rust.vim'
+Plug 'https://github.com/prabirshrestha/async.vim'
+
+" ---------- "
+" Startup
+" ---------- "
 Plug 'https://github.com/mhinz/vim-startify'
-Plug 'https://github.com/iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-Plug 'https://github.com/rhysd/vim-clang-format'
-Plug 'https://github.com/kana/vim-operator-user'
+
+" ---------- "
+" Tags
+" ---------- "
+Plug 'https://github.com/majutsushi/tagbar'      " Tag bar
+"Plug 'https://github.com/ludovicchabant/vim-gutentags' " Tag generator
+
+" ---------- "
+" Autocomplete
+" ---------- "
 Plug 'https://github.com/alvan/vim-closetag'
-Plug 'https://github.com/dhruvasagar/vim-table-mode'
-
-let g:org_heading_shade_leading_stars = 0
-
 let g:closetag_filenames = '*.html,*.xhtml,*.xml'
 
-let g:rustfmt_command = "rustfmt"
-let g:rustfmt_emit_files = 1
+Plug 'https://github.com/jiangmiao/auto-pairs'
+let g:AutoPairsMultilineClose = 0
+let g:AutoPairs = {'(':')', '[':']', '{':'}'}
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -73,34 +106,38 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 0
-call plug#end()
 
-let g:vimtex_quickfix_mode = 0
-let g:vimtex_view_method = 'zathura'
+" ---------- "
+" Linting
+" ---------- "
+Plug 'https://github.com/w0rp/ale'               " asynchronous syntax checker
+let g:ale_linters = {'rust': ['rls']}
+let g:ale_rust_rls_toolchain = 'stable' " this is needed, otherwise rls uses nightly toolchain
+let g:rustfmt_command = "rustfmt"
+let g:rustfmt_emit_files = 1
 
-" https://vi.stackexchange.com/questions/7258/how-do-i-prevent-vim-from-hiding-symbols-in-markdown-and-json
-let g:indentLine_setConceal = 0
-let g:indentLine_color_term = 239
-"let g:indentLine_enabled = 1
-"let g:vim_json_syntax_conceal = 0
+" ---------- "
+" C family formatter
+" ---------- "
+Plug 'https://github.com/rhysd/vim-clang-format'
 
-let g:AutoPairsMultilineClose = 0
-let g:AutoPairs = {'(':')', '[':']', '{':'}'}
-"Plug 'https://github.com/edkolev/tmuxline.vim'
+" ---------- "
+" Rust
+" ---------- "
+Plug 'https://github.com/rust-lang/rust.vim'
+Plug 'https://github.com/rhysd/rust-doc.vim'
 
-if executable('ccls')
-   au User lsp_setup call lsp#register_server({
-      \ 'name': 'ccls',
-      \ 'cmd': {server_info->['ccls']},
-      \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-      \ 'initialization_options': {},
-      \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-      \ })
-endif
-
+" ---------- "
+" Markdown
+" ---------- "
+Plug 'https://github.com/iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 let g:mkdp_preview_options = {
     \ 'disable_sync_scroll': 1,
     \ }
+
+Plug 'https://github.com/dhruvasagar/vim-table-mode'
+
+call plug#end()
 
 " ---------------------------- "
 " MAPPINGS
@@ -116,9 +153,7 @@ nnoremap <leader>l :ls<CR>:b<space>
 " By default timeoutlen is 1000 ms
 set timeoutlen=500
 
-"http://vimcasts.org/transcripts/16/en/
-"nmap <leader>w :set wrap!<CR>
-"command! -nargs=* Wrap set wrap linebreak nolist
+" http://vimcasts.org/transcripts/16/en/
 set wrap nolist linebreak
 
 " https://kevinjalbert.com/vim-substitution-feedback-using-vim-over/
@@ -157,10 +192,11 @@ imap <C-h> <C-w>
 " https://stackoverflow.com/questions/5698284/in-my-vimrc-how-can-i-check-for-the-existence-of-a-color-scheme
 silent! colorscheme dracula
 
-
 " ---------------------------- "
 " SETTINGS
 " ---------------------------- "
+
+filetype plugin indent on
 
 " https://github.com/SpaceVim/SpaceVim/issues/1714
 let g:omni_sql_no_default_maps = 1
@@ -199,7 +235,6 @@ set encoding=utf-8
 "set wrap
 "set textwidth=79
 
-"set formatoptions="cql" "this is the old value -> tcqrn1
 " https://vi.stackexchange.com/questions/1983/how-can-i-get-vim-to-stop-putting-comments-in-front-of-new-lines
 au FileType cpp setlocal fo-=c fo-=r fo-=o
 
@@ -247,9 +282,6 @@ set noshowcmd
 
 " http://vim.wikia.com/wiki/Disable_automatic_comment_insertion
 au FileType c,cpp setlocal comments-=:// comments+=f://
-
-" https://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
-" autocmd BufNewFile,BufRead * setlocal formatoptions+=cqn
 
 set autoindent
 
@@ -301,3 +333,4 @@ command! MyFormat call MyFormat()
 function! MyFormat()
     let currBuff=bufnr("%") | let save_pos = getpos(".") | silent bufdo %s/\s\+$//e | silent retab | update | execute 'buffer ' . currBuff | call setpos('.', save_pos) | noh
 endfunction
+

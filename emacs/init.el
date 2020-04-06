@@ -2,7 +2,7 @@
 ;; Feel free to copy and paste, fork, clone, or anything you like.
 
 
-(require 'org-tempo) 
+;;(require 'org-tempo) 
 ;; ---------------------------------- ;;
 ;; PACKAGES :: INITIALIZATION
 ;; ---------------------------------- ;;
@@ -647,14 +647,15 @@
   (mu4e-compose-new) 
   (org-mu4e-compose-org-mode))
 
+(add-hook 'mu4e-compose-mode-hook 'org-mu4e-compose-org-mode) 
+
 (defun htmlize-and-send () 
   "When in an org-mu4e-compose-org-mode message, htmlize and send it." 
   (interactive) 
   (when (member 'org~mu4e-mime-switch-headers-or-body post-command-hook)
-                                        ;(load-theme 'dracula t)
     (org-mime-htmlize)
-                                        ;(disable-theme 'dracula)
-    (message-send)))
+    (message-send)
+    (mu4e)))
 
 (setq browse-url-browser-function (quote browse-url-generic))
 
@@ -1154,6 +1155,14 @@ Emacs session."
   (interactive) 
   (when killed-file-list (find-file (pop killed-file-list))))
 
+(require 'epg-config) 
+(setq mml2015-use 'epg
+      epg-user-id "gpg_key_id"
+      mml2015-encrypt-to-self t
+      mml2015-sign-with-sender t) 
+(setf epa-pinentry-mode 'loopback) 
+(setq epg-gpg-program "gpg2") 
+
 ;; ---------------------------------- ;;
 ;; CUSTOM-SET VARIABLES
 ;; ---------------------------------- ;;
@@ -1178,6 +1187,7 @@ Emacs session."
  '(debug-on-error nil)
  '(doc-view-continuous t)
  '(dumb-jump-mode t)
+ '(epg-gpg-program "/bin/gpg2")
  '(evil-want-C-i-jump nil)
  '(fci-rule-color "#969896")
  '(global-company-mode t)
@@ -1188,7 +1198,7 @@ Emacs session."
  '(indent-tabs-mode nil)
  '(ivy-mode t)
  '(ivy-rich-mode t)
- '(ledger-clear-whole-transactions t)
+ '(ledger-clear-whole-transactions t t)
  '(ledger-reports
    (quote
     (("/home/liam/Documents/personal/finances/ledger/personal.dat" "ledger ")
@@ -1204,6 +1214,7 @@ Emacs session."
      (#("account" 0 1
         (idx 0))
       "%(binary) -f %(ledger-file) reg %(account)"))))
+ '(mml-secure-openpgp-sign-with-sender t)
  '(nrepl-message-colors
    (quote
     ("#183691" "#969896" "#a71d5d" "#969896" "#0086b3" "#795da3" "#a71d5d" "#969896")))

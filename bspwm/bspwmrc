@@ -27,6 +27,9 @@ xsetroot -cursor_name left_ptr
 
 # start programs
 
+# terminal, shell, tmux
+urxvt -e zsh -c "source ~/.zshrc; tmux new -s dev" &
+
 # wallpaper
 feh --bg-fill $HOME/Documents/code/dotfiles/wallpapers/sven-scheuermeier-matterhorn.png
 
@@ -49,9 +52,6 @@ emacsclient -c -a "" -e "(startup)" &
 # redshift
 redshift -c ~/redshift.conf &
 
-# terminal, shell, tmux
-urxvt -e zsh -c "source ~/.zshrc; tmux new -s dev" &
-
 #jgmenu
 jgmenu --hide-on-startup &
 
@@ -65,7 +65,7 @@ bspc desktop -f ^1
 compton -b --config /home/liam/.config/compton.conf
 
 # nextcloud
-nextcloud &
+# nextcloud &
 
 # alttab
 sleep 5; alttab -d 1 &

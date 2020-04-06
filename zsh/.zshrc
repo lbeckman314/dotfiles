@@ -249,11 +249,6 @@ gpom() {
 
 alias gg="git branch -a | tr -d \* | sed '/->/d' | xargs git grep"
 
-if lsb_release -a | grep -q "void"
-then
-    alias vim=vim-huge-python3
-fi
-
 alias kdeconnect="kcmshell5 kcm_kdeconnect"
 
 
@@ -269,3 +264,6 @@ export XBPS_DISTDIR=/home/liam/dev/void-packages
 export PATH=$PATH:$HOME/bin
 export PATH=/home/liam/.wasmer/bin:/home/liam/.wasmer/globals/wapm_packages/.bin:/home/liam/.local/bin:~/.local/bin/:/home/liam/.gem/ruby/2.6.0/bin:/home/liam/.cargo/bin:/home/liam/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/home/liam/.wasmer/bin:/home/liam/.wasmer/globals/wapm_packages/.bin:/home/liam/.local/bin:~/.local/bin/:/home/liam/.gem/ruby/2.6.0/bin:/home/liam/.wasmer/bin:/home/liam/.wasmer/globals/wapm_packages/.bin:/home/liam/.local/bin:~/.local/bin/:/home/liam/.gem/ruby/2.6.0/bin:/home/liam/.wasmer/bin:/home/liam/.wasmer/globals/wapm_packages/.bin:/home/liam/.local/bin:~/.local/bin/:/home/liam/.gem/ruby/2.6.0/bin:/home/liam/.cargo/bin:/home/liam/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/share/apache-ant/bin:/usr/share/apache-maven/bin:/opt/texlive/2019/bin/x86_64-linux:/home/liam/bin:/home/liam/bin:/home/liam/bin:/usr/share/apache-ant/bin:/usr/share/apache-maven/bin:/opt/texlive/2019/bin/x86_64-linux:/home/liam/bin:/home/liam/go/bin
 export PATH="$PATH:/home/liam/.cask/bin"
+
+# added by travis gem
+[ -f /home/liam/.travis/travis.sh ] && source /home/liam/.travis/travis.sh
