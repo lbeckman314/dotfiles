@@ -56,6 +56,7 @@ alias gc="git commit"
 alias gco="git checkout"
 alias gg="git branch -a | tr -d \* | sed '/->/d' | xargs git grep"
 alias gst="git status"
+alias l="ls -alth"
 alias kdeconnect="kcmshell5 kcm_kdeconnect"
 alias magit='emacsclient -c -n -a "" -e "(progn (magit-status) (delete-other-windows))"'
 alias rmt='mkdir -p $HOME/trash; mv --backup=t -t $HOME/trash'
