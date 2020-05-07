@@ -49,67 +49,6 @@
 ;; PACKAGES :: MISC
 ;; ---------------------------------- ;;
 
-(treemacs-create-theme "Atom"
-  :config
-  (progn
-    (treemacs-create-icon
-     :icon (concat " " (all-the-icons-octicon
-                        "file-directory"
-                        :v-adjust 0
-                        :face '(:inherit font-lock-doc-face :slant normal))
-                   " ")
-     :extensions (root))
-    (treemacs-create-icon
-     :file nil
-     :icon (concat (all-the-icons-octicon
-                    "chevron-down"
-                    :height 0.75
-                    :v-adjust 0.1
-                    :face '(:inherit font-lock-doc-face :slant normal))
-                   "\t"
-                   (all-the-icons-octicon
-                    "file-directory"
-                    :v-adjust 0
-                    :face '(:inherit font-lock-doc-face :slant normal))
-                   " ")
-     :extensions (dir-closed))
-    (treemacs-create-icon
-     :file nil
-     :icon (concat (all-the-icons-octicon
-                    "chevron-right"
-                    :height 0.75
-                    :v-adjust 0.1
-                    :face '(:inherit font-lock-doc-face :slant normal))
-                   "\t"
-                   (all-the-icons-octicon
-                    "file-directory"
-                    :v-adjust 0
-                    :face '(:inherit font-lock-doc-face :slant normal))
-                   " ")
-     :extensions (dir-open))
-    (treemacs-create-icon
-     :file nil
-     :icon (concat "  " (all-the-icons-octicon "file-media" :v-adjust 0) " ")
-     :extensions ("png" "jpg" "jpeg" "gif" "ico" "tif" "tiff" "svg" "bmp"
-                  "psd" "ai" "eps" "indd" "mov" "avi" "mp4" "webm" "mkv"
-                  "wav" "mp3" "ogg" "midi"))
-    (treemacs-create-icon
-     :file nil
-     :icon (concat "  " (all-the-icons-octicon "file-text" :v-adjust 0) " ")
-     :extensions ("md" "markdown" "rst" "log" "org" "txt"
-                  "CONTRIBUTE" "LICENSE" "README" "CHANGELOG"))
-    (treemacs-create-icon
-     :file nil
-     :icon (concat "  " (all-the-icons-octicon "file-code" :v-adjust 0) " ")
-     :extensions ("yaml" "yml" "json" "xml" "toml" "cson" "ini"
-                  "tpl" "erb" "mustache" "twig" "ejs" "mk" "haml" "pug" "jade"))
-    (treemacs-create-icon
-     :file nil
-     :icon (concat "  " (all-the-icons-octicon "file-code" :v-adjust 0) " ")
-     :extensions (fallback))))
-
-(treemacs-load-theme "Atom")
-
 ;; https://github.com/jwiegley/emacs-async
 (use-package 
     async 
@@ -790,6 +729,8 @@
 
 ;; https://emacs.stackexchange.com/questions/14438/remove-hooks-for-specific-modes
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode) 
 
 (defun ivy-rich-switch-buffer-icon (candidate) 
   (with-current-buffer (get-buffer candidate) 
