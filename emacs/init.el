@@ -317,13 +317,6 @@
 (use-package lsp-mode :ensure t)
 (use-package hydra :ensure t)
 (use-package company-lsp :ensure t)
-(use-package lsp-ui :ensure t)
-
-(use-package dap-mode
-  :ensure t :after lsp-mode
-  :config
-  (dap-mode t)
-  (dap-ui-mode t))
 
 (use-package 
     pdf-tools 
