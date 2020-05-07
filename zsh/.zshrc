@@ -56,10 +56,12 @@ alias gc="git commit"
 alias gco="git checkout"
 alias gg="git branch -a | tr -d \* | sed '/->/d' | xargs git grep"
 alias gst="git status"
-alias l="ls -alth"
+alias ls="exa"
+alias l="exa -al"
 alias kdeconnect="kcmshell5 kcm_kdeconnect"
 alias magit='emacsclient -c -n -a "" -e "(progn (magit-status) (delete-other-windows))"'
 alias rmt='mkdir -p $HOME/trash; mv --backup=t -t $HOME/trash'
+alias jshell=/Users/beckmanl/dev/openjdk-13/jdk-13.0.1+9/Contents/Home/bin/jshell
 
 # - - - - - - - - - - - #
 # Functions
@@ -109,7 +111,7 @@ parse_git_dirty() {
 }
 
 # - - - - - - - - - - - #
-# Prompt 
+# Prompt
 # - - - - - - - - - - - #
 
 # Adapted from robbyrussell and alanpeadbody themes.
@@ -128,3 +130,4 @@ DATE="%{$fg_bold[blue]%}%D{%F %R:%S}%{$reset_color%}"
 PROMPT='${USER} ${RET_STATUS} ${DIR} $(git_prompt_info)'
 RPROMPT='${DATE}'
 
+QT_PLUGIN_PATH=/usr/local/Cellar/qt/5.14.2/plugins:/usr/local/lib/qt5/plugins

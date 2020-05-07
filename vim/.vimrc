@@ -57,6 +57,7 @@ Plug 'https://github.com/rhysd/vim-clang-format'
 Plug 'https://github.com/kana/vim-operator-user'
 Plug 'https://github.com/alvan/vim-closetag'
 Plug 'https://github.com/dhruvasagar/vim-table-mode'
+Plug 'https://github.com/jremmen/vim-ripgrep'
 
 let g:org_heading_shade_leading_stars = 0
 
@@ -161,6 +162,8 @@ silent! colorscheme dracula
 " ---------------------------- "
 " SETTINGS
 " ---------------------------- "
+
+let g:is_posix = 1
 
 " https://github.com/SpaceVim/SpaceVim/issues/1714
 let g:omni_sql_no_default_maps = 1
