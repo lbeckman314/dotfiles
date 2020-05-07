@@ -49,6 +49,67 @@
 ;; PACKAGES :: MISC
 ;; ---------------------------------- ;;
 
+(treemacs-create-theme "Atom"
+  :config
+  (progn
+    (treemacs-create-icon
+     :icon (concat " " (all-the-icons-octicon
+                        "file-directory"
+                        :v-adjust 0
+                        :face '(:inherit font-lock-doc-face :slant normal))
+                   " ")
+     :extensions (root))
+    (treemacs-create-icon
+     :file nil
+     :icon (concat (all-the-icons-octicon
+                    "chevron-down"
+                    :height 0.75
+                    :v-adjust 0.1
+                    :face '(:inherit font-lock-doc-face :slant normal))
+                   "\t"
+                   (all-the-icons-octicon
+                    "file-directory"
+                    :v-adjust 0
+                    :face '(:inherit font-lock-doc-face :slant normal))
+                   " ")
+     :extensions (dir-closed))
+    (treemacs-create-icon
+     :file nil
+     :icon (concat (all-the-icons-octicon
+                    "chevron-right"
+                    :height 0.75
+                    :v-adjust 0.1
+                    :face '(:inherit font-lock-doc-face :slant normal))
+                   "\t"
+                   (all-the-icons-octicon
+                    "file-directory"
+                    :v-adjust 0
+                    :face '(:inherit font-lock-doc-face :slant normal))
+                   " ")
+     :extensions (dir-open))
+    (treemacs-create-icon
+     :file nil
+     :icon (concat "  " (all-the-icons-octicon "file-media" :v-adjust 0) " ")
+     :extensions ("png" "jpg" "jpeg" "gif" "ico" "tif" "tiff" "svg" "bmp"
+                  "psd" "ai" "eps" "indd" "mov" "avi" "mp4" "webm" "mkv"
+                  "wav" "mp3" "ogg" "midi"))
+    (treemacs-create-icon
+     :file nil
+     :icon (concat "  " (all-the-icons-octicon "file-text" :v-adjust 0) " ")
+     :extensions ("md" "markdown" "rst" "log" "org" "txt"
+                  "CONTRIBUTE" "LICENSE" "README" "CHANGELOG"))
+    (treemacs-create-icon
+     :file nil
+     :icon (concat "  " (all-the-icons-octicon "file-code" :v-adjust 0) " ")
+     :extensions ("yaml" "yml" "json" "xml" "toml" "cson" "ini"
+                  "tpl" "erb" "mustache" "twig" "ejs" "mk" "haml" "pug" "jade"))
+    (treemacs-create-icon
+     :file nil
+     :icon (concat "  " (all-the-icons-octicon "file-code" :v-adjust 0) " ")
+     :extensions (fallback))))
+
+(treemacs-load-theme "Atom")
+
 ;; https://github.com/jwiegley/emacs-async
 (use-package 
     async 
@@ -1179,7 +1240,7 @@ Emacs session."
  '(evil-want-C-i-jump nil)
  '(fci-rule-color "#969896")
  '(global-company-mode t)
- '(global-display-line-numbers-mode t)
+ '(global-display-line-numbers-mode f)
  '(global-linum-mode nil)
  '(global-visual-line-mode t)
  '(helm-mode t)
