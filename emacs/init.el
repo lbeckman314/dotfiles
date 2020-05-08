@@ -91,9 +91,8 @@
   :config (push 'toggle-window-split dired-sidebar-toggle-hidden-commands) 
   (push 'rotate-windows dired-sidebar-toggle-hidden-commands) 
   (setq dired-sidebar-subtree-line-prefix "") 
-  (setq dired-sidebar-theme 'icons) 
   (setq dired-sidebar-use-term-integration t) 
-  (setq dired-sidebar-use-custom-font t))
+  (setq dired-sidebar-use-custom-font t)) 
 
 (use-package 
     counsel 
@@ -1154,9 +1153,10 @@ Emacs session."
     ("#8eaee0" "#8eaee0")
     ("#6dfedf" "#6dfedf")
     ("#ccccff" "#ccccff")])
+ '(auth-source-save-behavior nil)
  '(custom-safe-themes
    (quote
-    ("0301a26dedfda81ca220ad6169588b5408884e7b4a5363f3e6a0e98d5c65a257" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" "847575d12a9f396e050ddd45a350b8fc52c3f8fe914c2ea9e1fa8f06a7cfb4d9" "7ae3f88d0caa9db14f2a757755a47e572de7a6ba41780503e9a1f08cbb0802f0" "bf6940873299cc17e4339c96d7aac5a25855498379a4a11a6bc0dba47902ec35" "109d2e420f10339b151e22e452e7af5550118e941ac6d839e875a07c85c1003a" "99d1911fbea7d603989f7521a6c6e17b550c8d9ac37d5ee9b660941e37825c81" "7985ab0eaf8ed692055a9a3671b902afa09d26e6f384cfff5a5c3bb5b3d64cca" "14391f8e9773ce511b98b151d0655d73953068798fcb843cd67ef26e60c9f00f" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "5eda93d7e92808a69e771b02bf65b21ea6f2e94309bdc5135495e195bd7913e1" "f20795b6b18a6487168643337dbd3aa6b930b86b9d16c2407e2bd6d0d91d4ca4" "0556e4e9b305bc00f1a6e2c7a395ff981798d6ca6f22aa59062117a69ee642e2" "f0dc4ddca147f3c7b1c7397141b888562a48d9888f1595d69572db73be99a024" "5057614f7e14de98bbc02200e2fe827ad897696bfd222d1bcab42ad8ff313e20" "233bb646e100bda00c0af26afe7ab563ef118b9d685f1ac3ca5387856674285d" "72a097f48e588eaa08b17027ac20304dd3b3ea8ceaca4ca553fb2577b64f4d09" "3b5ce826b9c9f455b7c4c8bff22c020779383a12f2f57bf2eb25139244bb7290" "3cb2d5a795e1c93d1fbc8360d6ea41f0173aa1366d334b16e1b83b996b8d9ce6" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "4e4d9f6e1f5b50805478c5630be80cce40bee4e640077e1a6a7c78490765b03f" default)))
+    ("417f6aa8287d72996564313ff2de51d09d20cb59402921bd55646f8b27d3ce78" "9594f82ed131d551c2a793028770cfe410ca8336407be3c84338bd63d673abfe" "f5e432ac29648b18acebda1058183de0ee797aa78f40552e88a3c143275ae30c" "cef4ac05a85b6e640ec0a4ac3cec95047e7164a824f15c6465684d9d7566b576" "35b0b0e531731e270708ddb342dc2e576a31fb298dcbc56a206596a43afac54f" "b0f0e2e4cc5d8e5e93dc9dabdb998ce8f7a4b63a68ce3cbf5e8e0525ed628e71" "0301a26dedfda81ca220ad6169588b5408884e7b4a5363f3e6a0e98d5c65a257" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" "847575d12a9f396e050ddd45a350b8fc52c3f8fe914c2ea9e1fa8f06a7cfb4d9" "7ae3f88d0caa9db14f2a757755a47e572de7a6ba41780503e9a1f08cbb0802f0" "bf6940873299cc17e4339c96d7aac5a25855498379a4a11a6bc0dba47902ec35" "109d2e420f10339b151e22e452e7af5550118e941ac6d839e875a07c85c1003a" "99d1911fbea7d603989f7521a6c6e17b550c8d9ac37d5ee9b660941e37825c81" "7985ab0eaf8ed692055a9a3671b902afa09d26e6f384cfff5a5c3bb5b3d64cca" "14391f8e9773ce511b98b151d0655d73953068798fcb843cd67ef26e60c9f00f" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "5eda93d7e92808a69e771b02bf65b21ea6f2e94309bdc5135495e195bd7913e1" "f20795b6b18a6487168643337dbd3aa6b930b86b9d16c2407e2bd6d0d91d4ca4" "0556e4e9b305bc00f1a6e2c7a395ff981798d6ca6f22aa59062117a69ee642e2" "f0dc4ddca147f3c7b1c7397141b888562a48d9888f1595d69572db73be99a024" "5057614f7e14de98bbc02200e2fe827ad897696bfd222d1bcab42ad8ff313e20" "233bb646e100bda00c0af26afe7ab563ef118b9d685f1ac3ca5387856674285d" "72a097f48e588eaa08b17027ac20304dd3b3ea8ceaca4ca553fb2577b64f4d09" "3b5ce826b9c9f455b7c4c8bff22c020779383a12f2f57bf2eb25139244bb7290" "3cb2d5a795e1c93d1fbc8360d6ea41f0173aa1366d334b16e1b83b996b8d9ce6" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "4e4d9f6e1f5b50805478c5630be80cce40bee4e640077e1a6a7c78490765b03f" default)))
  '(debug-on-error nil)
  '(doc-view-continuous t)
  '(dumb-jump-mode t)
@@ -1186,6 +1186,19 @@ Emacs session."
      (#("account" 0 1
         (idx 0))
       "%(binary) -f %(ledger-file) reg %(account)"))))
+ '(lisp-mode-hook
+   (quote
+    (#[nil "\300\301\302\303\211$\207"
+           [add-hook font-lock-extend-region-functions sly-extend-region-for-font-lock t]
+           5]
+     common-lisp-lisp-mode-hook
+     #[nil "\300\301\302\303\211$\207"
+           [add-hook font-lock-extend-region-functions slime-extend-region-for-font-lock t]
+           5]
+     (lambda nil
+       (local-set-key
+        (kbd "<C-return>")
+        (quote eir-eval-in-slime))))))
  '(nrepl-message-colors
    (quote
     ("#183691" "#969896" "#a71d5d" "#969896" "#0086b3" "#795da3" "#a71d5d" "#969896")))
@@ -1194,9 +1207,10 @@ Emacs session."
  '(org-modules
    (quote
     (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-rmail org-w3m)))
+ '(org-org-htmlized-css-url "css")
  '(package-selected-packages
    (quote
-    (hledger-mode racket-mode ob-rust all-the-icons elisp-format flycheck-rust java-imports pandoc-mode flymd dired-sidebar lsp-rust lsp-mode rust-mode deadgrep dired-ranger ranger el-get indent-guide magit equake guix git-time-metric transient helm-system-packages image+ multi-term treemacs nimbus-theme yasnippet undo-propose dumb-jump thread-dump counsel chip8 quelpa-use-package quelpa sr-speedbar rtags toc-org highlight-indent-guides git-gutter diff-hl prettier-js reformatter s "s" abyss-theme sane-term flycheck-ledger ledger-mode doom-modeline mu4e-conversation telephone-line session ob-tmux eyebrowse format-all rainbow-mode zone-sl zone-rainbow zone-nyan perspective golden-ratio android-mode elmacro rmsbolt swiper ace-jump-mode powerline-evil powerline esup auctex org-ref-pubmed org-ref-scopus org-ref-wos org-id org-ref org-mime pdf-tools weechat aggressive-indent smart-tabs-mode smart-tabs smooth-scrolling evil-mu4e mu4e highlight-indentation company-mode company ws-butler 0blayout anki-editor auto-complete hydra-ivy ivy-hydra smart-parens hydra projectile ob-sql-mode org-babel-eval-in-repl ivy-rich gnuplot-mode gnuplot sicp haskell-mode geiser chess github-theme htmlize which-key use-package smex slime shell-pop rotate rebecca-theme rainbow-delimiters paredit multiple-cursors general flycheck evil-leader dracula-theme dashboard)))
+    (hledger-mode racket-mode ob-rust all-the-icons elisp-format flycheck-rust java-imports pandoc-mode flymd dired-sidebar lsp-rust lsp-mode rust-mode deadgrep dired-ranger ranger el-get indent-guide magit equake guix jupyter git-time-metric transient helm-system-packages image+ multi-term treemacs nimbus-theme yasnippet undo-propose dumb-jump thread-dump counsel chip8 quelpa-use-package quelpa sr-speedbar rtags toc-org highlight-indent-guides git-gutter diff-hl prettier-js reformatter s "s" abyss-theme sane-term flycheck-ledger ledger-mode doom-modeline mu4e-conversation telephone-line session ob-tmux eyebrowse format-all rainbow-mode zone-sl zone-rainbow zone-nyan perspective golden-ratio android-mode elmacro rmsbolt swiper ace-jump-mode powerline-evil powerline esup auctex org-ref-pubmed org-ref-scopus org-ref-wos org-id org-ref org-mime pdf-tools weechat aggressive-indent smart-tabs-mode smart-tabs smooth-scrolling evil-mu4e mu4e highlight-indentation company-mode company ws-butler 0blayout anki-editor auto-complete hydra-ivy ivy-hydra smart-parens hydra projectile ob-sql-mode org-babel-eval-in-repl ivy-rich gnuplot-mode gnuplot sicp haskell-mode geiser chess github-theme htmlize which-key use-package smex slime shell-pop rotate rebecca-theme rainbow-delimiters paredit multiple-cursors general flycheck evil-leader dashboard)))
  '(pdf-view-midnight-colors (quote ("#969896" . "#f8eec7")))
  '(projectile-mode nil nil (projectile))
  '(send-mail-function (quote mailclient-send-it))
