@@ -50,14 +50,11 @@ scrolling:
   # scrolling for applications like `man`.
   #
   # To disable this completely, set `faux_multiplier` to 0.
-  faux_multiplier: 3
 
   # Automatically scroll to the bottom when new text is written
   # to the terminal.
-  auto_scroll: false
 
 # Display tabs using this many cells (changes require restart)
-tabspaces: 4
 
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
@@ -84,7 +81,7 @@ draw_bold_text_with_bright_colors: true
 font:
   # The normal (roman) font face to use.
   normal:
-    family: monospace # should be "Menlo" or something on macOS.
+    family: Menlo # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Regular
 
@@ -244,7 +241,7 @@ visual_bell:
   duration: 0
 
 # Background opacity
-background_opacity: 0.8
+background_opacity: 1.0
 
 # Mouse bindings
 #
@@ -381,12 +378,12 @@ key_bindings:
   - { key: Insert,                  chars: "\x1b[2~"                     }
   - { key: Delete,                  chars: "\x1b[3~"                     }
   - { key: Left,     mods: Shift,   chars: "\x1b[1;2D"                   }
-  - { key: Left,     mods: Control, chars: "\x1b[1;5D"                   }
+  - { key: Left,     mods: Command, chars: "\x1b[1;5D"                   }
   - { key: Left,     mods: Alt,     chars: "\x1b[1;3D"                   }
   - { key: Left,                    chars: "\x1b[D",   mode: ~AppCursor  }
   - { key: Left,                    chars: "\x1bOD",   mode: AppCursor   }
   - { key: Right,    mods: Shift,   chars: "\x1b[1;2C"                   }
-  - { key: Right,    mods: Control, chars: "\x1b[1;5C"                   }
+  - { key: Right,    mods: Command, chars: "\x1b[1;5C"                   }
   - { key: Right,    mods: Alt,     chars: "\x1b[1;3C"                   }
   - { key: Right,                   chars: "\x1b[C",   mode: ~AppCursor  }
   - { key: Right,                   chars: "\x1bOC",   mode: AppCursor   }

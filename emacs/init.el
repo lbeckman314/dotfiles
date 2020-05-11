@@ -1,8 +1,8 @@
-;; An (evil) emacs init cobbled together from the far corners of the world.
+;echnology Department; An (evil) emacs init cobbled together from the far corners of the world.
 ;; Feel free to copy and paste, fork, clone, or anything you like.
 
 
-;;(require 'org-tempo) 
+;; (require 'org-tempo) 
 ;; ---------------------------------- ;;
 ;; PACKAGES :: INITIALIZATION
 ;; ---------------------------------- ;;
@@ -49,6 +49,67 @@
 ;; PACKAGES :: MISC
 ;; ---------------------------------- ;;
 
+(treemacs-create-theme "Atom"
+  :config
+  (progn
+    (treemacs-create-icon
+     :icon (concat " " (all-the-icons-octicon
+                        "file-directory"
+                        :v-adjust 0
+                        :face '(:inherit font-lock-doc-face :slant normal))
+                   " ")
+     :extensions (root))
+    (treemacs-create-icon
+     :file nil
+     :icon (concat (all-the-icons-octicon
+                    "chevron-down"
+                    :height 0.75
+                    :v-adjust 0.1
+                    :face '(:inherit font-lock-doc-face :slant normal))
+                   "\t"
+                   (all-the-icons-octicon
+                    "file-directory"
+                    :v-adjust 0
+                    :face '(:inherit font-lock-doc-face :slant normal))
+                   " ")
+     :extensions (dir-closed))
+    (treemacs-create-icon
+     :file nil
+     :icon (concat (all-the-icons-octicon
+                    "chevron-right"
+                    :height 0.75
+                    :v-adjust 0.1
+                    :face '(:inherit font-lock-doc-face :slant normal))
+                   "\t"
+                   (all-the-icons-octicon
+                    "file-directory"
+                    :v-adjust 0
+                    :face '(:inherit font-lock-doc-face :slant normal))
+                   " ")
+     :extensions (dir-open))
+    (treemacs-create-icon
+     :file nil
+     :icon (concat "  " (all-the-icons-octicon "file-media" :v-adjust 0) " ")
+     :extensions ("png" "jpg" "jpeg" "gif" "ico" "tif" "tiff" "svg" "bmp"
+                  "psd" "ai" "eps" "indd" "mov" "avi" "mp4" "webm" "mkv"
+                  "wav" "mp3" "ogg" "midi"))
+    (treemacs-create-icon
+     :file nil
+     :icon (concat "  " (all-the-icons-octicon "file-text" :v-adjust 0) " ")
+     :extensions ("md" "markdown" "rst" "log" "org" "txt"
+                  "CONTRIBUTE" "LICENSE" "README" "CHANGELOG"))
+    (treemacs-create-icon
+     :file nil
+     :icon (concat "  " (all-the-icons-octicon "file-code" :v-adjust 0) " ")
+     :extensions ("yaml" "yml" "json" "xml" "toml" "cson" "ini"
+                  "tpl" "erb" "mustache" "twig" "ejs" "mk" "haml" "pug" "jade"))
+    (treemacs-create-icon
+     :file nil
+     :icon (concat "  " (all-the-icons-octicon "file-code" :v-adjust 0) " ")
+     :extensions (fallback))))
+
+(treemacs-load-theme "Atom")
+
 ;; https://github.com/jwiegley/emacs-async
 (use-package 
     async 
@@ -78,12 +139,6 @@
   :straight t
   :ensure t 
   :config (add-hook 'after-init-hook 'global-company-mode))
-
-;; (use-package chicken-scheme
-;;   :straight t
-:ensure t
-;;   :config
-;;   (setq inferior-lisp-program "/usr/bin/sbcl"))
 
 (use-package 
     dired-sidebar 
@@ -237,19 +292,7 @@
 (use-package projectile :ensure t)
 (use-package yasnippet :ensure t)
 (use-package lsp-mode :ensure t)
-(use-package hydra :ensure t)
 (use-package company-lsp :ensure t)
-(use-package lsp-ui :ensure t)
-(use-package lsp-java :ensure t :after lsp
-  :config (add-hook 'java-mode-hook 'lsp))
-
-(use-package dap-mode
-  :ensure t :after lsp-mode
-  :config
-  (dap-mode t)
-  (dap-ui-mode t))
-
-(use-package dap-java :after (lsp-java))
 
 (use-package 
     pdf-tools 
@@ -390,12 +433,10 @@
                                                          (emacs-lisp . t) 
                                                          (haskell . t) 
                                                          (js . t) 
-                                                         (jupyter . t) 
                                                          (latex . t) 
                                                          (python . t) 
                                                          ;;(racket . t) 
                                                          (ruby . t) 
-                                                         (rust . t) 
                                                          (scheme . t) 
                                                          (shell . t) 
                                                          (sql . t)))
@@ -1191,7 +1232,7 @@ Emacs session."
  '(evil-want-C-i-jump nil)
  '(fci-rule-color "#969896")
  '(global-company-mode t)
- '(global-display-line-numbers-mode t)
+ '(global-display-line-numbers-mode f)
  '(global-linum-mode nil)
  '(global-visual-line-mode t)
  '(helm-mode t)
@@ -1225,7 +1266,7 @@ Emacs session."
     (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (hledger-mode racket-mode ob-rust all-the-icons elisp-format flycheck-rust java-imports pandoc-mode flymd dired-sidebar lsp-rust lsp-mode rust-mode deadgrep dired-ranger ranger el-get indent-guide magit equake guix jupyter git-time-metric transient helm-system-packages image+ multi-term treemacs nimbus-theme yasnippet undo-propose dumb-jump thread-dump counsel chip8 quelpa-use-package quelpa sr-speedbar rtags toc-org highlight-indent-guides git-gutter diff-hl prettier-js reformatter s "s" abyss-theme sane-term flycheck-ledger ledger-mode doom-modeline mu4e-conversation telephone-line session ob-tmux eyebrowse format-all rainbow-mode zone-sl zone-rainbow zone-nyan perspective golden-ratio android-mode elmacro rmsbolt swiper ace-jump-mode powerline-evil powerline esup auctex org-ref-pubmed org-ref-scopus org-ref-wos org-id org-ref org-mime pdf-tools weechat aggressive-indent smart-tabs-mode smart-tabs smooth-scrolling evil-mu4e mu4e highlight-indentation company-mode company ws-butler 0blayout anki-editor auto-complete hydra-ivy ivy-hydra smart-parens hydra projectile ob-sql-mode org-babel-eval-in-repl ivy-rich gnuplot-mode gnuplot sicp haskell-mode geiser chess github-theme htmlize which-key use-package smex slime shell-pop rotate rebecca-theme rainbow-delimiters paredit multiple-cursors general flycheck evil-leader dracula-theme dashboard)))
+    (hledger-mode racket-mode ob-rust all-the-icons elisp-format flycheck-rust java-imports pandoc-mode flymd dired-sidebar lsp-rust lsp-mode rust-mode deadgrep dired-ranger ranger el-get indent-guide magit equake guix git-time-metric transient helm-system-packages image+ multi-term treemacs nimbus-theme yasnippet undo-propose dumb-jump thread-dump counsel chip8 quelpa-use-package quelpa sr-speedbar rtags toc-org highlight-indent-guides git-gutter diff-hl prettier-js reformatter s "s" abyss-theme sane-term flycheck-ledger ledger-mode doom-modeline mu4e-conversation telephone-line session ob-tmux eyebrowse format-all rainbow-mode zone-sl zone-rainbow zone-nyan perspective golden-ratio android-mode elmacro rmsbolt swiper ace-jump-mode powerline-evil powerline esup auctex org-ref-pubmed org-ref-scopus org-ref-wos org-id org-ref org-mime pdf-tools weechat aggressive-indent smart-tabs-mode smart-tabs smooth-scrolling evil-mu4e mu4e highlight-indentation company-mode company ws-butler 0blayout anki-editor auto-complete hydra-ivy ivy-hydra smart-parens hydra projectile ob-sql-mode org-babel-eval-in-repl ivy-rich gnuplot-mode gnuplot sicp haskell-mode geiser chess github-theme htmlize which-key use-package smex slime shell-pop rotate rebecca-theme rainbow-delimiters paredit multiple-cursors general flycheck evil-leader dracula-theme dashboard)))
  '(pdf-view-midnight-colors (quote ("#969896" . "#f8eec7")))
  '(projectile-mode nil nil (projectile))
  '(send-mail-function (quote mailclient-send-it))

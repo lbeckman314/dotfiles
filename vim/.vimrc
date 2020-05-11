@@ -81,6 +81,12 @@ Plug 'https://github.com/prabirshrestha/async.vim'
 " Startup
 " ---------- "
 Plug 'https://github.com/mhinz/vim-startify'
+Plug 'https://github.com/iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'https://github.com/rhysd/vim-clang-format'
+Plug 'https://github.com/kana/vim-operator-user'
+Plug 'https://github.com/alvan/vim-closetag'
+Plug 'https://github.com/dhruvasagar/vim-table-mode'
+Plug 'https://github.com/jremmen/vim-ripgrep'
 
 " ---------- "
 " Tags
@@ -197,6 +203,7 @@ silent! colorscheme dracula
 " ---------------------------- "
 
 filetype plugin indent on
+let g:is_posix = 1
 
 " https://github.com/SpaceVim/SpaceVim/issues/1714
 let g:omni_sql_no_default_maps = 1
