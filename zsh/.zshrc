@@ -43,8 +43,8 @@ export PATH="$PATH:/usr/local/Cellar/mysql@5.7/5.7.27_1/bin/"
 
 fuzzy_bindings="/usr/local/opt/fzf/shell/key-bindings.zsh"
 fuzzy_completions="/usr/local/opt/fzf/shell/completion.zsh"
-source $fuzzy_bindings
-source $fuzzy_completions
+#source $fuzzy_bindings
+#source $fuzzy_completions
 
 # - - - - - - - - - - - #
 # Aliases
@@ -114,7 +114,6 @@ alias gg="git branch -a | tr -d \* | sed '/->/d' | xargs git grep"
 
 alias kdeconnect="kcmshell5 kcm_kdeconnect"
 
-
 alias glom="git pull origin master"
 
 # USER::HOST → DIRECTORY [GIT STATUS]
@@ -125,4 +124,3 @@ DATE="%{$fg_bold[blue]%}%D{%F %R:%S}%{$reset_color%}"
 PROMPT='${USER} ${RET_STATUS} ${DIR} $(git_prompt_info)'
 RPROMPT='${DATE}'
 
-QT_PLUGIN_PATH=/usr/local/Cellar/qt/5.14.2/plugins:/usr/local/lib/qt5/plugins

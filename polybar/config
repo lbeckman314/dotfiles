@@ -3,12 +3,9 @@ width = 100%
 height = 33
 offset-x = 0
 offset-y = 0
-;bottom = true
-
 
 background = #2a000000
 foreground = #fff
-
 
 underline-size = 2
 underline-color = #eee
@@ -40,7 +37,6 @@ wm-restack = bspwm
 
 ; MODULES
 
-
 [module/kdeconnect]
 type = custom/script
 exec = ". /home/liam/.config/polybar/polybar-kdeconnect/polybar-kdeconnect.sh; show_devices"
@@ -54,7 +50,6 @@ content = ※
 content-background = #8a8aff
 content-underline= #ddd
 click-left = "jgmenu_run >/dev/null 2>&1 &"
-
 
 ; https://github.com/jaagr/polybar/issues/317
 [module/workspaces]
@@ -80,24 +75,14 @@ label-occupied-padding = 4
 label-empty-padding = 4
 label-urgent-padding = 4
 label-active-padding = 4
-
 label-focused-background = #88000000
 label-focused-underline= #ddd
-
 label-empty-foreground = #ccc
 
 ; https://github.com/jaagr/polybar/issues/317
 [module/bspwm]
 type = internal/bspwm
-; format = <label-state> <label-mode>
-; index-sort = true
-; wrapping-scroll = false
-; strip-wsnumbers = true
-; pin-workspaces = true
-
 label-mode-padding = 2
-label-mode-foreground = #000
-
 format-label-padding=10
 
 ws-icon-0 = I;
@@ -108,18 +93,14 @@ ws-icon-4 = V;
 ws-icon-default = 
 
 ;; https://github.com/galczo5/dotfiles/blob/master/POLYBAR/.polybar
-
 label-focused = %icon%
 label-focused-background = #88000000
 label-focused-underline= #ddd
 label-focused-padding = 4
-
 label-occupied = %icon%
 label-occupied-padding = 4
-
 label-urgent = %icon%
 label-urgent-padding = 4
-
 label-empty = %icon%
 label-empty-foreground = #44ffffff
 label-empty-padding = 4
@@ -197,12 +178,11 @@ date = %A %I:%M:%S %d %B %Y
 ;time-alt = %H:%M:%S
 
 label = %date% %time%
-format =    <label>
+format =%{A1:gnome-calendar:} 🕓 <label> %{A}
 ;format-ackground = #ddffffff
 ;format-background = #88000000
 ;format-foreground = #333
 format-padding = 3
-
 
 [module/battery]
 type = internal/battery
