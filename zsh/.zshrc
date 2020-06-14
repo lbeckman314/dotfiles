@@ -36,6 +36,7 @@ export TERM="xterm-256color"
 export PATH=/Users/beckmanl/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/beckmanl/.cargo/bin
 export QT_PLUGIN_PATH=/usr/local/Cellar/qt/5.14.1/plugins:/usr/local/lib/qt5/plugins
 export PATH="$PATH:/usr/local/Cellar/mysql@5.7/5.7.27_1/bin/"
+export PATH="$PATH:$HOME/.local/bin"
 
 # - - - - - - - - - - - #
 # Fuzzy finder
@@ -131,3 +132,9 @@ PROMPT='${USER} ${RET_STATUS} ${DIR} $(git_prompt_info)'
 RPROMPT='${DATE}'
 
 QT_PLUGIN_PATH=/usr/local/Cellar/qt/5.14.2/plugins:/usr/local/lib/qt5/plugins
+alias cat=bat
+export BAT_THEME=Dracula
+if [ -e /Users/beckmanl/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/beckmanl/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+PATH=$PATH:/Users/beckmanl/Library/Python/3.7/bin
+PATH=/usr/local/texlive/2019/bin/x86_64-darwin/:$PATH
+alias gp=gopass

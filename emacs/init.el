@@ -5,6 +5,16 @@
 ;; PACKAGES :: INITIALIZATION
 ;; ---------------------------------- ;;
 
+;; From Doom Emacs:
+;; A big contributor to startup times is garbage collection. We up the gc
+;; threshold to temporarily prevent it from running, then reset it later by
+;; enabling `gcmh-mode'. Not resetting it will cause stuttering/freezes.
+(setq gc-cons-threshold most-positive-fixnum)
+;; In noninteractive sessions, prioritize non-byte-compiled source files to
+;; prevent the use of stale byte-code. Otherwise, it saves us a little IO time
+;; to skip the mtime checks on every *.elc file.
+(setq load-prefer-newer noninteractive)
+
 ;; initialize melpa and gnu package repos
 ;; https://melpa.org/#/getting-started
 (require 'package) ;; You might already have this line
@@ -42,74 +52,21 @@
 
 ;; integrate straight and use-package
 (straight-use-package 'use-package)
+;(setq initial-buffer-choice (lambda () (get-buffer "*dashboard*"))) 
+(use-package doom-themes
+    :config
+    (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+    ;; Enable custom treemacs theme (all-the-icons must be installed!)
+    (doom-themes-treemacs-config)) 
+
+(defun markdown-html (buffer)
+  (princ (with-current-buffer buffer
+    (format "<!DOCTYPE html><html><xmp theme=\"united\" style=\"display:none;\"> %s  </xmp><script src=\"http://strapdownjs.com/v/0.2/strapdown.js\"></script></html>" (buffer-substring-no-properties (point-min) (point-max)))) 
+  (current-buffer))) 
 
 ;; ---------------------------------- ;;
 ;; PACKAGES :: MISC
 ;; ---------------------------------- ;;
-
-(use-package treemacs
-  :ensure t
-  :defer t
-  :init
-  (with-eval-after-load 'winum
-    (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
-  :config
-  (progn
-    (setq treemacs-collapse-dirs                 (if treemacs-python-executable 3 0)
-          treemacs-deferred-git-apply-delay      0.5
-          treemacs-display-in-side-window        t
-          treemacs-eldoc-display                 t
-          treemacs-file-event-delay              5000
-          treemacs-file-follow-delay             0.2
-          treemacs-follow-after-init             t
-          treemacs-git-command-pipe              ""
-          treemacs-goto-tag-strategy             'refetch-index
-          treemacs-indentation                   2
-          treemacs-indentation-string            " "
-          treemacs-is-never-other-window         nil
-          treemacs-max-git-entries               5000
-          treemacs-missing-project-action        'ask
-          treemacs-no-png-images                 nil
-          treemacs-no-delete-other-windows       t
-          treemacs-project-follow-cleanup        nil
-          treemacs-persist-file                  (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
-          treemacs-position                      'left
-          treemacs-recenter-distance             0.1
-          treemacs-recenter-after-file-follow    nil
-          treemacs-recenter-after-tag-follow     nil
-          treemacs-recenter-after-project-jump   'always
-          treemacs-recenter-after-project-expand 'on-distance
-          treemacs-show-cursor                   nil
-          treemacs-show-hidden-files             t
-          treemacs-silent-filewatch              nil
-          treemacs-silent-refresh                nil
-          treemacs-sorting                       'alphabetic-desc
-          treemacs-space-between-root-nodes      t
-          treemacs-tag-follow-cleanup            t
-          treemacs-tag-follow-delay              1.5
-          treemacs-width                         35)
-
-    ;; The default width and height of the icons is 22 pixels. If you are
-    ;; using a Hi-DPI display, uncomment this to double the icon size.
-    ;;(treemacs-resize-icons 44)
-
-    (treemacs-follow-mode t)
-    (treemacs-filewatch-mode t)
-    (treemacs-fringe-indicator-mode t)
-    (pcase (cons (not (null (executable-find "git")))
-                 (not (null treemacs-python-executable)))
-      (`(t . t)
-       (treemacs-git-mode 'deferred))
-      (`(t . _)
-       (treemacs-git-mode 'simple))))
-  :bind
-  (:map global-map
-        ("M-0"       . treemacs-select-window)
-        ("C-x t 1"   . treemacs-delete-other-windows)
-        ("C-x t t"   . treemacs)
-        ("C-x t B"   . treemacs-bookmark)
-        ("C-x t C-t" . treemacs-find-file)
-        ("C-x t M-t" . treemacs-find-tag)))
 
 (use-package treemacs-evil
   :after treemacs evil
@@ -127,8 +84,6 @@
 (use-package treemacs-magit
   :after treemacs magit
   :ensure t)
-
-
 
 (use-package all-the-icons
   :ensure t) 
@@ -156,7 +111,7 @@
 ;; https://github.com/kwrooijen/cargo.el
 (use-package
     cargo
-  :ensure t
+  :ensure 
   :config (add-hook 'rust-mode-hook 'cargo-minor-mode)) 
 
 (use-package 
@@ -314,7 +269,34 @@
 
 (use-package projectile :ensure t)
 (use-package yasnippet :ensure t)
-(use-package lsp-mode :ensure t)
+;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+(setq lsp-keymap-prefix "s-l")
+
+(use-package lsp-mode
+    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+            (rust-mode . lsp)
+            ;; if you want which-key integration
+            (lsp-mode . lsp-enable-which-key-integration))
+    :commands lsp)
+(setq lsp-rust-server 'rust-analyzer)
+
+;; optionally
+(use-package lsp-ui :commands lsp-ui-mode)
+;; if you are helm user
+(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+;; if you are ivy user
+(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+
+;; optionally if you want to use debugger
+(use-package dap-mode)
+;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+
+;; optional if you want which-key integration
+(use-package which-key
+    :config
+    (which-key-mode))
+
 (use-package hydra :ensure t)
 (use-package company-lsp :ensure t)
 
@@ -551,7 +533,7 @@
 ;;     :straight t
 ;; :ensure t)
 
-;; ;; https://github.com/milkypostman/powerline
+;; ;; https://github.com/milkypostman/powerline 
 ;; (use-package powerline-evil
 ;;     :straight t
 ;; :ensure t
@@ -857,8 +839,8 @@
 
 ;; VOID
 (add-to-list 'load-path "~/.emacs.d/pkgs/")
-;;(require 'dired+)
-;;require 'color-dired)
+(require 'dired+)
+;require 'color-dired)
 
 (setq speedbar-use-images nil)
 
@@ -1241,31 +1223,30 @@ Emacs session."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
-   [("#383a62" "#383a62")
-    ("#7aa5ff" "#383a62")
-    ("#ae81ff" "#383a62")
-    ("#a0a0c5" "#a0a0c5")
-    ("#2de0a7" "#2de0a7")
-    ("#8eaee0" "#8eaee0")
-    ("#6dfedf" "#6dfedf")
-    ("#ccccff" "#ccccff")])
+   ["#282a36" "#ff5555" "#50fa7b" "#f1fa8c" "#61bfff" "#ff79c6" "#8be9fd" "#f8f8f2"])
  '(auth-source-save-behavior nil)
  '(custom-safe-themes
    (quote
-    ("a4cb60ab3813e7dce5fee23146db6967d9a89463aa5e22cdfb5e135ce405ca4d" "cecd47fd373449f2b13af25e445dfec75ee89320e9b5371830950b5a392ad7f4" "e1dbf9ac6dfaac7121d7ef00dcc05fbb6e0d493ac97a67bb6b5fb51023001923" "d99367199b7f88753d00632157d190cb49289ea93e3b9a34d37066626bef1332" "4f02273c33cef66fe6c54d1b0b3dd4081bd89f65cf60c61d1ebcf17136e94010" "dac3c5f03df46994cd9940ef9ae7715c74084dec3b85450b98d3e54f2bea3818" "c388c5d466610ef167b3b8cc3b57ddc26fe5fb5870cf5b4e68406e5611c77661" "13fa7a304bd53aa4c0beec4c25c4f811de499bce9deb326798265ed0015b3b78" "417f6aa8287d72996564313ff2de51d09d20cb59402921bd55646f8b27d3ce78" "d27ba631e7bda42c47909f8d1f12d3bb6adeab25720bea77d6abb7986d1cd863" "bc1c902b838101a677688a4743fe03e98139e07d77b2913b9aa686f0f59e0346" "7052d5df78aefb510ffc5f5be50393a62fd8db56cfb90ea814b71c817f4bc93a" "9594f82ed131d551c2a793028770cfe410ca8336407be3c84338bd63d673abfe" "f5e432ac29648b18acebda1058183de0ee797aa78f40552e88a3c143275ae30c" "cef4ac05a85b6e640ec0a4ac3cec95047e7164a824f15c6465684d9d7566b576" "35b0b0e531731e270708ddb342dc2e576a31fb298dcbc56a206596a43afac54f" "b0f0e2e4cc5d8e5e93dc9dabdb998ce8f7a4b63a68ce3cbf5e8e0525ed628e71" "0301a26dedfda81ca220ad6169588b5408884e7b4a5363f3e6a0e98d5c65a257" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" "847575d12a9f396e050ddd45a350b8fc52c3f8fe914c2ea9e1fa8f06a7cfb4d9" "7ae3f88d0caa9db14f2a757755a47e572de7a6ba41780503e9a1f08cbb0802f0" "bf6940873299cc17e4339c96d7aac5a25855498379a4a11a6bc0dba47902ec35" "109d2e420f10339b151e22e452e7af5550118e941ac6d839e875a07c85c1003a" "99d1911fbea7d603989f7521a6c6e17b550c8d9ac37d5ee9b660941e37825c81" "7985ab0eaf8ed692055a9a3671b902afa09d26e6f384cfff5a5c3bb5b3d64cca" "14391f8e9773ce511b98b151d0655d73953068798fcb843cd67ef26e60c9f00f" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "5eda93d7e92808a69e771b02bf65b21ea6f2e94309bdc5135495e195bd7913e1" "f20795b6b18a6487168643337dbd3aa6b930b86b9d16c2407e2bd6d0d91d4ca4" "0556e4e9b305bc00f1a6e2c7a395ff981798d6ca6f22aa59062117a69ee642e2" "f0dc4ddca147f3c7b1c7397141b888562a48d9888f1595d69572db73be99a024" "5057614f7e14de98bbc02200e2fe827ad897696bfd222d1bcab42ad8ff313e20" "233bb646e100bda00c0af26afe7ab563ef118b9d685f1ac3ca5387856674285d" "72a097f48e588eaa08b17027ac20304dd3b3ea8ceaca4ca553fb2577b64f4d09" "3b5ce826b9c9f455b7c4c8bff22c020779383a12f2f57bf2eb25139244bb7290" "3cb2d5a795e1c93d1fbc8360d6ea41f0173aa1366d334b16e1b83b996b8d9ce6" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "4e4d9f6e1f5b50805478c5630be80cce40bee4e640077e1a6a7c78490765b03f" default)))
- '(debug-on-error t)
+    ("567f922dd2cca2462ebe1a6b106ccdb5ca13198fd5eb2ea0ad317a8a9a7efe8e" "8eea7db167bb03876098e3ab29b73b0f7a50a21048da087dc587ec5ebb33deca" "34b3f9f90e2bed26fed018c2779389ce47474664f2218300ad414d6c62b6e950" "15ba433d001ffacbcd8ef71cc04c3c707cbe978808d82fda0ebe74bb8e1d2bd5" "9b01a258b57067426cc3c8155330b0381ae0d8dd41d5345b5eddac69f40d409b" "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" "1526aeed166165811eefd9a6f9176061ec3d121ba39500af2048073bea80911e" "76bfa9318742342233d8b0b42e824130b3a50dcc732866ff8e47366aed69de11" "2f1518e906a8b60fac943d02ad415f1d8b3933a5a7f75e307e6e9a26ef5bf570" "1068ae7acf99967cc322831589497fee6fb430490147ca12ca7dd3e38d9b552a" "02d80c110ccfccd2068bf9a2ae00a6fea73a745aeb64e44b0e57df5d15c687e4" "8276b345473ba94aa8d3b38f1f2dd5ff91fbcc5cb87806f67c85f165d1d14cb0" "f7a9ba346c12a073055ffac412c0203c5864f23cc229a90c93baa952e7c3608b" "61273e1124b5bf7028772edf78eb2d8027970c780236bbf3509fbea99aed521c" "a4cb60ab3813e7dce5fee23146db6967d9a89463aa5e22cdfb5e135ce405ca4d" "cecd47fd373449f2b13af25e445dfec75ee89320e9b5371830950b5a392ad7f4" "e1dbf9ac6dfaac7121d7ef00dcc05fbb6e0d493ac97a67bb6b5fb51023001923" "d99367199b7f88753d00632157d190cb49289ea93e3b9a34d37066626bef1332" "4f02273c33cef66fe6c54d1b0b3dd4081bd89f65cf60c61d1ebcf17136e94010" "dac3c5f03df46994cd9940ef9ae7715c74084dec3b85450b98d3e54f2bea3818" "c388c5d466610ef167b3b8cc3b57ddc26fe5fb5870cf5b4e68406e5611c77661" "13fa7a304bd53aa4c0beec4c25c4f811de499bce9deb326798265ed0015b3b78" "417f6aa8287d72996564313ff2de51d09d20cb59402921bd55646f8b27d3ce78" "d27ba631e7bda42c47909f8d1f12d3bb6adeab25720bea77d6abb7986d1cd863" "bc1c902b838101a677688a4743fe03e98139e07d77b2913b9aa686f0f59e0346" "7052d5df78aefb510ffc5f5be50393a62fd8db56cfb90ea814b71c817f4bc93a" "9594f82ed131d551c2a793028770cfe410ca8336407be3c84338bd63d673abfe" "f5e432ac29648b18acebda1058183de0ee797aa78f40552e88a3c143275ae30c" "cef4ac05a85b6e640ec0a4ac3cec95047e7164a824f15c6465684d9d7566b576" "35b0b0e531731e270708ddb342dc2e576a31fb298dcbc56a206596a43afac54f" "b0f0e2e4cc5d8e5e93dc9dabdb998ce8f7a4b63a68ce3cbf5e8e0525ed628e71" "0301a26dedfda81ca220ad6169588b5408884e7b4a5363f3e6a0e98d5c65a257" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" "847575d12a9f396e050ddd45a350b8fc52c3f8fe914c2ea9e1fa8f06a7cfb4d9" "7ae3f88d0caa9db14f2a757755a47e572de7a6ba41780503e9a1f08cbb0802f0" "bf6940873299cc17e4339c96d7aac5a25855498379a4a11a6bc0dba47902ec35" "109d2e420f10339b151e22e452e7af5550118e941ac6d839e875a07c85c1003a" "99d1911fbea7d603989f7521a6c6e17b550c8d9ac37d5ee9b660941e37825c81" "7985ab0eaf8ed692055a9a3671b902afa09d26e6f384cfff5a5c3bb5b3d64cca" "14391f8e9773ce511b98b151d0655d73953068798fcb843cd67ef26e60c9f00f" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "5eda93d7e92808a69e771b02bf65b21ea6f2e94309bdc5135495e195bd7913e1" "f20795b6b18a6487168643337dbd3aa6b930b86b9d16c2407e2bd6d0d91d4ca4" "0556e4e9b305bc00f1a6e2c7a395ff981798d6ca6f22aa59062117a69ee642e2" "f0dc4ddca147f3c7b1c7397141b888562a48d9888f1595d69572db73be99a024" "5057614f7e14de98bbc02200e2fe827ad897696bfd222d1bcab42ad8ff313e20" "233bb646e100bda00c0af26afe7ab563ef118b9d685f1ac3ca5387856674285d" "72a097f48e588eaa08b17027ac20304dd3b3ea8ceaca4ca553fb2577b64f4d09" "3b5ce826b9c9f455b7c4c8bff22c020779383a12f2f57bf2eb25139244bb7290" "3cb2d5a795e1c93d1fbc8360d6ea41f0173aa1366d334b16e1b83b996b8d9ce6" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "4e4d9f6e1f5b50805478c5630be80cce40bee4e640077e1a6a7c78490765b03f" default)))
+ '(debug-on-error nil)
+ '(dired-sidebar-follow-file-idle-delay 1)
+ '(dired-sidebar-should-follow-file t)
  '(doc-view-continuous t)
  '(dumb-jump-mode t)
  '(evil-want-C-i-jump nil)
- '(fci-rule-color "#969896")
+ '(fci-rule-color "#6272a4")
  '(global-company-mode t)
- '(global-display-line-numbers-mode f)
  '(global-linum-mode nil)
  '(global-visual-line-mode t)
+ '(helm-completion-style (quote emacs))
  '(helm-mode t)
+ '(history-delete-duplicates t)
  '(indent-tabs-mode nil)
  '(ivy-mode t)
  '(ivy-rich-mode t)
+ '(jdee-db-active-breakpoint-face-colors (cons "#1E2029" "#bd93f9"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#1E2029" "#50fa7b"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#1E2029" "#565761"))
  '(ledger-clear-whole-transactions t t)
  '(ledger-reports
    (quote
@@ -1298,6 +1279,7 @@ Emacs session."
  '(nrepl-message-colors
    (quote
     ("#183691" "#969896" "#a71d5d" "#969896" "#0086b3" "#795da3" "#a71d5d" "#969896")))
+ '(objed-cursor-color "#ff5555")
  '(org-cycle-emulate-tab t)
  '(org-export-backends (quote (ascii html icalendar latex md odt org)))
  '(org-modules
@@ -1306,34 +1288,36 @@ Emacs session."
  '(org-org-htmlized-css-url "css")
  '(package-selected-packages
    (quote
-    (hledger-mode racket-mode ob-rust all-the-icons elisp-format flycheck-rust java-imports pandoc-mode flymd dired-sidebar lsp-rust lsp-mode rust-mode deadgrep dired-ranger ranger el-get indent-guide magit equake guix jupyter git-time-metric transient helm-system-packages image+ multi-term treemacs nimbus-theme yasnippet undo-propose dumb-jump thread-dump counsel chip8 quelpa-use-package quelpa sr-speedbar rtags toc-org highlight-indent-guides git-gutter diff-hl prettier-js reformatter s "s" abyss-theme sane-term flycheck-ledger ledger-mode doom-modeline mu4e-conversation telephone-line session ob-tmux eyebrowse format-all rainbow-mode zone-sl zone-rainbow zone-nyan perspective golden-ratio android-mode elmacro rmsbolt swiper ace-jump-mode powerline-evil powerline esup auctex org-ref-pubmed org-ref-scopus org-ref-wos org-id org-ref org-mime pdf-tools weechat aggressive-indent smart-tabs-mode smart-tabs smooth-scrolling evil-mu4e mu4e highlight-indentation company-mode company ws-butler 0blayout anki-editor auto-complete hydra-ivy ivy-hydra smart-parens hydra projectile ob-sql-mode org-babel-eval-in-repl ivy-rich gnuplot-mode gnuplot sicp haskell-mode geiser chess github-theme htmlize which-key use-package smex slime shell-pop rotate rebecca-theme rainbow-delimiters paredit multiple-cursors general flycheck evil-leader dashboard)))
- '(pdf-view-midnight-colors (quote ("#969896" . "#f8eec7")))
+    (hledger-mode ob-rust all-the-icons elisp-format flycheck-rust java-imports pandoc-mode flymd dired-sidebar lsp-rust lsp-mode rust-mode deadgrep dired-ranger ranger el-get indent-guide magit equake guix jupyter git-time-metric transient helm-system-packages image+ multi-term treemacs nimbus-theme yasnippet undo-propose dumb-jump thread-dump counsel chip8 quelpa-use-package quelpa sr-speedbar rtags toc-org highlight-indent-guides git-gutter diff-hl prettier-js reformatter s "s" abyss-theme sane-term flycheck-ledger ledger-mode doom-modeline mu4e-conversation telephone-line session ob-tmux eyebrowse format-all rainbow-mode zone-sl zone-rainbow zone-nyan perspective golden-ratio android-mode elmacro rmsbolt swiper ace-jump-mode powerline-evil powerline esup auctex org-ref-pubmed org-ref-scopus org-ref-wos org-id org-ref org-mime pdf-tools weechat aggressive-indent smart-tabs-mode smart-tabs smooth-scrolling evil-mu4e mu4e highlight-indentation company-mode company ws-butler 0blayout anki-editor auto-complete hydra-ivy ivy-hydra smart-parens hydra projectile ob-sql-mode org-babel-eval-in-repl ivy-rich gnuplot-mode gnuplot sicp haskell-mode geiser chess github-theme htmlize which-key use-package smex slime shell-pop rotate rebecca-theme rainbow-delimiters paredit multiple-cursors general flycheck evil-leader dashboard)))
+ '(pdf-view-midnight-colors (cons "#f8f8f2" "#282a36"))
  '(projectile-mode nil nil (projectile))
+ '(rustic-ansi-faces
+   ["#282a36" "#ff5555" "#50fa7b" "#f1fa8c" "#61bfff" "#ff79c6" "#8be9fd" "#f8f8f2"])
  '(send-mail-function (quote mailclient-send-it))
  '(tab-width 4)
  '(tls-checktrust (quote ask))
- '(vc-annotate-background "#b0cde7")
+ '(vc-annotate-background "#282a36")
  '(vc-annotate-color-map
-   (quote
-    ((20 . "#969896")
-     (40 . "#183691")
-     (60 . "#969896")
-     (80 . "#969896")
-     (100 . "#969896")
-     (120 . "#a71d5d")
-     (140 . "#969896")
-     (160 . "#969896")
-     (180 . "#969896")
-     (200 . "#969896")
-     (220 . "#63a35c")
-     (240 . "#0086b3")
-     (260 . "#795da3")
-     (280 . "#969896")
-     (300 . "#0086b3")
-     (320 . "#969896")
-     (340 . "#a71d5d")
-     (360 . "#969896"))))
- '(vc-annotate-very-old-color "#969896"))
+   (list
+    (cons 20 "#50fa7b")
+    (cons 40 "#85fa80")
+    (cons 60 "#bbf986")
+    (cons 80 "#f1fa8c")
+    (cons 100 "#f5e381")
+    (cons 120 "#face76")
+    (cons 140 "#ffb86c")
+    (cons 160 "#ffa38a")
+    (cons 180 "#ff8ea8")
+    (cons 200 "#ff79c6")
+    (cons 220 "#ff6da0")
+    (cons 240 "#ff617a")
+    (cons 260 "#ff5555")
+    (cons 280 "#d45558")
+    (cons 300 "#aa565a")
+    (cons 320 "#80565d")
+    (cons 340 "#6272a4")
+    (cons 360 "#6272a4")))
+ '(vc-annotate-very-old-color nil))
 
 
 (custom-set-faces
@@ -1341,5 +1325,8 @@ Emacs session."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(flycheck-error ((t (:background "#dc143c" :foreground "white"))))
+ '(flycheck-fringe-warning ((t (:inherit warning :foreground "#caa9fa"))))
+ '(flycheck-warning ((t (:background "#caa9fa"))))
+ '(mode-line ((t (:background "#44475a" :foreground "white" :inverse-video nil :box (:line-width 1 :color "#44475a"))))))
 (put 'downcase-region 'disabled nil)

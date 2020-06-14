@@ -31,6 +31,8 @@
                 (dracula-red     "#dc143c" "#ff8787" "red")         ; official red
                 (dracula-yellow  "#f1fa8c" "#ffff87" "yellow")      ; official yellow
                 ;; Other colors
+                (fg         '("#f8f8f2" "#ffffff" "white"        ))
+                (fg-alt     '("#e2e2dc" "#bfbfbf" "brightwhite"  ))
                 (bg2             "#373844" "#121212" "brightblack")
                 (bg3             "#464752" "#262626" "brightblack")
                 (bg4             "#565761" "#444444" "brightblack")
@@ -467,7 +469,7 @@
                (outline-5 :foreground ,dracula-cyan)
                (outline-6 :foreground ,dracula-orange)
                ;; powerline
-               (powerline-evil-base-face :foreground ,bg2)
+               (powerline-evil-base-face :foreground ,dracula-fg)
                (powerline-evil-emacs-face :inherit powerline-evil-base-face :background ,dracula-yellow)
                (powerline-evil-insert-face :inherit powerline-evil-base-face :background ,dracula-cyan)
                (powerline-evil-motion-face :inherit powerline-evil-base-face :background ,dracula-purple)
