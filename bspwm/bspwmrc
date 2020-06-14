@@ -20,7 +20,7 @@ bspc rule -a URxvt -o desktop=^1 focus=on follow=on
 bspc rule -a Firefox -o desktop=^2 focus=on
 bspc rule -a Emacs -o desktop=^3 focus=on state=tiled
 bspc rule -a Evince -o desktop=^4 focus=off follow=off
-bspc rule -a Plank layer=below manage=on border=off
+bspc rule -a Plank layer=below manage=off border=off
 
 # cursor style
 xsetroot -cursor_name left_ptr
@@ -68,7 +68,7 @@ compton -b --config /home/liam/.config/compton.conf
 # nextcloud &
 
 # alttab
-sleep 5; alttab -d 1 &
+sleep 5; alttab -d 1
 
 # window manager hack for java programs to run in bspwm.
-wmname LG3D
+# wmname LG3D

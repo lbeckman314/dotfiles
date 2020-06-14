@@ -96,9 +96,9 @@ show_pmenu2 () {
 get_icon () {
     if [ "$2" = "tablet" ]
     then
-        icon=$ICON_TABLET
+        icon="$ICON_TABLET "
     else
-        icon=$ICON_SMARTPHONE
+        icon="$ICON_SMARTPHONE "
     fi
     case $1 in
     "-1")     ICON="%{F$COLOR_DISCONNECTED}$icon%{F-}" ;;
@@ -114,7 +114,7 @@ get_icon () {
     9*|100) ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
     *)      ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
     esac
-    echo $ICON
+    echo $ICON 
 }
 
 unset DEV_ID DEV_NAME DEV_BATTERY

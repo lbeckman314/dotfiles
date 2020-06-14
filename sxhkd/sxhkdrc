@@ -12,10 +12,10 @@ alt + @space
 
 # program launcher rofi
 alt + r
-    rofi -show run -yoffset -150
+    rofi -no-lazy-grab -show drun -theme ribbon_top.rasi
 
 alt + space
-    rofi -show run -yoffset -150
+    rofi -no-lazy-grab -show drun -theme ribbon_top.rasi
 
 alt + q
     i3lock -u -i /home/liam/Pictures/sven-scheuermeier-mountain-inverted.png

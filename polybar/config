@@ -19,14 +19,17 @@ module-margin-right = 0
 font-0 = Noto Sans:pixelsize=10;0
 font-1 = FontAwesome:size=10;0
 font-2 = siji:pixelsize=10;0
+font-3 = Noto Sans Symbols2:pixelsize=10;0
 
 modules-left = jgmenu bspwm
 modules-center =
-modules-right = kdeconnect wireless-network battery volume backlight date powermenu
+modules-right = kdeconnect wireless-network battery volume xbacklight date powermenu
+
+;separator = %{F#666} | %{F-}
 
 tray-background = #2a000000
 tray-position = center
-tray-padding = 2
+tray-padding = 4
 tray-detached = false
 tray-offset-x = 0%
 
@@ -57,7 +60,7 @@ type = internal/xworkspaces
 pin-workspaces = false
 enable-click = true
 enable-scroll = true
-format-padding = 0
+format-padding = 4
 
 icon-0 = 1;
 icon-1 = 2;
@@ -118,13 +121,13 @@ type = internal/network
 interface=wlp3s0
 
 format-connected = <label-connected>
-format-connected-padding = 0
+format-connected-padding = 3
 
 format-disconnected = <label-disconnected>
-format-disconnected-padding = 0
+format-disconnected-padding = 3
 
 ;;label-connected =  %signal% ⇢ %essid%
-label-connected = %{A1:rofi-wifi-menu:} %essid% (%signal%)%{A}
+label-connected = %{A1:rofi-wifi-menu:}  %signal%%{A}
 label-disconnected =  None
 
 ; Only applies if <ramp-signal> is used
@@ -144,8 +147,8 @@ type = internal/network
 interface = enp0s25
 interval = 3.0
 
-format-connected-padding = 1
-format-disconnected-padding = 1
+format-connected-padding = 3
+format-disconnected-padding = 3
 
 format-connected-underline = ${dracula-colors.cyan}
 ;format-disconnected-underline = ${dracula-colors.gray}
@@ -166,8 +169,8 @@ interval = 1.0
 ; See "man date" for details on how to format the date string
 ; NOTE: if you want to use syntax tags here you need to use %%{...}
 ;date = %a %b %d,
-;date = %c
-date = %A %I:%M:%S %d %B %Y
+date = %F %a %r
+;date = %a %B %d %I:%M:%S %P
 
 ; Optional time format
 ; time = %H:%M
@@ -178,7 +181,7 @@ date = %A %I:%M:%S %d %B %Y
 ;time-alt = %H:%M:%S
 
 label = %date% %time%
-format =%{A1:gnome-calendar:} 🕓 <label> %{A}
+format =%{A1:gnome-calendar:}  <label> %{A}
 ;format-ackground = #ddffffff
 ;format-background = #88000000
 ;format-foreground = #333
@@ -200,7 +203,7 @@ format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 ;format-discharging-alt = <ramp-capacity>  <label-discharging>
 
-format-full = <ramp-capacity>  <label-full>
+format-full = <ramp-capacity> <label-full>
 label-charging = %percentage%
 label-discharging = %percentage%
 label-full = %percentage%
@@ -214,23 +217,14 @@ ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
 
-;ramp-capacity-0-foreground = #de0037
+animation-charging-0 = 
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-framerate = 1000
-
-[module/backlight]
-type = internal/backlight
-
-card = intel_backlight
-enable-scroll = true
+[module/xbacklight]
+type = internal/xbacklight
 
 format = <ramp> <label>
 label = %percentage%
+format-padding = 3
 
 ramp-0 = 🌕
 ramp-1 = 🌔
@@ -246,7 +240,7 @@ format-volume = <ramp-volume>  <label-volume>
 
 format-muted = <label-muted>
 label-volume = %percentage%
-label-muted =   muted
+label-muted =  muted
 label-muted-foreground = #aaa
 format-volume-padding = 3
 format-muted-padding = 3
@@ -260,7 +254,7 @@ ramp-headphones-0 = 
 [module/powermenu]
 type = custom/menu
 
-;;label-open = 
+;;label-open =   liam
 label-open = ${env:USER:}
 
 ;label-open-background = #dd0000
@@ -268,7 +262,7 @@ label-open = ${env:USER:}
 label-close = cancel
 ;label-close-background = #dd0000
 ;label-close-foreground = #fff
-label-open-padding = 3
+label-open-padding-right = 3
 label-close-padding = 3
 
 menu-0-0 = reboot
