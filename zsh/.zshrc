@@ -33,6 +33,10 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 
 export LANG=en_US.UTF-8
 export TERM="xterm-256color"
+export PATH=/Users/beckmanl/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/beckmanl/.cargo/bin
+export QT_PLUGIN_PATH=/usr/local/Cellar/qt/5.14.1/plugins:/usr/local/lib/qt5/plugins
+export PATH="$PATH:/usr/local/Cellar/mysql@5.7/5.7.27_1/bin/"
+export PATH="$PATH:$HOME/.local/bin"
 
 # - - - - - - - - - - - #
 # Fuzzy finder
@@ -140,9 +144,16 @@ USER=" $USER"
 PATH="$HOME/.local/bin/:/home/liam/.gem/ruby/2.6.0/bin:/home/liam/.cargo/bin:/home/liam/bin:/home/liam/go/bin:/usr/bin:/usr/share/bin:/usr/local/bin"
 export PATH="$PATH:/opt/texlive/2020/bin/x86_64-linux/"
 
-PATH="/home/liam/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/liam/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/liam/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/liam/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/liam/perl5"; export PERL_MM_OPT;
+QT_PLUGIN_PATH=/usr/local/Cellar/qt/5.14.2/plugins:/usr/local/lib/qt5/plugins
+alias cat=bat
+export BAT_THEME=Dracula
+if [ -e /Users/beckmanl/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/beckmanl/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+PATH=$PATH:/Users/beckmanl/Library/Python/3.7/bin
+PATH=/usr/local/texlive/2019/bin/x86_64-darwin/:$PATH
+alias gp=gopass
+
+# VOID
 alias open=xdg-open
+
+# Doom Emacs
+PATH=$PATH:$HOME/.emacs.d/bin/

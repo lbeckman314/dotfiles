@@ -17,39 +17,30 @@
 (require 'cl-lib)
 (deftheme darcula)
 
-(let ((colors '((fg1          "#f8f8f2")      ; Assigment form: VARIABLE COLOR [TTY-COLOR]
-                (fg2          "#e2e2dc")
-                (fg3          "#ccccc7")
-                (fg4          "#b6b6b2")
-                (bg1          "#131516" "#282a36" "#000000")
-                (bg2          "#373844")
-                (bg3          "#464752")
-                (bg4          "#565761")
-                (bg5          "#44475a")
-                (bg6          "#b45bcf")
-                (key2         "#0189cc")
-                (key3         "#ff79c6")
-                (builtin      "#ffb86c")
-                (keyword      "#ff79c6")
-                (const        "#8be9fd")
-                (comment      "#6272a4")
-                (func         "#50fa7b")
-                (str          "#f1fa8c")
-                (type         "#bd93f9")
-                (var          "#f8f8f2")
-                (warning      "#ffb86c")
-                (rainbow-1    "#f8f8f2")
-                (rainbow-2    "#8be9fd")
-                (rainbow-3    "#bd93f9")
-                (rainbow-4    "#ff79c6")
-                (rainbow-5    "#ffb86c")
-                (rainbow-6    "#50fa7b")
-                (rainbow-7    "#f1fa8c")
-                (rainbow-8    "#0189cc")
-                (rainbow-9    "#dc143c")
-                (rainbow-10   "#a0522d")
-                (eph-verbatim "#f1fa8c")
-                (eph-code     "#ff79c6")))
+;; Assigment form: VARIABLE COLOR [256-COLOR [TTY-COLOR]]
+(let ((colors '(;; Upstream theme color
+                (dracula-bg      "#131516" "unspecified-bg" "unspecified-bg") ; official background
+                (dracula-fg      "#f8f8f2" "#ffffff" "brightwhite") ; official foreground
+                (dracula-current "#44475a" "#303030" "brightblack") ; official current-line/selection
+                (dracula-comment "#6272a4" "#5f5faf" "blue")        ; official comment
+                (dracula-cyan    "#8be9fd" "#87d7ff" "brightcyan")  ; official cyan
+                (dracula-green   "#50fa7b" "#5fff87" "green")       ; official green
+                (dracula-orange  "#ffb86c" "#ffaf5f" "brightred")   ; official orange
+                (dracula-pink    "#ff79c6" "#ff87d7" "magenta")     ; official pink
+                (dracula-purple  "#bd93f9" "#af87ff" "brightmagenta") ; official purple
+                (dracula-red     "#dc143c" "#ff8787" "red")         ; official red
+                (dracula-yellow  "#f1fa8c" "#ffff87" "yellow")      ; official yellow
+                ;; Other colors
+                (fg         '("#f8f8f2" "#ffffff" "white"        ))
+                (fg-alt     '("#e2e2dc" "#bfbfbf" "brightwhite"  ))
+                (bg2             "#373844" "#121212" "brightblack")
+                (bg3             "#464752" "#262626" "brightblack")
+                (bg4             "#565761" "#444444" "brightblack")
+                (fg2             "#e2e2dc" "#e4e4e4" "brightwhite")
+                (fg3             "#ccccc7" "#c6c6c6" "white")
+                (fg4             "#b6b6b2" "#b2b2b2" "white")
+                (other-blue      "#0189cc" "#0087ff" "brightblue")))
+
       (faces '(;; default
                (cursor :background ,fg3)
                (default :background ,bg1 :foreground ,fg1)
@@ -280,18 +271,14 @@
                (outline-5 :foreground ,rainbow-5)
                (outline-6 :foreground ,rainbow-8)
                ;; powerline
-               (powerline-evil-base-face :foreground ,bg2)
-               (powerline-evil-emacs-face :inherit powerline-evil-base-face :background ,rainbow-7)
-               (powerline-evil-insert-face :inherit powerline-evil-base-face :background ,rainbow-2)
-               (powerline-evil-motion-face :inherit powerline-evil-base-face :background ,rainbow-3)
-               (powerline-evil-normal-face :inherit powerline-evil-base-face :background ,rainbow-6)
-               (powerline-evil-operator-face :inherit powerline-evil-base-face :background ,rainbow-4)
-               (powerline-evil-replace-face :inherit powerline-evil-base-face :background ,rainbow-9)
-               (powerline-evil-visual-face :inherit powerline-evil-base-face :background ,rainbow-5)
-               (powerline-active1 :background ,bg6 :foreground ,fg1)
-               (powerline-active2 :background ,bg6 :foreground ,fg1)
-               (powerline-inactive2 :background ,bg3 :foreground ,fg1)
-               (powerline-inactive2 :background ,bg3 :foreground ,fg1)
+               (powerline-evil-base-face :foreground ,dracula-fg)
+               (powerline-evil-emacs-face :inherit powerline-evil-base-face :background ,dracula-yellow)
+               (powerline-evil-insert-face :inherit powerline-evil-base-face :background ,dracula-cyan)
+               (powerline-evil-motion-face :inherit powerline-evil-base-face :background ,dracula-purple)
+               (powerline-evil-normal-face :inherit powerline-evil-base-face :background ,dracula-green)
+               (powerline-evil-operator-face :inherit powerline-evil-base-face :background ,dracula-pink)
+               (powerline-evil-replace-face :inherit powerline-evil-base-face :background ,dracula-red)
+               (powerline-evil-visual-face :inherit powerline-evil-base-face :background ,dracula-orange)
                ;; rainbow-delimiters
                (rainbow-delimiters-depth-1-face :foreground ,rainbow-1)
                (rainbow-delimiters-depth-2-face :foreground ,rainbow-2)
