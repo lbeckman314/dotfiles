@@ -138,3 +138,4 @@ if [ -e /Users/beckmanl/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/beckm
 PATH=$PATH:/Users/beckmanl/Library/Python/3.7/bin
 PATH=/usr/local/texlive/2019/bin/x86_64-darwin/:$PATH
 alias gp=gopass
+alias rn=ranger

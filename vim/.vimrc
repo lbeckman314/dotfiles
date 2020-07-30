@@ -300,8 +300,8 @@ function! UnMinify()
     normal ggVG=
 endfunction
 
-command! MyFormat call MyFormat()
-function! MyFormat()
+command! Fmt call Fmt()
+function! Fmt()
     let currBuff=bufnr("%") | let save_pos = getpos(".") | silent bufdo %s/\s\+$//e | silent retab | update | execute 'buffer ' . currBuff | call setpos('.', save_pos) | noh
 endfunction
 
