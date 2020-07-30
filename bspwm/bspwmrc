@@ -20,12 +20,15 @@ bspc rule -a URxvt -o desktop=^1 focus=on follow=on
 bspc rule -a Firefox -o desktop=^2 focus=on
 bspc rule -a Emacs -o desktop=^3 focus=on state=tiled
 bspc rule -a Evince -o desktop=^4 focus=off follow=off
-bspc rule -a Plank layer=below manage=on border=off
+bspc rule -a Plank layer=below manage=off border=off
 
 # cursor style
 xsetroot -cursor_name left_ptr
 
 # start programs
+
+# terminal, shell, tmux
+urxvt -e zsh -c "source ~/.zshrc; tmux new -s dev" &
 
 # wallpaper
 feh --bg-fill $HOME/Documents/code/dotfiles/wallpapers/sven-scheuermeier-matterhorn.png
@@ -49,9 +52,6 @@ emacsclient -c -a "" -e "(startup)" &
 # redshift
 redshift -c ~/redshift.conf &
 
-# terminal, shell, tmux
-urxvt -e zsh -c "source ~/.zshrc; tmux new -s dev" &
-
 #jgmenu
 jgmenu --hide-on-startup &
 
@@ -65,10 +65,10 @@ bspc desktop -f ^1
 compton -b --config /home/liam/.config/compton.conf
 
 # nextcloud
-nextcloud &
+# nextcloud &
 
 # alttab
-sleep 5; alttab -d 1 &
+sleep 5; alttab -d 1
 
 # window manager hack for java programs to run in bspwm.
-wmname LG3D
+# wmname LG3D

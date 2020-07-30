@@ -24,3 +24,4 @@ set smtp_url="smtp://lbeckman314@smtp.gmail.com:587/"
 #source "gpg -dq $HOME/.mutt/.pass-mutt.gpg |"
 
 set smtp_authenticators = 'gssapi:login'
+set date_format="%F %a %R"

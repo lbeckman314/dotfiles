@@ -42,8 +42,8 @@ export PATH="$PATH:$HOME/.local/bin"
 # Fuzzy finder
 # - - - - - - - - - - - #
 
-fuzzy_bindings="/usr/local/opt/fzf/shell/key-bindings.zsh"
-fuzzy_completions="/usr/local/opt/fzf/shell/completion.zsh"
+fuzzy_bindings="/usr/share/doc/fzf/key-bindings.zsh"
+fuzzy_completions="/usr/share/doc/fzf/completion.zsh"
 source $fuzzy_bindings
 source $fuzzy_completions
 
@@ -54,6 +54,7 @@ source $fuzzy_completions
 alias -g ...='../..'
 alias em='emacsclient -c -n -a "" -e "(startup)"'
 alias gc="git commit"
+alias gaa="git add --all"
 alias gco="git checkout"
 alias gg="git branch -a | tr -d \* | sed '/->/d' | xargs git grep"
 alias gst="git status"
@@ -63,6 +64,9 @@ alias kdeconnect="kcmshell5 kcm_kdeconnect"
 alias magit='emacsclient -c -n -a "" -e "(progn (magit-status) (delete-other-windows))"'
 alias rmt='mkdir -p $HOME/trash; mv --backup=t -t $HOME/trash'
 alias jshell=/Users/beckmanl/dev/openjdk-13/jdk-13.0.1+9/Contents/Home/bin/jshell
+alias vim=vim-huge
+
+setxkbmap -option caps:escape
 
 # - - - - - - - - - - - #
 # Functions
@@ -123,13 +127,22 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}x"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
-# USER::HOST → DIRECTORY [GIT STATUS]
-USER="%{$fg_bold[magenta]%}%n%{$fg_bold[blue]%}::%{$fg_bold[magenta]%}%m%{$reset_color%}"
+# ME::HOST → DIRECTORY [GIT STATUS]
+ME="%{$fg_bold[magenta]%}%n%{$fg_bold[blue]%}::%{$fg_bold[magenta]%}%m%{$reset_color%}"
 RET_STATUS="%(?:%{$fg_bold[green]%}>:%{$fg_bold[red]%}>)"
 DIR="%{$fg[cyan]%}%c%{$reset_color%}"
 DATE="%{$fg_bold[blue]%}%D{%F %R:%S}%{$reset_color%}"
-PROMPT='${USER} ${RET_STATUS} ${DIR} $(git_prompt_info)'
+PROMPT='${ME} ${RET_STATUS} ${DIR} $(git_prompt_info)'
 RPROMPT='${DATE}'
+USER="$(whoami)"
+USER=" $USER"
+
+# - - - - - - - - - - - #
+# Path
+# - - - - - - - - - - - #
+
+PATH="$HOME/.local/bin/:/home/liam/.gem/ruby/2.6.0/bin:/home/liam/.cargo/bin:/home/liam/bin:/home/liam/go/bin:/usr/bin:/usr/share/bin:/usr/local/bin"
+export PATH="$PATH:/opt/texlive/2020/bin/x86_64-linux/"
 
 QT_PLUGIN_PATH=/usr/local/Cellar/qt/5.14.2/plugins:/usr/local/lib/qt5/plugins
 alias cat=bat
@@ -139,3 +152,9 @@ PATH=$PATH:/Users/beckmanl/Library/Python/3.7/bin
 PATH=/usr/local/texlive/2019/bin/x86_64-darwin/:$PATH
 alias gp=gopass
 alias rn=ranger
+
+# VOID
+alias open=xdg-open
+
+# Doom Emacs
+PATH=$PATH:$HOME/.emacs.d/bin/

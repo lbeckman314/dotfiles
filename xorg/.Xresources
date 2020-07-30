@@ -112,7 +112,7 @@ urxvt.iso14755: false
 !*.color3:      #AA5500
 !
 !! blue
-!*.color12:       #5555FF
+!*.color12:       #8a8aff
 !*.color4:      #0000AA
 !
 !! magenta
