@@ -41,6 +41,7 @@ Plug 'https://github.com/bling/vim-airline'      " status bar
 " Navigation
 " ---------- "
 Plug 'https://github.com/justinmk/vim-sneak'
+Plug 'https://github.com/preservim/nerdtree'
 
 " ---------- "
 " Colors/visualizers
@@ -70,7 +71,6 @@ Plug 'https://github.com/scrooloose/nerdcommenter'
 " ---------- "
 Plug 'https://github.com/tpope/vim-obsession'
 Plug 'https://github.com/dhruvasagar/vim-prosession'
-<<<<<<< HEAD
 
 " ---------- "
 " Language Server Protocol
@@ -81,23 +81,21 @@ Plug 'https://github.com/prabirshrestha/async.vim'
 " ---------- "
 " Startup
 " ---------- "
-||||||| b4dffa7
-Plug 'https://github.com/prabirshrestha/async.vim'
-Plug 'https://github.com/prabirshrestha/vim-lsp'
+Plug 'https://github.com/mhinz/vim-startify'
+
+" ---------- "
+" Misc
+" ---------- "
 Plug 'https://github.com/prabirshrestha/asyncomplete.vim'
 Plug 'https://github.com/vim-scripts/dbext.vim'
 Plug 'https://github.com/rust-lang/rust.vim'
-=======
-Plug 'https://github.com/vim-scripts/dbext.vim'
-Plug 'https://github.com/rust-lang/rust.vim'
->>>>>>> b55c92c4fe55293dc35bcb280d19092ae20b739f
-Plug 'https://github.com/mhinz/vim-startify'
 Plug 'https://github.com/iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'https://github.com/rhysd/vim-clang-format'
 Plug 'https://github.com/kana/vim-operator-user'
 Plug 'https://github.com/alvan/vim-closetag'
 Plug 'https://github.com/dhruvasagar/vim-table-mode'
 Plug 'https://github.com/jremmen/vim-ripgrep'
+
 " Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
@@ -124,16 +122,8 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-<<<<<<< HEAD
 let g:deoplete#enable_at_startup = 1
-||||||| b4dffa7
-let g:deoplete#enable_at_startup = 0
 call plug#end()
-=======
-let g:deoplete#enable_at_startup = 0
-Plug 'https://github.com/preservim/nerdtree'
-call plug#end()
->>>>>>> b55c92c4fe55293dc35bcb280d19092ae20b739f
 
 " ---------- "
 " Linting
