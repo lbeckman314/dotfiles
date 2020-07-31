@@ -114,7 +114,7 @@ get_icon () {
     9*|100) ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
     *)      ICON="%{F$COLOR_BATTERY_90}$icon%{F-} $1" ;;
     esac
-    echo $ICON 
+    echo $ICON
 }
 
 unset DEV_ID DEV_NAME DEV_BATTERY

@@ -29,6 +29,7 @@ autoload -Uz compinit && compinit
 # partial completion suggestions
 zstyle ':completion:*' list-suffixes
 zstyle ':completion:*' expand prefix suffix
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 
 export LANG=en_US.UTF-8
@@ -157,3 +158,4 @@ alias open=xdg-open
 
 # Doom Emacs
 PATH=$PATH:$HOME/.emacs.d/bin/
+

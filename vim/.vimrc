@@ -22,6 +22,12 @@ call plug#begin('~/.vim/plugged')
 " PLUGINS
 " ---------------------------- "
 
+Plug 'https://github.com/liuchengxu/vim-which-key'
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
+Plug 'https://github.com/easymotion/vim-easymotion'
+nnoremap z <Plug>(easymotion-prefix)
+
 " ---------- "
 " Emacs-like search/replace preview
 " ---------- "
@@ -70,7 +76,6 @@ Plug 'https://github.com/scrooloose/nerdcommenter'
 " ---------- "
 Plug 'https://github.com/tpope/vim-obsession'
 Plug 'https://github.com/dhruvasagar/vim-prosession'
-<<<<<<< HEAD
 
 " ---------- "
 " Language Server Protocol
@@ -81,16 +86,6 @@ Plug 'https://github.com/prabirshrestha/async.vim'
 " ---------- "
 " Startup
 " ---------- "
-||||||| b4dffa7
-Plug 'https://github.com/prabirshrestha/async.vim'
-Plug 'https://github.com/prabirshrestha/vim-lsp'
-Plug 'https://github.com/prabirshrestha/asyncomplete.vim'
-Plug 'https://github.com/vim-scripts/dbext.vim'
-Plug 'https://github.com/rust-lang/rust.vim'
-=======
-Plug 'https://github.com/vim-scripts/dbext.vim'
-Plug 'https://github.com/rust-lang/rust.vim'
->>>>>>> b55c92c4fe55293dc35bcb280d19092ae20b739f
 Plug 'https://github.com/mhinz/vim-startify'
 Plug 'https://github.com/iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'https://github.com/rhysd/vim-clang-format'
@@ -124,16 +119,7 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-<<<<<<< HEAD
 let g:deoplete#enable_at_startup = 1
-||||||| b4dffa7
-let g:deoplete#enable_at_startup = 0
-call plug#end()
-=======
-let g:deoplete#enable_at_startup = 0
-Plug 'https://github.com/preservim/nerdtree'
-call plug#end()
->>>>>>> b55c92c4fe55293dc35bcb280d19092ae20b739f
 
 " ---------- "
 " Linting
@@ -363,6 +349,16 @@ function! MyFormat()
     let currBuff=bufnr("%") | let save_pos = getpos(".") | silent bufdo %s/\s\+$//e | silent retab | update | execute 'buffer ' . currBuff | call setpos('.', save_pos) | noh
 endfunction
 
+command! Up call Up()
+function! Up()
+    w | source % | PlugInstall
+endfunction
+
+command! Rm call Rm()
+function! Rm()
+    w | source % | PlugClean
+endfunction
+
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -371,7 +367,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
