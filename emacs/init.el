@@ -5,7 +5,7 @@
 ;; CATCH ALL
 ;; ---------------------------------- ;;
 
-(windmove-default-keybindings) 
+(windmove-default-keybindings)
 
 ;; ---------------------------------- ;;
 ;; PACKAGES :: INITIALIZATION
@@ -53,18 +53,18 @@
     :config
     (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
     ;; Enable custom treemacs theme (all-the-icons must be installed!)
-    (doom-themes-treemacs-config)) 
+    (doom-themes-treemacs-config))
 
 (defun markdown-html (buffer)
   (princ (with-current-buffer buffer
-    (format "<!DOCTYPE html><html><xmp theme=\"united\" style=\"display:none;\"> %s  </xmp><script src=\"http://strapdownjs.com/v/0.2/strapdown.js\"></script></html>" (buffer-substring-no-properties (point-min) (point-max)))) 
-  (current-buffer))) 
+    (format "<!DOCTYPE html><html><xmp theme=\"united\" style=\"display:none;\"> %s  </xmp><script src=\"http://strapdownjs.com/v/0.2/strapdown.js\"></script></html>" (buffer-substring-no-properties (point-min) (point-max))))
+  (current-buffer)))
 
 ;; ---------------------------------- ;;
 ;; PACKAGES :: MISC
 ;; ---------------------------------- ;;
 (use-package racket-mode
-  :ensure t) 
+  :ensure t)
 
 (use-package treemacs-evil
   :after treemacs evil
@@ -110,7 +110,7 @@
 (use-package
     cargo
   :ensure
-  :config (add-hook 'rust-mode-hook 'cargo-minor-mode)) 
+  :config (add-hook 'rust-mode-hook 'cargo-minor-mode))
 
 (use-package
     company
@@ -147,7 +147,7 @@
 ;; VOID
 ;; https://draculatheme.com/emacs/
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'darcula t)
+;(load-theme 'darcula t)
 
 (use-package
     elmacro
@@ -274,20 +274,33 @@
     :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
             (rust-mode . lsp)
             ;; if you want which-key integration
-            (lsp-mode . lsp-enable-which-key-integration))
+            (lsp-mode . lsp-enable-which-key-integration)
+            (scala-mode . lsp)
+            (lsp-mode . lsp-lens-mode))
     :commands lsp)
 (setq lsp-rust-server 'rust-analyzer)
 
 ;; optionally
+;; Add metals backend for lsp-mode
+(use-package lsp-metals :ensure t)
+
 (use-package lsp-ui :commands lsp-ui-mode)
 ;; if you are helm user
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
 ;; if you are ivy user
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+(use-package lsp-treemacs
+  :commands lsp-treemacs-errors-list
+  :config
+  (lsp-metals-treeview-enable t)
+  (setq lsp-metals-treeview-show-when-views-received t))
+(use-package lsp-metals)
 
 ;; optionally if you want to use debugger
-(use-package dap-mode)
+(use-package dap-mode
+  :hook
+  (lsp-mode . dap-mode)
+  (lsp-mode . dap-ui-mode))
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
 ;; optional if you want which-key integration
@@ -531,7 +544,7 @@
 ;;     :straight t
 ;; :ensure t)
 
-;; ;; https://github.com/milkypostman/powerline 
+;; ;; https://github.com/milkypostman/powerline
 ;; (use-package powerline-evil
 ;;     :straight t
 ;; :ensure t
@@ -798,10 +811,12 @@
 ;; SETTINGS AND FUNCTIONS
 ;; ---------------------------------- ;;
 
+(setq x-wait-for-event-timeout nil)
+
 ;; https://emacs.stackexchange.com/questions/14438/remove-hooks-for-specific-modes
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
-(remove-hook 'dired-mode-hook 'all-the-icons-dired-mode) 
+(remove-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
 (defun ivy-rich-switch-buffer-icon (candidate)
   (with-current-buffer (get-buffer candidate)

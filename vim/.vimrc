@@ -98,6 +98,7 @@ Plug 'https://github.com/jremmen/vim-ripgrep'
 
 " Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+let g:coc_disable_startup_warning = 1
 
 " ---------- "
 " Tags
@@ -219,9 +220,6 @@ let g:is_posix = 1
 
 " https://github.com/SpaceVim/SpaceVim/issues/1714
 let g:omni_sql_no_default_maps = 1
-
-" https://old.reddit.com/r/vim/comments/bgumn8/til_about_diffoptiwhite/
-set diffopt+=hiddenoff
 
 " https://github.com/gopasspw/gopass/blob/master/docs/setup.md
 au BufNewFile,BufRead /dev/shm/gopass.* setlocal noswapfile nobackup noundofile
@@ -361,7 +359,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.

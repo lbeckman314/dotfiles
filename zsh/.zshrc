@@ -153,6 +153,7 @@ case $(uname -s) in
         ;;
     Darwin*)
         alias jshell=/Users/beckmanl/dev/openjdk-13/jdk-13.0.1+9/Contents/Home/bin/jshell
+        alias vim=/usr/local/Cellar/vim/8.2.0654/bin/vim
         ;;
 esac
 
@@ -182,9 +183,10 @@ case $(uname -s) in
 /sbin:\
 /usr/bin:\
 /usr/local/Cellar/mysql@5.7/5.7.27_1/bin:\
+/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/bin:\
 /usr/local/bin:\
 /usr/local/texlive/2019/bin/x86_64-darwin:\
-/usr/sbin
+/usr/sbin \
         export QT_PLUGIN_PATH="/usr/local/Cellar/qt/5.14.1/plugins:/usr/local/lib/qt5/plugins"
         ;;
 esac
