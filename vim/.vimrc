@@ -47,6 +47,7 @@ Plug 'https://github.com/bling/vim-airline'      " status bar
 " Navigation
 " ---------- "
 Plug 'https://github.com/justinmk/vim-sneak'
+Plug 'https://github.com/preservim/nerdtree'
 
 " ---------- "
 " Colors/visualizers
@@ -85,14 +86,21 @@ Plug 'https://github.com/prabirshrestha/async.vim'
 
 " ---------- "
 " Startup
-" ---------- "
 Plug 'https://github.com/mhinz/vim-startify'
+
+" ---------- "
+" Misc
+" ---------- "
+Plug 'https://github.com/prabirshrestha/asyncomplete.vim'
+Plug 'https://github.com/vim-scripts/dbext.vim'
+Plug 'https://github.com/rust-lang/rust.vim'
 Plug 'https://github.com/iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'https://github.com/rhysd/vim-clang-format'
 Plug 'https://github.com/kana/vim-operator-user'
 Plug 'https://github.com/alvan/vim-closetag'
 Plug 'https://github.com/dhruvasagar/vim-table-mode'
 Plug 'https://github.com/jremmen/vim-ripgrep'
+
 " Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
@@ -120,6 +128,9 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
+
+Plug 'https://github.com/preservim/nerdtree'
+call plug#end()
 
 " ---------- "
 " Linting
@@ -344,8 +355,8 @@ function! UnMinify()
     normal ggVG=
 endfunction
 
-command! MyFormat call MyFormat()
-function! MyFormat()
+command! Fmt call Fmt()
+function! Fmt()
     let currBuff=bufnr("%") | let save_pos = getpos(".") | silent bufdo %s/\s\+$//e | silent retab | update | execute 'buffer ' . currBuff | call setpos('.', save_pos) | noh
 endfunction
 
