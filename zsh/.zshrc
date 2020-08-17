@@ -143,6 +143,7 @@ alias kdeconnect="kcmshell5 kcm_kdeconnect"
 alias l="exa -al"
 alias ls="exa"
 alias magit='emacsclient -c -n -a "" -e "(progn (magit-status) (delete-other-windows))"'
+alias rkt=racket
 alias rmt='mkdir -p $HOME/trash; mv --backup=t -t $HOME/trash'
 alias rn=ranger
 export BAT_THEME=Dracula
