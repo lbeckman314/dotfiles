@@ -23,6 +23,11 @@ set ssl_force_tls = yes
 set smtp_url="smtp://lbeckman314@smtp.gmail.com:587/"
 set smtp_authenticators = 'gssapi:login'
 set date_format="%F %a %R"
+# Allow Mutt to open a new IMAP connection automatically.
+unset imap_passive
+# Keep the IMAP connection alive by polling intermittently (time in seconds).
+set imap_keepalive = 300
 
 # https://wiki.archlinux.org/index.php/Mutt#Passwords_management
 source "pass personal/google/mail/mutt |"
+
