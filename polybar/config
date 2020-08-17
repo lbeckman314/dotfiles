@@ -23,7 +23,7 @@ font-3 = Noto Sans Symbols2:pixelsize=10;0
 
 modules-left = jgmenu bspwm
 modules-center =
-modules-right = kdeconnect wireless-network battery volume xbacklight date powermenu
+modules-right = wireless-network battery volume xbacklight date time powermenu
 
 ;separator = %{F#666} | %{F-}
 
@@ -168,23 +168,23 @@ interval = 1.0
 
 ; See "man date" for details on how to format the date string
 ; NOTE: if you want to use syntax tags here you need to use %%{...}
-;date = %a %b %d,
-date = %F %a %r
-;date = %a %B %d %I:%M:%S %P
+date = %F %a
+
+label = %date%
+format =%{A1:rofi-calendar:}  <label>%{A}
+format-padding = 3
+
+[module/time]
+type = internal/date
+
+; Seconds to sleep between updates
+interval = 1.0
 
 ; Optional time format
-; time = %H:%M
+time = %r
 
-; if `date-alt` or `time-alt` is defined, clicking
-; the module will toggle between formats
-;date-alt = %A, %d %B %Y
-;time-alt = %H:%M:%S
-
-label = %date% %time%
-format =%{A1:gnome-calendar:}  <label> %{A}
-;format-ackground = #ddffffff
-;format-background = #88000000
-;format-foreground = #333
+label = %time%
+format =   <label>
 format-padding = 3
 
 [module/battery]
@@ -256,12 +256,9 @@ type = custom/menu
 
 ;;label-open =   liam
 label-open = ${env:USER:}
+format-padding = 3
 
-;label-open-background = #dd0000
-;label-open-foreground = #fff
 label-close = cancel
-;label-close-background = #dd0000
-;label-close-foreground = #fff
 label-open-padding-right = 3
 label-close-padding = 3
 

@@ -22,6 +22,12 @@ call plug#begin('~/.vim/plugged')
 " PLUGINS
 " ---------------------------- "
 
+Plug 'https://github.com/liuchengxu/vim-which-key'
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
+Plug 'https://github.com/easymotion/vim-easymotion'
+nnoremap z <Plug>(easymotion-prefix)
+
 " ---------- "
 " Emacs-like search/replace preview
 " ---------- "
@@ -80,7 +86,6 @@ Plug 'https://github.com/prabirshrestha/async.vim'
 
 " ---------- "
 " Startup
-" ---------- "
 Plug 'https://github.com/mhinz/vim-startify'
 
 " ---------- "
@@ -124,6 +129,8 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
+
+Plug 'https://github.com/preservim/nerdtree'
 call plug#end()
 
 " ---------- "
@@ -349,6 +356,16 @@ endfunction
 command! Fmt call Fmt()
 function! Fmt()
     let currBuff=bufnr("%") | let save_pos = getpos(".") | silent bufdo %s/\s\+$//e | silent retab | update | execute 'buffer ' . currBuff | call setpos('.', save_pos) | noh
+endfunction
+
+command! Up call Up()
+function! Up()
+    w | source % | PlugInstall
+endfunction
+
+command! Rm call Rm()
+function! Rm()
+    w | source % | PlugClean
 endfunction
 
 " TextEdit might fail if hidden is not set.
